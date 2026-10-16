@@ -12,3 +12,6 @@ test-results/
 playwright-report/
 *.log
 __pycache__/
+.react-router/
+.shopify/
+*.tsbuildinfo

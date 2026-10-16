@@ -1,0 +1,102 @@
+/* Brand marks: color comes from the BOAST triad tokens or currentColor. */
+.mark {
+  display: inline-block;
+  width: auto;
+  flex: none;
+}
+.mark-wordmark {
+  aspect-ratio: 854.111 / 549.643;
+}
+.mark-edge {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+.mark-blue {
+  color: var(--color-core-digs-blue);
+}
+.mark-black {
+  color: var(--color-core-ink);
+}
+.mark-ice {
+  color: var(--color-core-ice);
+}
+.mark-current {
+  color: currentColor;
+}
+.mark-mask,
+.lockup-layer,
+.script {
+  background-color: currentColor;
+  -webkit-mask: var(--mark-mask) center / contain no-repeat;
+  mask: var(--mark-mask) center / contain no-repeat;
+}
+.mark-brandmark {
+  aspect-ratio: 601.785 / 612.92;
+}
+.lockup {
+  position: relative;
+  display: inline-block;
+  max-width: 100%;
+}
+.lockup-layer {
+  position: absolute;
+  inset: 0;
+}
+.lockup-on-light .lockup-wordmark {
+  color: var(--color-core-ink);
+}
+.lockup-on-light .lockup-scrawl {
+  color: var(--color-core-digs-blue);
+}
+.lockup-inline.lockup-on-blue .lockup-wordmark {
+  color: var(--color-core-ice);
+}
+.lockup-inline.lockup-on-blue .lockup-scrawl {
+  color: var(--color-core-ink);
+}
+.lockup-stacked.lockup-on-blue .lockup-wordmark {
+  color: var(--color-core-ink);
+}
+.lockup-stacked.lockup-on-blue .lockup-scrawl {
+  color: var(--color-core-ice);
+}
+.lockup-on-dark .lockup-wordmark {
+  color: var(--color-core-ice);
+}
+.lockup-on-dark .lockup-scrawl {
+  color: var(--color-core-digs-blue);
+}
+[data-mode='wire'] .lockup-layer,
+[data-mode='wire'] .mark-blue,
+[data-mode='wire'] .mark-black {
+  color: var(--color-brand-scrawl);
+}
+[data-mode='wire'] .lockup-on-dark .lockup-layer,
+[data-mode='wire'] .lockup-on-blue .lockup-layer,
+[data-mode='wire'] .mark-ice {
+  color: var(--color-text-on-inverse);
+}
+.script {
+  display: inline-block;
+  color: inherit;
+}
+.script-draw {
+  animation: script-draw var(--motion-slow) var(--motion-ease) both;
+  -webkit-mask-size: contain, 100% 100%;
+  mask-size: contain, 100% 100%;
+}
+@keyframes script-draw {
+  from {
+    clip-path: inset(0 100% 0 0);
+  }
+  to {
+    clip-path: inset(0 0 0 0);
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .script-draw {
+    animation: none;
+    clip-path: none;
+  }
+}

@@ -1,0 +1,8 @@
+/* digs: token-driven styles. Order per 09-build-plan.md: tailwind → theme → tokens → wire. */
+@import 'tailwindcss';
+@import '../../design/tokens/build/tailwind-theme.css';
+@import '../../design/tokens/build/tokens.css';
+@import '../../design/tokens/build/wire.css';
+@import './fonts.css';
+@import './base.css';
+@import './wire-app.css';

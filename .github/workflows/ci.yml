@@ -1,0 +1,40 @@
+name: ci
+
+on:
+  push:
+    branches: [main, 'build/**']
+  pull_request:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: npm ci
+      - name: Brand check (hex, PJ colors, forbidden strings, private font) on sources
+        run: npm run check:brand
+      - run: npm run typecheck
+      - run: npm run build
+      - run: npm run storybook:build
+      - name: Brand check again, now covering build output
+        run: npm run check:brand
+      - name: Install Playwright Chromium
+        run: npx playwright install --with-deps chromium
+      - name: Visual, accessibility and keyboard tests
+        run: npm run test:visual
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: playwright-report
+          path: |
+            playwright-report
+            test-results
+          retention-days: 7

@@ -1,0 +1,8 @@
+/* Alexandria (OFL), self-hosted, variable weight. The Old Falcons is never served (01-brand-system.md §4). */
+@font-face {
+  font-family: 'Alexandria';
+  src: url('/fonts/alexandria-var.woff2') format('woff2-variations'), url('/fonts/alexandria-var.woff2') format('woff2');
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
