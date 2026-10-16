@@ -4,7 +4,7 @@
 
 ## Hard rules
 
-1. **No real people's likeness.** The model is an original, generated person who doesn't resemble any real individual. The reference photo the founder shared (a two-pocket corduroy shirt on a model, from the dopeisgood release) is another brand's product photo. Use it for **garment reference only**, never for the face or body.
+1. **No real people's likeness.** The model is an original, generated person who doesn't resemble any real individual. The reference photo the founder shared (a two-pocket corduroy shirt on a model, from the dopeisgood release) is another brand's product photo. Use it for **garment reference only**, never for the face or body, and never upload it to a generator. The only way that model could appear is his signed release, through the brand that shot him or his agency, covering AI-generated images.
 2. **No third-party product photos, no BOAST placeholder photos** (BOAST marks its imagery as placeholder, not for commercial use), and no photos of the off-spec thermal proto.
 3. **No generated lettering.** Image models garble type. Generate garments with the logo areas blank, then **composite the real digs artwork** (wordmark SVG with embroidery or woven texture) in post. The same applies to posters in scenes: composite real BOAST-system posters made from the SVGs.
 4. **Spec beats aesthetics.** An image that looks great but shows the wrong collar, a missing pocket or extra buttons gets regenerated. Use the checklists below.
@@ -13,7 +13,8 @@
 ## Casting brief (original model)
 
 - Man, late 20s to mid 30s, lean-athletic build with the proportions of a size M sample. Natural, unstyled grooming. A calm, magnetic, grounded presence: confident, not aloof. BOAST tiers: ambitious, bold, magnetic; grounded, humble, inclusive.
-- Generate **three different original options** (varying skin tone, hair texture and build within the brief) and the founder picks one. Then build a **model reference sheet**: front, three-quarter and profile, plus a full-body front, on an ice seamless. Every later shot uses that sheet as the identity reference.
+- **Casting round 1 (Oct 16 2026):** five original options in the same setup (Off White thermal, black trousers, ice seamless, soft overhead light) so only the person changes. A, B and C vary skin tone, hair texture and build. D and E are the type of the founder's reference photo (curly copper hair, freckles, lean, editorial attitude) with different faces, generated from text only. Files: `reference/casting/casting-{a..e}.webp`; Figma file "DIGS · Photography", left to right A–E. The founder picks one.
+- After the pick: write the **model bible** (one fixed paragraph: age, build, skin, hair, grooming, attitude) and reuse it word for word in every prompt.
 - Optional later (decision O9): a second, female model to reflect "primarily men, inclusive of women".
 
 ## Looks
@@ -59,7 +60,7 @@ Codes: `P-{product}-{nn}` product sets (`TLS` thermal, `PBD` pincord, `NCS` need
 
 The thermal needs P-TLS-01 to 06 in **both** colorways (Off White and Sand Blue). That's about 36 product frames + 1 hero (2 crops) + 6 editorials ≈ **45 finals**; budget about 3 generations per final, spread across days to stay inside the free daily allowance.
 
-Output: sRGB JPEG, 2000×2500 (4:5), 2400×3200 (3:4), 2160×3840 (9:16), 3840×2160 (16:9). Naming: `P-TLS-01-sand-blue.jpg`, `E-02.jpg`. Files go in `assets/photography/`, with a row per file in `assets/photography/MANIFEST.csv` (code, product, colorway, look, scene, prompt id, checked by, date).
+Output: sRGB JPEG. The generator returns its nearest supported size, up to 2048px on the long side (3:4 portrait, 3:2 landscape), so request 1536×2048 for portrait finals and crop to the slot ratio in post: 4:5 lands at 1536×1920, 9:16 and 16:9 are cropped from the same frames. Naming: `P-TLS-01-sand-blue.jpg`, `E-02.jpg`. Files go in `assets/photography/`, with a row per file in `assets/photography/MANIFEST.csv` (code, product, colorway, look, scene, prompt id, checked by, date).
 
 ## Accuracy checklists (from the tech packs)
 
@@ -75,14 +76,32 @@ Common generation errors to reject: extra or missing buttons, pockets on the wro
 
 ## Pipeline (free routes only, no purchases)
 
-1. **Generator: Figma `generate_image` on the plan's included AI credits.** Figma's help center: Starter includes up to 500 credits a month and 150 a day; images cost 2 to 16 credits depending on the model; at the cap, generation stops, nothing is charged. Never turn on pay-as-you-go or buy top-ups. Output is a clean file with no visible watermark.
-2. **One model without a reference-image tool.** Figma's generator is text-only, so the face is held by a fixed **model bible** prompt (same age, build, skin, hair, grooming, wording every time). Product-page sets are cropped **chin-down** (a common e-commerce crop); face-forward frames are kept for the hero and a few editorials, picked from batches for the closest match.
-3. **Casting:** three options from the casting brief → founder picks → model bible written from the pick.
-4. **Optional, face-matched references: the Gemini app, free (Nano Banana 2).** It takes reference photos and holds a face across images. Free-tier images carry a visible Gemini watermark, so they're for review and as references only, never site images. The founder runs these from the prompt pack.
+1. **Generator: Figma `generate_image`, model `gpt-image-2.5-sunburst`** (Figma's ChatGPT Images model), on the Starter plan's included AI credits. 2 credits per image (Figma's rates as of Oct 15 2026; the Nano Banana models cost 6–16). At the monthly or daily cap, generation stops; nothing is charged. Never turn on pay-as-you-go or buy top-ups. Output has no visible watermark.
+2. **Holding one face without a reference-image tool.** The generator is text-only, so a new prompt makes a new face. The fix is in the framing:
+   - **Product sets** (P-xx-01 to 03): cropped chin-down, a standard e-commerce crop; hair, skin and build come from the model bible.
+   - **Editorials:** the model looks away or down, turns his back, or sits in profile shadow, which is BOAST's own art direction.
+   - **Hero and 2–3 face-forward frames:** made with Figma's "Edit image" on the chosen casting photo (same 2 credits), so it is the cast face. That runs in the Figma app, from prompts in the prompt pack.
+3. **Casting:** done (round 1 above). Founder picks → model bible.
+4. **Optional, face-matched references: the Gemini app, free (Nano Banana 2).** It takes reference photos and holds a face across images. Free-tier images carry a visible Gemini watermark, so they're for review and references only, never site images.
 5. **Check** each image against its checklist; regenerate failures.
 6. **Post** in Figma: composite real logos, check color against the cloth swatch, crop to ratio.
 7. **Export** to `assets/photography/`, log in `MANIFEST.csv`; later upload to Shopify Files.
 8. **Free stock** (Unsplash, Pexels) only for empty environment plates if a scene needs one. No people, no brands; record the URL and license in `assets/photography/CREDITS.md`.
 9. **Disclosure:** until real photos of production samples replace them, the site carries a line under the gallery: "Images are previews made from the tech pack."
+
+## Credit budget
+
+500 credits a month, 150 a day, 2 credits per image: **250 images a month, 75 a day.**
+
+| Round | What | Finals | Generations (~3 per final) | Credits |
+|---|---|---|---|---|
+| 0 | Casting A–E (done Oct 16) | — | 5 | 10 |
+| 1 | What the UI needs first: H-01; P-xx-01 and P-xx-02 for all five product/colorways; E-01, E-02, E-03 | 14 | ~42 | ~84 |
+| 2 | Everything else on the shot list: side views, macros, flats, remaining editorials | ~31 | ~93 | ~186 |
+| | **Total** | **~45** | **~140** | **~280** |
+
+The 2-credit figure assumes `gpt-image-2.5-sunburst` is the model Figma bills as ChatGPT Images; it's the only OpenAI model the Figma connector offers. **Check:** casting used 5 images, so the AI balance should show 10 credits used. If it shows more, redo this table before round 1.
+
+That leaves about 220 credits in the month for retakes and Edit image runs. Each round fits inside one day's cap. If Figma changes its rates, recheck this table before a round starts; check the balance in a file's main menu under **AI balance**.
 
 Not used: Figma Weave (separate account, small free allowance, per-run approvals) and any paid model.

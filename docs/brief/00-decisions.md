@@ -17,12 +17,13 @@ What is settled, who settled it, and what is still open. If a later doc disagree
 | 9 | **Fonts: strictly the BOAST fonts.** Alexandria for everything set in type; The Old Falcons for script payoff words. | Founder, Oct 16 2026 |
 | 10 | **Script delivery: The Old Falcons ships as SVG artwork, never as a web font file.** Words are drawn with `tools/script_svg.py`. | Build decision |
 | 11 | **Photography: real-looking photography, no illustration, no lorem ipsum, no paper-craft.** Generated or sourced. One model across all four products, several angles, simple striking scenes; Represent is the muse. | Founder, Oct 16 2026 |
-| 12 | **The model is an original, generated person.** The reference photo the founder shared is another brand's product photo of a real model, so his likeness is not used. Casting options go to the founder first. | Claude, Oct 16 2026; see `07-photography.md` |
+| 12 | **The model is an original, generated person.** The founder asked to cast the model in his reference photo (the mustard two-pocket cord shirt). That photo is another brand's product shot of a working model, and his face can't be put on DIGS without his signed release, so the cast is original. Options D and E are the same type (curly copper hair, freckles, lean) with different faces. | Founder request + Claude, Oct 16 2026; see `07-photography.md` |
 | 13 | **Typos are fixed everywhere:** "boundaries", "journey". | Founder, Oct 16 2026 |
 | 14 | **Instagram is `@dopeisgood`. The site is `dopeisgood.com`.** (BOAST's `@streetdigs`, `@digs` and `www.digs.com` are retired.) | Founder, Oct 16 2026 |
 | 15 | **This repo is the DIGS site only.** No NRDI storefront repo. Brand-agnostic store components live in `app/components/core` so they can be lifted into a shared package when Puff Junction or Darkest Shades gets a site. | Founder + Claude, Oct 16 2026 |
 | 16 | **Button names approved:** Dig in · Add to Digs · Your Digs · Hold my size · Get on the list · Stay dope. | Founder, Oct 16 2026 |
 | 17 | **No paid tools, no purchases.** Photography and everything else runs on free routes only (`07-photography.md`). | Founder, Oct 16 2026 |
+| 18 | **Photo generator: Figma's ChatGPT Images model on the Starter plan's included AI credits** (500 a month, 150 a day). It costs 2 credits per image at Figma's Oct 15 2026 rates; the Nano Banana models cost 6–16 and aren't used. | Founder (credits), Figma help center |
 
 ## Open (site work proceeds on the default)
 
@@ -35,6 +36,6 @@ What is settled, who settled it, and what is still open. If a later doc disagree
 | O5 | Pincord open items (cuff cut, pocket closure, wash, back pleat, back embroidery, buttons) | The pack's defaults | Founder |
 | O6 | Pant fly (faux vs working zip) | Faux fly, per the pack | Founder |
 | O7 | Season label | "Capsule 01" on the site (packs say FW25 / FW27 TBC) | Founder |
-| O8 | Which free photo route | Figma's included AI credits (no purchase; stops at the cap), with the Gemini app (free) for face-matched references | Founder |
+| O8 | Casting pick | Five options, A–E, in `reference/casting/`; the shoot starts once one is picked | Founder |
 | O9 | A second model to reflect "primarily men, inclusive of women" | Not in v1 | Founder |
 | O10 | Hangtag artwork | Still TBC in every pack; not shown on the site | Founder |
