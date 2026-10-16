@@ -1,0 +1,8 @@
+{
+  "input": "reference/photo-tests/round-1/raw/P-TLS-02-sand-blue.jpg",
+  "output": "reference/photo-tests/round-1/out/P-TLS-02-sand-blue.jpg",
+  "color": {"seed": [380, 520, 580, 760], "region": [170, 280, 810, 1060], "target": "#5B6FA7",
+            "ab_tolerance": 12, "l_range": 30, "l_offset": -3},
+  "logos": [{"kind": "embroidery", "center": [485, 360], "width": 68, "thread": "#24315A"}],
+  "crop": {"ratio": "4:5", "anchor": "top"}
+}

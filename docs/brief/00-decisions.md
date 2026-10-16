@@ -17,7 +17,7 @@ What is settled, who settled it, and what is still open. If a later doc disagree
 | 9 | **Fonts: strictly the BOAST fonts.** Alexandria for everything set in type; The Old Falcons for script payoff words. | Founder, Oct 16 2026 |
 | 10 | **Script delivery: The Old Falcons ships as SVG artwork, never as a web font file.** Words are drawn with `tools/script_svg.py`. | Build decision |
 | 11 | **Photography: real-looking photography, no illustration, no lorem ipsum, no paper-craft.** Generated or sourced. One model across all four products, several angles, simple striking scenes; Represent is the muse. | Founder, Oct 16 2026 |
-| 12 | **The model is an original, generated person.** The founder asked to cast the model in his reference photo (the mustard two-pocket cord shirt). That photo is another brand's product shot of a working model, and his face can't be put on DIGS without his signed release, so the cast is original. Options D and E are the same type (curly copper hair, freckles, lean) with different faces. | Founder request + Claude, Oct 16 2026; see `07-photography.md` |
+| 12 | **The cast is E**, an original generated person: slim, copper-red curls, freckles (`reference/casting/casting-e.webp`). The founder says the man in the cord-shirt reference photo is his own AI creation; that file in the dopeisgood release carries a retail-style name (`camicia-modello-c-in-velluto-…`), so it stays a garment reference only. | Founder pick, Oct 16 2026; see `07-photography.md` |
 | 13 | **Typos are fixed everywhere:** "boundaries", "journey". | Founder, Oct 16 2026 |
 | 14 | **Instagram is `@dopeisgood`. The site is `dopeisgood.com`.** (BOAST's `@streetdigs`, `@digs` and `www.digs.com` are retired.) | Founder, Oct 16 2026 |
 | 15 | **This repo is the DIGS site only.** No NRDI storefront repo. Brand-agnostic store components live in `app/components/core` so they can be lifted into a shared package when Puff Junction or Darkest Shades gets a site. | Founder + Claude, Oct 16 2026 |
@@ -36,6 +36,6 @@ What is settled, who settled it, and what is still open. If a later doc disagree
 | O5 | Pincord open items (cuff cut, pocket closure, wash, back pleat, back embroidery, buttons) | The pack's defaults | Founder |
 | O6 | Pant fly (faux vs working zip) | Faux fly, per the pack | Founder |
 | O7 | Season label | "Capsule 01" on the site (packs say FW25 / FW27 TBC) | Founder |
-| O8 | Casting pick | Five options, A–E, in `reference/casting/`; the shoot starts once one is picked | Founder |
+| O8 | Round 1 sign-off | Four test shots in `reference/photo-tests/round-1/out/` (color, crop, logo placement); the rest of the shoot runs after the founder's OK and a check of the AI balance | Founder |
 | O9 | A second model to reflect "primarily men, inclusive of women" | Not in v1 | Founder |
 | O10 | Hangtag artwork | Still TBC in every pack; not shown on the site | Founder |

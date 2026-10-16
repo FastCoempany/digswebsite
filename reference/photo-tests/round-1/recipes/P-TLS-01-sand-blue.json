@@ -1,0 +1,7 @@
+{
+  "input": "reference/photo-tests/round-1/raw/P-TLS-01-sand-blue.jpg",
+  "output": "reference/photo-tests/round-1/out/P-TLS-01-sand-blue.jpg",
+  "color": {"seed": [380, 380, 580, 620], "region": [100, 50, 860, 950], "target": "#5B6FA7",
+            "ab_tolerance": 12, "l_range": 30, "l_offset": -3},
+  "crop": {"ratio": "4:5", "anchor": "top"}
+}

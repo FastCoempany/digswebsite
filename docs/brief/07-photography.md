@@ -13,8 +13,8 @@
 ## Casting brief (original model)
 
 - Man, late 20s to mid 30s, lean-athletic build with the proportions of a size M sample. Natural, unstyled grooming. A calm, magnetic, grounded presence: confident, not aloof. BOAST tiers: ambitious, bold, magnetic; grounded, humble, inclusive.
-- **Casting round 1 (Oct 16 2026):** five original options in the same setup (Off White thermal, black trousers, ice seamless, soft overhead light) so only the person changes. A, B and C vary skin tone, hair texture and build. D and E are the type of the founder's reference photo (curly copper hair, freckles, lean, editorial attitude) with different faces, generated from text only. Files: `reference/casting/casting-{a..e}.webp`; Figma file "DIGS · Photography", left to right A–E. The founder picks one.
-- After the pick: write the **model bible** (one fixed paragraph: age, build, skin, hair, grooming, attitude) and reuse it word for word in every prompt.
+- **Casting round 1 (Oct 16 2026):** five original options in the same setup (Off White thermal, black trousers, ice seamless, soft overhead light) so only the person changes. A, B and C vary skin tone, hair texture and build. D and E are the type of the founder's reference photo (curly copper hair, freckles, lean, editorial attitude) with different faces, generated from text only. Files: `reference/casting/casting-{a..e}.webp`; Figma file "DIGS · Photography", left to right A–E. **The founder picked E.**
+- **Model bible (E)**, reused word for word in every prompt: *a slim, tall man about 29 years old with fair skin and light freckles across his nose, cheeks, neck and the backs of his hands; loose copper-red curly hair that falls to about his ears, full on top; faint copper stubble; hazel eyes; straight light-brown brows; a calm, unsmiling, self-possessed expression.* Front product shots crop just below his mouth and back shots show his hair from behind, so the face lines only matter for editorials and the Edit-image frames.
 - Optional later (decision O9): a second, female model to reflect "primarily men, inclusive of women".
 
 ## Looks
@@ -60,7 +60,7 @@ Codes: `P-{product}-{nn}` product sets (`TLS` thermal, `PBD` pincord, `NCS` need
 
 The thermal needs P-TLS-01 to 06 in **both** colorways (Off White and Sand Blue). That's about 36 product frames + 1 hero (2 crops) + 6 editorials ≈ **45 finals**; budget about 3 generations per final, spread across days to stay inside the free daily allowance.
 
-Output: sRGB JPEG. The generator returns its nearest supported size, up to 2048px on the long side (3:4 portrait, 3:2 landscape), so request 1536×2048 for portrait finals and crop to the slot ratio in post: 4:5 lands at 1536×1920, 9:16 and 16:9 are cropped from the same frames. Naming: `P-TLS-01-sand-blue.jpg`, `E-02.jpg`. Files go in `assets/photography/`, with a row per file in `assets/photography/MANIFEST.csv` (code, product, colorway, look, scene, prompt id, checked by, date).
+Output: sRGB JPEG. The generator returns 960×1280 for portrait frames whatever size is requested (tested: a 1536×2048 request came back 960×1280), so 4:5 finals are 960×1200 after the crop. That covers the site at phone size and in grid cards; for a larger hero, Figma's "Boost image resolution" costs 5–10 credits an image, so use it on the hero only. Naming: `P-TLS-01-sand-blue.jpg`, `E-02.jpg`. Files go in `assets/photography/`, with a row per file in `assets/photography/MANIFEST.csv` (code, product, colorway, look, scene, prompt id, checked by, date).
 
 ## Accuracy checklists (from the tech packs)
 
@@ -84,10 +84,20 @@ Common generation errors to reject: extra or missing buttons, pockets on the wro
 3. **Casting:** done (round 1 above). Founder picks → model bible.
 4. **Optional, face-matched references: the Gemini app, free (Nano Banana 2).** It takes reference photos and holds a face across images. Free-tier images carry a visible Gemini watermark, so they're for review and references only, never site images.
 5. **Check** each image against its checklist; regenerate failures.
-6. **Post** in Figma: composite real logos, check color against the cloth swatch, crop to ratio.
+6. **Post** with `tools/photo_post.py` and a JSON recipe per image (`reference/photo-tests/round-1/recipes/` has examples): pull the garment to its cloth swatch, recolor parts the generator got wrong (tone-to-tone buttons), composite the real digs artwork (back-yoke embroidery, woven placket tag, woven patch) at the tech-pack placement, crop to ratio.
 7. **Export** to `assets/photography/`, log in `MANIFEST.csv`; later upload to Shopify Files.
 8. **Free stock** (Unsplash, Pexels) only for empty environment plates if a scene needs one. No people, no brands; record the URL and license in `assets/photography/CREDITS.md`.
 9. **Disclosure:** until real photos of production samples replace them, the site carries a line under the gallery: "Images are previews made from the tech pack."
+
+## Round 1 test (Oct 16 2026)
+
+Four shots of E, generated and posted: Thermal Sand Blue front and back (back-yoke embroidery composited), Pincord front (buttons recolored tone-to-tone, placket tag composited), Drawstring Pant front. Raw files, recipes and finals in `reference/photo-tests/round-1/`.
+
+What the generator got wrong, and the fix:
+- Garment colors came out greyer (Sand Blue) and darker (Mustard) than the swatches → pulled to the swatch in post. The pant was within range and left alone.
+- Pincord buttons came out brown → recolored tone-to-tone in post.
+- Pincord cuffs show square corners, not the ¾" diagonal cut → show the cut in a cuff detail shot or regenerate; the pack lists the cut as open item 1.
+- Pincord placket reads wider than 1¼" → accepted for previews; fix on the production photo.
 
 ## Credit budget
 
@@ -96,11 +106,12 @@ Common generation errors to reject: extra or missing buttons, pockets on the wro
 | Round | What | Finals | Generations (~3 per final) | Credits |
 |---|---|---|---|---|
 | 0 | Casting A–E (done Oct 16) | — | 5 | 10 |
-| 1 | What the UI needs first: H-01; P-xx-01 and P-xx-02 for all five product/colorways; E-01, E-02, E-03 | 14 | ~42 | ~84 |
+| 1a | Round 1 test: P-TLS-01/02 Sand Blue, P-PBD-01, P-DSP-01 (done Oct 16) | 4 | 4 | 8 |
+| 1b | Rest of what the UI needs first: H-01; P-xx-01 and P-xx-02 for the remaining product/colorways; E-01, E-02, E-03 | 10 | ~30 | ~60 |
 | 2 | Everything else on the shot list: side views, macros, flats, remaining editorials | ~31 | ~93 | ~186 |
-| | **Total** | **~45** | **~140** | **~280** |
+| | **Total** | **~45** | **~132** | **~264** |
 
-The 2-credit figure assumes `gpt-image-2.5-sunburst` is the model Figma bills as ChatGPT Images; it's the only OpenAI model the Figma connector offers. **Check:** casting used 5 images, so the AI balance should show 10 credits used. If it shows more, redo this table before round 1.
+The 2-credit figure assumes `gpt-image-2.5-sunburst` is the model Figma bills as ChatGPT Images; it's the only OpenAI model the Figma connector offers. **Check:** casting and the round 1 test used 9 images, so the AI balance should show 18 credits used. If it shows more, redo this table before round 1b.
 
 That leaves about 220 credits in the month for retakes and Edit image runs. Each round fits inside one day's cap. If Figma changes its rates, recheck this table before a round starts; check the balance in a file's main menu under **AI balance**.
 

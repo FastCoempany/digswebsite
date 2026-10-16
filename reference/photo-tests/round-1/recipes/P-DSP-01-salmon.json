@@ -1,0 +1,5 @@
+{
+  "input": "reference/photo-tests/round-1/raw/P-DSP-01-salmon.jpg",
+  "output": "reference/photo-tests/round-1/out/P-DSP-01-salmon.jpg",
+  "crop": {"ratio": "4:5", "anchor": "bottom"}
+}

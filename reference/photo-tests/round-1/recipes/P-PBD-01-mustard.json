@@ -1,0 +1,108 @@
+{
+  "input": "reference/photo-tests/round-1/raw/P-PBD-01-mustard.jpg",
+  "output": "reference/photo-tests/round-1/out/P-PBD-01-mustard.jpg",
+  "color": {
+    "seed": [
+      560,
+      560,
+      700,
+      760
+    ],
+    "region": [
+      70,
+      10,
+      890,
+      1040
+    ],
+    "target": "#E2AF3F",
+    "ab_tolerance": 16,
+    "l_range": 32,
+    "l_offset": -3
+  },
+  "recolor": {
+    "circles": [
+      [
+        405,
+        155,
+        9
+      ],
+      [
+        429,
+        132,
+        9
+      ],
+      [
+        556,
+        159,
+        8
+      ],
+      [
+        462,
+        216,
+        11
+      ],
+      [
+        481,
+        330,
+        12
+      ],
+      [
+        482,
+        453,
+        12
+      ],
+      [
+        481,
+        574,
+        12
+      ],
+      [
+        478,
+        699,
+        13
+      ],
+      [
+        478,
+        821,
+        13
+      ],
+      [
+        319,
+        344,
+        10
+      ],
+      [
+        641,
+        342,
+        11
+      ]
+    ],
+    "offset_lab": [
+      -10,
+      0,
+      -6
+    ],
+    "ab_tolerance": 10,
+    "_note": "Tech pack B1/B2: corozo buttons dyed tone-to-tone; the generator made them brown."
+  },
+  "logos": [
+    {
+      "kind": "tag",
+      "center": [
+        479,
+        950
+      ],
+      "size": [
+        32,
+        96
+      ],
+      "ground": "match",
+      "thread": "#24315A",
+      "rotate": 90
+    }
+  ],
+  "crop": {
+    "ratio": "4:5",
+    "anchor": "top"
+  }
+}
