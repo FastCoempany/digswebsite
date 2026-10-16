@@ -1,0 +1,124 @@
+{
+  "handle": "drawstring-pant",
+  "styleCode": "AC-PNT-001",
+  "name": "Drawstring Pant",
+  "category": "bottoms",
+  "productType": "Pull-on drawstring pant (woven)",
+  "techPack": {
+    "file": "reference/tech-packs/AC-PNT-001_Tech.Pack_REV0_10-15-26_1.pdf",
+    "revision": "Rev 0, 10/15/2026",
+    "status": "PROTO",
+    "season": "FW27",
+    "developer": "digs / Antaeus Coe"
+  },
+  "price": null,
+  "priceNote": "Price is not set yet. Leave null; the UI shows 'Price TBA' until the founder sets it.",
+  "availability": "coming-soon",
+  "sizes": [
+    "S",
+    "M",
+    "L",
+    "XL"
+  ],
+  "sampleSize": "M",
+  "sizeNote": "M fits a 32-34 in waist.",
+  "colorways": [
+    {
+      "name": "Salmon",
+      "token": "--color-cloth-pant-salmon",
+      "hex": "#CAA28C",
+      "thread": "Dye to match",
+      "trims": "Natural cream cotton drawstring, antique silver aglets and eyelets",
+      "logo": "Woven patch, salmon ground, Bellwether Blue logo"
+    }
+  ],
+  "laterColorways": [
+    {
+      "name": "Olive",
+      "hex": "#79755C"
+    },
+    {
+      "name": "Navy",
+      "hex": "#222531"
+    }
+  ],
+  "fit": "Slim tapered leg, mid rise, pull-on.",
+  "fabric": [
+    "Lyocell stretch twill, 98% lyocell / 2% elastane, peached, 230-280 g/m2",
+    "Pocketing: 100% cotton poplin"
+  ],
+  "fabricNamingRule": "Say 'lyocell'. Do not say TENCEL on the site until digs holds a Lenzing licence (pack open item 3).",
+  "finish": "Piece-dyed and peached at the mill, then a short enzyme and softener garment wash.",
+  "details": [
+    "Flat-front waistband with an elastic back",
+    "1/4 in cotton drawstring through two antique silver eyelets",
+    "Faux fly (J-stitch), no zip: a true pull-on",
+    "Slant front pockets; pointed patch back pockets with hidden darts",
+    "Permanent 1 1/2 in turn-up cuff, tacked at the inseam and outseam",
+    "Woven digs patches on the right back pocket and the left cuff"
+  ],
+  "builtLikeThis": [
+    {
+      "code": "L3",
+      "label": "Back pocket patch",
+      "spec": "Woven 3 x 1 in, salmon ground, Bellwether Blue logo",
+      "where": "Wearer's right back pocket, centered, 3/4 in below the pocket top",
+      "view": "back"
+    },
+    {
+      "code": "L3",
+      "label": "Cuff patch",
+      "spec": "Woven 3 x 1 in, same as the pocket patch",
+      "where": "Wearer's left cuff, outside, 1/2 in in front of the outseam",
+      "view": "detail"
+    },
+    {
+      "code": "T1/T2",
+      "label": "Drawstring + eyelets",
+      "spec": "Natural cream cord, antique silver aglets; two eyelets 1 1/4 in apart",
+      "where": "Front waistband at center front",
+      "view": "front"
+    },
+    {
+      "code": "CUFF",
+      "label": "Turn-up cuff",
+      "spec": "Permanent 1 1/2 in, stitched in the ditch at the inseam and outseam",
+      "where": "Both legs",
+      "view": "detail"
+    },
+    {
+      "code": "FLY",
+      "label": "Faux fly",
+      "spec": "J-stitch 1 1/4 x 6 1/2 in, no zip",
+      "where": "Center front",
+      "view": "front"
+    }
+  ],
+  "care": [
+    "Machine wash cold, inside out, gentle, with like colors.",
+    "Do not bleach.",
+    "Do not tumble dry. Line dry.",
+    "Cool iron on reverse."
+  ],
+  "content": "98% lyocell, 2% elastane exclusive of trim. Pocketing: 100% cotton.",
+  "origin": {
+    "display": "Designed in USA. Imported.",
+    "status": "Label copy reads Made in China; the pack says change to the factory's country."
+  },
+  "sizeChart": {
+    "specs": "content/products/specs/drawstring-pant.json",
+    "customerPOMs": {
+      "A": "Waist, relaxed (laid flat)",
+      "A2": "Waist, stretched (laid flat)",
+      "B": "Hip (laid flat)",
+      "C": "Front rise",
+      "H": "Inseam",
+      "G": "Leg opening (laid flat)"
+    }
+  },
+  "openItems": [
+    "AC-PNT-001 is a placeholder style number.",
+    "Working zip fly vs faux fly is open; the site follows the pack (faux fly).",
+    "TENCEL naming needs the Lenzing licence."
+  ]
+}

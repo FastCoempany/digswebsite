@@ -1,0 +1,81 @@
+:root {
+  /* Brand core: BOAST triad, never altered */
+  --color-ink: #000000;
+  --color-digs-blue: #0042E5;
+  --color-ice: #F0F5FF;
+  --color-paper: #FFFFFF;
+
+  /* Tonal blue, hue-locked to Digs Blue (600) */
+  --color-blue-50: #F0F5FF;
+  --color-blue-100: #DFEAFF;
+  --color-blue-200: #C1D6FF;
+  --color-blue-300: #95B9FF;
+  --color-blue-400: #588EFF;
+  --color-blue-500: #1659FC;
+  --color-blue-600: #0042E5;
+  --color-blue-700: #0030AF;
+  --color-blue-800: #002386;
+  --color-blue-900: #00165F;
+  --color-blue-950: #000A3D;
+
+  /* Ink neutrals, blue-tinted */
+  --color-ink-50: #F4F7FC;
+  --color-ink-100: #E9EDF5;
+  --color-ink-200: #D7DDE7;
+  --color-ink-300: #BDC4D2;
+  --color-ink-400: #979FAE;
+  --color-ink-500: #6F7887;
+  --color-ink-600: #535B6A;
+  --color-ink-700: #3C4350;
+  --color-ink-800: #262B36;
+  --color-ink-900: #14171E;
+  --color-ink-950: #080A0E;
+
+  /* Signal: state only */
+  --color-signal-sale: #C8102E;
+  --color-signal-sale-tint: #FDE7EA;
+  --color-signal-success: #0B7A4B;
+  --color-signal-success-tint: #E2F4EC;
+  --color-signal-low-stock: #8A4B00;
+  --color-signal-low-stock-tint: #FFF1D6;
+
+  /* Cloth: product colorways (sampled from tech packs; lab dip is the standard) */
+  --color-cloth-thermal-off-white: #F4EEE8;
+  --color-cloth-thermal-sand-blue: #5B6FA7;
+  --color-cloth-pincord-mustard: #E2AF3F;
+  --color-cloth-needlecord-light-grey: #D0CCCC;
+  --color-cloth-pant-salmon: #CAA28C;
+  --color-cloth-embroidery-bellwether-blue: #21305A;
+
+  /* Semantic roles: components use these, never raw values */
+  --surface-page: #F0F5FF;
+  --surface-raised: #FFFFFF;
+  --surface-sunken: #E9EDF5;
+  --surface-inverse: #000000;
+  --surface-brand: #0042E5;
+  --text-primary: #000000;
+  --text-secondary: #3C4350;
+  --text-muted: #535B6A;
+  --text-on-inverse: #F0F5FF;
+  --text-on-brand: #F0F5FF;
+  --text-link: #0042E5;
+  --text-sale: #C8102E;
+  --text-success: #0B7A4B;
+  --text-low-stock: #8A4B00;
+  --border-hairline: #D7DDE7;
+  --border-control: #6F7887;
+  --border-strong: #000000;
+  --action-primary: #0042E5;
+  --action-primary-hover: #0030AF;
+  --action-primary-pressed: #002386;
+  --action-primary-text: #F0F5FF;
+  --action-secondary: #000000;
+  --action-secondary-hover: #14171E;
+  --action-secondary-text: #F0F5FF;
+  --action-disabled: #D7DDE7;
+  --action-disabled-text: #6F7887;
+  --focus-ring: #0042E5;
+  --focus-ring-on-dark: #F0F5FF;
+  --brand-scrawl: #0042E5;
+  --brand-tint: #DFEAFF;
+}

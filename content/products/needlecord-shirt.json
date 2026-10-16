@@ -1,0 +1,110 @@
+{
+  "handle": "needlecord-shirt",
+  "styleCode": "AC-LSS-001 (needlecord, Rev 1)",
+  "name": "Needlecord Shirt",
+  "category": "tops",
+  "productType": "Long sleeve shirt (woven)",
+  "techPack": {
+    "file": "reference/tech-packs/AC-LSS-001_Tech.Pack_Needlecord_REV1_10-15-26.pdf",
+    "revision": "Rev 1, 10/15/2026",
+    "status": "PROTO",
+    "season": "FW27",
+    "developer": "digs / Antaeus Coe"
+  },
+  "price": null,
+  "priceNote": "Price is not set yet. Leave null; the UI shows 'Price TBA' until the founder sets it.",
+  "availability": "coming-soon",
+  "sizes": [
+    "S",
+    "M",
+    "L",
+    "XL"
+  ],
+  "sampleSize": "M",
+  "colorways": [
+    {
+      "name": "Light Grey",
+      "token": "--color-cloth-needlecord-light-grey",
+      "hex": "#D0CCCC",
+      "thread": "Dye to match",
+      "buttons": "Corozo, natural off-white",
+      "logo": "Woven tag, light grey ground, Bellwether Blue logo"
+    }
+  ],
+  "fit": "Relaxed with a slight drop shoulder.",
+  "fabric": [
+    "Stretch 21-wale needlecord, 99% cotton / 1% elastane, about 305 gsm, 5% weft stretch"
+  ],
+  "finish": "Garment washed, finished with a silicone softener. Fusing on the inner plies only, so the pile stays soft.",
+  "details": [
+    "Point collar on a stand",
+    "1 1/4 in box placket, six 18L natural corozo buttons",
+    "One chest patch pocket, square corners",
+    "Square single-button barrel cuffs, tower sleeve plackets",
+    "Front yoke seam; plain back with a two-ply yoke",
+    "One-piece sleeve, no seam down the back of the arm",
+    "Shirttail hem, back 1 in longer than front",
+    "Woven digs tag at the foot of the placket; no back embroidery"
+  ],
+  "builtLikeThis": [
+    {
+      "code": "L3",
+      "label": "Placket tag",
+      "spec": "Woven damask, 1 x 3 in, light grey ground, Bellwether Blue logo, reads up",
+      "where": "Buttonhole placket, bottom edge 1 in above the hem",
+      "view": "front"
+    },
+    {
+      "code": "SLEEVE",
+      "label": "One-piece sleeve",
+      "spec": "Underarm seam only",
+      "where": "Both sleeves",
+      "view": "back"
+    },
+    {
+      "code": "CUFF",
+      "label": "Barrel cuff",
+      "spec": "2 1/2 in, square corners, one button",
+      "where": "Both cuffs",
+      "view": "detail"
+    },
+    {
+      "code": "POCKET",
+      "label": "Chest pocket",
+      "spec": "Patch pocket, square corners, 1 in top hem",
+      "where": "Wearer's left chest",
+      "view": "front"
+    },
+    {
+      "code": "WALE",
+      "label": "21-wale needlecord",
+      "spec": "99/1 cotton/elastane, about 305 gsm",
+      "where": "Whole shirt",
+      "view": "detail"
+    }
+  ],
+  "care": [
+    "Machine wash cold inside out with like colors.",
+    "Do not bleach.",
+    "Do not tumble dry. Line dry.",
+    "Cool iron on reverse; do not iron the pile face."
+  ],
+  "content": "99% cotton, 1% elastane exclusive of trim",
+  "origin": {
+    "display": "Designed in USA. Imported.",
+    "status": "Label copy reads Made in China; the pack says change to the factory's country."
+  },
+  "sizeChart": {
+    "specs": "content/products/specs/needlecord-shirt.json",
+    "customerPOMs": {
+      "B": "Chest width (pit to pit)",
+      "A2": "Body length (back, collar seam to hem)",
+      "D": "Shoulder width",
+      "P": "Sleeve length (shoulder to cuff edge)"
+    }
+  },
+  "openItems": [
+    "Fabric: the reference mill stocks this needlecord in navy and black only; light grey is a custom dye.",
+    "Shares style code AC-LSS-001 with the pincord button-down."
+  ]
+}

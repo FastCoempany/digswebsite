@@ -1,0 +1,970 @@
+{
+  "handle": "needlecord-shirt",
+  "source": "reference/tech-packs/AC-LSS-001_Tech.Pack_Needlecord_REV1_10-15-26.pdf, page 11 (GRADED SPEC)",
+  "units": "inches, after garment wash",
+  "sample_size": "M",
+  "rows": [
+    {
+      "pom": "A",
+      "description": "HPS LENGTH AT CENTER FRONT",
+      "tolerance": {
+        "in": 0.5,
+        "label": "1/2"
+      },
+      "sizes": {
+        "S": {
+          "in": 29.0,
+          "label": "29"
+        },
+        "M": {
+          "in": 30.0,
+          "label": "30"
+        },
+        "L": {
+          "in": 31.0,
+          "label": "31"
+        },
+        "XL": {
+          "in": 32.0,
+          "label": "32"
+        }
+      }
+    },
+    {
+      "pom": "A2",
+      "description": "HPS LENGTH AT CENTER BACK",
+      "tolerance": {
+        "in": 0.5,
+        "label": "1/2"
+      },
+      "sizes": {
+        "S": {
+          "in": 30.0,
+          "label": "30"
+        },
+        "M": {
+          "in": 31.0,
+          "label": "31"
+        },
+        "L": {
+          "in": 32.0,
+          "label": "32"
+        },
+        "XL": {
+          "in": 33.0,
+          "label": "33"
+        }
+      }
+    },
+    {
+      "pom": "A3",
+      "description": "SHIRTTAIL DROP - SIDE SEAM HEM POINT TO CF HEM",
+      "tolerance": {
+        "in": 0.25,
+        "label": "1/4"
+      },
+      "sizes": {
+        "S": {
+          "in": 2.0,
+          "label": "2"
+        },
+        "M": {
+          "in": 2.0,
+          "label": "2"
+        },
+        "L": {
+          "in": 2.0,
+          "label": "2"
+        },
+        "XL": {
+          "in": 2.0,
+          "label": "2"
+        }
+      }
+    },
+    {
+      "pom": "B",
+      "description": "1/2 CHEST AT 1\" BELOW UNDERARM",
+      "tolerance": {
+        "in": 0.5,
+        "label": "1/2"
+      },
+      "sizes": {
+        "S": {
+          "in": 22.0,
+          "label": "22"
+        },
+        "M": {
+          "in": 23.5,
+          "label": "23 1/2"
+        },
+        "L": {
+          "in": 25.0,
+          "label": "25"
+        },
+        "XL": {
+          "in": 27.0,
+          "label": "27"
+        }
+      }
+    },
+    {
+      "pom": "C",
+      "description": "1/2 HEM - STRAIGHT ACROSS AT SIDE SEAM HEM POINTS",
+      "tolerance": {
+        "in": 0.5,
+        "label": "1/2"
+      },
+      "sizes": {
+        "S": {
+          "in": 22.0,
+          "label": "22"
+        },
+        "M": {
+          "in": 23.5,
+          "label": "23 1/2"
+        },
+        "L": {
+          "in": 25.0,
+          "label": "25"
+        },
+        "XL": {
+          "in": 27.0,
+          "label": "27"
+        }
+      }
+    },
+    {
+      "pom": "D",
+      "description": "ACROSS SHOULDER",
+      "tolerance": {
+        "in": 0.375,
+        "label": "3/8"
+      },
+      "sizes": {
+        "S": {
+          "in": 17.75,
+          "label": "17 3/4"
+        },
+        "M": {
+          "in": 18.5,
+          "label": "18 1/2"
+        },
+        "L": {
+          "in": 19.25,
+          "label": "19 1/4"
+        },
+        "XL": {
+          "in": 20.25,
+          "label": "20 1/4"
+        }
+      }
+    },
+    {
+      "pom": "E",
+      "description": "SHOULDER SLOPE",
+      "tolerance": {
+        "in": 0.125,
+        "label": "1/8"
+      },
+      "sizes": {
+        "S": {
+          "in": 1.5,
+          "label": "1 1/2"
+        },
+        "M": {
+          "in": 1.5,
+          "label": "1 1/2"
+        },
+        "L": {
+          "in": 1.5,
+          "label": "1 1/2"
+        },
+        "XL": {
+          "in": 1.5,
+          "label": "1 1/2"
+        }
+      }
+    },
+    {
+      "pom": "F",
+      "description": "NECK WIDTH - HPS TO HPS",
+      "tolerance": {
+        "in": 0.25,
+        "label": "1/4"
+      },
+      "sizes": {
+        "S": {
+          "in": 6.0,
+          "label": "6"
+        },
+        "M": {
+          "in": 6.25,
+          "label": "6 1/4"
+        },
+        "L": {
+          "in": 6.5,
+          "label": "6 1/2"
+        },
+        "XL": {
+          "in": 6.75,
+          "label": "6 3/4"
+        }
+      }
+    },
+    {
+      "pom": "G",
+      "description": "FRONT NECK DROP",
+      "tolerance": {
+        "in": 0.25,
+        "label": "1/4"
+      },
+      "sizes": {
+        "S": {
+          "in": 2.75,
+          "label": "2 3/4"
+        },
+        "M": {
+          "in": 2.875,
+          "label": "2 7/8"
+        },
+        "L": {
+          "in": 3.0,
+          "label": "3"
+        },
+        "XL": {
+          "in": 3.125,
+          "label": "3 1/8"
+        }
+      }
+    },
+    {
+      "pom": "H",
+      "description": "BACK NECK DROP",
+      "tolerance": {
+        "in": 0.125,
+        "label": "1/8"
+      },
+      "sizes": {
+        "S": {
+          "in": 0.75,
+          "label": "3/4"
+        },
+        "M": {
+          "in": 0.75,
+          "label": "3/4"
+        },
+        "L": {
+          "in": 0.75,
+          "label": "3/4"
+        },
+        "XL": {
+          "in": 0.75,
+          "label": "3/4"
+        }
+      }
+    },
+    {
+      "pom": "I",
+      "description": "COLLAR STAND LENGTH - BUTTON CENTER TO END OF BUTTONHOLE",
+      "tolerance": {
+        "in": 0.25,
+        "label": "1/4"
+      },
+      "sizes": {
+        "S": {
+          "in": 15.375,
+          "label": "15 3/8"
+        },
+        "M": {
+          "in": 16.0,
+          "label": "16"
+        },
+        "L": {
+          "in": 16.625,
+          "label": "16 5/8"
+        },
+        "XL": {
+          "in": 17.25,
+          "label": "17 1/4"
+        }
+      }
+    },
+    {
+      "pom": "I2",
+      "description": "COLLAR STAND HEIGHT AT CB",
+      "tolerance": {
+        "in": 0.125,
+        "label": "1/8"
+      },
+      "sizes": {
+        "S": {
+          "in": 1.25,
+          "label": "1 1/4"
+        },
+        "M": {
+          "in": 1.25,
+          "label": "1 1/4"
+        },
+        "L": {
+          "in": 1.25,
+          "label": "1 1/4"
+        },
+        "XL": {
+          "in": 1.25,
+          "label": "1 1/4"
+        }
+      }
+    },
+    {
+      "pom": "I3",
+      "description": "COLLAR HEIGHT AT CB",
+      "tolerance": {
+        "in": 0.125,
+        "label": "1/8"
+      },
+      "sizes": {
+        "S": {
+          "in": 1.75,
+          "label": "1 3/4"
+        },
+        "M": {
+          "in": 1.75,
+          "label": "1 3/4"
+        },
+        "L": {
+          "in": 1.75,
+          "label": "1 3/4"
+        },
+        "XL": {
+          "in": 1.75,
+          "label": "1 3/4"
+        }
+      }
+    },
+    {
+      "pom": "I4",
+      "description": "COLLAR POINT LENGTH",
+      "tolerance": {
+        "in": 0.125,
+        "label": "1/8"
+      },
+      "sizes": {
+        "S": {
+          "in": 3.0,
+          "label": "3"
+        },
+        "M": {
+          "in": 3.0,
+          "label": "3"
+        },
+        "L": {
+          "in": 3.0,
+          "label": "3"
+        },
+        "XL": {
+          "in": 3.0,
+          "label": "3"
+        }
+      }
+    },
+    {
+      "pom": "I5",
+      "description": "COLLAR POINT SPREAD - TIP TO TIP, BUTTONED",
+      "tolerance": {
+        "in": 0.25,
+        "label": "1/4"
+      },
+      "sizes": {
+        "S": {
+          "in": 4.75,
+          "label": "4 3/4"
+        },
+        "M": {
+          "in": 5.0,
+          "label": "5"
+        },
+        "L": {
+          "in": 5.25,
+          "label": "5 1/4"
+        },
+        "XL": {
+          "in": 5.5,
+          "label": "5 1/2"
+        }
+      }
+    },
+    {
+      "pom": "J",
+      "description": "ARMHOLE DEPTH FROM HPS",
+      "tolerance": {
+        "in": 0.25,
+        "label": "1/4"
+      },
+      "sizes": {
+        "S": {
+          "in": 10.625,
+          "label": "10 5/8"
+        },
+        "M": {
+          "in": 11.0,
+          "label": "11"
+        },
+        "L": {
+          "in": 11.375,
+          "label": "11 3/8"
+        },
+        "XL": {
+          "in": 11.875,
+          "label": "11 7/8"
+        }
+      }
+    },
+    {
+      "pom": "K",
+      "description": "1/2 BICEP WIDTH AT 1\" BELOW UNDERARM",
+      "tolerance": {
+        "in": 0.25,
+        "label": "1/4"
+      },
+      "sizes": {
+        "S": {
+          "in": 8.75,
+          "label": "8 3/4"
+        },
+        "M": {
+          "in": 9.25,
+          "label": "9 1/4"
+        },
+        "L": {
+          "in": 9.75,
+          "label": "9 3/4"
+        },
+        "XL": {
+          "in": 10.375,
+          "label": "10 3/8"
+        }
+      }
+    },
+    {
+      "pom": "L",
+      "description": "1/2 ELBOW AT CENTER OF UNDERARM SEAM",
+      "tolerance": {
+        "in": 0.25,
+        "label": "1/4"
+      },
+      "sizes": {
+        "S": {
+          "in": 7.375,
+          "label": "7 3/8"
+        },
+        "M": {
+          "in": 7.75,
+          "label": "7 3/4"
+        },
+        "L": {
+          "in": 8.125,
+          "label": "8 1/8"
+        },
+        "XL": {
+          "in": 8.625,
+          "label": "8 5/8"
+        }
+      }
+    },
+    {
+      "pom": "M",
+      "description": "1/2 SLEEVE WIDTH 1\" ABOVE CUFF SEAM, SLEEVE PLACKET BUTTONED",
+      "tolerance": {
+        "in": 0.125,
+        "label": "1/8"
+      },
+      "sizes": {
+        "S": {
+          "in": 5.875,
+          "label": "5 7/8"
+        },
+        "M": {
+          "in": 6.0,
+          "label": "6"
+        },
+        "L": {
+          "in": 6.125,
+          "label": "6 1/8"
+        },
+        "XL": {
+          "in": 6.25,
+          "label": "6 1/4"
+        }
+      }
+    },
+    {
+      "pom": "N",
+      "description": "CUFF LENGTH - BUTTON CENTER TO END OF BUTTONHOLE",
+      "tolerance": {
+        "in": 0.25,
+        "label": "1/4"
+      },
+      "sizes": {
+        "S": {
+          "in": 9.25,
+          "label": "9 1/4"
+        },
+        "M": {
+          "in": 9.5,
+          "label": "9 1/2"
+        },
+        "L": {
+          "in": 9.75,
+          "label": "9 3/4"
+        },
+        "XL": {
+          "in": 10.0,
+          "label": "10"
+        }
+      }
+    },
+    {
+      "pom": "O",
+      "description": "SLEEVE CUFF HEIGHT",
+      "tolerance": {
+        "in": 0.125,
+        "label": "1/8"
+      },
+      "sizes": {
+        "S": {
+          "in": 2.5,
+          "label": "2 1/2"
+        },
+        "M": {
+          "in": 2.5,
+          "label": "2 1/2"
+        },
+        "L": {
+          "in": 2.5,
+          "label": "2 1/2"
+        },
+        "XL": {
+          "in": 2.5,
+          "label": "2 1/2"
+        }
+      }
+    },
+    {
+      "pom": "P",
+      "description": "SLEEVE LENGTH ALONG OUTER FOLD - SHOULDER SEAM TO CUFF EDGE",
+      "tolerance": {
+        "in": 0.375,
+        "label": "3/8"
+      },
+      "sizes": {
+        "S": {
+          "in": 25.125,
+          "label": "25 1/8"
+        },
+        "M": {
+          "in": 25.5,
+          "label": "25 1/2"
+        },
+        "L": {
+          "in": 25.875,
+          "label": "25 7/8"
+        },
+        "XL": {
+          "in": 26.25,
+          "label": "26 1/4"
+        }
+      }
+    },
+    {
+      "pom": "P2",
+      "description": "SLEEVE LENGTH FROM CB NECK",
+      "tolerance": {
+        "in": 0.5,
+        "label": "1/2"
+      },
+      "sizes": {
+        "S": {
+          "in": 34.0,
+          "label": "34"
+        },
+        "M": {
+          "in": 34.75,
+          "label": "34 3/4"
+        },
+        "L": {
+          "in": 35.5,
+          "label": "35 1/2"
+        },
+        "XL": {
+          "in": 36.375,
+          "label": "36 3/8"
+        }
+      }
+    },
+    {
+      "pom": "Q",
+      "description": "SLEEVE LENGTH ALONG UNDERARM SEAM",
+      "tolerance": {
+        "in": 0.375,
+        "label": "3/8"
+      },
+      "sizes": {
+        "S": {
+          "in": 19.5,
+          "label": "19 1/2"
+        },
+        "M": {
+          "in": 19.875,
+          "label": "19 7/8"
+        },
+        "L": {
+          "in": 20.25,
+          "label": "20 1/4"
+        },
+        "XL": {
+          "in": 20.625,
+          "label": "20 5/8"
+        }
+      }
+    },
+    {
+      "pom": "R",
+      "description": "SLEEVE PLACKET LENGTH - CUFF SEAM TO TOP",
+      "tolerance": {
+        "in": 0.125,
+        "label": "1/8"
+      },
+      "sizes": {
+        "S": {
+          "in": 5.5,
+          "label": "5 1/2"
+        },
+        "M": {
+          "in": 5.5,
+          "label": "5 1/2"
+        },
+        "L": {
+          "in": 5.5,
+          "label": "5 1/2"
+        },
+        "XL": {
+          "in": 5.5,
+          "label": "5 1/2"
+        }
+      }
+    },
+    {
+      "pom": "R2",
+      "description": "SLEEVE PLACKET FROM UNDERARM SEAM AT CUFF SEAM",
+      "tolerance": {
+        "in": 0.125,
+        "label": "1/8"
+      },
+      "sizes": {
+        "S": {
+          "in": 2.375,
+          "label": "2 3/8"
+        },
+        "M": {
+          "in": 2.5,
+          "label": "2 1/2"
+        },
+        "L": {
+          "in": 2.625,
+          "label": "2 5/8"
+        },
+        "XL": {
+          "in": 2.75,
+          "label": "2 3/4"
+        }
+      }
+    },
+    {
+      "pom": "S",
+      "description": "BACK YOKE DEPTH AT CB",
+      "tolerance": {
+        "in": 0.125,
+        "label": "1/8"
+      },
+      "sizes": {
+        "S": {
+          "in": 3.875,
+          "label": "3 7/8"
+        },
+        "M": {
+          "in": 4.0,
+          "label": "4"
+        },
+        "L": {
+          "in": 4.125,
+          "label": "4 1/8"
+        },
+        "XL": {
+          "in": 4.25,
+          "label": "4 1/4"
+        }
+      }
+    },
+    {
+      "pom": "S2",
+      "description": "FRONT YOKE - SHOULDER FOLD TO FRONT YOKE SEAM",
+      "tolerance": {
+        "in": 0.125,
+        "label": "1/8"
+      },
+      "sizes": {
+        "S": {
+          "in": 1.0,
+          "label": "1"
+        },
+        "M": {
+          "in": 1.0,
+          "label": "1"
+        },
+        "L": {
+          "in": 1.0,
+          "label": "1"
+        },
+        "XL": {
+          "in": 1.0,
+          "label": "1"
+        }
+      }
+    },
+    {
+      "pom": "T",
+      "description": "FRONT PLACKET WIDTH",
+      "tolerance": {
+        "in": 0.125,
+        "label": "1/8"
+      },
+      "sizes": {
+        "S": {
+          "in": 1.25,
+          "label": "1 1/4"
+        },
+        "M": {
+          "in": 1.25,
+          "label": "1 1/4"
+        },
+        "L": {
+          "in": 1.25,
+          "label": "1 1/4"
+        },
+        "XL": {
+          "in": 1.25,
+          "label": "1 1/4"
+        }
+      }
+    },
+    {
+      "pom": "U",
+      "description": "FRONT BUTTON SPACING",
+      "tolerance": {
+        "in": 0.125,
+        "label": "1/8"
+      },
+      "sizes": {
+        "S": {
+          "in": 3.625,
+          "label": "3 5/8"
+        },
+        "M": {
+          "in": 3.75,
+          "label": "3 3/4"
+        },
+        "L": {
+          "in": 3.875,
+          "label": "3 7/8"
+        },
+        "XL": {
+          "in": 4.0,
+          "label": "4"
+        }
+      }
+    },
+    {
+      "pom": "U2",
+      "description": "FIRST BUTTONHOLE BELOW NECK SEAM AT CF",
+      "tolerance": {
+        "in": 0.125,
+        "label": "1/8"
+      },
+      "sizes": {
+        "S": {
+          "in": 2.5,
+          "label": "2 1/2"
+        },
+        "M": {
+          "in": 2.5,
+          "label": "2 1/2"
+        },
+        "L": {
+          "in": 2.5,
+          "label": "2 1/2"
+        },
+        "XL": {
+          "in": 2.5,
+          "label": "2 1/2"
+        }
+      }
+    },
+    {
+      "pom": "V",
+      "description": "POCKET WIDTH",
+      "tolerance": {
+        "in": 0.125,
+        "label": "1/8"
+      },
+      "sizes": {
+        "S": {
+          "in": 5.0,
+          "label": "5"
+        },
+        "M": {
+          "in": 5.25,
+          "label": "5 1/4"
+        },
+        "L": {
+          "in": 5.5,
+          "label": "5 1/2"
+        },
+        "XL": {
+          "in": 5.75,
+          "label": "5 3/4"
+        }
+      }
+    },
+    {
+      "pom": "V2",
+      "description": "POCKET HEIGHT",
+      "tolerance": {
+        "in": 0.125,
+        "label": "1/8"
+      },
+      "sizes": {
+        "S": {
+          "in": 5.75,
+          "label": "5 3/4"
+        },
+        "M": {
+          "in": 6.0,
+          "label": "6"
+        },
+        "L": {
+          "in": 6.25,
+          "label": "6 1/4"
+        },
+        "XL": {
+          "in": 6.5,
+          "label": "6 1/2"
+        }
+      }
+    },
+    {
+      "pom": "W",
+      "description": "POCKET TOP EDGE BELOW HPS",
+      "tolerance": {
+        "in": 0.25,
+        "label": "1/4"
+      },
+      "sizes": {
+        "S": {
+          "in": 7.5,
+          "label": "7 1/2"
+        },
+        "M": {
+          "in": 7.75,
+          "label": "7 3/4"
+        },
+        "L": {
+          "in": 8.0,
+          "label": "8"
+        },
+        "XL": {
+          "in": 8.25,
+          "label": "8 1/4"
+        }
+      }
+    },
+    {
+      "pom": "W2",
+      "description": "POCKET INNER EDGE FROM CF",
+      "tolerance": {
+        "in": 0.125,
+        "label": "1/8"
+      },
+      "sizes": {
+        "S": {
+          "in": 2.375,
+          "label": "2 3/8"
+        },
+        "M": {
+          "in": 2.5,
+          "label": "2 1/2"
+        },
+        "L": {
+          "in": 2.625,
+          "label": "2 5/8"
+        },
+        "XL": {
+          "in": 2.75,
+          "label": "2 3/4"
+        }
+      }
+    },
+    {
+      "pom": "X",
+      "description": "LOGO TAG (L3) - BOTTOM EDGE ABOVE FINISHED HEM AT CF",
+      "tolerance": {
+        "in": 0.125,
+        "label": "1/8"
+      },
+      "sizes": {
+        "S": {
+          "in": 1.0,
+          "label": "1"
+        },
+        "M": {
+          "in": 1.0,
+          "label": "1"
+        },
+        "L": {
+          "in": 1.0,
+          "label": "1"
+        },
+        "XL": {
+          "in": 1.0,
+          "label": "1"
+        }
+      }
+    },
+    {
+      "pom": "X2",
+      "description": "LOGO TAG (L3) - CENTERED ON BUTTONHOLE PLACKET",
+      "tolerance": {
+        "in": 0.0625,
+        "label": "1/16"
+      },
+      "sizes": {
+        "S": {
+          "in": 0.0,
+          "label": "0"
+        },
+        "M": {
+          "in": 0.0,
+          "label": "0"
+        },
+        "L": {
+          "in": 0.0,
+          "label": "0"
+        },
+        "XL": {
+          "in": 0.0,
+          "label": "0"
+        }
+      }
+    }
+  ]
+}

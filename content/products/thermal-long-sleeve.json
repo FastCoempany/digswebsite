@@ -1,0 +1,114 @@
+{
+  "handle": "thermal-long-sleeve",
+  "styleCode": "AC-LST-001",
+  "name": "Thermal Long Sleeve",
+  "category": "tops",
+  "productType": "Long sleeve tee (knit)",
+  "techPack": {
+    "file": "reference/tech-packs/AC-LST-001_Tech.Pack_6-15-25.pdf",
+    "revision": "6-15-25 (current)",
+    "status": "PROTO",
+    "season": "FW25",
+    "developer": "Steph Thiel, Rad Patterns"
+  },
+  "price": null,
+  "priceNote": "Price is not set yet. Leave null; the UI shows 'Price TBA' until the founder sets it.",
+  "availability": "coming-soon",
+  "sizes": [
+    "S",
+    "M",
+    "L",
+    "XL"
+  ],
+  "sampleSize": "M",
+  "colorways": [
+    {
+      "name": "Off White",
+      "token": "--color-cloth-thermal-off-white",
+      "hex": "#F4EEE8",
+      "thread": "Dye to match",
+      "logo": "Embroidery, PANTONE 19-3943 TCX Bellwether Blue"
+    },
+    {
+      "name": "Sand Blue",
+      "token": "--color-cloth-thermal-sand-blue",
+      "hex": "#5B6FA7",
+      "thread": "Dye to match",
+      "logo": "Embroidery, PANTONE 19-3943 TCX Bellwether Blue"
+    }
+  ],
+  "fit": "Relaxed crewneck. Set-in sleeve with a slight drop shoulder, straight body, straight hem.",
+  "fabric": [
+    "Body, sleeves, back yoke: thermal knit (ref P9842), 100% cotton, 215 gsm",
+    "Neckband and cuffs: 2x2 rib, 95% cotton / 5% spandex, 380 gsm, folded 2-ply"
+  ],
+  "finish": "Full garment wash (ASUTE snow wash) with a silicone softener for hand-feel. The look the founder asked for: seams, neckline, shoulders, cuffs and hem a touch lighter than the body.",
+  "details": [
+    "Micro-waffle thermal face, smooth reverse",
+    "Back yoke seam across the upper back",
+    "digs wordmark embroidered at center back yoke, 2.5 x 1.58 in, satin fill with a zigzag outline, Bellwether Blue",
+    "1 in rib neckband, 2 in rib cuffs",
+    "Overlock seams with coverstitch topstitching; 2.5 cm self turnback hem"
+  ],
+  "builtLikeThis": [
+    {
+      "code": "L3",
+      "label": "Back yoke embroidery",
+      "spec": "digs wordmark, 2.5 x 1.58 in, satin stitch, Bellwether Blue",
+      "where": "Center back yoke, just below the neckband",
+      "view": "back"
+    },
+    {
+      "code": "RIB",
+      "label": "2x2 rib",
+      "spec": "95/5 cotton/spandex, 380 gsm, 2-ply foldover",
+      "where": "Neckband 1 in, cuffs 2 in",
+      "view": "front"
+    },
+    {
+      "code": "YOKE",
+      "label": "Back yoke",
+      "spec": "Two-panel back: yoke + body",
+      "where": "Upper back",
+      "view": "back"
+    },
+    {
+      "code": "L1",
+      "label": "Neck label",
+      "spec": "White patch, black print: digs / Designed in USA / size",
+      "where": "Inside, center back neck",
+      "view": "inside"
+    },
+    {
+      "code": "HEM",
+      "label": "Hem",
+      "spec": "2.5 cm self turnback, 2-needle coverstitch",
+      "where": "Bottom hem",
+      "view": "front"
+    }
+  ],
+  "care": [
+    "Machine wash cold with like colors.",
+    "Tumble dry low.",
+    "Cool iron if needed.",
+    "Do not bleach."
+  ],
+  "content": "100% cotton exclusive of trim",
+  "origin": {
+    "display": "Designed in USA. Imported.",
+    "status": "Label copy reads Designed in USA / Made in China. Confirm the factory before launch."
+  },
+  "sizeChart": {
+    "specs": "content/products/specs/thermal-long-sleeve.json",
+    "customerPOMs": {
+      "B": "Chest width (pit to pit)",
+      "A": "Body length (shoulder to hem, front)",
+      "D": "Shoulder width",
+      "P": "Sleeve length (shoulder to cuff)"
+    }
+  },
+  "openItems": [
+    "Physical proto came back out of tolerance and without topstitching (change log, 6-15-25); photos of the real sample are not the product.",
+    "Hangtag still TBC."
+  ]
+}

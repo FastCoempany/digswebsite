@@ -1,0 +1,295 @@
+{
+  "$description": "DIGS design tokens. Brand core is BOAST's triad, unchanged; everything else is derived from it.",
+  "color": {
+    "core": {
+      "ink": {
+        "$type": "color",
+        "$value": "#000000"
+      },
+      "digs-blue": {
+        "$type": "color",
+        "$value": "#0042E5"
+      },
+      "ice": {
+        "$type": "color",
+        "$value": "#F0F5FF"
+      }
+    },
+    "paper": {
+      "$type": "color",
+      "$value": "#FFFFFF"
+    },
+    "blue": {
+      "50": {
+        "$type": "color",
+        "$value": "#F0F5FF"
+      },
+      "100": {
+        "$type": "color",
+        "$value": "#DFEAFF"
+      },
+      "200": {
+        "$type": "color",
+        "$value": "#C1D6FF"
+      },
+      "300": {
+        "$type": "color",
+        "$value": "#95B9FF"
+      },
+      "400": {
+        "$type": "color",
+        "$value": "#588EFF"
+      },
+      "500": {
+        "$type": "color",
+        "$value": "#1659FC"
+      },
+      "600": {
+        "$type": "color",
+        "$value": "#0042E5"
+      },
+      "700": {
+        "$type": "color",
+        "$value": "#0030AF"
+      },
+      "800": {
+        "$type": "color",
+        "$value": "#002386"
+      },
+      "900": {
+        "$type": "color",
+        "$value": "#00165F"
+      },
+      "950": {
+        "$type": "color",
+        "$value": "#000A3D"
+      }
+    },
+    "ink": {
+      "50": {
+        "$type": "color",
+        "$value": "#F4F7FC"
+      },
+      "100": {
+        "$type": "color",
+        "$value": "#E9EDF5"
+      },
+      "200": {
+        "$type": "color",
+        "$value": "#D7DDE7"
+      },
+      "300": {
+        "$type": "color",
+        "$value": "#BDC4D2"
+      },
+      "400": {
+        "$type": "color",
+        "$value": "#979FAE"
+      },
+      "500": {
+        "$type": "color",
+        "$value": "#6F7887"
+      },
+      "600": {
+        "$type": "color",
+        "$value": "#535B6A"
+      },
+      "700": {
+        "$type": "color",
+        "$value": "#3C4350"
+      },
+      "800": {
+        "$type": "color",
+        "$value": "#262B36"
+      },
+      "900": {
+        "$type": "color",
+        "$value": "#14171E"
+      },
+      "950": {
+        "$type": "color",
+        "$value": "#080A0E"
+      }
+    },
+    "signal": {
+      "sale": {
+        "$type": "color",
+        "$value": "#C8102E"
+      },
+      "sale-tint": {
+        "$type": "color",
+        "$value": "#FDE7EA"
+      },
+      "success": {
+        "$type": "color",
+        "$value": "#0B7A4B"
+      },
+      "success-tint": {
+        "$type": "color",
+        "$value": "#E2F4EC"
+      },
+      "low-stock": {
+        "$type": "color",
+        "$value": "#8A4B00"
+      },
+      "low-stock-tint": {
+        "$type": "color",
+        "$value": "#FFF1D6"
+      }
+    },
+    "cloth": {
+      "thermal-off-white": {
+        "$type": "color",
+        "$value": "#F4EEE8",
+        "$description": "AC-LST-001 Tech Pack 6-15-25 p12, colorway #1 OFF WHITE (chip sampled)"
+      },
+      "thermal-sand-blue": {
+        "$type": "color",
+        "$value": "#5B6FA7",
+        "$description": "AC-LST-001 Tech Pack 6-15-25 p12, colorway #2 SAND BLUE (chip sampled)"
+      },
+      "pincord-mustard": {
+        "$type": "color",
+        "$value": "#E2AF3F",
+        "$description": "AC-LSS-001 Pincord REV1 10-15-26 p15, colorway #1 MUSTARD, ref #E2AF3F"
+      },
+      "needlecord-light-grey": {
+        "$type": "color",
+        "$value": "#D0CCCC",
+        "$description": "AC-LSS-001 Needlecord REV1 10-15-26 p13, colorway #1 LIGHT GREY, ref #D0CCCC"
+      },
+      "pant-salmon": {
+        "$type": "color",
+        "$value": "#CAA28C",
+        "$description": "AC-PNT-001 REV0 10-15-26 p13, colorway #1 SALMON, ref #CAA28C"
+      },
+      "embroidery-bellwether-blue": {
+        "$type": "color",
+        "$value": "#21305A",
+        "$description": "PANTONE 19-3943 TCX Bellwether Blue (all packs: embroidery, logo tag, logo patch)"
+      }
+    },
+    "role": {
+      "surface-page": {
+        "$type": "color",
+        "$value": "#F0F5FF"
+      },
+      "surface-raised": {
+        "$type": "color",
+        "$value": "#FFFFFF"
+      },
+      "surface-sunken": {
+        "$type": "color",
+        "$value": "#E9EDF5"
+      },
+      "surface-inverse": {
+        "$type": "color",
+        "$value": "#000000"
+      },
+      "surface-brand": {
+        "$type": "color",
+        "$value": "#0042E5"
+      },
+      "text-primary": {
+        "$type": "color",
+        "$value": "#000000"
+      },
+      "text-secondary": {
+        "$type": "color",
+        "$value": "#3C4350"
+      },
+      "text-muted": {
+        "$type": "color",
+        "$value": "#535B6A"
+      },
+      "text-on-inverse": {
+        "$type": "color",
+        "$value": "#F0F5FF"
+      },
+      "text-on-brand": {
+        "$type": "color",
+        "$value": "#F0F5FF"
+      },
+      "text-link": {
+        "$type": "color",
+        "$value": "#0042E5"
+      },
+      "text-sale": {
+        "$type": "color",
+        "$value": "#C8102E"
+      },
+      "text-success": {
+        "$type": "color",
+        "$value": "#0B7A4B"
+      },
+      "text-low-stock": {
+        "$type": "color",
+        "$value": "#8A4B00"
+      },
+      "border-hairline": {
+        "$type": "color",
+        "$value": "#D7DDE7"
+      },
+      "border-control": {
+        "$type": "color",
+        "$value": "#6F7887"
+      },
+      "border-strong": {
+        "$type": "color",
+        "$value": "#000000"
+      },
+      "action-primary": {
+        "$type": "color",
+        "$value": "#0042E5"
+      },
+      "action-primary-hover": {
+        "$type": "color",
+        "$value": "#0030AF"
+      },
+      "action-primary-pressed": {
+        "$type": "color",
+        "$value": "#002386"
+      },
+      "action-primary-text": {
+        "$type": "color",
+        "$value": "#F0F5FF"
+      },
+      "action-secondary": {
+        "$type": "color",
+        "$value": "#000000"
+      },
+      "action-secondary-hover": {
+        "$type": "color",
+        "$value": "#14171E"
+      },
+      "action-secondary-text": {
+        "$type": "color",
+        "$value": "#F0F5FF"
+      },
+      "action-disabled": {
+        "$type": "color",
+        "$value": "#D7DDE7"
+      },
+      "action-disabled-text": {
+        "$type": "color",
+        "$value": "#6F7887"
+      },
+      "focus-ring": {
+        "$type": "color",
+        "$value": "#0042E5"
+      },
+      "focus-ring-on-dark": {
+        "$type": "color",
+        "$value": "#F0F5FF"
+      },
+      "brand-scrawl": {
+        "$type": "color",
+        "$value": "#0042E5"
+      },
+      "brand-tint": {
+        "$type": "color",
+        "$value": "#DFEAFF"
+      }
+    }
+  }
+}

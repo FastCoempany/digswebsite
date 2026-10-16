@@ -1,0 +1,14 @@
+node_modules/
+.env
+.env.*
+!.env.example
+dist/
+build/
+!design/tokens/build/
+.cache/
+.DS_Store
+storybook-static/
+test-results/
+playwright-report/
+*.log
+__pycache__/

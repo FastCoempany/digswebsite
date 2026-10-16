@@ -1,0 +1,447 @@
+{
+  "handle": "thermal-long-sleeve",
+  "source": "reference/tech-packs/AC-LST-001_Tech.Pack_6-15-25.pdf, page 10 (GRADED SPEC)",
+  "units": "inches, after garment wash",
+  "sample_size": "M",
+  "rows": [
+    {
+      "pom": "A",
+      "description": "HPS LENGTH AT CENTER FRONT",
+      "tolerance": {
+        "in": 0.5,
+        "label": "1/2"
+      },
+      "sizes": {
+        "S": {
+          "in": 29.0,
+          "label": "29"
+        },
+        "M": {
+          "in": 30.0,
+          "label": "30"
+        },
+        "L": {
+          "in": 31.0,
+          "label": "31"
+        },
+        "XL": {
+          "in": 32.0,
+          "label": "32"
+        }
+      }
+    },
+    {
+      "pom": "B",
+      "description": "1/2 CHEST AT 1\" BELOW UNDERARM",
+      "tolerance": {
+        "in": 0.5,
+        "label": "1/2"
+      },
+      "sizes": {
+        "S": {
+          "in": 20.0,
+          "label": "20"
+        },
+        "M": {
+          "in": 21.5,
+          "label": "21 1/2"
+        },
+        "L": {
+          "in": 23.0,
+          "label": "23"
+        },
+        "XL": {
+          "in": 25.0,
+          "label": "25"
+        }
+      }
+    },
+    {
+      "pom": "C",
+      "description": "1/2 HEM",
+      "tolerance": null,
+      "sizes": {
+        "S": {
+          "in": 20.0,
+          "label": "20"
+        },
+        "M": {
+          "in": 21.5,
+          "label": "21 1/2"
+        },
+        "L": {
+          "in": 23.0,
+          "label": "23"
+        },
+        "XL": {
+          "in": 25.0,
+          "label": "25"
+        }
+      }
+    },
+    {
+      "pom": "D",
+      "description": "ACROSS SHOULDER",
+      "tolerance": {
+        "in": 0.375,
+        "label": "3/8"
+      },
+      "sizes": {
+        "S": {
+          "in": 16.5,
+          "label": "16 1/2"
+        },
+        "M": {
+          "in": 17.25,
+          "label": "17 1/4"
+        },
+        "L": {
+          "in": 18.0,
+          "label": "18"
+        },
+        "XL": {
+          "in": 19.0,
+          "label": "19"
+        }
+      }
+    },
+    {
+      "pom": "E",
+      "description": "SHOULDER SLOPE",
+      "tolerance": {
+        "in": 0.125,
+        "label": "1/8"
+      },
+      "sizes": {
+        "S": {
+          "in": 1.5,
+          "label": "1 1/2"
+        },
+        "M": {
+          "in": 1.5,
+          "label": "1 1/2"
+        },
+        "L": {
+          "in": 1.5,
+          "label": "1 1/2"
+        },
+        "XL": {
+          "in": 1.5,
+          "label": "1 1/2"
+        }
+      }
+    },
+    {
+      "pom": "F",
+      "description": "NECK WIDTH - HPS TO HPS",
+      "tolerance": {
+        "in": 0.25,
+        "label": "1/4"
+      },
+      "sizes": {
+        "S": {
+          "in": 6.75,
+          "label": "6 3/4"
+        },
+        "M": {
+          "in": 7.0,
+          "label": "7"
+        },
+        "L": {
+          "in": 7.25,
+          "label": "7 1/4"
+        },
+        "XL": {
+          "in": 7.5,
+          "label": "7 1/2"
+        }
+      }
+    },
+    {
+      "pom": "G",
+      "description": "FRONT NECK DROP",
+      "tolerance": {
+        "in": 0.25,
+        "label": "1/4"
+      },
+      "sizes": {
+        "S": {
+          "in": 4.25,
+          "label": "4 1/4"
+        },
+        "M": {
+          "in": 4.5,
+          "label": "4 1/2"
+        },
+        "L": {
+          "in": 4.75,
+          "label": "4 3/4"
+        },
+        "XL": {
+          "in": 5.0,
+          "label": "5"
+        }
+      }
+    },
+    {
+      "pom": "H",
+      "description": "BACK NECK DROP",
+      "tolerance": {
+        "in": 0.125,
+        "label": "1/8"
+      },
+      "sizes": {
+        "S": {
+          "in": 0.75,
+          "label": "3/4"
+        },
+        "M": {
+          "in": 0.875,
+          "label": "7/8"
+        },
+        "L": {
+          "in": 1.0,
+          "label": "1"
+        },
+        "XL": {
+          "in": 1.125,
+          "label": "1 1/8"
+        }
+      }
+    },
+    {
+      "pom": "I",
+      "description": "NECKBAND HEIGHT",
+      "tolerance": {
+        "in": 0.125,
+        "label": "1/8"
+      },
+      "sizes": {
+        "S": {
+          "in": 1.0,
+          "label": "1"
+        },
+        "M": {
+          "in": 1.0,
+          "label": "1"
+        },
+        "L": {
+          "in": 1.0,
+          "label": "1"
+        },
+        "XL": {
+          "in": 1.0,
+          "label": "1"
+        }
+      }
+    },
+    {
+      "pom": "J",
+      "description": "ARMHOLE DEPTH FROM HPS",
+      "tolerance": {
+        "in": 0.25,
+        "label": "1/4"
+      },
+      "sizes": {
+        "S": {
+          "in": 10.125,
+          "label": "10 1/8"
+        },
+        "M": {
+          "in": 10.5,
+          "label": "10 1/2"
+        },
+        "L": {
+          "in": 10.875,
+          "label": "10 7/8"
+        },
+        "XL": {
+          "in": 11.25,
+          "label": "11 1/4"
+        }
+      }
+    },
+    {
+      "pom": "K",
+      "description": "1/2 BICEP WIDTH AT 1\" BELOW UNDERARM",
+      "tolerance": {
+        "in": 0.25,
+        "label": "1/4"
+      },
+      "sizes": {
+        "S": {
+          "in": 7.5,
+          "label": "7 1/2"
+        },
+        "M": {
+          "in": 8.0,
+          "label": "8"
+        },
+        "L": {
+          "in": 8.5,
+          "label": "8 1/2"
+        },
+        "XL": {
+          "in": 9.125,
+          "label": "9 1/8"
+        }
+      }
+    },
+    {
+      "pom": "L",
+      "description": "1/2 ELBOW AT CENTER OF UNDERARM SEAM",
+      "tolerance": {
+        "in": 0.25,
+        "label": "1/4"
+      },
+      "sizes": {
+        "S": {
+          "in": 5.6875,
+          "label": "5 11/16"
+        },
+        "M": {
+          "in": 6.0,
+          "label": "6"
+        },
+        "L": {
+          "in": 6.3125,
+          "label": "6 5/16"
+        },
+        "XL": {
+          "in": 6.6875,
+          "label": "6 11/16"
+        }
+      }
+    },
+    {
+      "pom": "M",
+      "description": "1/2 SLEEVE WIDTH AT CUFF SEAM",
+      "tolerance": {
+        "in": 0.125,
+        "label": "1/8"
+      },
+      "sizes": {
+        "S": {
+          "in": 4.8125,
+          "label": "4 13/16"
+        },
+        "M": {
+          "in": 5.0,
+          "label": "5"
+        },
+        "L": {
+          "in": 5.1875,
+          "label": "5 3/16"
+        },
+        "XL": {
+          "in": 5.375,
+          "label": "5 3/8"
+        }
+      }
+    },
+    {
+      "pom": "N",
+      "description": "1/2 SLEEVE OPENING AT BOTTOM OF CUFF",
+      "tolerance": {
+        "in": 0.125,
+        "label": "1/8"
+      },
+      "sizes": {
+        "S": {
+          "in": 4.5625,
+          "label": "4 9/16"
+        },
+        "M": {
+          "in": 4.75,
+          "label": "4 3/4"
+        },
+        "L": {
+          "in": 4.9375,
+          "label": "4 15/16"
+        },
+        "XL": {
+          "in": 5.125,
+          "label": "5 1/8"
+        }
+      }
+    },
+    {
+      "pom": "O",
+      "description": "SLEEVE CUFF HEIGHT",
+      "tolerance": {
+        "in": 0.125,
+        "label": "1/8"
+      },
+      "sizes": {
+        "S": {
+          "in": 2.0,
+          "label": "2"
+        },
+        "M": {
+          "in": 2.0,
+          "label": "2"
+        },
+        "L": {
+          "in": 2.0,
+          "label": "2"
+        },
+        "XL": {
+          "in": 2.0,
+          "label": "2"
+        }
+      }
+    },
+    {
+      "pom": "P",
+      "description": "SLEEVE LENGTH ALONG OUTER FOLD",
+      "tolerance": {
+        "in": 0.375,
+        "label": "3/8"
+      },
+      "sizes": {
+        "S": {
+          "in": 25.625,
+          "label": "25 5/8"
+        },
+        "M": {
+          "in": 26.0,
+          "label": "26"
+        },
+        "L": {
+          "in": 26.375,
+          "label": "26 3/8"
+        },
+        "XL": {
+          "in": 26.75,
+          "label": "26 3/4"
+        }
+      }
+    },
+    {
+      "pom": "Q",
+      "description": "SLEEVE LENGTH ALONG UNDERARM SEAM",
+      "tolerance": {
+        "in": 0.375,
+        "label": "3/8"
+      },
+      "sizes": {
+        "S": {
+          "in": 20.125,
+          "label": "20 1/8"
+        },
+        "M": {
+          "in": 20.5,
+          "label": "20 1/2"
+        },
+        "L": {
+          "in": 20.875,
+          "label": "20 7/8"
+        },
+        "XL": {
+          "in": 21.25,
+          "label": "21 1/4"
+        }
+      }
+    }
+  ]
+}

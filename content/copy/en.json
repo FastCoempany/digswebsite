@@ -1,0 +1,245 @@
+{
+  "$note": "Source of truth for site copy. BOAST lines are verbatim from the BOAST brand strategy (Brand Messaging, pp. 51-52) with the two typos fixed. Lines marked draft need founder approval.",
+  "brand": {
+    "name": "digs",
+    "ethos": "Dope is good.",
+    "domain": "dopeisgood.com",
+    "instagram": "@dopeisgood",
+    "instagramUrl": "https://www.instagram.com/dopeisgood",
+    "season": "Capsule 01",
+    "labelLine": "Designed in USA",
+    "positioning": "A cult fashion brand that leads the market when it comes to high-quality streetwear for refined lifestyles."
+  },
+  "boastLines": [
+    "Dope Is Good",
+    "Redefining what it means to be dope.",
+    "Stay dope, stay ambitious.",
+    "Where comfort meets sophistication.",
+    "Crafted for those who hustle.",
+    "Rewrite your story with Digs.",
+    "Innovative designs for ambitious lives.",
+    "Elevate your style game.",
+    "Wear your story.",
+    "Street style, elevated.",
+    "Actually Dope.",
+    "Your journey, your style.",
+    "Innovation for the ambitious.",
+    "Elevate your everyday.",
+    "Wear your ambition.",
+    "Crafted for the journey ahead.",
+    "Elevate the everyday grind.",
+    "Wear resilience, exude confidence.",
+    "Designed for those who push boundaries.",
+    "Where ambition meets style.",
+    "Built for those who chase excellence.",
+    "Streetwear that echoes your journey."
+  ],
+  "typoFixes": {
+    "boudaries": "boundaries",
+    "jorney": "journey"
+  },
+  "scriptWords": {
+    "$note": "Payoff words rendered in The Old Falcons via tools/script_svg.py. One or two per line, never a whole sentence.",
+    "words": [
+      "dope",
+      "good",
+      "story",
+      "ambition",
+      "journey",
+      "excellence",
+      "boundaries",
+      "Actually Dope",
+      "fashion"
+    ]
+  },
+  "cta": {
+    "enterShop": "Dig in",
+    "addToCart": "Add to Digs",
+    "cart": "Your Digs",
+    "cartShort": "Digs",
+    "checkout": "Check out",
+    "backInStock": "Hold my size",
+    "comingSoon": "Get on the list",
+    "newsletter": "Stay dope",
+    "readManifesto": "Read the manifesto",
+    "selectSize": "Select a size",
+    "sizeGuide": "Size guide"
+  },
+  "nav": {
+    "shop": "Shop",
+    "manifesto": "Manifesto",
+    "cart": "Your Digs",
+    "instagram": "Instagram",
+    "account": "Account"
+  },
+  "rails": {
+    "left": "DOPE IS GOOD — DESIGNED IN USA — @DOPEISGOOD",
+    "right": "CAPSULE 01 — DOPEISGOOD.COM",
+    "gallery": "SWIPE"
+  },
+  "home": {
+    "heroOverline": "CAPSULE 01",
+    "heroSub": "Redefining what it means to be dope.",
+    "manifestoHead": "Dope is good.",
+    "manifestoScript": "good",
+    "manifestos": [
+      {
+        "n": "01",
+        "title": "Unapologetically Dope",
+        "body": "We redefine cool by blending street culture with sophistication, making every piece a statement of high standards and ambition."
+      },
+      {
+        "n": "02",
+        "title": "Celebrate the Journey",
+        "body": "Our clothes tell a story of resilience and success, empowering you to wear your journey with pride."
+      },
+      {
+        "n": "03",
+        "title": "Innovate and Inspire",
+        "body": "We push boundaries with multifunctional designs, inspiring you to achieve more and aspire higher."
+      },
+      {
+        "n": "04",
+        "title": "Quality Above All",
+        "body": "We commit to exceptional craftsmanship, ensuring every item not only looks good but stands the test of time."
+      }
+    ],
+    "capsuleHead": "The Capsule",
+    "builtHead": "Built like this.",
+    "builtSub": "Every piece starts as a tech pack: every seam, stitch and label specced before it's cut.",
+    "blueFrameHead": "Wear your story.",
+    "blueFrameScript": "story",
+    "newsletterHead": "Get first access to every drop.",
+    "newsletterSuccess": "You're on the list.",
+    "newsletterError": "That email didn't go through. Try again."
+  },
+  "shop": {
+    "overline": "CAPSULE 01",
+    "head": "The Capsule",
+    "dropNote": {
+      "status": "draft",
+      "text": "Four pieces, built from scratch and specced to the stitch: a waffle thermal, two cord shirts, a lyocell pant. Made in small runs, so when a size is gone, it's gone until the next one."
+    },
+    "filters": [
+      "All",
+      "Tops",
+      "Bottoms"
+    ],
+    "emptyFilter": "Nothing here yet."
+  },
+  "product": {
+    "priceTBA": "Price TBA",
+    "preorder": "Pre-order. Ships {date}.",
+    "comingSoon": "Coming soon",
+    "lowStock": "Only {n} left",
+    "soldOut": "Sold out",
+    "added": "Added to your Digs.",
+    "holdConfirm": "Done. We'll email you when your size is back.",
+    "listConfirm": "You're on the list. We'll email you before the drop.",
+    "accordions": [
+      "Details",
+      "Fit & size",
+      "Care",
+      "Shipping & returns"
+    ],
+    "completeHead": "Complete the capsule",
+    "origin": "Designed in USA. Imported.",
+    "short": {
+      "thermal-long-sleeve": {
+        "status": "draft",
+        "text": "Micro-waffle cotton thermal, garment washed, with the digs mark stitched across the back yoke."
+      },
+      "pincord-button-down": {
+        "status": "draft",
+        "text": "Mustard pincord with two buttoned pockets, cut-corner cuffs and a box pleat down the back."
+      },
+      "needlecord-shirt": {
+        "status": "draft",
+        "text": "Light grey stretch needlecord. Point collar, one pocket, nothing extra."
+      },
+      "drawstring-pant": {
+        "status": "draft",
+        "text": "Pull-on lyocell twill in salmon, with a drawstring waist and a permanent turn-up cuff."
+      }
+    }
+  },
+  "cart": {
+    "empty": "Your Digs are empty.",
+    "subtotal": "Subtotal",
+    "taxNote": "Taxes and shipping calculated at checkout.",
+    "remove": "Remove"
+  },
+  "taglineBand": [
+    "Built for those who chase excellence.",
+    "Crafted for the journey ahead.",
+    "Streetwear that echoes your journey.",
+    "Designed for those who push boundaries.",
+    "Wear your ambition."
+  ],
+  "manifestoPage": {
+    "head": "Redefining what it means to be dope.",
+    "headScript": "dope",
+    "narrative": [
+      "More than a streetwear brand; digs is a movement. Born from the heart of urban culture, digs redefines what it means to be dope.",
+      "At digs, being dope means coolness, high standards, and a sophisticated yet relaxed style."
+    ],
+    "standard": [
+      "Excellence",
+      "Authenticity",
+      "Ambition",
+      "Innovation",
+      "Empowerment"
+    ],
+    "weAre": [
+      "All in",
+      "Ambitious",
+      "Supportive",
+      "Authentic",
+      "Confident",
+      "High-Quality",
+      "Making it happen"
+    ],
+    "weAreNot": [
+      "Half-arsed",
+      "Unattainable",
+      "Stuffy",
+      "Predictable",
+      "Stuck in front of the mirror",
+      "Mediocrity",
+      "Dipping our toes in"
+    ],
+    "quiet": {
+      "status": "draft",
+      "text": "We'd rather the work speak. Impact you can feel before you can see it."
+    }
+  },
+  "notFound": {
+    "head": "This page doesn't exist.",
+    "sub": "The capsule does.",
+    "cta": "Dig in"
+  },
+  "footer": {
+    "groups": {
+      "Shop": [
+        "The Capsule",
+        "Size guide"
+      ],
+      "Help": [
+        "Shipping & returns",
+        "FAQ",
+        "Contact"
+      ],
+      "Brand": [
+        "Manifesto",
+        "Instagram"
+      ],
+      "Legal": [
+        "Privacy",
+        "Terms",
+        "Accessibility"
+      ]
+    },
+    "newsletterHead": "Stay dope.",
+    "copyright": "© {year} digs. Dope is good."
+  }
+}

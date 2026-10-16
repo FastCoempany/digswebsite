@@ -1,0 +1,98 @@
+{
+  "$description": "DIGS non-color tokens. Type follows BOAST (Alexandria + The Old Falcons only). Mobile-first: fluid sizes clamp from 390px to 1440px viewports.",
+  "font": {
+    "family": {
+      "sans": { "$type": "fontFamily", "$value": "'Alexandria', ui-sans-serif, system-ui, sans-serif", "$description": "BOAST heading + body face. Self-hosted variable font (OFL)." },
+      "script": { "$type": "fontFamily", "$value": "none", "$description": "The Old Falcons is never served as a web font. Script words ship as SVG outlines from tools/script_svg.py." }
+    },
+    "weight": {
+      "regular": { "$type": "fontWeight", "$value": 400, "$description": "BOAST: headings and body are Alexandria Regular." },
+      "medium": { "$type": "fontWeight", "$value": 500, "$description": "Strategist extension: UI labels, buttons, prices at 14px and below only, where Regular gets thin on screen." }
+    },
+    "size": {
+      "display-xl": { "$type": "dimension", "$value": "clamp(3.5rem, 2.1rem + 11.5vw, 10.5rem)", "$description": "Manifesto + edge-to-edge headlines. Line height 0.92." },
+      "display": { "$type": "dimension", "$value": "clamp(2.75rem, 1.9rem + 6.8vw, 6.5rem)", "$description": "Section headlines. Line height 0.95." },
+      "h1": { "$type": "dimension", "$value": "clamp(2.25rem, 1.8rem + 2.6vw, 3.75rem)" },
+      "h2": { "$type": "dimension", "$value": "clamp(1.75rem, 1.5rem + 1.3vw, 2.5rem)" },
+      "h3": { "$type": "dimension", "$value": "clamp(1.375rem, 1.25rem + 0.6vw, 1.75rem)" },
+      "body-lg": { "$type": "dimension", "$value": "1.125rem" },
+      "body": { "$type": "dimension", "$value": "1rem" },
+      "small": { "$type": "dimension", "$value": "0.875rem" },
+      "micro": { "$type": "dimension", "$value": "0.75rem", "$description": "Caps labels, rotated margin rails, tech-pack callouts." }
+    },
+    "leading": {
+      "display": { "$type": "number", "$value": 0.92, "$description": "BOAST headlines lock together as a block." },
+      "heading": { "$type": "number", "$value": 1.05 },
+      "body": { "$type": "number", "$value": 1.5 },
+      "ui": { "$type": "number", "$value": 1.25 }
+    },
+    "tracking": {
+      "display": { "$type": "dimension", "$value": "-0.02em" },
+      "body": { "$type": "dimension", "$value": "0" },
+      "caps": { "$type": "dimension", "$value": "0.08em", "$description": "Uppercase micro labels and margin rails." }
+    }
+  },
+  "space": {
+    "0": { "$type": "dimension", "$value": "0" },
+    "1": { "$type": "dimension", "$value": "0.25rem" },
+    "2": { "$type": "dimension", "$value": "0.5rem" },
+    "3": { "$type": "dimension", "$value": "0.75rem" },
+    "4": { "$type": "dimension", "$value": "1rem" },
+    "5": { "$type": "dimension", "$value": "1.5rem" },
+    "6": { "$type": "dimension", "$value": "2rem" },
+    "7": { "$type": "dimension", "$value": "3rem" },
+    "8": { "$type": "dimension", "$value": "4rem" },
+    "9": { "$type": "dimension", "$value": "6rem" },
+    "10": { "$type": "dimension", "$value": "8rem" },
+    "11": { "$type": "dimension", "$value": "12rem" }
+  },
+  "radius": {
+    "none": { "$type": "dimension", "$value": "0", "$description": "Default. BOAST frames, posters, image wells and cards are square." },
+    "control": { "$type": "dimension", "$value": "2px", "$description": "Inputs and selects." },
+    "pill": { "$type": "dimension", "$value": "999px", "$description": "Buttons, tags and the BOAST pill bar." }
+  },
+  "border": {
+    "hairline": { "$type": "dimension", "$value": "1px" },
+    "strong": { "$type": "dimension", "$value": "2px" },
+    "frame": { "$type": "dimension", "$value": "clamp(10px, 2vw, 24px)", "$description": "BOAST billboard: photograph inside a solid Digs Blue frame." }
+  },
+  "layout": {
+    "gutter": { "$type": "dimension", "$value": "clamp(1rem, 0.6rem + 1.6vw, 1.5rem)" },
+    "margin": { "$type": "dimension", "$value": "clamp(1rem, 0.2rem + 3.4vw, 2.5rem)", "$description": "16px side gutter at 390px; 40px at 1440px." },
+    "rail": { "$type": "dimension", "$value": "2.5rem", "$description": "Width of the rotated margin-text rails (desktop only, 1024px and up)." },
+    "max": { "$type": "dimension", "$value": "90rem" },
+    "columns-mobile": { "$type": "number", "$value": 4 },
+    "columns-tablet": { "$type": "number", "$value": 8 },
+    "columns-desktop": { "$type": "number", "$value": 12 },
+    "header-height": { "$type": "dimension", "$value": "3.5rem" }
+  },
+  "breakpoint": {
+    "sm": { "$type": "dimension", "$value": "390px", "$description": "Design baseline. Build every screen here first." },
+    "md": { "$type": "dimension", "$value": "768px" },
+    "lg": { "$type": "dimension", "$value": "1024px" },
+    "xl": { "$type": "dimension", "$value": "1440px" }
+  },
+  "motion": {
+    "fast": { "$type": "duration", "$value": "150ms", "$description": "Hover, press, swatch select." },
+    "base": { "$type": "duration", "$value": "300ms", "$description": "Drawers, menus, accordions." },
+    "slow": { "$type": "duration", "$value": "600ms", "$description": "Hero reveals and the scrawl draw-on." },
+    "ease": { "$type": "cubicBezier", "$value": [0.2, 0.0, 0.0, 1.0] },
+    "reduced": { "$type": "string", "$value": "Under prefers-reduced-motion: no draw-on, no marquee, no parallax; fades capped at 150ms." }
+  },
+  "aspect": {
+    "product": { "$type": "string", "$value": "4 / 5", "$description": "PDP and product cards (2000 x 2500 source)." },
+    "editorial-tall": { "$type": "string", "$value": "3 / 4" },
+    "hero-mobile": { "$type": "string", "$value": "9 / 16" },
+    "hero-desktop": { "$type": "string", "$value": "16 / 9" },
+    "square": { "$type": "string", "$value": "1 / 1" }
+  },
+  "z": {
+    "base": { "$type": "number", "$value": 0 },
+    "sticker": { "$type": "number", "$value": 10 },
+    "header": { "$type": "number", "$value": 50 },
+    "sticky-buy": { "$type": "number", "$value": 60 },
+    "drawer": { "$type": "number", "$value": 80 },
+    "menu": { "$type": "number", "$value": 90 },
+    "toast": { "$type": "number", "$value": 100 }
+  }
+}

@@ -1,0 +1,129 @@
+{
+  "handle": "pincord-button-down",
+  "styleCode": "AC-LSS-001 (pincord)",
+  "name": "Pincord Button-Down",
+  "category": "tops",
+  "productType": "Long sleeve shirt (woven)",
+  "techPack": {
+    "file": "reference/tech-packs/AC-LSS-001_Tech.Pack_Pincord_REV1_10-15-26.pdf",
+    "revision": "Rev 1, 10/15/2026",
+    "status": "PROTO",
+    "season": "FW27 (TBC)",
+    "developer": "digs / Antaeus Coe"
+  },
+  "price": null,
+  "priceNote": "Price is not set yet. Leave null; the UI shows 'Price TBA' until the founder sets it.",
+  "availability": "coming-soon",
+  "sizes": [
+    "S",
+    "M",
+    "L",
+    "XL"
+  ],
+  "sampleSize": "M",
+  "colorways": [
+    {
+      "name": "Mustard",
+      "token": "--color-cloth-pincord-mustard",
+      "hex": "#E2AF3F",
+      "thread": "Dye to match",
+      "buttons": "Corozo, tone-to-tone mustard",
+      "logo": "Embroidery + woven tag logo in Bellwether Blue"
+    }
+  ],
+  "laterColorways": [
+    {
+      "name": "Tobacco",
+      "hex": "#76440C"
+    },
+    {
+      "name": "Olive",
+      "hex": "#6A664C"
+    },
+    {
+      "name": "Washed Black",
+      "hex": "#2A2727"
+    },
+    {
+      "name": "Ecru",
+      "hex": "#DDD5C2"
+    }
+  ],
+  "fit": "Relaxed, worn untucked, slight drop shoulder.",
+  "fabric": [
+    "Pincord (pinwale) corduroy, 100% cotton"
+  ],
+  "finish": "Garment washed (ASUTE) with seam abrasion for the seam-highlighter look. Wash route still open (enzyme + light stone is the alternative).",
+  "details": [
+    "Button-down collar on a stand",
+    "1 1/4 in box placket, six 18L corozo buttons",
+    "Two mirrored chest patch pockets, 3/4 in rounded corners, buttoned 1 1/4 in band",
+    "Barrel cuffs with 3/4 in diagonal-cut corners, two buttons for adjustment",
+    "Sleeve: two 5/8 in pleats into the cuff",
+    "Tower sleeve placket",
+    "Two-ply back yoke, 2 in box pleat at center back, locker loop",
+    "Shirttail hem, back 1 in longer than front",
+    "digs wordmark embroidered at center back yoke; woven digs tag at the foot of the placket"
+  ],
+  "builtLikeThis": [
+    {
+      "code": "L3",
+      "label": "Back yoke embroidery",
+      "spec": "digs wordmark, 2.5 x 1.58 in, Bellwether Blue",
+      "where": "Outer back yoke, centered, 1 1/2 in below the neck seam",
+      "view": "back"
+    },
+    {
+      "code": "L4",
+      "label": "Placket tag",
+      "spec": "Woven damask, 1 x 3 in, mustard ground, Bellwether Blue logo, reads up",
+      "where": "Buttonhole placket, bottom edge 1 in above the hem",
+      "view": "front"
+    },
+    {
+      "code": "CUFF",
+      "label": "Cut cuff",
+      "spec": "2 1/2 in barrel cuff, 3/4 in diagonal-cut corners",
+      "where": "Both cuffs",
+      "view": "detail"
+    },
+    {
+      "code": "POCKET",
+      "label": "Chest pockets",
+      "spec": "Mirrored patch pockets, 3/4 in rounded corners, 1 1/4 in band, vertical buttonhole + 14L button",
+      "where": "Left and right chest",
+      "view": "front"
+    },
+    {
+      "code": "PLEAT",
+      "label": "Box pleat + loop",
+      "spec": "2 in box pleat, self locker loop 3/8 x 1 1/2 in",
+      "where": "Center back below the yoke",
+      "view": "back"
+    }
+  ],
+  "care": [
+    "Machine wash cold, inside out, with like colors.",
+    "Tumble dry low.",
+    "Iron on reverse or steam only.",
+    "Do not bleach."
+  ],
+  "content": "100% cotton exclusive of trim",
+  "origin": {
+    "display": "Designed in USA. Imported.",
+    "status": "Label copy reads Designed in USA / Made in China. Confirm the factory before launch."
+  },
+  "sizeChart": {
+    "specs": "content/products/specs/pincord-button-down.json",
+    "customerPOMs": {
+      "B": "Chest width (pit to pit)",
+      "A": "Body length (back, collar seam to hem)",
+      "D": "Shoulder width",
+      "P": "Sleeve length (shoulder to cuff edge)"
+    }
+  },
+  "openItems": [
+    "Ten open items in the pack (cuff cut, pocket closure, wash route, back pleat, embroidery position, buttons, L1 size, build route, style code, logo on back). The site follows the pack defaults.",
+    "Shares style code AC-LSS-001 with the needlecord shirt: one needs a new number."
+  ]
+}
