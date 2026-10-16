@@ -21,6 +21,8 @@ What is settled, who settled it, and what is still open. If a later doc disagree
 | 13 | **Typos are fixed everywhere:** "boundaries", "journey". | Founder, Oct 16 2026 |
 | 14 | **Instagram is `@dopeisgood`. The site is `dopeisgood.com`.** (BOAST's `@streetdigs`, `@digs` and `www.digs.com` are retired.) | Founder, Oct 16 2026 |
 | 15 | **This repo is the DIGS site only.** No NRDI storefront repo. Brand-agnostic store components live in `app/components/core` so they can be lifted into a shared package when Puff Junction or Darkest Shades gets a site. | Founder + Claude, Oct 16 2026 |
+| 16 | **Button names approved:** Dig in · Add to Digs · Your Digs · Hold my size · Get on the list · Stay dope. | Founder, Oct 16 2026 |
+| 17 | **No paid tools, no purchases.** Photography and everything else runs on free routes only (`07-photography.md`). | Founder, Oct 16 2026 |
 
 ## Open (site work proceeds on the default)
 
@@ -33,6 +35,6 @@ What is settled, who settled it, and what is still open. If a later doc disagree
 | O5 | Pincord open items (cuff cut, pocket closure, wash, back pleat, back embroidery, buttons) | The pack's defaults | Founder |
 | O6 | Pant fly (faux vs working zip) | Faux fly, per the pack | Founder |
 | O7 | Season label | "Capsule 01" on the site (packs say FW25 / FW27 TBC) | Founder |
-| O8 | Photography spend and pipeline | Figma AI for casting tests; Weave for consistent-model shots once linked | Founder (credits) |
+| O8 | Which free photo route | Figma's included AI credits (no purchase; stops at the cap), with the Gemini app (free) for face-matched references | Founder |
 | O9 | A second model to reflect "primarily men, inclusive of women" | Not in v1 | Founder |
 | O10 | Hangtag artwork | Still TBC in every pack; not shown on the site | Founder |

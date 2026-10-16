@@ -57,7 +57,7 @@ Codes: `P-{product}-{nn}` product sets (`TLS` thermal, `PBD` pincord, `NCS` need
 | E-02 | L3 portrait for the blue frame | 4:5 | S3 |
 | E-03..E-06 | Poster-wall, platform, atelier and street frames across L1–L3 | 4:5 / 3:4 | S3–S6 |
 
-The thermal needs P-TLS-01 to 06 in **both** colorways (Off White and Sand Blue). That's about 36 product frames + 1 hero (2 crops) + 6 editorials ≈ **45 finals**; budget about 3 generations per final.
+The thermal needs P-TLS-01 to 06 in **both** colorways (Off White and Sand Blue). That's about 36 product frames + 1 hero (2 crops) + 6 editorials ≈ **45 finals**; budget about 3 generations per final, spread across days to stay inside the free daily allowance.
 
 Output: sRGB JPEG, 2000×2500 (4:5), 2400×3200 (3:4), 2160×3840 (9:16), 3840×2160 (16:9). Naming: `P-TLS-01-sand-blue.jpg`, `E-02.jpg`. Files go in `assets/photography/`, with a row per file in `assets/photography/MANIFEST.csv` (code, product, colorway, look, scene, prompt id, checked by, date).
 
@@ -73,12 +73,16 @@ Output: sRGB JPEG, 2000×2500 (4:5), 2400×3200 (3:4), 2160×3840 (9:16), 3840×
 
 Common generation errors to reject: extra or missing buttons, pockets on the wrong side, belt loops appearing, invented logos or text, wrong collar type, plain cuffs where cut corners are specced, smooth fabric where waffle or wale is specced, mustard drifting to orange, salmon drifting to pink, embroidery drifting to bright blue, malformed hands.
 
-## Pipeline
+## Pipeline (free routes only, no purchases)
 
-1. **Casting (needs the founder's OK to spend Figma AI credits):** Figma `generate_image` → 3 options → founder picks.
-2. **Reference sheet** of the chosen model.
-3. **Product and editorial shots:** an image model that accepts reference images (Figma Weave, once the founder links Weave to Figma; each run is quoted and approved), fed with the model reference sheet + garment reference (tech-pack flats and colorway swatch).
-4. **Check** each image against its checklist; regenerate failures.
-5. **Post** in Figma: composite real logos, check color against the cloth swatch, crop to ratio.
-6. **Export** to `assets/photography/`, log in `MANIFEST.csv`; later upload to Shopify Files.
-7. **Free sources** (Unsplash, Pexels) only for empty environment plates if a scene needs one. No people, no brands; record the URL and license in `assets/photography/CREDITS.md`.
+1. **Generator: Figma `generate_image` on the plan's included AI credits.** Figma's help center: Starter includes up to 500 credits a month and 150 a day; images cost 2 to 16 credits depending on the model; at the cap, generation stops, nothing is charged. Never turn on pay-as-you-go or buy top-ups. Output is a clean file with no visible watermark.
+2. **One model without a reference-image tool.** Figma's generator is text-only, so the face is held by a fixed **model bible** prompt (same age, build, skin, hair, grooming, wording every time). Product-page sets are cropped **chin-down** (a common e-commerce crop); face-forward frames are kept for the hero and a few editorials, picked from batches for the closest match.
+3. **Casting:** three options from the casting brief → founder picks → model bible written from the pick.
+4. **Optional, face-matched references: the Gemini app, free (Nano Banana 2).** It takes reference photos and holds a face across images. Free-tier images carry a visible Gemini watermark, so they're for review and as references only, never site images. The founder runs these from the prompt pack.
+5. **Check** each image against its checklist; regenerate failures.
+6. **Post** in Figma: composite real logos, check color against the cloth swatch, crop to ratio.
+7. **Export** to `assets/photography/`, log in `MANIFEST.csv`; later upload to Shopify Files.
+8. **Free stock** (Unsplash, Pexels) only for empty environment plates if a scene needs one. No people, no brands; record the URL and license in `assets/photography/CREDITS.md`.
+9. **Disclosure:** until real photos of production samples replace them, the site carries a line under the gallery: "Images are previews made from the tech pack."
+
+Not used: Figma Weave (separate account, small free allowance, per-run approvals) and any paid model.
