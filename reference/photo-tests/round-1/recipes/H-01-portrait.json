@@ -1,0 +1,17 @@
+{
+  "input": "reference/photo-tests/round-1/raw/H-01-portrait.jpg",
+  "output": "reference/photo-tests/round-1/out/H-01-9x16.jpg",
+  "color": [
+    {"seed": [400, 430, 480, 600], "stat": "median", "region": [340, 320, 600, 700], "target": "#5B6FA7", "ab_tolerance": 10, "l_range": 30, "l_offset": -3},
+    {"seed": [400, 700, 520, 760], "stat": "median", "region": [[375, 655], [560, 655], [560, 698], [551, 698], [551, 744], [546, 746], [546, 764], [552, 768], [556, 790], [550, 850], [536, 940], [516, 1000], [503, 1050], [500, 1078], [437, 1078], [437, 1059], [336, 1059], [336, 1040], [345, 960], [362, 860], [375, 760], [377, 680]], "target": "#CAA28C", "ab_tolerance": 10, "l_range": 40, "l_offset": -3},
+    {"seed": [40, 40, 300, 300], "stat": "median", "target": "#0042E5", "ab_tolerance": 22, "l_range": 40, "l_offset": 0}
+  ],
+  "clone": [
+    {"center": [490, 675], "radius": 3, "from": [8, 0]}
+  ],
+  "logos": [
+    {"kind": "embroidery", "center": [462, 362], "width": 27, "thread": "#24315A"},
+    {"kind": "patch", "center": [492, 684], "size": [37, 12], "ground": "match", "thread": "#24315A"}
+  ],
+  "crop": {"ratio": "9:16", "anchor": "center"}
+}

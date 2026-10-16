@@ -1,0 +1,8 @@
+{
+  "input": "reference/photo-tests/round-1/raw/P-TLS-02-off-white.jpg",
+  "output": "reference/photo-tests/round-1/out/P-TLS-02-off-white.jpg",
+  "logos": [
+    {"kind": "embroidery", "center": [480, 361], "width": 67, "thread": "#24315A"}
+  ],
+  "crop": {"ratio": "4:5", "anchor": "top"}
+}

@@ -1,0 +1,5 @@
+{
+  "input": "reference/photo-tests/round-1/raw/P-TLS-01-off-white.jpg",
+  "output": "reference/photo-tests/round-1/out/P-TLS-01-off-white.jpg",
+  "crop": {"ratio": "4:5", "anchor": "top"}
+}

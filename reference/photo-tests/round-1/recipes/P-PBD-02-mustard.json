@@ -1,0 +1,10 @@
+{
+  "input": "reference/photo-tests/round-1/raw/P-PBD-02-mustard.jpg",
+  "output": "reference/photo-tests/round-1/out/P-PBD-02-mustard.jpg",
+  "color": {"seed": [300, 480, 440, 760], "stat": "median", "region": [170, 250, 780, 1090], "target": "#E2AF3F", "ab_tolerance": 16, "l_range": 32, "l_offset": -3},
+  "recolor": {"circles": [[212, 894, 6], [728, 907, 6], [222, 965, 6], [242, 966, 5], [718, 979, 6]], "offset_lab": [-10, 0, -6], "ab_tolerance": 10},
+  "logos": [
+    {"kind": "embroidery", "center": [474, 344], "width": 62, "thread": "#24315A"}
+  ],
+  "crop": {"ratio": "4:5", "anchor": "top"}
+}

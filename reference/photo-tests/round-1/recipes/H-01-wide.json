@@ -1,0 +1,13 @@
+{
+  "input": "reference/photo-tests/round-1/raw/H-01-wide.jpg",
+  "output": "reference/photo-tests/round-1/out/H-01-16x9.jpg",
+  "color": [
+    {"seed": [1020, 220, 1120, 340], "stat": "median", "region": [950, 100, 1210, 400], "target": "#5B6FA7", "ab_tolerance": 10, "l_range": 30, "l_offset": -3},
+    {"seed": [1030, 420, 1140, 465], "stat": "median", "region": [[1003, 385], [1162, 385], [1162, 425], [1159, 425], [1159, 488], [1150, 560], [1130, 640], [1112, 700], [1106, 752], [1048, 752], [1046, 734], [956, 734], [958, 700], [970, 640], [985, 560], [1000, 488], [1004, 475], [1004, 405]], "target": "#CAA28C", "ab_tolerance": 12, "l_range": 40, "l_offset": -3},
+    {"seed": [40, 40, 400, 400], "stat": "median", "target": "#0042E5", "ab_tolerance": 22, "l_range": 40, "l_offset": 0}
+  ],
+  "logos": [
+    {"kind": "embroidery", "center": [1050, 156], "width": 29, "thread": "#24315A"},
+    {"kind": "patch", "center": [1111, 412], "size": [30, 11], "ground": "match", "thread": "#24315A"}
+  ]
+}

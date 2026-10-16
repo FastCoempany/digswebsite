@@ -1,5 +1,9 @@
 {
   "input": "reference/photo-tests/round-1/raw/P-DSP-01-salmon.jpg",
   "output": "reference/photo-tests/round-1/out/P-DSP-01-salmon.jpg",
+  "color": {"seed": [330, 450, 450, 700], "stat": "median", "region": [[296, 150], [655, 150], [655, 318], [640, 322], [640, 428], [656, 440], [656, 700], [652, 900], [648, 1022], [340, 1022], [340, 900], [320, 700], [298, 440], [298, 300]], "target": "#CAA28C", "ab_tolerance": 8, "l_range": 35, "l_offset": -3},
+  "logos": [
+    {"kind": "patch", "center": [625, 1007], "size": [58, 19], "ground_box": [556, 998, 590, 1016], "thread": "#24315A", "wrap": {"axis_x": 593.5, "radius": 51.5, "arc": [9.7, 67.6], "edge": "right"}}
+  ],
   "crop": {"ratio": "4:5", "anchor": "bottom"}
 }

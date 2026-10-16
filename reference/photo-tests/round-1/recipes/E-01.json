@@ -1,0 +1,10 @@
+{
+  "input": "reference/photo-tests/round-1/raw/E-01.jpg",
+  "output": "reference/photo-tests/round-1/out/E-01.jpg",
+  "color": [
+    {"seed": [570, 450, 640, 520], "stat": "median", "region": [290, 150, 730, 650], "target": "#E2AF3F", "ab_tolerance": 16, "l_range": 32, "l_offset": -3},
+    {"seed": [40, 40, 200, 300], "stat": "median", "target": "#0042E5", "ab_tolerance": 22, "l_range": 40, "l_offset": 0}
+  ],
+  "recolor": {"circles": [[476, 318, 4], [409, 366, 5], [468, 388, 5], [567, 276, 4], [593, 375, 5]], "offset_lab": [-10, 0, -6], "ab_tolerance": 10},
+  "crop": {"ratio": "4:5", "anchor": "center"}
+}

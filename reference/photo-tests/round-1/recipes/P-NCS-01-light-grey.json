@@ -1,0 +1,9 @@
+{
+  "input": "reference/photo-tests/round-1/raw/P-NCS-01-light-grey.jpg",
+  "output": "reference/photo-tests/round-1/out/P-NCS-01-light-grey.jpg",
+  "color": {"seed": [290, 420, 440, 780], "stat": "median", "region": [120, 60, 850, 980], "target": "#D0CCCC", "ab_tolerance": 8, "l_range": 24, "l_offset": -3},
+  "logos": [
+    {"kind": "tag", "center": [484, 890], "size": [29, 88], "ground": "match", "thread": "#24315A", "rotate": 90}
+  ],
+  "crop": {"ratio": "4:5", "anchor": "top"}
+}

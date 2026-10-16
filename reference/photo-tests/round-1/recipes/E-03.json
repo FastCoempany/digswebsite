@@ -1,0 +1,13 @@
+{
+  "input": "reference/photo-tests/round-1/raw/E-03.jpg",
+  "output": "reference/photo-tests/round-1/out/E-03.jpg",
+  "color": [
+    {"seed": [330, 330, 450, 520], "stat": "median", "region": [[275, 290], [300, 265], [360, 236], [450, 236], [505, 262], [540, 300], [550, 420], [550, 590], [505, 602], [330, 602], [290, 580], [272, 560], [270, 420]], "target": "#5B6FA7", "ab_tolerance": 6, "l_range": 20, "l_offset": -6, "strength": [0.4, 0.5]},
+    {"seed": [350, 720, 430, 850], "stat": "median", "region": [[322, 585], [498, 575], [531, 641], [545, 650], [548, 700], [545, 800], [540, 900], [520, 1000], [506, 1076], [436, 1076], [436, 1045], [330, 1045], [328, 1000], [328, 900], [330, 800], [325, 700], [320, 640]], "target": "#CAA28C", "ab_tolerance": 9, "l_range": 30, "l_offset": -6, "strength": [0.5, 0.8]}
+  ],
+  "logos": [
+    {"kind": "embroidery", "center": [400, 269], "width": 35, "thread": "#24315A"},
+    {"kind": "patch", "center": [442, 611], "size": [46, 15], "ground": "match", "thread": "#24315A"}
+  ],
+  "crop": {"ratio": "4:5", "anchor": "center"}
+}

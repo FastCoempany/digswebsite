@@ -1,0 +1,11 @@
+{
+  "input": "reference/photo-tests/round-1/raw/E-02.jpg",
+  "output": "reference/photo-tests/round-1/out/E-02.jpg",
+  "tone": {"curve": [[0, 0], [20, 22], [55, 70], [85, 92], [100, 100]]},
+  "color": {"seed": [420, 950, 560, 1150], "stat": "median", "region": [360, 790, 700, 1280], "target": "#CAA28C", "ab_tolerance": 8, "l_range": 30, "l_offset": -6},
+  "clone": [
+    {"center": [533, 327], "radius": 3.5, "from": [-8, -5]},
+    {"center": [472, 314], "radius": 2.5, "from": [5, 3]}
+  ],
+  "crop": {"ratio": "4:5", "anchor": "top"}
+}

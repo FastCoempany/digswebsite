@@ -1,0 +1,6 @@
+{
+  "input": "reference/photo-tests/round-1/raw/P-NCS-02-light-grey.jpg",
+  "output": "reference/photo-tests/round-1/out/P-NCS-02-light-grey.jpg",
+  "color": {"seed": [350, 450, 600, 750], "stat": "median", "region": [140, 250, 880, 1100], "target": "#D0CCCC", "ab_tolerance": 8, "l_range": 20, "l_offset": -3},
+  "crop": {"ratio": "4:5", "anchor": "top"}
+}

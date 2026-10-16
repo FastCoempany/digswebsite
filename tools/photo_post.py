@@ -1,9 +1,12 @@
 """Post-process generated DIGS photography.
 
 Steps, in order, all driven by a JSON recipe:
-  1. color   - pull a garment toward its cloth swatch (Lab shift under a soft color mask)
+  0. tone    - an exposure curve on L* for frames shot dark (overcast editorials)
+  1. color   - pull a garment, or a backdrop, toward its swatch (Lab shift under a soft color mask)
   1b. recolor - fix small parts the generator got wrong, e.g. buttons that should be
                tone-to-tone ({"recolor": {"circles": [[x, y, r], ...]}}; see recolor_spots)
+  1c. clone  - cover small details that are off spec (a collar button on a point collar)
+               with the cloth next to them
   2. logos   - composite the real digs artwork where the tech pack places it
                (embroidery, woven tag or woven patch), shaded by the fabric under it
   3. crop    - crop to the slot ratio
@@ -17,19 +20,26 @@ Recipe (pixel coordinates refer to the input image):
 {
   "input": "path/to/generated.png",
   "output": "path/to/final.jpg",
-  "color": {                         # optional
+  "tone": {"curve": [[0, 0], [20, 22], [55, 70], [100, 100]]},   # optional; L* in -> L* out
+  "color": {                         # optional; a list of these for several garments or a backdrop
     "seed": [x0, y0, x1, y1],        # box of plain garment, used to measure its color
-    "region": [x0, y0, x1, y1],      # only pixels inside this box can change
+    "stat": "median",                # optional; "mean" (default) or "median" for busy seeds
+    "region": [x0, y0, x1, y1],      # only pixels inside this box (or [[x, y], ...] polygon) change
     "target": "#5B6FA7",             # cloth swatch from design/tokens (cloth layer)
     "ab_tolerance": 12,              # max a*b* distance from the measured garment color
     "l_range": 30,                   # max L* distance from the measured garment color
-    "l_offset": -3                   # aim slightly darker than the flat swatch (studio shading)
+    "l_offset": -3,                  # aim slightly darker than the flat swatch (studio shading)
+    "strength": [1, 1]               # optional; share of the L* and a*b* shift to apply (daylight: less)
   },
+  "recolor": {"circles": [[x, y, r]], "offset_lab": [-10, 0, -6]},  # optional; list allowed
+  "clone": [{"center": [x, y], "radius": 3, "from": [dx, dy]}],    # optional
   "logos": [                         # optional
     {"kind": "embroidery", "center": [x, y], "width": 45, "rotate": 0,
      "thread": "#24315A"},
     {"kind": "tag", "center": [x, y], "size": [w, h], "ground": "match",
-     "thread": "#24315A", "rotate": 90}
+     "thread": "#24315A", "rotate": 90},
+    {"kind": "patch", "center": [x, y], "size": [arc_length, h], "ground_box": [x0, y0, x1, y1],
+     "wrap": {"axis_x": 592, "radius": 52, "arc": [10, 70], "edge": "right"}}   # on a cuff, near the seam
   ],
   "crop": {"ratio": "4:5", "anchor": "top"}  # anchor: top, center or bottom
 }
@@ -40,7 +50,7 @@ import os
 import sys
 
 import numpy as np
-from PIL import Image, ImageFilter
+from PIL import Image, ImageDraw, ImageFilter
 
 ROOT = os.path.join(os.path.dirname(os.path.abspath(__file__)), "..")
 WORDMARK = os.path.join(ROOT, "brand", "logos", "wordmark", "digs-wordmark-black.svg")
@@ -86,11 +96,41 @@ def hex_to_rgb(h):
 
 
 # ---------------------------------------------------------------- steps
+def _region_mask(shape, region):
+    """1 inside a box [x0, y0, x1, y1] or a polygon [[x, y], ...], 0 outside; whole image if None."""
+    H, W = shape
+    if region is None:
+        return np.ones((H, W))
+    if isinstance(region[0], (list, tuple)):
+        m = Image.new("L", (W, H), 0)
+        ImageDraw.Draw(m).polygon([tuple(p) for p in region], fill=255)
+        return np.asarray(m, dtype=np.float64) / 255
+    out = np.zeros((H, W))
+    x0, y0, x1, y1 = region
+    out[y0:y1, x0:x1] = 1
+    return out
+
+
+def apply_tone(img, spec):
+    """Exposure curve on L* only (a*, b* kept), monotone through the given [in, out] points."""
+    rgb = np.asarray(img, dtype=np.float64) / 255
+    lab = rgb_to_lab(rgb)
+    pts = np.array(sorted(spec["curve"]), dtype=np.float64)
+    from scipy.interpolate import PchipInterpolator
+    curve = PchipInterpolator(pts[:, 0], pts[:, 1])
+    out = lab.copy()
+    out[..., 0] = np.clip(curve(np.clip(lab[..., 0], 0, 100)), 0, 100)
+    m = _region_mask(lab.shape[:2], spec.get("region"))[..., None]
+    res = lab_to_rgb(out) * m + rgb * (1 - m)
+    return Image.fromarray(np.round(res * 255).astype(np.uint8))
+
+
 def match_color(img, spec):
     rgb = np.asarray(img, dtype=np.float64) / 255
     lab = rgb_to_lab(rgb)
     x0, y0, x1, y1 = spec["seed"]
-    seed = lab[y0:y1, x0:x1].reshape(-1, 3).mean(axis=0)
+    px = lab[y0:y1, x0:x1].reshape(-1, 3)
+    seed = np.median(px, axis=0) if spec.get("stat") == "median" else px.mean(axis=0)
     target = rgb_to_lab(hex_to_rgb(spec["target"])[None, None, :])[0, 0]
     target[0] += spec.get("l_offset", -3)
 
@@ -99,13 +139,13 @@ def match_color(img, spec):
     d_ab = np.hypot(lab[..., 1] - seed[1], lab[..., 2] - seed[2])
     d_l = np.abs(lab[..., 0] - seed[0])
     soft = np.clip((tol - d_ab) / (tol * 0.35), 0, 1) * np.clip((lr - d_l) / (lr * 0.3), 0, 1)
-    region = np.zeros(soft.shape)
-    rx0, ry0, rx1, ry1 = spec.get("region", [0, 0, soft.shape[1], soft.shape[0]])
-    region[ry0:ry1, rx0:rx1] = 1
+    region = _region_mask(soft.shape, spec.get("region"))
     mask = Image.fromarray((soft * region * 255).astype(np.uint8)).filter(ImageFilter.GaussianBlur(2))
     m = np.asarray(mask, dtype=np.float64)[..., None] / 255
 
-    shifted = lab + (target - seed)
+    # strength [L, ab] < 1 moves only part of the way: daylight editorials keep the scene's light
+    sl, sab = spec.get("strength", [1, 1])
+    shifted = lab + (target - seed) * np.array([sl, sab, sab])
     out = lab_to_rgb(shifted) * m + rgb * (1 - m)
     report = {"measured": "#%02X%02X%02X" % tuple(np.round(lab_to_rgb(seed[None, None, :])[0, 0] * 255).astype(int)),
               "target": spec["target"], "mask_coverage": float(m.mean())}
@@ -131,7 +171,12 @@ def recolor_spots(img, spec):
     for x, y, r in spec["circles"]:
         dist = np.hypot(xx - x, yy - y)
         ring = (dist > r + 1) & (dist <= r + 4)
-        fabric = np.median(lab[ring], axis=0)
+        ring_px = lab[ring]
+        chroma = np.hypot(ring_px[:, 1], ring_px[:, 2])
+        top = np.percentile(chroma, 90)
+        if top > 15:                       # colored cloth: ignore shadow gaps, skin or trousers in the ring
+            ring_px = ring_px[chroma >= 0.6 * top]
+        fabric = np.median(ring_px, axis=0)
         inside = np.clip((r + 1 - dist) / 2, 0, 1)
         d_ab = np.hypot(lab[..., 1] - fabric[1], lab[..., 2] - fabric[2])
         part = np.clip((d_ab - tol * 0.5) / (tol * 0.5), 0, 1) * inside
@@ -145,6 +190,27 @@ def recolor_spots(img, spec):
     m = weight[..., None]
     res = lab_to_rgb(out) * m + rgb * (1 - m)
     return Image.fromarray(np.round(res * 255).astype(np.uint8))
+
+
+def clone_spots(img, specs):
+    """Cover a small detail with the cloth beside it: each spec copies the disc at
+    center + from over the disc at center, with a soft edge, so wales and shading carry on.
+
+    specs = [{"center": [x, y], "radius": 3, "from": [dx, dy], "feather": 1.5}, ...]
+    Pick "from" along the wale or the nearest seam so the texture lines up.
+    """
+    arr = np.asarray(img, dtype=np.float64)
+    out = arr.copy()
+    H, W = arr.shape[:2]
+    yy, xx = np.mgrid[0:H, 0:W]
+    for s in specs:
+        cx, cy = s["center"]
+        dx, dy = s["from"]
+        r, f = s["radius"], s.get("feather", 1.5)
+        a = np.clip((r + f - np.hypot(xx - cx, yy - cy)) / (2 * f), 0, 1)[..., None]
+        src = np.roll(np.roll(arr, -int(dy), axis=0), -int(dx), axis=1)   # src[y, x] = arr[y+dy, x+dx]
+        out = src * a + out * (1 - a)
+    return Image.fromarray(np.round(out).astype(np.uint8))
 
 
 def _wordmark_alpha(width):
@@ -210,11 +276,18 @@ def composite_logo(img, spec):
 
     if kind in ("tag", "patch"):
         # Woven damask label, ground dyed to match the fabric, logo per the tech-pack artwork page.
-        tw, th = spec["size"]                                            # on-image size, after rotation
+        tw, th = spec["size"]                                            # on-image size before any tilt
         rot = spec.get("rotate", 0)
-        lw, lh = (th, tw) if rot in (90, 270) else (tw, th)              # label drawn unrotated, long side across
+        upright = 45 < rot % 180 < 135                                   # a vertical tag, e.g. 90 or a tilted 96
+        lw, lh = (th, tw) if upright else (tw, th)                       # label drawn unrotated, long side across
         box = (int(cx - tw / 2), int(cy - th / 2), int(cx - tw / 2) + tw, int(cy - th / 2) + th)
-        ground = _fabric_color(img, box) if spec.get("ground", "match") == "match" else hex_to_rgb(spec["ground"])
+        if "ground_box" in spec:                                         # sample the cloth from a given box
+            gx0, gy0, gx1, gy1 = spec["ground_box"]
+            ground = np.median(np.asarray(img.crop((gx0, gy0, gx1, gy1)), dtype=np.float64).reshape(-1, 3), axis=0) / 255
+        elif spec.get("ground", "match") == "match":
+            ground = _fabric_color(img, box)
+        else:
+            ground = hex_to_rgb(spec["ground"])
         ground = np.clip(ground * 1.03, 0, 1)                            # damask reads a touch brighter than cord
         W, H = lw * SS, lh * SS
         yy, xx = np.mgrid[0:H, 0:W]
@@ -234,12 +307,46 @@ def composite_logo(img, spec):
         rgb[inset:H - inset, inset] = dark
         rgb[inset:H - inset, W - inset - 1] = dark
         art = Image.fromarray(np.dstack([np.clip(rgb, 0, 255), np.full((H, W), 255.0)]).astype(np.uint8), "RGBA")
+        if "wrap" in spec:
+            # A label on a round surface seen from the front, e.g. a cuff patch near the outseam:
+            # {"axis_x": 592, "radius": 52, "arc": [10, 70], "edge": "right"} places the label
+            # between 10 and 70 px of arc in from the silhouette edge (the seam), squeezed toward it.
+            art, box = _wrap_label(art, spec["wrap"], cy, lh)
+            return _place(img, art, box, shadow_alpha=80, shadow_blur=1.2)
         art = art.resize((lw, lh), Image.LANCZOS)
         if rot:
             art = art.rotate(rot, expand=True, resample=Image.BICUBIC)
+            w, h = art.size                                              # a tilt grows the box; keep it centered
+            box = (int(cx - w / 2), int(cy - h / 2), int(cx - w / 2) + w, int(cy - h / 2) + h)
         return _place(img, art, box, shadow_alpha=80, shadow_blur=1.2)
 
     raise ValueError(f"unknown logo kind {kind!r}")
+
+
+def _wrap_label(art, wrap, cy, lh):
+    """Project a flat label (drawn at SS x size) onto a vertical cylinder seen straight on."""
+    cx, R = wrap["axis_x"], wrap["radius"]
+    s0, s1 = wrap["arc"]                                   # arc distance from the edge, near and far end
+    sign = 1 if wrap.get("edge", "right") == "right" else -1
+    x_near = cx + sign * R * np.cos(s0 / R)
+    x_far = cx + sign * R * np.cos(s1 / R)
+    x0 = int(np.floor(min(x_near, x_far)))
+    w = int(np.ceil(max(x_near, x_far))) - x0
+    src = np.asarray(art, dtype=np.float64)
+    Hs, Ws = src.shape[:2]
+    xs = x0 + (np.arange(w * SS) + 0.5) / SS              # output columns, supersampled
+    t = np.clip(sign * (xs - cx) / R, -1, 1)
+    s = R * np.arccos(t)                                   # arc distance from the edge for each column
+    u = (s1 - s) / (s1 - s0)                               # 0 at the far end (text start), 1 at the near end
+    if sign < 0:
+        u = 1 - u
+    inside = (u >= 0) & (u <= 1)
+    cols = np.clip(np.round(u * (Ws - 1)).astype(int), 0, Ws - 1)
+    out = src[:, cols].copy()
+    out[:, ~inside, 3] = 0
+    warped = Image.fromarray(out.astype(np.uint8), "RGBA").resize((w, lh), Image.LANCZOS)
+    top = int(round(cy - lh / 2))
+    return warped, (x0, top, x0 + w, top + lh)
 
 
 def crop_ratio(img, spec):
@@ -262,10 +369,17 @@ def run(recipe_path):
     path = lambda p: p if os.path.isabs(p) else os.path.normpath(os.path.join(ROOT, p))
     img = Image.open(path(r["input"])).convert("RGB")
     report = {}
-    if "color" in r:
-        img, report["color"] = match_color(img, r["color"])
-    if "recolor" in r:
-        img = recolor_spots(img, r["recolor"])
+    if "tone" in r:
+        img = apply_tone(img, r["tone"])
+    colors = r.get("color", [])
+    for spec in (colors if isinstance(colors, list) else [colors]):   # one step per garment or backdrop
+        img, rep = match_color(img, spec)
+        report.setdefault("color", []).append(rep)
+    recolors = r.get("recolor", [])
+    for spec in (recolors if isinstance(recolors, list) else [recolors]):
+        img = recolor_spots(img, spec)
+    if r.get("clone"):
+        img = clone_spots(img, r["clone"])
     for spec in r.get("logos", []):
         img = composite_logo(img, spec)
     if "crop" in r:

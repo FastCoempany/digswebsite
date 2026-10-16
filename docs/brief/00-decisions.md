@@ -36,6 +36,6 @@ What is settled, who settled it, and what is still open. If a later doc disagree
 | O5 | Pincord open items (cuff cut, pocket closure, wash, back pleat, back embroidery, buttons) | The pack's defaults | Founder |
 | O6 | Pant fly (faux vs working zip) | Faux fly, per the pack | Founder |
 | O7 | Season label | "Capsule 01" on the site (packs say FW25 / FW27 TBC) | Founder |
-| O8 | Round 1 sign-off | Four test shots in `reference/photo-tests/round-1/out/` (color, crop, logo placement); the rest of the shoot runs after the founder's OK and a check of the AI balance | Founder |
+| O8 | Round 1 sign-off | 15 finals in `reference/photo-tests/round-1/out/` (the founder OK'd the 1a test and said "run it"; 1b followed). On sign-off they move to `assets/photography/` with `MANIFEST.csv`; until then the UI uses `MediaSlot` placeholders. Round 2 runs after a check of the AI balance (should read 44 credits used) | Founder |
 | O9 | A second model to reflect "primarily men, inclusive of women" | Not in v1 | Founder |
 | O10 | Hangtag artwork | Still TBC in every pack; not shown on the site | Founder |

@@ -84,20 +84,29 @@ Common generation errors to reject: extra or missing buttons, pockets on the wro
 3. **Casting:** done (round 1 above). Founder picks → model bible.
 4. **Optional, face-matched references: the Gemini app, free (Nano Banana 2).** It takes reference photos and holds a face across images. Free-tier images carry a visible Gemini watermark, so they're for review and references only, never site images.
 5. **Check** each image against its checklist; regenerate failures.
-6. **Post** with `tools/photo_post.py` and a JSON recipe per image (`reference/photo-tests/round-1/recipes/` has examples): pull the garment to its cloth swatch, recolor parts the generator got wrong (tone-to-tone buttons), composite the real digs artwork (back-yoke embroidery, woven placket tag, woven patch) at the tech-pack placement, crop to ratio.
+6. **Post** with `tools/photo_post.py` and a JSON recipe per image (`reference/photo-tests/round-1/recipes/` has 15): pull the garment to its cloth swatch (studio frames all the way; daylight editorials part of the way, so the scene's light holds), pull the cobalt seamless to Digs Blue, recolor parts the generator got wrong (tone-to-tone buttons), clone out details that break spec (a collar button on a point collar), composite the real digs artwork (back-yoke embroidery, woven placket tag, woven patch, wrapped around a cuff where it sits near a seam) at the tech-pack placement, crop to ratio. A polygon region keeps a color pull off skin next to the salmon pant.
 7. **Export** to `assets/photography/`, log in `MANIFEST.csv`; later upload to Shopify Files.
 8. **Free stock** (Unsplash, Pexels) only for empty environment plates if a scene needs one. No people, no brands; record the URL and license in `assets/photography/CREDITS.md`.
 9. **Disclosure:** until real photos of production samples replace them, the site carries a line under the gallery: "Images are previews made from the tech pack."
 
-## Round 1 test (Oct 16 2026)
+## Round 1 (Oct 16 2026)
 
-Four shots of E, generated and posted: Thermal Sand Blue front and back (back-yoke embroidery composited), Pincord front (buttons recolored tone-to-tone, placket tag composited), Drawstring Pant front. Raw files, recipes and finals in `reference/photo-tests/round-1/`.
+**15 finals** of E in `reference/photo-tests/round-1/out/` (raw frames, recipes and a table of what post did per file in the same folder):
+- **1a, the pipeline test:** Thermal Sand Blue front and back, Pincord front, Drawstring Pant front.
+- **1b, the rest of what the UI needs first:** Thermal Off White front and back, Pincord back, Needlecord front and back, Drawstring Pant back, H-01 (9:16 and 16:9), E-01, E-02, E-03.
+
+Every product and colorway now has P-xx-01 and P-xx-02.
 
 What the generator got wrong, and the fix:
-- Garment colors came out greyer (Sand Blue) and darker (Mustard) than the swatches → pulled to the swatch in post. The pant was within range and left alone.
-- Pincord buttons came out brown → recolored tone-to-tone in post.
-- Pincord cuffs show square corners, not the ¾" diagonal cut → show the cut in a cuff detail shot or regenerate; the pack lists the cut as open item 1.
-- Pincord placket reads wider than 1¼" → accepted for previews; fix on the production photo.
+- Garment colors drift: Sand Blue greyer, Mustard darker, Light Grey a full step darker (it reads mid grey), Salmon pinker (hue about 35° against the swatch's 56°) → pulled to the swatch in post. Studio frames land within ΔE 1.2 of swatch-minus-shading; the platform editorial moves part of the way so it still looks like daylight. The 1a pant front was re-posted to match the corrected back.
+- The cobalt seamless comes out duller than Digs Blue (ΔE about 25) → pulled to `#0042E5`, so the hero sits flush on a Digs Blue page.
+- Pincord buttons come out off-white or brown → recolored tone-to-tone.
+- Needlecord gets a button-down collar or clipped pocket corners → the front was regenerated with the pocket spelled out; in E-02 the two collar buttons are cloned out.
+- A recognizable skyline landmark showed up behind the platform frame → regenerated with "no skyline, no recognizable buildings". Keep that line in every outdoor prompt.
+- The generator draws jeans-style back pockets with double topstitching on the pant. The pack's pointed patch pocket with 1/16" + 1/4" topstitch is close enough for previews.
+- Still open from 1a: pincord cuffs show square corners, not the ¾" diagonal cut (show it in the P-PBD-05 cuff detail); pincord and needlecord plackets read wider than 1¼" (fix on the production photos).
+
+Not shown yet: the pant's cuff patch from behind (it sits in front of the outseam, so back views can't show it) and the needlecord placket tag in E-02 (the placket foot is edge-on). The hero is 1536 px wide; for a sharp 2x desktop hero, run Figma's "Boost image resolution" on H-01 only (5–10 credits).
 
 ## Credit budget
 
@@ -107,12 +116,14 @@ What the generator got wrong, and the fix:
 |---|---|---|---|---|
 | 0 | Casting A–E (done Oct 16) | — | 5 | 10 |
 | 1a | Round 1 test: P-TLS-01/02 Sand Blue, P-PBD-01, P-DSP-01 (done Oct 16) | 4 | 4 | 8 |
-| 1b | Rest of what the UI needs first: H-01; P-xx-01 and P-xx-02 for the remaining product/colorways; E-01, E-02, E-03 | 10 | ~30 | ~60 |
+| 1b | H-01 (2 frames); P-xx-01 and P-xx-02 for the remaining product/colorways; E-01, E-02, E-03 (done Oct 16) | 11 | 13 (11 + 2 retakes) | 26 |
 | 2 | Everything else on the shot list: side views, macros, flats, remaining editorials | ~31 | ~93 | ~186 |
-| | **Total** | **~45** | **~132** | **~264** |
+| | **Total** | **~46** | **~115** | **~230** |
 
-The 2-credit figure assumes `gpt-image-2.5-sunburst` is the model Figma bills as ChatGPT Images; it's the only OpenAI model the Figma connector offers. **Check:** casting and the round 1 test used 9 images, so the AI balance should show 18 credits used. If it shows more, redo this table before round 1b.
+Used so far: **22 images, 44 credits** (at 2 credits each). Round 1b came in well under its estimate because most frames passed on the first try and post fixed color, buttons and logos without regenerating.
 
-That leaves about 220 credits in the month for retakes and Edit image runs. Each round fits inside one day's cap. If Figma changes its rates, recheck this table before a round starts; check the balance in a file's main menu under **AI balance**.
+The 2-credit figure assumes `gpt-image-2.5-sunburst` is the model Figma bills as ChatGPT Images; it's the only OpenAI model the Figma connector offers. **Check:** the AI balance should show 44 credits used after round 1. If it shows more, redo this table before round 2.
+
+That leaves about 270 credits in the month after round 2 for retakes, Edit image runs and the hero boost. Each round fits inside one day's cap. If Figma changes its rates, recheck this table before a round starts; check the balance in a file's main menu under **AI balance**.
 
 Not used: Figma Weave (separate account, small free allowance, per-run approvals) and any paid model.
