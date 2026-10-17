@@ -52,7 +52,11 @@ export function ProductPage({product, others, color, forceStatus, forceSize = nu
   const chosen = size ? digs.variantFor(product, selectedColor, size) : null;
   const chart = digs.sizeChart(product);
   const hotspots = digs.hotspots(product);
-  const fetcher = useFetcher();
+  // Same key as the cart drawer and page: every cart mutation goes through one fetcher, so an add
+  // and a line update can never overlap against the same cookie snapshot.
+  const fetcher = useFetcher({key: 'cart'});
+  // Only this page's own add should toast and open the drawer, not a line update sharing the fetcher.
+  const addPending = useRef(false);
   const {setOpen, toast} = useOverlay();
   const buyRef = useRef<HTMLDivElement>(null);
   const [sticky, setSticky] = useState(false);
@@ -69,7 +73,9 @@ export function ProductPage({product, others, color, forceStatus, forceSize = nu
   }, []);
 
   useEffect(() => {
-    if (fetcher.state === 'idle' && fetcher.data && (fetcher.data as {ok?: boolean}).ok) {
+    if (fetcher.state !== 'idle' || !addPending.current || !fetcher.data) return;
+    addPending.current = false;
+    if ((fetcher.data as {ok?: boolean}).ok) {
       toast(copy.product.added, 'added-to-cart');
       setOpen('cart');
     }
@@ -111,6 +117,7 @@ export function ProductPage({product, others, color, forceStatus, forceSize = nu
       return;
     }
     if (!chosen) return;
+    addPending.current = true;
     fetcher.submit({intent: 'LinesAdd', merchandiseId: chosen.id, quantity: '1'}, {method: 'post', action: '/cart'});
   };
 

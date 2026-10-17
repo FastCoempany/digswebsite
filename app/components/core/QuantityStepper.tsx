@@ -1,3 +1,4 @@
+import {useEffect, useState} from 'react';
 import {Icon} from './icons';
 import './QuantityStepper.css';
 
@@ -30,15 +31,21 @@ export function QuantityStepper({value, min = 1, max = 99, onChange, disabled, u
     if (!formId) onChange?.(next);
   };
   const submitAttrs = (next: number) => (formId ? {type: 'submit' as const, form: formId, name: 'quantity', value: String(next)} : {type: 'button' as const});
+  // Without JavaScript a submit button at the bound would still post (quantity 0 removes the line),
+  // so the server HTML disables it natively; after hydration the click guard takes over.
+  const [hydrated, setHydrated] = useState(false);
+  useEffect(() => setHydrated(true), []);
+  const nativeDec = disabled || (Boolean(formId) && !hydrated && value <= min);
+  const nativeInc = disabled || (Boolean(formId) && !hydrated && value >= max);
   return (
     <div className={`qty ${updating ? 'is-updating' : ''} ${className}`} role="group" aria-label={labels.quantity} aria-busy={updating || undefined}>
-      <button {...submitAttrs(value - 1)} className="qty-btn" aria-label={labels.decrease} aria-disabled={dec || undefined} disabled={disabled} onClick={press(dec, value - 1)}>
+      <button {...submitAttrs(value - 1)} className="qty-btn" aria-label={labels.decrease} aria-disabled={dec || undefined} disabled={nativeDec} onClick={press(dec, value - 1)}>
         <Icon name="minus" size={16} />
       </button>
       <output className="qty-value" aria-live="polite">
         {value}
       </output>
-      <button {...submitAttrs(value + 1)} className="qty-btn" aria-label={labels.increase} aria-disabled={inc || undefined} disabled={disabled} onClick={press(inc, value + 1)}>
+      <button {...submitAttrs(value + 1)} className="qty-btn" aria-label={labels.increase} aria-disabled={inc || undefined} disabled={nativeInc} onClick={press(inc, value + 1)}>
         <Icon name="plus" size={16} />
       </button>
     </div>
