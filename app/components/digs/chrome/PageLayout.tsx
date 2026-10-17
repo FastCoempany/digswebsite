@@ -1,6 +1,7 @@
 import type {ReactNode} from 'react';
 import {useLocation} from 'react-router';
-import type {Cart, Product} from '~/lib/mock/types';
+import type {Cart} from '~/lib/mock/types';
+import type {ProductCardData} from '~/components/core/ProductCard';
 import {OverlayProvider, useOverlay} from '~/components/core/OverlayProvider';
 import {AnnouncementBar} from '~/components/core/AnnouncementBar';
 import {ToastRegion} from '~/components/core/Toast';
@@ -15,7 +16,7 @@ import './chrome.css';
 
 export type PageLayoutProps = {
   cart: Cart | null;
-  products: Product[];
+  cards: ProductCardData[];
   children: ReactNode;
   /** Home: transparent header over the hero. */
   transparentHeader?: boolean;
@@ -37,7 +38,7 @@ export function PageLayout(props: PageLayoutProps) {
   );
 }
 
-function Frame({cart, products, children, transparentHeader, taglineIndex}: PageLayoutProps) {
+function Frame({cart, cards, children, transparentHeader, taglineIndex}: PageLayoutProps) {
   const {open, setOpen, close, toasts, dismissToast} = useOverlay();
   const location = useLocation();
   const index = taglineIndex ?? Math.abs(hash(location.pathname)) % copy.taglineBand.length;
@@ -69,7 +70,7 @@ function Frame({cart, products, children, transparentHeader, taglineIndex}: Page
         smallPrint={copy.menu.smallPrint}
         labels={{close: copy.a11y.closeMenu, menu: copy.a11y.menu}}
       />
-      <CartDrawer cart={cart} products={products} />
+      <CartDrawer cart={cart} cards={cards} />
       <ToastRegion toasts={toasts} onDismiss={dismissToast} dismissLabel={copy.a11y.dismiss} />
     </div>
   );

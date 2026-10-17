@@ -14,6 +14,7 @@ import type {Route} from './+types/root';
 import appStyles from '~/styles/app.css?url';
 import {resolveMode} from '~/lib/mode';
 import {copy} from '~/lib/copy';
+import {cardData} from '~/lib/view';
 import {PageLayout} from '~/components/digs/chrome/PageLayout';
 import {NotFound} from '~/components/pages/NotFound';
 
@@ -48,7 +49,9 @@ export async function loader({request, context}: Route.LoaderArgs) {
   return {
     mode,
     cart,
-    products,
+    // Card data only (the cart drawer's empty state and the 404 grid); whole products would
+    // serialize ~100 KB into every page.
+    cards: products.map((p) => cardData(p)),
     siteName: copy.brand.name,
   };
 }
@@ -78,7 +81,7 @@ export default function App() {
   const data = useRouteLoaderData<RootLoader>('root');
   if (!data) return <Outlet />;
   return (
-    <PageLayout cart={data.cart} products={data.products}>
+    <PageLayout cart={data.cart} cards={data.cards}>
       <Outlet />
     </PageLayout>
   );
@@ -94,8 +97,8 @@ export function ErrorBoundary() {
       ? error.message
       : '';
   return (
-    <PageLayout cart={data?.cart ?? null} products={data?.products ?? []}>
-      <NotFound status={status} message={status === 404 ? undefined : message} products={data?.products ?? []} />
+    <PageLayout cart={data?.cart ?? null} cards={data?.cards ?? []}>
+      <NotFound status={status} message={status === 404 ? undefined : message} cards={data?.cards ?? []} />
     </PageLayout>
   );
 }

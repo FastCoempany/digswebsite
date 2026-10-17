@@ -3,7 +3,6 @@ import {useFetcher, useSearchParams} from 'react-router';
 import type {Product, ProductStatus} from '~/lib/mock/types';
 import {digs, srcSetFor} from '~/lib/mock';
 import {copy, fill, text} from '~/lib/copy';
-import {cardData} from '~/lib/view';
 import {Breadcrumb} from '~/components/core/Breadcrumb';
 import {ProductGallery} from '~/components/core/ProductGallery';
 import {Price} from '~/components/core/Price';
@@ -13,7 +12,7 @@ import {Button} from '~/components/core/Button';
 import {Accordion} from '~/components/core/Accordion';
 import {Modal} from '~/components/core/Modal';
 import {SizeChart, type SizeChartUnit} from '~/components/core/SizeChart';
-import {ProductCard} from '~/components/core/ProductCard';
+import {ProductCard, type ProductCardData} from '~/components/core/ProductCard';
 import {Badge} from '~/components/core/Badge';
 import {useOverlay} from '~/components/core/OverlayProvider';
 import {StyleString} from '~/components/digs/StyleString';
@@ -25,7 +24,7 @@ import './pages.css';
 
 export type ProductPageProps = {
   product: Product;
-  others: Product[];
+  others: ProductCardData[];
   /** Initial colorway (from ?color=). */
   color?: string | null;
   /** Stories: force a state. */
@@ -288,9 +287,9 @@ export function ProductPage({product, others, color, forceStatus, forceSize = nu
               </h2>
             </div>
             <ul className="capsule-grid">
-              {others.map((p) => (
-                <li key={p.handle}>
-                  <ProductCard product={cardData(p)} labels={labels} />
+              {others.map((c) => (
+                <li key={c.handle}>
+                  <ProductCard product={c} labels={labels} />
                 </li>
               ))}
             </ul>

@@ -2,6 +2,7 @@ import {data} from 'react-router';
 import type {Route} from './+types/cart';
 import {CartPage} from '~/components/pages/CartPage';
 import {copy} from '~/lib/copy';
+import {cardData} from '~/lib/view';
 
 export const meta: Route.MetaFunction = () => [{title: `${copy.cart.head} · ${copy.brand.name}`}];
 
@@ -36,10 +37,10 @@ export async function action({request, context}: Route.ActionArgs) {
 
 export async function loader({context}: Route.LoaderArgs) {
   const [cart, products] = await Promise.all([context.digs.cart.get(), context.digs.products()]);
-  return {cart, products};
+  return {cart, cards: products.map((p) => cardData(p))};
 }
 
 /** No-JS fallback page for the drawer. */
 export default function Cart({loaderData}: Route.ComponentProps) {
-  return <CartPage cart={loaderData.cart} products={loaderData.products} />;
+  return <CartPage cart={loaderData.cart} cards={loaderData.cards} />;
 }

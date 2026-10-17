@@ -23,6 +23,8 @@ export type ProductCardData = {
   soldOut?: boolean;
   /** Short line for the mini variant (colorway, size). */
   meta?: string;
+  /** Category label for filters (e.g. Tops / Bottoms). */
+  category?: string;
 };
 
 export type ProductCardProps = {

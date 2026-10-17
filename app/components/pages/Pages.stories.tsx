@@ -1,5 +1,6 @@
 import type {Meta, StoryObj} from '@storybook/react-vite';
 import {PRODUCTS, POLICIES, EMPTY_CART, hydrateCart} from '~/lib/mock';
+import {cardData} from '~/lib/view';
 import {PageLayout} from '~/components/digs/chrome/PageLayout';
 import {HomePage} from './HomePage';
 import {ShopPage} from './ShopPage';
@@ -20,8 +21,10 @@ const meta: Meta = {
 };
 export default meta;
 
+const CARDS = PRODUCTS.map((p) => cardData(p));
 const thermal = PRODUCTS[0];
-const others = PRODUCTS.slice(1);
+const others = CARDS.slice(1);
+const othersThan = (i: number) => CARDS.filter((_, j) => j !== i);
 const filledCart = hydrateCart({
   id: 'gid://shopify/Cart/story',
   lines: [
@@ -31,25 +34,25 @@ const filledCart = hydrateCart({
 });
 
 const frame = (children: React.ReactNode, extra: Partial<React.ComponentProps<typeof PageLayout>> = {}) => (
-  <PageLayout cart={EMPTY_CART} products={PRODUCTS} taglineIndex={0} {...extra}>
+  <PageLayout cart={EMPTY_CART} cards={CARDS} taglineIndex={0} {...extra}>
     {children}
   </PageLayout>
 );
 
-export const Home: StoryObj = {render: () => frame(<HomePage products={PRODUCTS} />, {transparentHeader: true}), parameters: {route: '/'}};
-export const HomeMenuOpen: StoryObj = {name: 'Home · menu open', render: () => frame(<HomePage products={PRODUCTS} />, {transparentHeader: true, initialOpen: 'menu'}), parameters: {route: '/'}};
-export const HomeCartEmpty: StoryObj = {name: 'Home · cart drawer, empty', render: () => frame(<HomePage products={PRODUCTS} />, {transparentHeader: true, initialOpen: 'cart'}), parameters: {route: '/'}};
-export const HomeCartFilled: StoryObj = {name: 'Home · cart drawer, filled', render: () => frame(<HomePage products={PRODUCTS} />, {transparentHeader: true, initialOpen: 'cart', cart: filledCart}), parameters: {route: '/'}};
-export const Shop: StoryObj = {render: () => frame(<ShopPage products={PRODUCTS} />), parameters: {route: '/collections/all'}};
-export const ShopTops: StoryObj = {name: 'Shop · Tops filter', render: () => frame(<ShopPage products={PRODUCTS} filter="tops" />), parameters: {route: '/collections/all'}};
-export const ShopLoading: StoryObj = {name: 'Shop · loading skeleton', render: () => frame(<ShopPage products={PRODUCTS} loading />), parameters: {route: '/collections/all'}};
-export const ShopEmptyFilter: StoryObj = {name: 'Shop · empty filter result', render: () => frame(<ShopPage products={PRODUCTS.filter((p) => p.productType === 'Tops')} filter="bottoms" />), parameters: {route: '/collections/all'}};
-export const ShopAllSoldOut: StoryObj = {name: 'Shop · all sold out', render: () => frame(<ShopPage products={PRODUCTS} allSoldOut />), parameters: {route: '/collections/all'}};
+export const Home: StoryObj = {render: () => frame(<HomePage cards={CARDS} thermal={thermal} />, {transparentHeader: true}), parameters: {route: '/'}};
+export const HomeMenuOpen: StoryObj = {name: 'Home · menu open', render: () => frame(<HomePage cards={CARDS} thermal={thermal} />, {transparentHeader: true, initialOpen: 'menu'}), parameters: {route: '/'}};
+export const HomeCartEmpty: StoryObj = {name: 'Home · cart drawer, empty', render: () => frame(<HomePage cards={CARDS} thermal={thermal} />, {transparentHeader: true, initialOpen: 'cart'}), parameters: {route: '/'}};
+export const HomeCartFilled: StoryObj = {name: 'Home · cart drawer, filled', render: () => frame(<HomePage cards={CARDS} thermal={thermal} />, {transparentHeader: true, initialOpen: 'cart', cart: filledCart}), parameters: {route: '/'}};
+export const Shop: StoryObj = {render: () => frame(<ShopPage cards={CARDS} />), parameters: {route: '/collections/all'}};
+export const ShopTops: StoryObj = {name: 'Shop · Tops filter', render: () => frame(<ShopPage cards={CARDS} filter="tops" />), parameters: {route: '/collections/all'}};
+export const ShopLoading: StoryObj = {name: 'Shop · loading skeleton', render: () => frame(<ShopPage cards={CARDS} loading />), parameters: {route: '/collections/all'}};
+export const ShopEmptyFilter: StoryObj = {name: 'Shop · empty filter result', render: () => frame(<ShopPage cards={CARDS.filter((c) => c.category === 'Tops')} filter="bottoms" />), parameters: {route: '/collections/all'}};
+export const ShopAllSoldOut: StoryObj = {name: 'Shop · all sold out', render: () => frame(<ShopPage cards={CARDS} allSoldOut />), parameters: {route: '/collections/all'}};
 export const ProductThermal: StoryObj = {name: 'Product · Thermal Long Sleeve', render: () => frame(<ProductPage product={thermal} others={others} />), parameters: {route: '/products/thermal-long-sleeve'}};
 export const ProductThermalSandBlue: StoryObj = {name: 'Product · Thermal, Sand Blue', render: () => frame(<ProductPage product={thermal} others={others} color="Sand Blue" />), parameters: {route: '/products/thermal-long-sleeve?color=Sand%20Blue'}};
-export const ProductPincord: StoryObj = {name: 'Product · Pincord Button-Down', render: () => frame(<ProductPage product={PRODUCTS[1]} others={PRODUCTS.filter((p) => p !== PRODUCTS[1])} />), parameters: {route: '/products/pincord-button-down'}};
-export const ProductNeedlecord: StoryObj = {name: 'Product · Needlecord Shirt', render: () => frame(<ProductPage product={PRODUCTS[2]} others={PRODUCTS.filter((p) => p !== PRODUCTS[2])} />), parameters: {route: '/products/needlecord-shirt'}};
-export const ProductPant: StoryObj = {name: 'Product · Drawstring Pant', render: () => frame(<ProductPage product={PRODUCTS[3]} others={PRODUCTS.filter((p) => p !== PRODUCTS[3])} />), parameters: {route: '/products/drawstring-pant'}};
+export const ProductPincord: StoryObj = {name: 'Product · Pincord Button-Down', render: () => frame(<ProductPage product={PRODUCTS[1]} others={othersThan(1)} />), parameters: {route: '/products/pincord-button-down'}};
+export const ProductNeedlecord: StoryObj = {name: 'Product · Needlecord Shirt', render: () => frame(<ProductPage product={PRODUCTS[2]} others={othersThan(2)} />), parameters: {route: '/products/needlecord-shirt'}};
+export const ProductPant: StoryObj = {name: 'Product · Drawstring Pant', render: () => frame(<ProductPage product={PRODUCTS[3]} others={othersThan(3)} />), parameters: {route: '/products/drawstring-pant'}};
 export const ProductSizeNotSelected: StoryObj = {name: 'Product · size not selected (error)', render: () => frame(<ProductPage product={thermal} others={others} forceStatus="available" forceError />), parameters: {route: '/products/thermal-long-sleeve'}};
 export const ProductAvailable: StoryObj = {name: 'Product · available, size M', render: () => frame(<ProductPage product={thermal} others={others} forceStatus="available" forceSize="M" />), parameters: {route: '/products/thermal-long-sleeve'}};
 export const ProductAdding: StoryObj = {name: 'Product · adding', render: () => frame(<ProductPage product={thermal} others={others} forceStatus="available" forceSize="M" forceAdding />), parameters: {route: '/products/thermal-long-sleeve'}};
@@ -65,7 +68,7 @@ export const Accessibility: StoryObj = {render: () => frame(<AccessibilityPage /
 export const Policies: StoryObj = {render: () => frame(<PoliciesPage policies={POLICIES} />), parameters: {route: '/policies'}};
 export const Policy: StoryObj = {name: 'Policy · privacy', render: () => frame(<PolicyPage policy={POLICIES[0]} />), parameters: {route: '/policies/privacy-policy'}};
 export const Account: StoryObj = {render: () => frame(<AccountPage />), parameters: {route: '/account'}};
-export const CartEmpty: StoryObj = {name: 'Cart page · empty', render: () => frame(<CartPage cart={EMPTY_CART} products={PRODUCTS} />), parameters: {route: '/cart'}};
-export const CartFilled: StoryObj = {name: 'Cart page · filled', render: () => frame(<CartPage cart={filledCart} products={PRODUCTS} />, {cart: filledCart}), parameters: {route: '/cart'}};
-export const NotFoundPage: StoryObj = {name: '404', render: () => frame(<NotFound products={PRODUCTS} />), parameters: {route: '/nope'}};
+export const CartEmpty: StoryObj = {name: 'Cart page · empty', render: () => frame(<CartPage cart={EMPTY_CART} cards={CARDS} />), parameters: {route: '/cart'}};
+export const CartFilled: StoryObj = {name: 'Cart page · filled', render: () => frame(<CartPage cart={filledCart} cards={CARDS} />, {cart: filledCart}), parameters: {route: '/cart'}};
+export const NotFoundPage: StoryObj = {name: '404', render: () => frame(<NotFound cards={CARDS} />), parameters: {route: '/nope'}};
 export const Tokens: StoryObj = {name: 'Dev · tokens', render: () => frame(<TokensPage />), parameters: {route: '/dev/tokens'}};

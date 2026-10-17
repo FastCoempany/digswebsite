@@ -1,4 +1,4 @@
-import {WORDMARK} from './paths.generated';
+import wordmarkUrl from '~/assets/marks/wordmark.svg';
 import './marks.css';
 
 export type MarkColor = 'blue' | 'black' | 'ice' | 'current';
@@ -17,29 +17,19 @@ export type WordmarkProps = {
   label?: string;
 };
 
-/** The `digs` wordmark, inline SVG from brand/logos/wordmark (via tools/brand_svg.py). */
-export function Wordmark({
-  color = 'current',
-  height = '28px',
-  edgeToEdge = false,
-  decorative = false,
-  className = '',
-  label = 'digs',
-}: WordmarkProps) {
+/**
+ * The `digs` wordmark from brand/logos/wordmark (via tools/brand_svg.py), drawn as a CSS mask over
+ * currentColor: one cached SVG for every instance on the page instead of inline path data.
+ */
+export function Wordmark({color = 'current', height = '28px', edgeToEdge = false, decorative = false, className = '', label = 'digs'}: WordmarkProps) {
   return (
-    <svg
-      viewBox={WORDMARK.viewBox}
-      className={`mark mark-wordmark mark-${color} ${edgeToEdge ? 'mark-edge' : ''} ${className}`}
-      style={edgeToEdge ? undefined : {height}}
+    <span
+      className={`mark mark-mask mark-wordmark mark-${color} ${edgeToEdge ? 'mark-edge' : ''} ${className}`}
+      style={{...(edgeToEdge ? {} : {height}), ['--mark-mask' as string]: `url(${wordmarkUrl})`}}
       role={decorative ? undefined : 'img'}
       aria-label={decorative ? undefined : label}
       aria-hidden={decorative || undefined}
-      focusable="false"
       data-brand-graphic={decorative ? '' : undefined}
-    >
-      {WORDMARK.paths.map((d, i) => (
-        <path key={i} d={d} fill="currentColor" />
-      ))}
-    </svg>
+    />
   );
 }

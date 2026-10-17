@@ -51,5 +51,6 @@ export function cardData(p: Product, colorway?: string | null): ProductCardData 
     badge: badgeFor(status),
     soldOut: status === 'sold-out',
     meta: cw && colorways.length ? cw : undefined,
+    category: p.productType,
   };
 }

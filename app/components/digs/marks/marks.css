@@ -6,11 +6,12 @@
 }
 .mark-wordmark {
   aspect-ratio: 854.111 / 549.643;
+  height: 28px;
 }
 .mark-edge {
   display: block;
   width: 100%;
-  height: auto;
+  height: auto !important;
 }
 .mark-blue {
   color: var(--color-core-digs-blue);

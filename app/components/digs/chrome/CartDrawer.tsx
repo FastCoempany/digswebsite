@@ -1,19 +1,18 @@
 import {useFetcher} from 'react-router';
-import type {Cart, Product} from '~/lib/mock/types';
-import {digs, srcSetFor} from '~/lib/mock';
+import type {Cart} from '~/lib/mock/types';
+import {srcSetFor} from '~/lib/mock';
 import {Drawer} from '~/components/core/Drawer';
 import {CartLine, type CartLineData} from '~/components/core/CartLine';
 import {CartSummary} from '~/components/core/CartSummary';
 import {EmptyState} from '~/components/core/EmptyState';
-import {ProductCard} from '~/components/core/ProductCard';
+import {ProductCard, type ProductCardData} from '~/components/core/ProductCard';
 import {Button} from '~/components/core/Button';
 import {useOverlay} from '~/components/core/OverlayProvider';
 import {Script} from '~/components/digs/marks/Script';
 import {copy, text} from '~/lib/copy';
-import {cardData} from '~/lib/view';
 import './chrome.css';
 
-export type CartDrawerProps = {cart: Cart | null; products: Product[]; open?: boolean; onClose?: () => void};
+export type CartDrawerProps = {cart: Cart | null; cards: ProductCardData[]; open?: boolean; onClose?: () => void};
 
 export function cartLineData(cart: Cart): CartLineData[] {
   return cart.lines.nodes.map((l) => {
@@ -35,7 +34,7 @@ export function cartLineData(cart: Cart): CartLineData[] {
 }
 
 /** "Your Digs": right drawer on desktop, full screen on mobile. Empty state shows the capsule. */
-export function CartDrawer({cart, products, open, onClose}: CartDrawerProps) {
+export function CartDrawer({cart, cards, open, onClose}: CartDrawerProps) {
   const overlay = useOverlay();
   const isOpen = open ?? overlay.open === 'cart';
   const close = onClose ?? overlay.close;
@@ -64,9 +63,9 @@ export function CartDrawer({cart, products, open, onClose}: CartDrawerProps) {
         <div className="cart-empty">
           <EmptyState variant="cart" heading={copy.cart.empty} body={text(copy.cart.emptyBody)} art={<span className="type-display"><Script word={copy.cart.emptyScript} /></span>} action={<Button to="/collections/all" onClick={close}>{copy.cta.enterShop}</Button>} />
           <ul className="cart-mini-grid" aria-label={copy.home.capsuleHead}>
-            {products.map((p) => (
-              <li key={p.handle} onClick={close}>
-                <ProductCard product={cardData(p)} variant="mini" labels={{priceTBA: copy.product.priceTBA, swatches: copy.a11y.colorway}} headingLevel="h2" />
+            {cards.map((c) => (
+              <li key={c.handle} onClick={close}>
+                <ProductCard product={c} variant="mini" labels={{priceTBA: copy.product.priceTBA, swatches: copy.a11y.colorway}} headingLevel="h2" />
               </li>
             ))}
           </ul>

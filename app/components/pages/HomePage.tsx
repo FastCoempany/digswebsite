@@ -2,8 +2,7 @@ import {useState} from 'react';
 import type {Product} from '~/lib/mock/types';
 import {digs, photoFor, srcSetFor} from '~/lib/mock';
 import {copy, text} from '~/lib/copy';
-import {cardData} from '~/lib/view';
-import {ProductCard} from '~/components/core/ProductCard';
+import {ProductCard, type ProductCardData} from '~/components/core/ProductCard';
 import {Link} from '~/components/core/Link';
 import {Button} from '~/components/core/Button';
 import {NewsletterForm, type NewsletterStatus} from '~/components/core/NewsletterForm';
@@ -24,9 +23,8 @@ function slot(code: string, ratio: '4:5' | '3:4' | '9:16' | '16:9', colorway?: s
   return {code, ratio, image, srcSet: srcSetFor(image?.url), alt: image?.altText ?? ''};
 }
 
-export function HomePage({products, newsletterStatus}: {products: Product[]; newsletterStatus?: NewsletterStatus}) {
+export function HomePage({cards, thermal, newsletterStatus}: {cards: ProductCardData[]; thermal: Product | null; newsletterStatus?: NewsletterStatus}) {
   const [status, setStatus] = useState<NewsletterStatus>(newsletterStatus ?? 'idle');
-  const thermal = products.find((p) => p.handle === 'thermal-long-sleeve') ?? products[0];
   const hotspots = thermal ? digs.hotspots(thermal) : [];
   const footerLines = [copy.brand.instagram, copy.brand.domain, copy.brand.labelLine];
   const posters: PosterTile[] = [
@@ -68,9 +66,9 @@ export function HomePage({products, newsletterStatus}: {products: Product[]; new
             </div>
           </div>
           <ul className="capsule-grid">
-            {products.map((p, i) => (
-              <li key={p.handle}>
-                <ProductCard product={cardData(p)} labels={{priceTBA: copy.product.priceTBA, swatches: copy.a11y.colorway}} overlay={i === 0 ? <Sticker kind="dd" rotate={-10} size="sm" tone="blue" className="capsule-sticker" /> : undefined} />
+            {cards.map((c, i) => (
+              <li key={c.handle}>
+                <ProductCard product={c} labels={{priceTBA: copy.product.priceTBA, swatches: copy.a11y.colorway}} overlay={i === 0 ? <Sticker kind="dd" rotate={-10} size="sm" tone="blue" className="capsule-sticker" /> : undefined} />
               </li>
             ))}
           </ul>

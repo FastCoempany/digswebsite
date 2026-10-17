@@ -1,4 +1,4 @@
-import {useEffect, useId, useRef, type ReactNode} from 'react';
+import {useEffect, useId, useRef, useState, type ReactNode} from 'react';
 import {IconButton} from './IconButton';
 import {useFocusTrap} from './useFocusTrap';
 import './Modal.css';
@@ -23,10 +23,14 @@ export function Modal({open, onClose, title, hideTitle, closeLabel, size = 'md',
   const ref = useRef<HTMLDialogElement>(null);
   useFocusTrap(ref, open);
   const titleId = useId();
+  // Children mount while the modal is open (and through the closing transition), so closed
+  // modals add nothing to the server HTML.
+  const [mounted, setMounted] = useState(open);
   useEffect(() => {
     const el = ref.current;
     if (!el) return;
     if (open && !el.open) {
+      setMounted(true);
       el.showModal();
       el.classList.add('is-open');
     } else if (!open && el.open) {
@@ -35,6 +39,7 @@ export function Modal({open, onClose, title, hideTitle, closeLabel, size = 'md',
       const done = () => {
         el.classList.remove('is-closing');
         el.close();
+        setMounted(false);
       };
       const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
       const t = setTimeout(done, reduced ? 0 : 300);
@@ -58,7 +63,7 @@ export function Modal({open, onClose, title, hideTitle, closeLabel, size = 'md',
           <h2 id={titleId} className={`modal-title type-h3 ${hideTitle ? 'visually-hidden' : ''}`}>{title}</h2>
           <IconButton icon="close" label={closeLabel} onClick={onClose} className="modal-close" />
         </header>
-        <div className="modal-body">{children}</div>
+        <div className="modal-body">{mounted ? children : null}</div>
       </div>
     </dialog>
   );

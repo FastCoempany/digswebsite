@@ -3,7 +3,7 @@
 Reads assets/photography/MANIFEST.csv and, for every row:
   * writes public/photography/<stem>.jpg         the original re-encoded as a quality-82
                                                   progressive JPEG with metadata stripped
-  * writes public/photography/<stem>-<w>.webp    quality-80 WebP copies 480 and 960 px wide,
+  * writes public/photography/<stem>-<w>.webp    quality-80 WebP copies 480, 720 and 960 px wide,
                                                   plus 1440 for the 16:9 hero; never upscaled
 then writes app/lib/mock/photos.generated.json, the list that app/lib/mock/photos.ts reads:
   {code, file, colorway, width, height, alt, widths, ratio}
@@ -42,7 +42,7 @@ PRODUCTS_DIR = os.path.join(ROOT, "content", "products")
 COLUMNS = ["file", "code", "product", "colorway", "look", "scene", "ratio", "width", "height",
            "prompt_id", "checked_by", "date", "alt"]
 REQUIRED = ["file", "code", "ratio", "width", "height", "prompt_id", "checked_by", "date", "alt"]
-WEBP_WIDTHS = (480, 960)
+WEBP_WIDTHS = (480, 720, 960)
 HERO_WIDE_WIDTH = 1440  # the 16:9 hero only
 JPEG_QUALITY = 82
 WEBP_QUALITY = 80

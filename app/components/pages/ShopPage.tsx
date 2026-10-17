@@ -1,9 +1,7 @@
 import {useState} from 'react';
-import type {Product} from '~/lib/mock/types';
 import {photoFor, srcSetFor} from '~/lib/mock';
 import {copy, text} from '~/lib/copy';
-import {cardData} from '~/lib/view';
-import {ProductCard} from '~/components/core/ProductCard';
+import {ProductCard, type ProductCardData} from '~/components/core/ProductCard';
 import {SegmentedControl} from '~/components/core/SegmentedControl';
 import {EmptyState} from '~/components/core/EmptyState';
 import {Link} from '~/components/core/Link';
@@ -14,12 +12,12 @@ import './pages.css';
 
 export type ShopFilter = 'all' | 'tops' | 'bottoms';
 
-export function ShopPage({products, filter: initial = 'all', loading, allSoldOut}: {products: Product[]; filter?: ShopFilter; loading?: boolean; allSoldOut?: boolean}) {
+export function ShopPage({cards, filter: initial = 'all', loading, allSoldOut}: {cards: ProductCardData[]; filter?: ShopFilter; loading?: boolean; allSoldOut?: boolean}) {
   const [filter, setFilter] = useState<ShopFilter>(initial);
-  const options = copy.shop.filters.map((label) => ({value: label.toLowerCase() as ShopFilter, label, count: label === 'All' ? products.length : products.filter((p) => p.productType.toLowerCase() === label.toLowerCase()).length}));
-  const shown = products.filter((p) => filter === 'all' || p.productType.toLowerCase() === filter);
+  const options = copy.shop.filters.map((label) => ({value: label.toLowerCase() as ShopFilter, label, count: label === 'All' ? cards.length : cards.filter((c) => (c.category ?? '').toLowerCase() === label.toLowerCase()).length}));
+  const shown = cards.filter((c) => filter === 'all' || (c.category ?? '').toLowerCase() === filter);
   const e02 = photoFor('E-02', null, '4:5');
-  const cards = loading ? Array.from({length: 4}).map(() => null) : shown;
+  const items = loading ? Array.from({length: 4}).map(() => null) : shown;
   return (
     <section className="sec" aria-labelledby="shop-head">
       <div className="inner">
@@ -35,7 +33,7 @@ export function ShopPage({products, filter: initial = 'all', loading, allSoldOut
           <EmptyState variant="filter" heading={copy.shop.emptyFilter} action={<Link to="/collections/all" variant="inline" onClick={() => setFilter('all')}>{copy.shop.seeAll}</Link>} />
         ) : (
           <ul className="shop-grid" aria-busy={loading || undefined}>
-            {cards.flatMap((p, i) => {
+            {items.flatMap((c, i) => {
               const items = [];
               if (i === 2) {
                 items.push(
@@ -45,8 +43,8 @@ export function ShopPage({products, filter: initial = 'all', loading, allSoldOut
                 );
               }
               items.push(
-                <li key={p ? p.handle : `skeleton-${i}`}>
-                  {p ? <ProductCard product={{...cardData(p), soldOut: allSoldOut || cardData(p).soldOut, badge: allSoldOut ? {status: 'sold-out', label: copy.product.soldOut} : cardData(p).badge}} labels={{priceTBA: copy.product.priceTBA, swatches: copy.a11y.colorway}} priority={i < 2} headingLevel="h2" /> : <ProductCard loading labels={{priceTBA: copy.product.priceTBA, swatches: copy.a11y.colorway}} />}
+                <li key={c ? c.handle : `skeleton-${i}`}>
+                  {c ? <ProductCard product={{...c, soldOut: allSoldOut || c.soldOut, badge: allSoldOut ? {status: 'sold-out', label: copy.product.soldOut} : c.badge}} labels={{priceTBA: copy.product.priceTBA, swatches: copy.a11y.colorway}} priority={i < 2} headingLevel="h2" /> : <ProductCard loading labels={{priceTBA: copy.product.priceTBA, swatches: copy.a11y.colorway}} />}
                 </li>,
               );
               return items;

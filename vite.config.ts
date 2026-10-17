@@ -19,6 +19,8 @@ export default defineConfig({
     // Allow a strict Content-Security-Policy
     // without inlining assets as base64:
     assetsInlineLimit: 0,
+    // One stylesheet instead of ~20 per-component files: fewer render-blocking requests.
+    cssCodeSplit: false,
   },
   ssr: {
     optimizeDeps: {
