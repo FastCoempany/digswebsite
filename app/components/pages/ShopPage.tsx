@@ -46,7 +46,7 @@ export function ShopPage({products, filter: initial = 'all', loading, allSoldOut
               }
               items.push(
                 <li key={p ? p.handle : `skeleton-${i}`}>
-                  {p ? <ProductCard product={{...cardData(p), soldOut: allSoldOut || cardData(p).soldOut, badge: allSoldOut ? {status: 'sold-out', label: copy.product.soldOut} : cardData(p).badge}} labels={{priceTBA: copy.product.priceTBA, swatches: copy.a11y.colorway}} priority={i < 2} /> : <ProductCard loading labels={{priceTBA: copy.product.priceTBA, swatches: copy.a11y.colorway}} />}
+                  {p ? <ProductCard product={{...cardData(p), soldOut: allSoldOut || cardData(p).soldOut, badge: allSoldOut ? {status: 'sold-out', label: copy.product.soldOut} : cardData(p).badge}} labels={{priceTBA: copy.product.priceTBA, swatches: copy.a11y.colorway}} priority={i < 2} headingLevel="h2" /> : <ProductCard loading labels={{priceTBA: copy.product.priceTBA, swatches: copy.a11y.colorway}} />}
                 </li>,
               );
               return items;

@@ -63,7 +63,8 @@
 .pcard-price {
   margin-top: var(--space-1);
 }
-.pcard.is-soldout .pcard-media {
+.pcard.is-soldout .pcard-img {
+  /* Dim the media only; the badge keeps its contrast */
   opacity: 0.6;
 }
 .pcard-mini {

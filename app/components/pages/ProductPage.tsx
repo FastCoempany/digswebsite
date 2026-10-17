@@ -259,7 +259,7 @@ export function ProductPage({product, others, color, forceStatus, forceSize = nu
           {text(copy.product.shippingLine) ? <p className="type-small">{text(copy.product.shippingLine)}</p> : null}
         </div>
 
-        <Accordion items={accordion} defaultOpen={['details']} />
+        <Accordion items={accordion} defaultOpen={['details']} headingLevel="h2" />
         <p className="pdp-origin">{digs.origin(product)}</p>
       </div>
 

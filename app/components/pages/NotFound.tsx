@@ -16,7 +16,7 @@ export function NotFound({status = 404, message, products}: {status?: number; me
         <ul className="capsule-grid nf-grid">
           {products.map((p) => (
             <li key={p.handle}>
-              <ProductCard product={cardData(p)} labels={{priceTBA: copy.product.priceTBA, swatches: copy.a11y.colorway}} />
+              <ProductCard product={cardData(p)} labels={{priceTBA: copy.product.priceTBA, swatches: copy.a11y.colorway}} headingLevel="h2" />
             </li>
           ))}
         </ul>

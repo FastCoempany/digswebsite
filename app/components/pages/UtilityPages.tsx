@@ -65,7 +65,7 @@ export function FaqPage() {
   const c = copy.pages.faq;
   return (
     <Shell title={c.head}>
-      <Accordion items={c.items.map((it, i) => ({id: `q${i}`, title: it.q, content: <p><Draftable field={it.a} /></p>}))} defaultOpen={['q0']} />
+      <Accordion items={c.items.map((it, i) => ({id: `q${i}`, title: it.q, content: <p><Draftable field={it.a} /></p>}))} defaultOpen={['q0']} headingLevel="h2" />
     </Shell>
   );
 }

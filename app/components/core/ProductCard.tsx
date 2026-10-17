@@ -34,6 +34,8 @@ export type ProductCardProps = {
   /** Overlay content on the image (stickers). */
   overlay?: ReactNode;
   sizes?: string;
+  /** Heading level for the product name, so the page outline has no skipped levels. */
+  headingLevel?: 'h2' | 'h3' | 'h4';
   className?: string;
 };
 
@@ -41,7 +43,7 @@ export type ProductCardProps = {
  * Product tile: image (4:5), name, colorway count, swatches, price or TBA, status badge.
  * Desktop hover swaps to the second image. Sold-out tiles dim their media.
  */
-export function ProductCard({product, variant = 'grid', loading, priority, labels, overlay, sizes, className = ''}: ProductCardProps) {
+export function ProductCard({product, variant = 'grid', loading, priority, labels, overlay, sizes, headingLevel: H = 'h3', className = ''}: ProductCardProps) {
   if (loading || !product) {
     return (
       <div className={`pcard pcard-${variant} is-loading ${className}`} aria-busy="true">
@@ -67,11 +69,11 @@ export function ProductCard({product, variant = 'grid', loading, priority, label
         ) : null}
       </Link>
       <div className="pcard-body">
-        <h3 className="pcard-title">
+        <H className="pcard-title">
           <Link to={product.href} className="pcard-link">
             {product.title}
           </Link>
-        </h3>
+        </H>
         {variant === 'mini' && product.meta ? <p className="pcard-meta">{product.meta}</p> : null}
         {variant === 'grid' ? (
           <div className="pcard-row">

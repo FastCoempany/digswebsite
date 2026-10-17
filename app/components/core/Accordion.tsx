@@ -10,11 +10,13 @@ export type AccordionProps = {
   defaultOpen?: string[];
   /** One open at a time. */
   single?: boolean;
+  /** Heading level of the triggers (default h3). */
+  headingLevel?: 'h2' | 'h3' | 'h4';
   className?: string;
 };
 
 /** Disclosure list: button with aria-expanded controlling a region. */
-export function Accordion({items, defaultOpen = [], single = false, className = ''}: AccordionProps) {
+export function Accordion({items, defaultOpen = [], single = false, headingLevel: H = 'h3', className = ''}: AccordionProps) {
   const base = useId();
   const [open, setOpen] = useState<string[]>(defaultOpen);
   const toggle = (id: string) =>
@@ -27,12 +29,12 @@ export function Accordion({items, defaultOpen = [], single = false, className = 
         const pid = `${base}-${item.id}-p`;
         return (
           <div key={item.id} className={`accordion-item ${expanded ? 'is-open' : ''}`}>
-            <h3 className="accordion-heading">
+            <H className="accordion-heading">
               <button type="button" id={hid} className="accordion-trigger" aria-expanded={expanded} aria-controls={pid} onClick={() => toggle(item.id)}>
                 <span>{item.title}</span>
                 <Icon name="chevron-down" size={20} className="accordion-chevron" />
               </button>
-            </h3>
+            </H>
             <div id={pid} role="region" aria-labelledby={hid} className="accordion-panel" hidden={!expanded}>
               <div className="accordion-body">{item.content}</div>
             </div>

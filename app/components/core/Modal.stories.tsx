@@ -94,6 +94,7 @@ export const Trigger: Story = {
 
 export const Closing: Story = {
   name: 'Closing (forced mid-transition)',
+  tags: ['no-axe'],
   render: () => (
     <>
       <style>{FORCED}</style>

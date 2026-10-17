@@ -66,7 +66,7 @@ export function CartDrawer({cart, products, open, onClose}: CartDrawerProps) {
           <ul className="cart-mini-grid" aria-label={copy.home.capsuleHead}>
             {products.map((p) => (
               <li key={p.handle} onClick={close}>
-                <ProductCard product={cardData(p)} variant="mini" labels={{priceTBA: copy.product.priceTBA, swatches: copy.a11y.colorway}} />
+                <ProductCard product={cardData(p)} variant="mini" labels={{priceTBA: copy.product.priceTBA, swatches: copy.a11y.colorway}} headingLevel="h2" />
               </li>
             ))}
           </ul>

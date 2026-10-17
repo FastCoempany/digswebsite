@@ -37,7 +37,7 @@ export function CartPage({cart, products}: {cart: Cart | null; products: Product
             <ul className="capsule-grid">
               {products.map((p) => (
                 <li key={p.handle}>
-                  <ProductCard product={cardData(p)} labels={{priceTBA: copy.product.priceTBA, swatches: copy.a11y.colorway}} />
+                  <ProductCard product={cardData(p)} labels={{priceTBA: copy.product.priceTBA, swatches: copy.a11y.colorway}} headingLevel="h2" />
                 </li>
               ))}
             </ul>
