@@ -1,15 +1,15 @@
 {
- "fetchTime": "2026-10-17T03:43:10.689Z",
+ "fetchTime": "2026-10-17T04:00:48.954Z",
  "page": "home",
  "url": "/",
- "performance": 92,
+ "performance": 97,
  "accessibility": 100,
  "bestPractices": 100,
  "seo": 66,
- "lcp": "3.0 s",
+ "lcp": "2.4 s",
  "cls": "0",
  "tbt": "0 ms",
- "fcp": "2.4 s",
+ "fcp": "1.7 s",
  "opportunities": [
   {
    "id": "unused-javascript",
@@ -19,11 +19,6 @@
  ],
  "failing": [
   {
-   "id": "unused-javascript",
-   "title": "Reduce unused JavaScript",
-   "value": "Est savings of 24 KiB"
-  },
-  {
    "id": "is-crawlable",
    "title": "Page is blocked from indexing",
    "value": ""
@@ -32,11 +27,6 @@
    "id": "cache-insight",
    "title": "Use efficient cache lifetimes",
    "value": "Est savings of 351 KiB"
-  },
-  {
-   "id": "forced-reflow-insight",
-   "title": "Forced reflow",
-   "value": ""
   },
   {
    "id": "network-dependency-tree-insight",

@@ -1,15 +1,15 @@
 {
- "fetchTime": "2026-10-17T03:43:18.852Z",
+ "fetchTime": "2026-10-17T04:00:56.750Z",
  "page": "shop",
  "url": "/collections/all",
- "performance": 94,
+ "performance": 93,
  "accessibility": 100,
  "bestPractices": 100,
  "seo": 63,
- "lcp": "2.7 s",
+ "lcp": "2.9 s",
  "cls": "0",
  "tbt": "0 ms",
- "fcp": "2.2 s",
+ "fcp": "2.3 s",
  "opportunities": [
   {
    "id": "unused-javascript",
