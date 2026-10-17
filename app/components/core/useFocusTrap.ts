@@ -13,7 +13,7 @@ export function useFocusTrap(ref: RefObject<HTMLElement | null>, active: boolean
     const opener = document.activeElement as HTMLElement | null;
     const focusables = () => Array.from(el.querySelectorAll<HTMLElement>(FOCUSABLE)).filter((n) => n.offsetParent !== null || n === document.activeElement);
     const first = focusables()[0];
-    if (first && !el.contains(document.activeElement)) first.focus();
+    if (first && !el.contains(document.activeElement)) first.focus({preventScroll: true});
     const onKey = (e: KeyboardEvent) => {
       if (e.key !== 'Tab') return;
       const list = focusables();
@@ -23,16 +23,16 @@ export function useFocusTrap(ref: RefObject<HTMLElement | null>, active: boolean
       const current = document.activeElement as HTMLElement | null;
       if (e.shiftKey && (current === firstEl || !el.contains(current))) {
         e.preventDefault();
-        lastEl.focus();
+        lastEl.focus({preventScroll: true});
       } else if (!e.shiftKey && (current === lastEl || !el.contains(current))) {
         e.preventDefault();
-        firstEl.focus();
+        firstEl.focus({preventScroll: true});
       }
     };
     el.addEventListener('keydown', onKey);
     return () => {
       el.removeEventListener('keydown', onKey);
-      if (opener && document.contains(opener)) opener.focus();
+      if (opener && document.contains(opener)) opener.focus({preventScroll: true});
     };
   }, [ref, active]);
 }

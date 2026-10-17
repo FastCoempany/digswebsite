@@ -10,7 +10,8 @@
   height: 100dvh;
   background: transparent;
   color: var(--color-text-primary);
-  overflow: visible;
+  /* The panel starts translated off-screen; clipping keeps focus() from scrolling the page sideways */
+  overflow: hidden;
 }
 .drawer::backdrop {
   background: color-mix(in oklab, var(--color-surface-inverse) 45%, transparent);
