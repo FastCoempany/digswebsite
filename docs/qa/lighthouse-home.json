@@ -1,14 +1,52 @@
 {
- "fetchTime": "2026-10-17T00:49:12.097Z",
+ "fetchTime": "2026-10-17T01:35:50.781Z",
  "page": "home",
  "url": "/",
- "performance": 99,
- "accessibility": 97,
- "bestPractices": 96,
- "seo": 92,
- "lcp": "1.7 s",
+ "performance": 89,
+ "accessibility": 100,
+ "bestPractices": 100,
+ "seo": 66,
+ "lcp": "3.2 s",
  "cls": "0",
  "tbt": "0 ms",
- "fcp": "1.7 s",
- "opportunities": []
+ "fcp": "2.6 s",
+ "opportunities": [
+  {
+   "id": "unused-javascript",
+   "title": "Reduce unused JavaScript",
+   "savings": "Est savings of 24 KiB"
+  }
+ ],
+ "failing": [
+  {
+   "id": "unused-javascript",
+   "title": "Reduce unused JavaScript",
+   "value": "Est savings of 24 KiB"
+  },
+  {
+   "id": "is-crawlable",
+   "title": "Page is blocked from indexing",
+   "value": ""
+  },
+  {
+   "id": "cache-insight",
+   "title": "Use efficient cache lifetimes",
+   "value": "Est savings of 344 KiB"
+  },
+  {
+   "id": "forced-reflow-insight",
+   "title": "Forced reflow",
+   "value": ""
+  },
+  {
+   "id": "network-dependency-tree-insight",
+   "title": "Network dependency tree",
+   "value": ""
+  },
+  {
+   "id": "render-blocking-insight",
+   "title": "Render-blocking requests",
+   "value": "Est savings of 400 ms"
+  }
+ ]
 }

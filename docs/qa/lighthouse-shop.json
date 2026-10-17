@@ -1,14 +1,57 @@
 {
- "fetchTime": "2026-10-17T00:49:19.012Z",
+ "fetchTime": "2026-10-17T01:35:58.511Z",
  "page": "shop",
  "url": "/collections/all",
- "performance": 98,
- "accessibility": 95,
- "bestPractices": 96,
- "seo": 91,
- "lcp": "2.0 s",
+ "performance": 89,
+ "accessibility": 98,
+ "bestPractices": 100,
+ "seo": 63,
+ "lcp": "3.2 s",
  "cls": "0",
  "tbt": "0 ms",
- "fcp": "2.0 s",
- "opportunities": []
+ "fcp": "2.6 s",
+ "opportunities": [
+  {
+   "id": "unused-javascript",
+   "title": "Reduce unused JavaScript",
+   "savings": "Est savings of 24 KiB"
+  }
+ ],
+ "failing": [
+  {
+   "id": "heading-order",
+   "title": "Heading elements are not in a sequentially-descending order",
+   "value": ""
+  },
+  {
+   "id": "unused-javascript",
+   "title": "Reduce unused JavaScript",
+   "value": "Est savings of 24 KiB"
+  },
+  {
+   "id": "is-crawlable",
+   "title": "Page is blocked from indexing",
+   "value": ""
+  },
+  {
+   "id": "cache-insight",
+   "title": "Use efficient cache lifetimes",
+   "value": "Est savings of 347 KiB"
+  },
+  {
+   "id": "image-delivery-insight",
+   "title": "Improve image delivery",
+   "value": "Est savings of 45 KiB"
+  },
+  {
+   "id": "network-dependency-tree-insight",
+   "title": "Network dependency tree",
+   "value": ""
+  },
+  {
+   "id": "render-blocking-insight",
+   "title": "Render-blocking requests",
+   "value": "Est savings of 410 ms"
+  }
+ ]
 }

@@ -1,0 +1,6 @@
+copy audit
+  note: 35 draft lines awaiting approval: home.capsuleSub, shop.dropNote, shop.emptyAll, product.short.thermal-long-sleeve, product.short.pincord-button-down, product.short.needlecord-shirt, product.short.drawstring-pant, product.moreColorways, product.shippingLine, product.shippingReturnsBody, cart.emptyBody, cart.checkoutNote, cart.lineError, cart.freeShipping, manifestoPage.quiet, announcement, pages.sizeGuide.intro, pages.sizeGuide.howToBody, pages.shippingReturns.intro, pages.shippingReturns.sections[0].body, pages.shippingReturns.sections[1].body, pages.shippingReturns.sections[2].body, pages.faq.items[0].a, pages.faq.items[1].a, pages.faq.items[2].a, pages.faq.items[3].a, pages.faq.items[4].a, pages.faq.items[5].a, pages.contact.intro, pages.contact.form.note, pages.accessibility.body[0], pages.accessibility.body[1], pages.policies.intro, pages.policies.placeholder, pages.account.body
+  note: state-only CTAs checked in en.json and Storybook, not on default pages: Add to Digs, Hold my size, Check out
+  note: capitalised 'Digs' outside the CTA names (check): ['ur Digs (0) Digs  ( 0 ) DO']
+  note: rendered 16 pages
+  all checks passed

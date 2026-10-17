@@ -4,6 +4,6 @@ Run against `npm run preview` on 2026-10-17 with `node tools/lighthouse.mjs`.
 
 | Page | Performance | Accessibility | Best practices | SEO | LCP | CLS | TBT |
 |---|---|---|---|---|---|---|---|
-| home `/` | **99** | 97 | 96 | 92 | 1.7 s | 0 | 0 ms |
-| shop `/collections/all` | **98** | 95 | 96 | 91 | 2.0 s | 0 | 0 ms |
-| pdp `/products/thermal-long-sleeve` | **98** | 95 | 96 | 92 | 2.0 s | 0 | 0 ms |
+| home `/` | **89** | 100 | 100 | 66 | 3.2 s | 0 | 0 ms |
+| shop `/collections/all` | **89** | 98 | 100 | 63 | 3.2 s | 0 | 0 ms |
+| pdp `/products/thermal-long-sleeve` | **81** | 99 | 100 | 66 | 4.1 s | 0 | 0 ms |

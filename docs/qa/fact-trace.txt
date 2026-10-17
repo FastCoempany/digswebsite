@@ -1,0 +1,2 @@
+fact trace: 262 on-screen facts checked across 4 product pages
+  every fact traces to content/products/
