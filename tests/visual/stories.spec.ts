@@ -24,7 +24,9 @@ test.describe('stories @stories', () => {
       await page.waitForSelector('#storybook-root > *', {timeout: 20_000});
       await page.evaluate(() => document.fonts.ready);
       await expect(page.locator('html')).toHaveAttribute('data-mode', mode);
-      await expect(page.locator('.sb-show-errordisplay, .sb-errordisplay')).toHaveCount(0);
+      // Storybook always renders a hidden error container; it must stay hidden.
+      await expect(page.locator('.sb-errordisplay')).toBeHidden();
+      await expect(page.locator('.sb-show-errordisplay')).toHaveCount(0);
       const results = await new AxeBuilder({page}).include('#storybook-root').withTags(['wcag2a', 'wcag2aa', 'wcag21a', 'wcag21aa', 'wcag22aa']).disableRules(['region', 'page-has-heading-one', 'landmark-one-main']).analyze();
       const bad = results.violations.filter((v) => v.impact === 'serious' || v.impact === 'critical');
       expect(bad.map((v) => `${v.id}: ${v.help} (${v.nodes.map((n) => n.target.join(' ')).join(' | ')})`)).toEqual([]);

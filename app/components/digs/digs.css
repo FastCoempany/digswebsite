@@ -212,6 +212,10 @@
   text-decoration: none;
   color: var(--color-text-secondary);
 }
+[data-surface='dark'] .strike-word s,
+[data-surface='brand'] .strike-word s {
+  color: var(--color-ink-300);
+}
 .strike-line {
   position: absolute;
   left: -4%;

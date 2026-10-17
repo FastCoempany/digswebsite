@@ -67,7 +67,7 @@ export function MediaSlot({ratio, code, image, alt, srcSet, sizes, priority, fit
           height={image.height}
           loading={priority ? 'eager' : 'lazy'}
           decoding={priority ? 'sync' : 'async'}
-          fetchPriority={priority ? 'high' : undefined}
+          {...(priority ? {fetchpriority: 'high'} : {})}
           style={position ? {objectPosition: position} : undefined}
           onError={() => setStatus('error')}
         />
