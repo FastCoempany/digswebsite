@@ -31,9 +31,14 @@ for (const e of entries) {
   if (!byKey.has(key(e.code))) byKey.set(key(e.code), e);
 }
 
-/** The approved image for a shot code (plus colorway for product sets, plus ratio for the hero crops), or null. */
+/**
+ * The approved image for a shot code (plus colorway for product sets, plus ratio for the hero crops),
+ * or null. A requested colorway or ratio must match exactly: another colorway's photo or another
+ * crop is never a substitute for the labelled placeholder (07-photography.md), which matters while
+ * later slots are filled one colorway at a time. Omitting the ratio accepts any crop of that slot.
+ */
 export function photoFor(code: string, colorway?: string | null, ratio?: string | null): Image | null {
-  const e = byKey.get(key(code, colorway, ratio)) ?? byKey.get(key(code, colorway)) ?? (colorway ? byKey.get(key(code)) : undefined);
+  const e = ratio ? byKey.get(key(code, colorway, ratio)) : byKey.get(key(code, colorway));
   if (!e) return null;
   return {
     id: `gid://shopify/MediaImage/${e.file}`,
