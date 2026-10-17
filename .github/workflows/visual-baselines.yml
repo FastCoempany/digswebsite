@@ -7,6 +7,11 @@ name: visual-baselines
 
 on:
   workflow_dispatch:
+  # A workflow that has never run cannot be dispatched from a non-default branch (404), so the
+  # first run happens on the push that adds or edits this file; after that use "Run workflow".
+  push:
+    branches: ['build/**']
+    paths: ['.github/workflows/visual-baselines.yml']
 
 permissions:
   contents: write
