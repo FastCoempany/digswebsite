@@ -20,7 +20,7 @@ export function CartDrawer({cart, cards, open, onClose, slot}: CartDrawerProps) 
   const overlay = useOverlay();
   const isOpen = open ?? overlay.open === 'cart';
   const close = onClose ?? overlay.close;
-  const fetcher = useFetcher();
+  const fetcher = useFetcher({key: 'cart'});
   const lines = cart ? cartLineData(cart) : [];
   const busyId = fetcher.formData?.get('lineId') as string | null;
   const intent = fetcher.formData?.get('intent') as string | null;

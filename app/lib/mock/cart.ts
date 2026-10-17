@@ -65,6 +65,14 @@ export function hydrateCart(stored: StoredCart | null | undefined): Cart {
   };
 }
 
+/** True when the merchandise id names a variant that can be added (exists and is available for sale). */
+export function variantSellable(merchandiseId: string): boolean {
+  const hit = findVariant(merchandiseId);
+  return Boolean(hit && hit.variant.availableForSale !== false);
+}
+
+const MAX_LINE_QUANTITY = 99;
+
 export type CartAction =
   | {action: 'LinesAdd'; lines: StoredLine[]}
   | {action: 'LinesUpdate'; lines: {id: string; quantity: number}[]}
@@ -79,14 +87,15 @@ export function applyCartAction(stored: StoredCart | null | undefined, input: Ca
         const hit = findVariant(add.merchandiseId);
         if (!hit || hit.variant.availableForSale === false) continue;
         const existing = cart.lines.find((l) => l.merchandiseId === add.merchandiseId);
-        if (existing) existing.quantity += add.quantity;
-        else cart.lines.push({merchandiseId: add.merchandiseId, quantity: Math.max(1, add.quantity)});
+        // Adding to an existing line caps at the same limit the action and the stepper enforce.
+        if (existing) existing.quantity = Math.min(MAX_LINE_QUANTITY, existing.quantity + add.quantity);
+        else cart.lines.push({merchandiseId: add.merchandiseId, quantity: Math.min(MAX_LINE_QUANTITY, Math.max(1, add.quantity))});
       }
       break;
     case 'LinesUpdate':
       for (const upd of input.lines) {
         const existing = cart.lines.find((l) => lineIdFor(l.merchandiseId) === upd.id);
-        if (existing) existing.quantity = Math.max(0, upd.quantity);
+        if (existing) existing.quantity = Math.min(MAX_LINE_QUANTITY, Math.max(0, upd.quantity));
       }
       cart.lines = cart.lines.filter((l) => l.quantity > 0);
       break;

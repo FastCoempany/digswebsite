@@ -2,6 +2,7 @@ import {data} from 'react-router';
 import type {Route} from './+types/cart';
 import {CartPage} from '~/components/pages/CartPage';
 import {copy} from '~/lib/copy';
+import {variantSellable} from '~/lib/mock';
 import {cardData} from '~/lib/view';
 
 export const meta: Route.MetaFunction = () => [{title: `${copy.cart.head} · ${copy.brand.name}`}];
@@ -9,7 +10,8 @@ export const meta: Route.MetaFunction = () => [{title: `${copy.cart.head} · ${c
 /** Mock cart mutations (Storefront-shaped). Nothing talks to Shopify in this phase. */
 export async function action({request, context}: Route.ActionArgs) {
   const form = await request.formData();
-  const intent = String(form.get('intent') ?? '');
+  // JS submits name the intent; the no-JS forms on /cart submit a quantity (update) or a remove button.
+  const intent = String(form.get('intent') ?? (form.has('quantity') ? 'LinesUpdate' : ''));
   const {digs} = context;
   // A quantity must be a whole number in range; anything else is rejected, never rounded or defaulted.
   const qty = (v: FormDataEntryValue | null, lo: number): number | null => {
@@ -24,9 +26,8 @@ export async function action({request, context}: Route.ActionArgs) {
         const merchandiseId = String(form.get('merchandiseId') ?? '');
         const quantity = qty(form.get('quantity'), 1);
         if (quantity === null) return invalid(form.get('quantity'));
-        const before = await digs.cart.get();
+        if (!variantSellable(merchandiseId)) return data({error: `Variant unknown or unavailable: ${merchandiseId}`}, {status: 400});
         const cart = await digs.cart.apply({action: 'LinesAdd', lines: [{merchandiseId, quantity}]});
-        if (cart.totalQuantity === before.totalQuantity) return data({cart, error: `Variant unknown or unavailable: ${merchandiseId}`}, {status: 400});
         return data({cart, ok: true});
       }
       case 'LinesUpdate': {

@@ -45,5 +45,5 @@ export function createDigsAdapter(session: HydrogenSession): DigsAdapter {
 export * from './types';
 export {PRODUCTS, productByHandle, digs, metafield, metafieldList} from './products';
 export {CAPSULE, POLICIES, POLICY_HANDLES} from './shop';
-export {EMPTY_CART, hydrateCart} from './cart';
+export {EMPTY_CART, hydrateCart, variantSellable} from './cart';
 export {photoFor, photoWidths, srcSetFor, PHOTO_COUNT} from './photos';
