@@ -9,6 +9,8 @@ npm install
 npm run dev          # http://localhost:3000  (mock data, no Shopify login; add ?mode=wire for wireframes)
 npm run storybook    # http://localhost:6006
 npm run test:visual  # Playwright: visual baselines, axe, keyboard pass, story matrix
+                     # (baselines are made on the CI runner by the visual-baselines workflow;
+                     #  locally add -- --grep-invert @visual)
 ```
 
 Or open the branch in a GitHub Codespace: `.devcontainer/` installs everything and starts the site. Review pack: `docs/REVIEW.md`. Build log and decisions to confirm: `docs/build-log.md`.

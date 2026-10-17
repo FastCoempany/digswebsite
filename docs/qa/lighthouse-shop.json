@@ -1,15 +1,15 @@
 {
- "fetchTime": "2026-10-17T01:50:50.748Z",
+ "fetchTime": "2026-10-17T03:43:18.852Z",
  "page": "shop",
  "url": "/collections/all",
- "performance": 97,
+ "performance": 94,
  "accessibility": 100,
  "bestPractices": 100,
  "seo": 63,
- "lcp": "2.4 s",
+ "lcp": "2.7 s",
  "cls": "0",
  "tbt": "0 ms",
- "fcp": "1.7 s",
+ "fcp": "2.2 s",
  "opportunities": [
   {
    "id": "unused-javascript",
@@ -31,7 +31,7 @@
   {
    "id": "cache-insight",
    "title": "Use efficient cache lifetimes",
-   "value": "Est savings of 332 KiB"
+   "value": "Est savings of 342 KiB"
   },
   {
    "id": "image-delivery-insight",

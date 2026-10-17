@@ -10,7 +10,7 @@
       "medium": { "$type": "fontWeight", "$value": 500, "$description": "Strategist extension: UI labels, buttons, prices at 14px and below only, where Regular gets thin on screen." }
     },
     "size": {
-      "display-xl": { "$type": "dimension", "$value": "clamp(3.5rem, 2.1rem + 11.5vw, 10.5rem)", "$description": "Manifesto + edge-to-edge headlines. Line height 0.92." },
+      "display-xl": { "$type": "dimension", "$value": "clamp(3.5rem, 1.5rem + 11vw, 10.5rem)", "$description": "Manifesto + edge-to-edge headlines. Line height 0.92. The mobile term keeps a ten-letter word (Redefining) inside 390px." },
       "display": { "$type": "dimension", "$value": "clamp(2.75rem, 1.9rem + 6.8vw, 6.5rem)", "$description": "Section headlines. Line height 0.95." },
       "h1": { "$type": "dimension", "$value": "clamp(2.25rem, 1.8rem + 2.6vw, 3.75rem)" },
       "h2": { "$type": "dimension", "$value": "clamp(1.75rem, 1.5rem + 1.3vw, 2.5rem)" },

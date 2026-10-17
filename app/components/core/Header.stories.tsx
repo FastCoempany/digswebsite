@@ -55,7 +55,7 @@ function slots({menuOpen = false, cartCount = 0, menuId}: {menuOpen?: boolean; c
       </>
     ),
     center: (
-      <RouterLink to="/" className="hdr-brand" aria-label={copy.a11y.home}>
+      <RouterLink to="/" className="hdr-brand">
         {brand}
       </RouterLink>
     ),

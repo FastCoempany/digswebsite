@@ -6,6 +6,10 @@ test.describe('accessibility @a11y', () => {
   for (const p of PAGES) {
     test(`${p.name} has no serious or critical axe violations`, async ({page, mode}) => {
       await open(page, p.path, mode);
+      // No horizontal overflow: a page wider than the viewport zooms mobile browsers out (and scrolls sideways).
+      const widths = await page.evaluate(() => ({doc: document.documentElement.scrollWidth, body: document.body.scrollWidth}));
+      expect(widths.doc, `document.scrollWidth on ${p.path}`).toBeLessThanOrEqual(page.viewportSize()!.width);
+      expect(widths.body, `body.scrollWidth on ${p.path}`).toBeLessThanOrEqual(page.viewportSize()!.width);
       const results = await new AxeBuilder({page}).withTags(['wcag2a', 'wcag2aa', 'wcag21a', 'wcag21aa', 'wcag22aa', 'best-practice']).analyze();
       const bad = results.violations.filter((v) => v.impact === 'serious' || v.impact === 'critical');
       expect(bad.map((v) => `${v.id} [${v.impact}]: ${v.help} → ${v.nodes.slice(0, 3).map((n) => n.target.join(' ')).join(' | ')}`)).toEqual([]);

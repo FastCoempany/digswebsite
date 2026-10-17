@@ -74,7 +74,7 @@
   --font-family-script: none;
   --font-weight-regular: 400;
   --font-weight-medium: 500;
-  --font-size-display-xl: clamp(3.5rem, 2.1rem + 11.5vw, 10.5rem);
+  --font-size-display-xl: clamp(3.5rem, 1.5rem + 11vw, 10.5rem);
   --font-size-display: clamp(2.75rem, 1.9rem + 6.8vw, 6.5rem);
   --font-size-h1: clamp(2.25rem, 1.8rem + 2.6vw, 3.75rem);
   --font-size-h2: clamp(1.75rem, 1.5rem + 1.3vw, 2.5rem);

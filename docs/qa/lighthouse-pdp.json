@@ -1,15 +1,15 @@
 {
- "fetchTime": "2026-10-17T01:51:02.642Z",
+ "fetchTime": "2026-10-17T03:43:26.027Z",
  "page": "pdp",
  "url": "/products/thermal-long-sleeve",
- "performance": 92,
+ "performance": 89,
  "accessibility": 100,
  "bestPractices": 100,
  "seo": 66,
- "lcp": "3.0 s",
+ "lcp": "3.3 s",
  "cls": "0",
  "tbt": "0 ms",
- "fcp": "2.1 s",
+ "fcp": "2.4 s",
  "opportunities": [
   {
    "id": "unused-javascript",
@@ -19,6 +19,11 @@
  ],
  "failing": [
   {
+   "id": "unused-javascript",
+   "title": "Reduce unused JavaScript",
+   "value": "Est savings of 24 KiB"
+  },
+  {
    "id": "is-crawlable",
    "title": "Page is blocked from indexing",
    "value": ""
@@ -26,7 +31,7 @@
   {
    "id": "cache-insight",
    "title": "Use efficient cache lifetimes",
-   "value": "Est savings of 407 KiB"
+   "value": "Est savings of 408 KiB"
   },
   {
    "id": "forced-reflow-insight",
@@ -37,11 +42,6 @@
    "id": "network-dependency-tree-insight",
    "title": "Network dependency tree",
    "value": ""
-  },
-  {
-   "id": "render-blocking-insight",
-   "title": "Render-blocking requests",
-   "value": "Est savings of 150 ms"
   }
  ]
 }

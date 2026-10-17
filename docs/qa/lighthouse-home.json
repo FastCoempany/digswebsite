@@ -1,5 +1,5 @@
 {
- "fetchTime": "2026-10-17T01:50:43.176Z",
+ "fetchTime": "2026-10-17T03:43:10.689Z",
  "page": "home",
  "url": "/",
  "performance": 92,
@@ -31,7 +31,7 @@
   {
    "id": "cache-insight",
    "title": "Use efficient cache lifetimes",
-   "value": "Est savings of 350 KiB"
+   "value": "Est savings of 351 KiB"
   },
   {
    "id": "forced-reflow-insight",

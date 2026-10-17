@@ -80,6 +80,7 @@
 }
 .script {
   display: inline-block;
+  max-width: 100%; /* a long word at display size shrinks to its line instead of widening the page */
   color: inherit;
 }
 .script-draw {

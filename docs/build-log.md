@@ -15,6 +15,9 @@ npm run check:brand      # CI brand check (hex in app/, PJ colors, forbidden str
 
 Add `?mode=wire` to any URL for wireframe mode (sticks for the session; `?mode=ui` resets).
 
+Visual baselines are generated on the CI runner (`visual-baselines` workflow, D25); run the
+`@visual` comparison there and everything else locally (`npm run test:visual -- --grep-invert @visual`).
+
 ## Phase status
 
 | Phase | Status | Deliverable |
@@ -88,7 +91,7 @@ gate deliverables are produced and the run continues.
 
 | Check | Command | Result |
 |---|---|---|
-| axe, every page, 390/1440 × UI/wire | `npm run test:a11y` | 0 serious or critical (94 tests, 2 desktop menu tests skipped by design) |
+| axe + no horizontal overflow, every page, 390/1440 × UI/wire | `npm run test:a11y` | 0 serious or critical; `document.scrollWidth` ≤ viewport on every page (72 tests, 2 desktop menu checks skipped by design) |
 | Keyboard pass | `npm run test:keyboard` | menu, cart drawer, gallery (arrows, zoom, Esc), size selector, size-guide modal (unit toggle, trap, Esc), skip link |
 | Story matrix | `npm run test:visual -- --grep @stories` | 318 stories × 4 projects render and pass axe (one forced mid-transition story is tagged `no-axe`) |
 | Lighthouse mobile | `node tools/lighthouse.mjs` | home 92–96, shop 95–97, PDP 92 on a quiet machine (`docs/qa/lighthouse.md`). Scores dip under CPU load; the SEO column is 63–66 only because `/robots.txt` disallows crawling pre-launch (D2) |
@@ -125,7 +128,9 @@ wordmark is a CSS mask (one cached SVG); photos ship as 480/720/960 WebP; the fo
 | D20 | The cart action rejects non-integer quantities and unknown variants with 400 | Mock or not, the action is the shape the live cart will keep |
 | D21 | Overlays close on navigation; opening the cart from the menu closes the menu first, then opens the cart | Two stacked dialogs left focus in the wrong layer; the sequence returns focus correctly |
 | D22 | Core stories use neutral stand-ins (a "brand" label, an "art slot" pill) instead of the wordmark and script words; `tools/check_brand.py` fails any import of `components/digs` from `components/core`, stories included | "core must not import from digs" applied to everything in the folder |
-| D23 | CI runs one `checks` job and four Playwright jobs (one per project) with the built site served once; pushes to `build/**` no longer run CI twice (the pull request run covers them) | Every earlier CI run hit the 30-minute job timeout inside the Playwright step (1,500 tests on one runner) |
+| D23 | CI runs one `checks` job and four Playwright jobs (one per project) with the built site served once; pushes to `build/**` no longer run CI twice (the pull request run covers them) | Every earlier CI run hit the 30-minute job timeout inside the Playwright step (1,500 tests on one runner). Each matrix job now takes about 12 minutes |
+| D24 | `display-xl` is `clamp(3.5rem, 1.5rem + 11vw, 10.5rem)` (was `2.1rem + 11.5vw`), changed in `design/tokens/tokens.base.json` | At 390px the manifesto headline's "Redefining" was 413px wide, so the page was 429px wide and phones zoomed out. 67px keeps a ten-letter word inside the margins; 768+ changes by a few px, 1440 not at all. The page a11y suite now fails any page wider than its viewport |
+| D25 | Visual baselines (`tests/visual/__screenshots__`) are produced on the GitHub runner by the `visual-baselines` workflow (Actions → visual-baselines → Run on the branch), which commits them back; `ci` compares against those | The same Chromium build rasterises text about 2% differently between this container and `ubuntu-latest` (and wrapped one PDP line differently), so baselines made here fail there. Locally, run `npm run test:visual -- --grep-invert @visual`, or refresh local baselines with `npm run test:visual:update` without committing them |
 
 ## Review round (after phase 6)
 
@@ -155,8 +160,9 @@ confirmed findings and 4 refuted ones. All 43 are fixed in the three "Review fix
 
 ## Known gaps
 
-- CI on GitHub: every run before the restructure (D23) was cancelled by the 30-minute timeout, so
-  the visual baselines have not yet been compared on a GitHub runner. Check the first green run of
-  the matrix before merging; if a project shows anti-aliasing diffs, refresh its baselines with
-  `npm run test:visual:update -- --project <name>` on that runner's output.
+- Visual baselines come from the runner (D25). After any change that moves pixels, run the
+  `visual-baselines` workflow on the branch and then re-run `ci`; the committed baselines in this
+  branch are the runner's as of the last such run (see the PR checks for the current state).
+- `maxDiffPixelRatio` stays at 0.01 until a few CI runs prove the runner stable, then tighten
+  (0.002) so a missing pill or badge cannot hide inside the tolerance.
 - Pincord back flat shows the pack's dashed placeholder for the back-yoke embroidery (O5).
