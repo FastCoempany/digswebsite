@@ -27,7 +27,7 @@
 }
 .menu-word {
   text-transform: uppercase;
-  font-size: clamp(2.75rem, 13vw, 9rem);
+  font-size: clamp(2.75rem, 16vw, 9rem);
   line-height: 0.9;
   letter-spacing: -0.03em;
 }

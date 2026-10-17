@@ -21,10 +21,10 @@ Add `?mode=wire` to any URL for wireframe mode (sticks for the session; `?mode=u
 |---|---|---|
 | 0 Foundation | done | Hydrogen (React Router 7, Vite 8, Tailwind v4) at the repo root; tokens wired; Alexandria WOFF2; `Wordmark`/`Lockup`/`Brandmark`/`Script`; mock adapter; Storybook; Playwright + axe; CI (`.github/workflows/ci.yml`); token page at `/dev/tokens` |
 | 1 Wireframes | done | `docs/wireframes/{page}-{390,1440}.png` (17 templates + menu, cart drawer, size-guide modal), Storybook "Pages" section (33 stories incl. states) |
-| 2 Core components | pending | `app/components/core/*` + stories |
-| 3 DIGS layer | pending | `app/components/digs/*` + stories, vector flats |
-| 4 UI pages | pending | `docs/ui/{page}-{390,1440}.png` |
-| 5 Photography | pending | `assets/photography/` + `MANIFEST.csv`, slots filled |
+| 2 Core components | done | 26 components, 181 stories (`Core/*`), every state in the 05 table; story matrix (axe × 390/1440 × UI/wire) in `tests/visual/stories.spec.ts` |
+| 3 DIGS layer | done | 20 components, 89 stories (`DIGS/*`); vector flats from the tech packs via `tools/flats_svg.py` with hotspot anchors |
+| 4 UI pages | done | `docs/ui/{page}-{390,1440}.png` (placeholder set in commit "Phase 4"; the final set carries the photography) |
+| 5 Photography | done | 15 approved finals in `assets/photography/` + `MANIFEST.csv` + `CREDITS.md`; optimized copies in `public/photography/`; placed by shot code (P-xx-01/02 per colorway, H-01 both crops, E-01..03); O8 recorded |
 | 6 QA | pending | axe clean, keyboard pass, Lighthouse ≥ 90, copy audit, baselines |
 
 Founder review gates after phases 1 and 4 are waived for this run (founder, Oct 16 2026); the
@@ -72,6 +72,18 @@ gate deliverables are produced and the run continues.
   `public/photography/`) was prepared in parallel; it is wired in phase 5. Wire mode hides images,
   so the wireframes are unaffected.
 
+## Phases 2–5 notes
+
+- Stories: `npm run storybook`. Toolbar **Mode** (UI / Wireframe) and **Viewport** (390 / 768 /
+  1024 / 1440). Forced hover/pressed/focus states are separate stories (named "(forced)").
+- The story matrix (`npm run test:visual -- --grep @stories`) loads every story from the static
+  build at 390 and 1440, in UI and wire mode, and fails on any serious or critical axe violation.
+- Photography: `tools/photo_sync.py` validates `MANIFEST.csv` (names, sizes, ratios against
+  `content/products`), writes progressive JPEGs plus 480/960(/1440) WebP variants and
+  `app/lib/mock/photos.generated.json`; `photos.ts` keys by shot code, colorway and ratio.
+- Slots still empty (labelled placeholders): P-xx-03..07 for every product, E-04+ (poster wall and
+  manifesto), and the second manifesto frames. Round 2 fills them (07-photography.md).
+
 ## Decisions to confirm
 
 | # | Decision taken | Why / default used |
@@ -87,6 +99,9 @@ gate deliverables are produced and the run continues.
 | D9 | Announcement bar reads "Capsule 01. Coming soon. Get on the list." (draft) and is hidden on the home hero | 04 example mentions a ship date, which is not set |
 | D10 | Checkout button is present but disabled, with a note | Nothing is wired to Shopify in this phase (decision 2) |
 | D11 | Size-guide "How to measure" shows the flats with the POM legend, without drawn measurement lines | Redrawing the tech-pack diagrams by hand risks a wrong line; the letters match the pack |
+| D12 | Two semantic color roles added through the sources: `text/sale-on-inverse`, `text/success-on-inverse` (the signal tints) | Field errors/successes on black or blue measured 3.6–3.9:1 with the base signal colors; the tints clear 17:1 (`contrast-report.md`) |
+| D13 | Flats simplify the thermal's stitch brushes to dashes and drop its 10% shading | 300 KB → 15 KB per flat with the same construction lines; see `tools/flats_svg.py` |
+| D14 | Hotspot pins are 40px and two anchors were moved off the garment feature by a few percent (thermal neck label, pincord box pleat) | Overlapping 44px targets failed axe target-size; the callout text names the exact placement |
 
 ## Known gaps
 

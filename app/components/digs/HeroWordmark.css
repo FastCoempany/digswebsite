@@ -77,8 +77,7 @@
   .hero-photo-mobile {
     grid-area: photo;
     z-index: 0;
-    margin-inline: var(--space-6) 0;
-    max-width: 78vw;
+    width: 78vw;
     justify-self: end;
   }
   .hero-copy {

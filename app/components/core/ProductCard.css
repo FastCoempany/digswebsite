@@ -73,3 +73,7 @@
 .pcard-mini .pcard-title {
   font-size: var(--font-size-small);
 }
+.pcard-mini .pcard-badge {
+  /* No room on a 96px thumbnail; the status reads from the context (empty cart shows the capsule) */
+  display: none;
+}
