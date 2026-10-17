@@ -1,4 +1,4 @@
-import {useEffect, useRef, type ReactNode} from 'react';
+import {useEffect, useId, useRef, type ReactNode} from 'react';
 import {IconButton} from './IconButton';
 import {useFocusTrap} from './useFocusTrap';
 import './Drawer.css';
@@ -23,6 +23,7 @@ export type DrawerProps = {
 /** Native <dialog> drawer: slides in over 300ms, focus trapped by the browser, Esc closes. */
 export function Drawer({open, onClose, title, label, closeLabel, side = 'right', tone = 'raised', children, footer, className = '', id}: DrawerProps) {
   const ref = useRef<HTMLDialogElement>(null);
+  const titleId = useId();
   useFocusTrap(ref, open);
   useEffect(() => {
     const el = ref.current;
@@ -52,10 +53,10 @@ export function Drawer({open, onClose, title, label, closeLabel, side = 'right',
     return () => el.removeEventListener('cancel', onCancel);
   }, [onClose]);
   return (
-    <dialog ref={ref} id={id} className={`drawer drawer-${side} drawer-${tone} ${className}`} aria-label={label} onClick={(e) => e.target === e.currentTarget && onClose()}>
+    <dialog ref={ref} id={id} className={`drawer drawer-${side} drawer-${tone} ${className}`} aria-label={label} aria-labelledby={label ? undefined : titleId} onClick={(e) => e.target === e.currentTarget && onClose()}>
       <div className="drawer-panel">
         <header className="drawer-head">
-          <div className="drawer-title">{title}</div>
+          <div className="drawer-title" id={titleId}>{title}</div>
           <IconButton icon="close" label={closeLabel} onClick={onClose} className="drawer-close" />
         </header>
         <div className="drawer-body">{children}</div>

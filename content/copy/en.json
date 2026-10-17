@@ -207,7 +207,10 @@
     "techPackLine": "From the tech pack: {code}, {revision}.",
     "sizeNoteLaidFlat": "Half measures are laid flat, as in the tech pack. Measurements in inches after garment wash; cm rounded to 0.5.",
     "preorderBadge": "Pre-order",
-    "newBadge": "New"
+    "newBadge": "New",
+    "from": "From",
+    "salePrice": "Sale price",
+    "regularPrice": "Regular price"
   },
   "cart": {
     "empty": "Your Digs are empty.",
@@ -227,6 +230,10 @@
     "lineError": {
       "status": "draft",
       "text": "That didn't update. Try again."
+    },
+    "freeShipping": {
+      "status": "draft",
+      "text": "Free shipping slot: hidden until the founder sets the threshold."
     }
   },
   "taglineBand": [

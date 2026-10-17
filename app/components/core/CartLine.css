@@ -6,11 +6,17 @@
   border-bottom: var(--border-hairline) solid var(--color-border-hairline);
   transition: opacity var(--motion-base) var(--motion-ease);
 }
-.cartline.is-updating {
-  opacity: 0.7;
+/* Busy states dim the media and controls only; text keeps its contrast */
+.cartline.is-updating .cartline-media,
+.cartline.is-updating .cartline-controls {
+  opacity: 0.6;
 }
-.cartline.is-removing {
-  opacity: 0.4;
+.cartline.is-removing .cartline-media,
+.cartline.is-removing .cartline-controls {
+  opacity: 0.35;
+}
+.cartline.is-removing .cartline-title {
+  text-decoration: line-through;
 }
 .cartline-body {
   display: grid;

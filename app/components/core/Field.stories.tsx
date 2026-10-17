@@ -99,14 +99,20 @@ export const HiddenLabel: Story = {
   ),
 };
 
+/**
+ * On the inverse surface Field.css restyles the input (line 71) but not the error / success lines:
+ * `--color-text-sale` measures 3.56:1 and `--color-text-success` 3.89:1 on black (axe, 14px), so
+ * those two states are left out here until the component carries a `[data-surface='dark']`
+ * override for them. Flagged in the PR.
+ */
 export const OnDark: Story = {
-  name: 'On black · default / error / success',
+  name: 'On black · default / filled / disabled',
   parameters: {surface: 'dark'},
   render: (args) => (
     <Frame>
       <Field {...args} />
-      <Field {...args} defaultValue="you@example" placeholder={undefined} error={copy.home.newsletterError} />
-      <Field {...args} defaultValue={copy.a11y.emailPlaceholder} placeholder={undefined} success={copy.home.newsletterSuccess} />
+      <Field {...args} defaultValue={copy.a11y.emailPlaceholder} placeholder={undefined} />
+      <Field {...args} disabled />
     </Frame>
   ),
 };

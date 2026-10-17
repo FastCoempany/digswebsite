@@ -52,6 +52,8 @@
   --color-text-sale: var(--color-signal-sale);
   --color-text-success: var(--color-signal-success);
   --color-text-low-stock: var(--color-signal-low-stock);
+  --color-text-sale-on-inverse: var(--color-signal-sale-tint);
+  --color-text-success-on-inverse: var(--color-signal-success-tint);
   --color-border-hairline: var(--color-ink-200);
   --color-border-control: var(--color-ink-500);
   --color-border-strong: var(--color-core-ink);

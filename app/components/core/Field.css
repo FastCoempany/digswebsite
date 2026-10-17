@@ -71,3 +71,15 @@
 [data-surface='dark'] .field-input {
   background: var(--color-surface-raised);
 }
+[data-surface='dark'] .field-error,
+[data-surface='brand'] .field-error {
+  color: var(--color-text-sale-on-inverse);
+}
+[data-surface='dark'] .field-success,
+[data-surface='brand'] .field-success {
+  color: var(--color-text-success-on-inverse);
+}
+[data-surface='dark'] .field-hint,
+[data-surface='brand'] .field-hint {
+  color: var(--color-text-on-inverse);
+}
