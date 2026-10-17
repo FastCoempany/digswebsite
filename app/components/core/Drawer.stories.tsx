@@ -7,8 +7,7 @@ import {CartSummary} from './CartSummary';
 import {EmptyState} from './EmptyState';
 import {Link} from './Link';
 import {PRODUCTS, hydrateCart} from '~/lib/mock';
-import {cartLineData} from '~/components/digs/chrome/CartDrawer';
-import {Script, Wordmark} from '~/components/digs/marks';
+import {cartLineData} from '~/lib/cartLine';
 import {copy, text} from '~/lib/copy';
 
 /**
@@ -23,6 +22,13 @@ const cart = hydrateCart({
   ],
 });
 const LINES = cartLineData(cart);
+/** Neutral stand-ins: nothing under core/ imports the DIGS layer (the chrome passes the wordmark and script word). */
+const brandTitle = <span className="type-h3">brand</span>;
+const artSlot = (word: string) => (
+  <span className="type-micro type-caps" aria-hidden="true" style={{display: 'inline-block', padding: 'var(--space-2) var(--space-4)', border: 'var(--border-hairline) dashed var(--color-border-control)', borderRadius: 'var(--radius-pill)'}}>
+    art slot · {word}
+  </span>
+);
 const LINE_LABELS = {remove: copy.cart.remove, quantity: copy.a11y.quantity, increase: copy.a11y.increase, decrease: copy.a11y.decrease, priceTBA: copy.product.priceTBA, colorway: copy.a11y.colorway, size: copy.a11y.size};
 const SUMMARY_LABELS = {subtotal: copy.cart.subtotal, taxNote: copy.cart.taxNote, checkout: copy.cta.checkout, priceTBA: copy.product.priceTBA, checkoutNote: text(copy.cart.checkoutNote)};
 
@@ -115,11 +121,7 @@ export const RightEmpty: Story = {
         variant="cart"
         heading={copy.cart.empty}
         body={text(copy.cart.emptyBody)}
-        art={
-          <span className="type-display">
-            <Script word={copy.cart.emptyScript} />
-          </span>
-        }
+        art={artSlot(copy.cart.emptyScript)}
         action={<Button to="/collections/all">{copy.cta.enterShop}</Button>}
       />
     </Stateful>
@@ -129,7 +131,7 @@ export const RightEmpty: Story = {
 export const FullOpen: Story = {
   name: 'Full · open (menu, page tone)',
   render: () => (
-    <Stateful initial trigger={copy.a11y.openMenu} side="full" tone="page" title={<Wordmark color="blue" height="28px" />} label={copy.a11y.menu} closeLabel={copy.a11y.closeMenu}>
+    <Stateful initial trigger={copy.a11y.openMenu} side="full" tone="page" title={brandTitle} label={copy.a11y.menu} closeLabel={copy.a11y.closeMenu}>
       {menuBody}
     </Stateful>
   ),
@@ -161,7 +163,7 @@ export const FullClosing: Story = {
   render: () => (
     <>
       <style>{FORCED}</style>
-      <Stateful initial trigger={copy.a11y.openMenu} side="full" tone="page" title={<Wordmark color="blue" height="28px" />} label={copy.a11y.menu} closeLabel={copy.a11y.closeMenu} className="story-closing">
+      <Stateful initial trigger={copy.a11y.openMenu} side="full" tone="page" title={brandTitle} label={copy.a11y.menu} closeLabel={copy.a11y.closeMenu} className="story-closing">
         {menuBody}
       </Stateful>
     </>

@@ -42,7 +42,8 @@ export default defineConfig<TestOptions>({
   ],
   webServer: [
     {
-      command: 'npm run preview',
+      // PW_PREVIEW_CMD="npm run preview:built" serves an existing dist/ (CI builds once, then serves)
+      command: process.env.PW_PREVIEW_CMD ?? 'npm run preview',
       cwd: repoRoot,
       url: BASE_URL,
       reuseExistingServer: true,

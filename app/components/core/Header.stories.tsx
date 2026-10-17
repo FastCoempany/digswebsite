@@ -5,20 +5,38 @@ import {Header} from './Header';
 import {IconButton} from './IconButton';
 import {Link as UiLink} from './Link';
 import {Drawer} from './Drawer';
-import {Wordmark} from '~/components/digs/marks';
 import {copy} from '~/lib/copy';
-import '~/components/digs/chrome/chrome.css';
 
 /**
  * Header (05-components.md, Core): transparent (home hero) and solid; scrolled and menu-open.
- * The shell is brand-agnostic; the slots here are filled the way the DIGS chrome fills them
- * (stories may import the wordmark, core components may not). Mobile: menu · brand · cart.
- * Desktop: Shop Manifesto · brand · Account, Your Digs.
+ * The shell is brand-agnostic; the slots here are filled the way the DIGS chrome fills them,
+ * with a neutral mark standing in for the wordmark (nothing under core/ imports the DIGS layer).
+ * Mobile: menu · brand · cart. Desktop: Shop Manifesto · brand · Account, Your Digs.
  */
+const STORY_CSS = `
+.hdr-brand { display: inline-flex; align-items: center; height: 2.75rem; padding-inline: var(--space-2); color: var(--color-text-link); }
+.hdr-transparent:not(.is-scrolled) .hdr-brand,
+.hdr-transparent:not(.is-scrolled) .lnk-nav,
+.hdr-transparent:not(.is-scrolled) .iconbtn { color: var(--color-text-on-brand); }
+.hdr-transparent:not(.is-scrolled) :focus-visible { outline-color: var(--color-focus-ring-on-dark); }
+.hdr-cart { padding-inline: var(--space-2); }
+.hdr-cart-short { display: none; }
+@media (max-width: 359px) { .hdr-cart-long { display: none; } .hdr-cart-short { display: inline; } }
+.story-brand { font-weight: 700; font-size: 1.375rem; letter-spacing: -0.03em; line-height: 1; }
+`;
+const brand = <span className="story-brand">brand</span>;
 const meta = {
   title: 'Core/Header',
   component: Header,
   parameters: {padded: false},
+  decorators: [
+    (StoryFn) => (
+      <>
+        <style>{STORY_CSS}</style>
+        <StoryFn />
+      </>
+    ),
+  ],
 } satisfies Meta<typeof Header>;
 export default meta;
 type Story = StoryObj<typeof meta>;
@@ -38,7 +56,7 @@ function slots({menuOpen = false, cartCount = 0, menuId}: {menuOpen?: boolean; c
     ),
     center: (
       <RouterLink to="/" className="hdr-brand" aria-label={copy.a11y.home}>
-        <Wordmark color="current" height="28px" decorative />
+        {brand}
       </RouterLink>
     ),
     trailing: (
@@ -133,7 +151,7 @@ export const MenuOpen: Story = {
     <>
       <Header variant="solid" menuOpen {...slots({menuOpen: true, menuId: 'story-menu'})} />
       <PageBody />
-      <Drawer open onClose={() => undefined} side="full" tone="page" id="story-menu" title={<Wordmark color="blue" height="28px" />} label={copy.a11y.menu} closeLabel={copy.a11y.closeMenu}>
+      <Drawer open onClose={() => undefined} side="full" tone="page" id="story-menu" title={<span className="type-h3">{brand}</span>} label={copy.a11y.menu} closeLabel={copy.a11y.closeMenu}>
         <nav aria-label={copy.a11y.mainNav} style={{padding: 'var(--space-5) var(--layout-margin)'}}>
           <ul style={{display: 'grid', gap: 'var(--space-2)'}}>
             <li>

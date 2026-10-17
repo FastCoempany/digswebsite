@@ -2,12 +2,12 @@ import type {Meta, StoryObj} from '@storybook/react-vite';
 import {EmptyState} from './EmptyState';
 import {Button} from './Button';
 import {Link} from './Link';
-import {Script} from '~/components/digs/marks';
 import {copy, text} from '~/lib/copy';
 
 /**
  * EmptyState (05-components.md, Core): cart, filter, 404, with a slot for a script word. The
- * brand layer passes the word (stories may import `Script`; core components may not).
+ * brand layer passes the word; here a neutral placeholder fills the slot (nothing under core/
+ * imports the DIGS layer).
  */
 const meta = {
   title: 'Core/EmptyState',
@@ -17,8 +17,8 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 const scriptArt = (word: string) => (
-  <span className="type-display">
-    <Script word={word} />
+  <span className="type-micro type-caps" aria-hidden="true" style={{display: 'inline-block', padding: 'var(--space-2) var(--space-4)', border: 'var(--border-hairline) dashed var(--color-border-control)', borderRadius: 'var(--radius-pill)'}}>
+    art slot · {word}
   </span>
 );
 

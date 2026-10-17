@@ -6,6 +6,7 @@ import {Overline} from '~/components/digs/Overline';
 import {Script} from '~/components/digs/marks/Script';
 import {StrikeRewrite} from '~/components/digs/StrikeRewrite';
 import {lineWithScript} from '~/components/digs/lineWithScript';
+import {Draftable} from '~/components/digs/Draftable';
 import './pages.css';
 
 const EDITORIAL_CODES = ['E-01', 'E-02', 'E-03', 'E-04'];
@@ -93,7 +94,7 @@ export function ManifestoPage() {
       </section>
       <section className="sec" aria-label={m.quietHead}>
         <div className="inner">
-          <p className="mani-quiet">{text(m.quiet)}</p>
+          <p className="mani-quiet"><Draftable field={m.quiet} /></p>
           <p className="mani-quiet-attr type-small">{m.quietAttribution}</p>
           <p style={{marginTop: 'var(--space-7)'}}>
             <Button to="/collections/all" size="lg">

@@ -8,7 +8,7 @@ Checked page by page at the end of the build (Oct 17 2026). Evidence is a comman
 |---|---|---|
 | Identity is BOAST's: Digs Blue, black, ice; Alexandria; The Old Falcons; the Actually Dope lockup | Tokens generated from `design/tokens/`; marks generated from `brand/logos/` by `tools/brand_svg.py`; script words from `brand/script/` | `npm run check:brand` (no hex in `app/`); `app/assets/marks`, `app/assets/script` |
 | Components use semantic tokens only; no hex in `app/` | Core reads `--color-*` roles only; brand layer may use core + tonal tokens | `python3 tools/check_brand.py` passes; CI step |
-| Never black text on Digs Blue, never Digs Blue text on black | On blue surfaces text is ice (`--color-text-on-brand`); on black, blue is graphic only (scrawl, script in the tagline band, frames) | `design/tokens/contrast-report.md`; tagline band script is the only blue on black and it is a graphic (`role="img"`) |
+| Never black text on Digs Blue, never Digs Blue text on black | On blue surfaces text is ice (`--color-text-on-brand`); on black, blue is graphic only (scrawl, frames, stickers) | `design/tokens/contrast-report.md`; the tagline band's script word is set in ice, so no blue sits on black as text |
 | The Old Falcons is never served | Script words are SVG masks; the font file is never copied, converted or declared | `tools/check_brand.py` scans `app/`, `public/`, `dist/`, `storybook-static/` and every served font's name table; `tests/visual/smoke.spec.ts` asserts no font request matches "falcon" |
 | One or two script words per line, maximum | `lineWithScript` places at most one word; headlines compose `<Script>` by hand | `python3 tools/copy_audit.py` counts `.script` per heading on every rendered page |
 | Wordmark always lowercase `digs`; lockup ahead of the bare wordmark; edge-to-edge wordmark closes every page | `Wordmark` renders the BOAST file; `Lockup` in the footer brand block and token page; `FooterWordmark` in `PageLayout` | every `docs/ui/*-1440.png` ends with the wordmark |
@@ -33,7 +33,7 @@ Put next to the PJ screen it borrows from: layout logic recognisable, surface un
 | Stickers | Stamps breaking the grid | The DD brandmark and trim tokens (L3, RIB) in blue/black, not badges in slime/pink |
 | Margin rails | Vertical caps text at the edges | Ink micro caps on ice; flip to ice over black sections |
 | Menu | Stacked bordered blocks, huge words | Blue on ice, flips to ice on blue with a scrawl underline; square hairlines; the DD sticker |
-| Tagline band + footer + wordmark | Ethos band closes the page | Black band, Alexandria display with one blue script word, pill CTA; then the edge-to-edge wordmark (BOAST "do") |
+| Tagline band + footer + wordmark | Ethos band closes the page | Black band, Alexandria display with one script word in ice, pill CTA; then the edge-to-edge wordmark (BOAST "do") |
 | Product tiles / PDP | Tile skeleton; image-led PDP | Keylined cloth swatches, "Price TBA", tech-pack style string, "Built like this" flats with red leader lines |
 
 Verdict: with the logo swapped, none of these screens would pass for Puff Junction. The surface is blue/black/ice, geometric sans + marker script, square frames and pill buttons throughout.

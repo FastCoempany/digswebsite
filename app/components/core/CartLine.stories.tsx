@@ -3,7 +3,7 @@ import {useState} from 'react';
 import type {ReactNode} from 'react';
 import {CartLine, type CartLineData} from './CartLine';
 import {PRODUCTS, hydrateCart} from '~/lib/mock';
-import {cartLineData} from '~/components/digs/chrome/CartDrawer';
+import {cartLineData} from '~/lib/cartLine';
 import {copy, text} from '~/lib/copy';
 
 /**

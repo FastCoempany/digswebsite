@@ -1,3 +1,4 @@
+import type {ReactNode} from 'react';
 import {Link} from 'react-router';
 import {MediaSlot, type MediaImage} from './MediaSlot';
 import {Price, type Money} from './Price';
@@ -19,7 +20,7 @@ export type CartLineData = {
 export type CartLineProps = {
   line: CartLineData;
   state?: 'default' | 'updating' | 'removing' | 'error';
-  error?: string | null;
+  error?: ReactNode | null;
   onQuantity?: (id: string, quantity: number) => void;
   onRemove?: (id: string) => void;
   labels: {remove: string; quantity: string; increase: string; decrease: string; priceTBA: string; colorway: string; size: string};

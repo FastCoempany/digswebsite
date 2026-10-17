@@ -12,6 +12,7 @@ import {SiteHeader} from './SiteHeader';
 import {SiteFooter} from './SiteFooter';
 import {CartDrawer} from './CartDrawer';
 import {copy, text} from '~/lib/copy';
+import {Draftable} from '~/components/digs/Draftable';
 import './chrome.css';
 
 export type PageLayoutProps = {
@@ -52,7 +53,7 @@ function Frame({cart, cards, children, transparentHeader, taglineIndex}: PageLay
   const toastRegion = <ToastRegion toasts={toasts} onDismiss={dismissToast} dismissLabel={copy.a11y.dismiss} />;
   const index = taglineIndex ?? Math.abs(hash(location.pathname)) % copy.taglineBand.length;
   const home = transparentHeader ?? location.pathname === '/';
-  const announcement = copy.announcement.enabled ? text(copy.announcement) : null;
+  const announcement = copy.announcement.enabled && text(copy.announcement) ? <Draftable field={copy.announcement} /> : null;
   const cartCount = cart?.totalQuantity ?? 0;
   return (
     <div className="page">

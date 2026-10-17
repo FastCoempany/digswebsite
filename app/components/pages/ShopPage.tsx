@@ -8,6 +8,7 @@ import {Link} from '~/components/core/Link';
 import {Overline} from '~/components/digs/Overline';
 import {BlueFrame} from '~/components/digs/BlueFrame';
 import {lineWithScript} from '~/components/digs/lineWithScript';
+import {Draftable} from '~/components/digs/Draftable';
 import './pages.css';
 
 export type ShopFilter = 'all' | 'tops' | 'bottoms';
@@ -26,7 +27,7 @@ export function ShopPage({cards, filter: initial = 'all', loading, allSoldOut}: 
           <h1 id="shop-head" className="type-display">
             {copy.shop.head}
           </h1>
-          <p className="shop-note">{text(copy.shop.dropNote)}</p>
+          <p className="shop-note"><Draftable field={copy.shop.dropNote} /></p>
         </div>
         <SegmentedControl label={copy.a11y.mainNav} options={options} value={filter} onChange={(v) => setFilter(v as ShopFilter)} />
         {!loading && shown.length === 0 ? (
@@ -51,7 +52,7 @@ export function ShopPage({cards, filter: initial = 'all', loading, allSoldOut}: 
             })}
           </ul>
         )}
-        {allSoldOut ? <p className="sec-sub" style={{marginTop: 'var(--space-6)'}}>{text(copy.shop.emptyAll)}</p> : null}
+        {allSoldOut ? <p className="sec-sub" style={{marginTop: 'var(--space-6)'}}><Draftable field={copy.shop.emptyAll} /></p> : null}
       </div>
     </section>
   );

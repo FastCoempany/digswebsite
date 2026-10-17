@@ -9,6 +9,7 @@
     "dev": "shopify hydrogen dev --port 3000",
     "build": "rm -rf dist && shopify hydrogen build",
     "preview": "shopify hydrogen preview --build --port 3000",
+    "preview:built": "shopify hydrogen preview --port 3000",
     "storybook": "storybook dev -p 6006",
     "storybook:build": "storybook build -o storybook-static",
     "typecheck": "react-router typegen && tsc --noEmit",

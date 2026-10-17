@@ -1,26 +1,16 @@
 import type {ReactNode} from 'react';
 import type {Product, ShopPolicy} from '~/lib/mock/types';
 import {digs} from '~/lib/mock';
-import {copy, isDraft, text} from '~/lib/copy';
+import {copy} from '~/lib/copy';
 import {Accordion} from '~/components/core/Accordion';
 import {Button} from '~/components/core/Button';
 import {Field} from '~/components/core/Field';
 import {Link} from '~/components/core/Link';
 import {SizeChart} from '~/components/core/SizeChart';
 import {Overline} from '~/components/digs/Overline';
+import {Draftable, type DraftField as Draft} from '~/components/digs/Draftable';
 import {flatsFor} from '~/components/digs/flats';
 import './pages.css';
-
-type Draft = string | {status?: string; text: string};
-
-function Draftable({field}: {field: Draft}) {
-  return (
-    <>
-      {text(field)}
-      {isDraft(field) ? <span className="draft-flag">draft</span> : null}
-    </>
-  );
-}
 
 function Shell({title, overline, intro, children, wide}: {title: string; overline?: string; intro?: Draft; children?: ReactNode; wide?: boolean}) {
   return (

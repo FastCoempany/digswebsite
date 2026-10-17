@@ -354,7 +354,8 @@
     "centimetres": "cm",
     "hotspot": "Detail {code}: {label}",
     "home": "Home",
-    "laidFlat": "laid flat"
+    "laidFlat": "laid flat",
+    "draftFlag": "draft"
   },
   "errors": {
     "generic": "Something went wrong.",

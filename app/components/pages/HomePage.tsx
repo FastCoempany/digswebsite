@@ -16,6 +16,7 @@ import {BlueFrame} from '~/components/digs/BlueFrame';
 import {PosterWall, type PosterTile} from '~/components/digs/PosterWall';
 import {lineWithScript} from '~/components/digs/lineWithScript';
 import {flatsFor, anchorsFor} from '~/components/digs/flats';
+import {Draftable} from '~/components/digs/Draftable';
 import './pages.css';
 
 function slot(code: string, ratio: '4:5' | '3:4' | '9:16' | '16:9', colorway?: string | null) {
@@ -63,7 +64,7 @@ export function HomePage({cards, thermal, newsletterStatus}: {cards: ProductCard
               <h2 id="capsule-head" className="type-display">
                 {copy.home.capsuleHead}
               </h2>
-              <p className="sec-sub">{text(copy.home.capsuleSub)}</p>
+              <p className="sec-sub"><Draftable field={copy.home.capsuleSub} /></p>
             </div>
           </div>
           <ul className="capsule-grid">

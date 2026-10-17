@@ -28,9 +28,18 @@ jobs:
         run: npm run check:brand
       - name: Install Playwright Chromium
         run: npx playwright install --with-deps chromium
-      - name: Copy audit (static checks)
-        run: python3 tools/copy_audit.py --base http://localhost:1
+      - name: Serve the built site (the audits and tests reuse it; no second build)
+        run: |
+          (npm run preview:built > preview.log 2>&1 &)
+          for i in $(seq 1 60); do curl -sf -o /dev/null http://localhost:3000/ && break; sleep 2; done
+          curl -sf -o /dev/null http://localhost:3000/ || { cat preview.log; exit 1; }
+      - name: Copy audit and fact trace against the served pages
+        run: |
+          python3 tools/copy_audit.py --base http://localhost:3000
+          python3 tools/fact_trace.py --base http://localhost:3000
       - name: Visual, accessibility, keyboard and story-matrix tests
+        env:
+          PW_PREVIEW_CMD: npm run preview:built
         run: npm run test:visual
       - uses: actions/upload-artifact@v4
         if: always()

@@ -121,7 +121,7 @@ copy = json.load(open(os.path.join(ROOT, "content", "copy", "en.json")))
 CHROME = {norm(x) for x in [
     "Fabric.", "Finish.", "Content.", "Where", "Measurements", "laid flat", "(laid flat)", "Select a size.", copy["cta"]["sizeGuide"], copy["product"]["measurementsHeadNoSize"],
     copy["product"]["shippingReturnsBody"]["text"], "S", "M", "L", "XL", "in", "cm", "Front", "Back",
-    copy["product"]["sizeNoteLaidFlat"], copy["cta"]["selectSize"],
+    copy["product"]["sizeNoteLaidFlat"], copy["cta"]["selectSize"], copy["a11y"]["draftFlag"],
 ] + [norm(k) for k in copy["product"]["short"].keys()]}
 for h in HANDLES:
     CHROME.add(norm(copy["product"]["short"][h]["text"]))
@@ -157,7 +157,104 @@ for handle in HANDLES:
                     continue
                 fails.append(f"{handle} [{region}]: {piece[:110]!r}")
 
-print(f"fact trace: {checked} on-screen facts checked across {len(HANDLES)} product pages")
+
+
+class Tables(HTMLParser):
+    """Every .sizechart-table on a page as rows of cell texts, with the chart title before it."""
+
+    def __init__(self):
+        super().__init__()
+        self.tables, self.cur, self.row, self.cell, self.title = [], None, None, None, None
+        self.in_title = self.skip_pom = False
+
+    def handle_starttag(self, tag, attrs):
+        a = dict(attrs)
+        cls = (a.get("class") or "").split()
+        if "sizechart-title" in cls:
+            self.in_title, self.title = True, ""
+        if tag == "table" and "sizechart-table" in cls:
+            self.cur = {"title": self.title, "rows": []}
+        if self.cur is not None:
+            if tag == "tr":
+                self.row = []
+            elif tag in ("td", "th"):
+                self.cell = ""
+            elif "sizechart-pom" in cls:
+                self.skip_pom = True
+
+    def handle_endtag(self, tag):
+        if self.in_title and tag in ("h2", "h3", "h4"):
+            self.in_title = False
+        if self.cur is None:
+            return
+        if tag == "span" and self.skip_pom:
+            self.skip_pom = False
+        elif tag in ("td", "th") and self.cell is not None:
+            self.row.append(self.cell)
+            self.cell = None
+        elif tag == "tr" and self.row is not None:
+            self.cur["rows"].append(self.row)
+            self.row = None
+        elif tag == "table":
+            self.tables.append(self.cur)
+            self.cur = None
+
+    def handle_data(self, data):
+        if self.in_title:
+            self.title += data
+        if self.cell is not None and not self.skip_pom:
+            self.cell += data
+
+
+def check_size_charts():
+    """Structural check of the size guide: every chart's rows, in order, equal the graded spec
+    (row label from customerPOMs, one cell per size with the spec's inch label)."""
+    global checked
+    html = urllib.request.urlopen(f"{BASE}/pages/size-guide?mode=ui", timeout=20).read().decode("utf-8")
+    t = Tables()
+    t.feed(html)
+    by_title = {}
+    for h in HANDLES:
+        p = json.load(open(os.path.join(ROOT, "content", "products", f"{h}.json")))
+        by_title[norm(p["name"])] = (h, p)
+    seen = set()
+    for tb in t.tables:
+        key = norm(tb["title"] or "")
+        if key not in by_title:
+            fails.append(f"size guide: a chart titled {tb['title']!r} matches no product")
+            continue
+        h, p = by_title[key]
+        seen.add(h)
+        spec = json.load(open(os.path.join(ROOT, p["sizeChart"]["specs"])))
+        if not tb["rows"]:
+            fails.append(f"{h} size chart: no rows")
+            continue
+        head, *body = tb["rows"]
+        if [norm(c) for c in head[1:]] != [norm(s) for s in p["sizes"]]:
+            fails.append(f"{h} size chart: columns {head[1:]} vs sizes {p['sizes']}")
+        poms = list(p["sizeChart"]["customerPOMs"].items())
+        if len(body) != len(poms):
+            fails.append(f"{h} size chart: {len(body)} rows shown, {len(poms)} customer POMs in content")
+        for (pom, label), row in zip(poms, body):
+            srow = next((r for r in spec["rows"] if r["pom"] == pom), None)
+            if not srow:
+                fails.append(f"{h} size chart: POM {pom} missing from the graded spec")
+                continue
+            laid = re.match(r"^1/2\b", srow["description"]) and not re.search("laid flat", label, re.I)
+            exp_label = norm(label + (" (laid flat)" if laid else ""))
+            if norm(row[0]) != exp_label:
+                fails.append(f"{h} size chart row {pom}: label {norm(row[0])!r} vs {exp_label!r}")
+            exp = [norm(srow["sizes"][s]["label"]) if s in srow["sizes"] else "-" for s in p["sizes"]]
+            got = [norm(c) for c in row[1:]]
+            if got != exp:
+                fails.append(f"{h} size chart row {pom}: shown {got} vs spec {exp}")
+            checked += len(exp) + 1
+    for h in set(HANDLES) - seen:
+        fails.append(f"size guide: no chart for {h}")
+
+
+check_size_charts()
+print(f"fact trace: {checked} on-screen facts checked across {len(HANDLES)} product pages and the size guide")
 if fails:
     print("UNTRACED (no source in content/products/):")
     for f in fails:

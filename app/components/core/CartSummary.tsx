@@ -1,3 +1,4 @@
+import type {ReactNode} from 'react';
 import {useId} from 'react';
 import {Button} from './Button';
 import {Price, type Money} from './Price';
@@ -5,7 +6,7 @@ import './CartSummary.css';
 
 export type CartSummaryProps = {
   subtotal: Money;
-  labels: {subtotal: string; taxNote: string; checkout: string; priceTBA: string; checkoutNote?: string; freeShipping?: string};
+  labels: {subtotal: string; taxNote: string; checkout: string; priceTBA: string; checkoutNote?: ReactNode; freeShipping?: string};
   /** Free-shipping progress; stays hidden until terms exist (null). */
   freeShipping?: {threshold: number; current: number; currencyCode: string} | null;
   onCheckout?: () => void;

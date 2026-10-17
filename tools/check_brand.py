@@ -9,6 +9,9 @@ Fails when any of these appear in app/ (and, for the private font, in public/ an
     storybook-static/; plus a binary scan of every served font file for the face's name
     (the script face is never served; prose mentions of its name in comments and copy are fine)
 
+  * an import of the DIGS layer from app/components/core/ (CLAUDE.md: core is brand-agnostic and
+    must not import from app/components/digs/; stories under core/ included)
+
 Exemptions: a line ending in the comment  brand-check: allow  (used only for things like
 `#root` ids that look like hex). Generated path data is checked too.
 
@@ -27,6 +30,7 @@ PJ = re.compile(r"D6FD4A|A5E4FF|FF8FF1|FEF200", re.I)
 STRINGS = re.compile(r"boudaries|jorney|@streetdigs|(?<![a-z0-9])digs\.com|TENCEL", re.I)
 FONT = re.compile(r"_private-the-old-falcons|TheOldFalcons|font-family:\s*['\"]?The Old Falcons|\.otf\b", re.I)
 FONT_BIN = re.compile(rb"The Old Falcons|TheOldFalcons", re.I)
+CORE_TO_DIGS = re.compile(r"""(?:from|import)\s*['"](?:[^'"]*components/digs|\.\.?/digs)(?:/[^'"]*)?['"]""")
 
 findings = []
 
@@ -61,6 +65,10 @@ for path in walk(APP_DIRS):
         check_text(path, HEX, "hex color")
         check_text(path, PJ, "Puff Junction color", exempt_ok=False)
         check_text(path, STRINGS, "forbidden string", exempt_ok=False)
+
+for path in walk(["app/components/core"]):
+    if os.path.splitext(path)[1] in (".ts", ".tsx", ".css"):
+        check_text(path, CORE_TO_DIGS, "core imports the DIGS layer", exempt_ok=False)
 
 for path in walk(FONT_DIRS):
     ext = os.path.splitext(path)[1]

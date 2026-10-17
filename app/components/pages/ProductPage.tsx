@@ -20,6 +20,7 @@ import {Overline} from '~/components/digs/Overline';
 import {BuiltLikeThis} from '~/components/digs/BuiltLikeThis';
 import {flatsFor, anchorsFor} from '~/components/digs/flats';
 import {badgeFor} from '~/lib/view';
+import {Draftable, type DraftField} from '~/components/digs/Draftable';
 import './pages.css';
 
 export type ProductPageProps = {
@@ -188,7 +189,7 @@ export function ProductPage({product, others, color, forceStatus, forceSize = nu
         </>
       ),
     },
-    {id: 'shipping', title: copy.product.accordions[3], content: <p>{text(copy.product.shippingReturnsBody)}</p>},
+    {id: 'shipping', title: copy.product.accordions[3], content: <p><Draftable field={copy.product.shippingReturnsBody} /></p>},
   ];
 
   const badge = badgeFor(status);
@@ -226,10 +227,10 @@ export function ProductPage({product, others, color, forceStatus, forceSize = nu
           </div>
           {status === 'pre-order' && preorderDate ? <p className="pdp-preorder">{fill(copy.product.preorder, {date: preorderDate})}</p> : null}
         </div>
-        <p className="pdp-short">{text((copy.product.short as Record<string, {status?: string; text: string}>)[product.handle] ?? {text: ''})}</p>
+        <p className="pdp-short"><Draftable field={(copy.product.short as Record<string, DraftField>)[product.handle] ?? ''} /></p>
 
         <SwatchGroup label={copy.a11y.colorway} options={colorways.map((c) => ({value: c.name, label: c.name, color: c.color, available: true}))} value={selectedColor} onChange={chooseColor} size="md" showName />
-        {laterColorways.length ? <p className="type-small" style={{color: 'var(--color-text-secondary)'}}>{fill(text(copy.product.moreColorways), {names: laterColorways.join(', ')})}</p> : null}
+        {laterColorways.length ? <p className="type-small" style={{color: 'var(--color-text-secondary)'}}><Draftable field={copy.product.moreColorways} values={{names: laterColorways.join(', ')}} /></p> : null}
 
         <SizeSelector
           label={copy.a11y.size}
@@ -254,7 +255,7 @@ export function ProductPage({product, others, color, forceStatus, forceSize = nu
           <Button size="lg" fullWidth onClick={primary} loading={adding} variant={status === 'coming-soon' ? 'secondary' : 'primary'}>
             {ctaLabel}
           </Button>
-          {text(copy.product.shippingLine) ? <p className="type-small">{text(copy.product.shippingLine)}</p> : null}
+          {text(copy.product.shippingLine) ? <p className="type-small"><Draftable field={copy.product.shippingLine} /></p> : null}
         </div>
 
         <Accordion items={accordion} defaultOpen={['details']} headingLevel="h2" />

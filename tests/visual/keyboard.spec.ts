@@ -55,7 +55,7 @@ test.describe('keyboard @keyboard', () => {
     await expect(dialog).toBeHidden();
   });
 
-  test('size selector: Tab reaches the sizes, Enter selects, error reads on submit without a size', async ({page, mode}) => {
+  test('size selector: Enter and Space check a size, arrow keys move the choice, the previous one clears', async ({page, mode}) => {
     await open(page, '/products/thermal-long-sleeve', mode);
     const sizes = page.getByRole('radiogroup', {name: 'Size'});
     const m = sizes.getByRole('radio', {name: 'M', exact: true});
@@ -67,6 +67,10 @@ test.describe('keyboard @keyboard', () => {
     await page.keyboard.press('Space');
     await expect(l).toHaveAttribute('aria-checked', 'true');
     await expect(m).toHaveAttribute('aria-checked', 'false');
+    await page.keyboard.press('ArrowLeft');
+    await expect(m).toBeFocused();
+    await expect(m).toHaveAttribute('aria-checked', 'true');
+    await expect(l).toHaveAttribute('aria-checked', 'false');
   });
 
   test('size guide modal: opens from the keyboard, traps focus, unit toggle works, Esc closes', async ({page, mode}) => {

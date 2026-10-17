@@ -400,18 +400,6 @@
 .util-section p {
   color: var(--color-text-secondary);
 }
-.draft-flag {
-  display: inline-flex;
-  align-items: center;
-  gap: var(--space-1);
-  margin-left: var(--space-2);
-  padding: 0 var(--space-2);
-  border: var(--border-hairline) solid var(--color-border-control);
-  border-radius: var(--radius-pill);
-  font-size: var(--font-size-micro);
-  color: var(--color-text-secondary);
-  vertical-align: middle;
-}
 .contact-form {
   display: grid;
   gap: var(--space-4);
