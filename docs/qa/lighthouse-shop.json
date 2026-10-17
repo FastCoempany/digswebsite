@@ -1,15 +1,15 @@
 {
- "fetchTime": "2026-10-17T01:35:58.511Z",
+ "fetchTime": "2026-10-17T01:50:50.748Z",
  "page": "shop",
  "url": "/collections/all",
- "performance": 89,
- "accessibility": 98,
+ "performance": 97,
+ "accessibility": 100,
  "bestPractices": 100,
  "seo": 63,
- "lcp": "3.2 s",
+ "lcp": "2.4 s",
  "cls": "0",
  "tbt": "0 ms",
- "fcp": "2.6 s",
+ "fcp": "1.7 s",
  "opportunities": [
   {
    "id": "unused-javascript",
@@ -18,11 +18,6 @@
   }
  ],
  "failing": [
-  {
-   "id": "heading-order",
-   "title": "Heading elements are not in a sequentially-descending order",
-   "value": ""
-  },
   {
    "id": "unused-javascript",
    "title": "Reduce unused JavaScript",
@@ -36,7 +31,7 @@
   {
    "id": "cache-insight",
    "title": "Use efficient cache lifetimes",
-   "value": "Est savings of 347 KiB"
+   "value": "Est savings of 332 KiB"
   },
   {
    "id": "image-delivery-insight",
@@ -47,11 +42,6 @@
    "id": "network-dependency-tree-insight",
    "title": "Network dependency tree",
    "value": ""
-  },
-  {
-   "id": "render-blocking-insight",
-   "title": "Render-blocking requests",
-   "value": "Est savings of 410 ms"
   }
  ]
 }
