@@ -25,11 +25,13 @@ export type CartLineProps = {
   onRemove?: (id: string) => void;
   labels: {remove: string; quantity: string; increase: string; decrease: string; priceTBA: string; colorway: string; size: string};
   headingLevel?: 'h2' | 'h3' | 'h4';
+  /** Another line's mutation is pending: this line's controls ignore input until it settles. */
+  locked?: boolean;
   className?: string;
 };
 
 /** One cart row: media, title, colorway / size, qty stepper, remove, line total. */
-export function CartLine({line, state = 'default', error, onQuantity, onRemove, labels, headingLevel: H = 'h3', className = ''}: CartLineProps) {
+export function CartLine({line, state = 'default', error, onQuantity, onRemove, labels, headingLevel: H = 'h3', locked = false, className = ''}: CartLineProps) {
   const busy = state === 'updating' || state === 'removing';
   return (
     <li className={`cartline is-${state} ${className}`} aria-busy={busy || undefined}>
@@ -51,8 +53,8 @@ export function CartLine({line, state = 'default', error, onQuantity, onRemove, 
           ) : null}
         </p>
         <div className="cartline-controls">
-          <QuantityStepper value={line.quantity} onChange={(q) => onQuantity?.(line.id, q)} updating={state === 'updating'} disabled={state === 'removing'} labels={{quantity: labels.quantity, increase: labels.increase, decrease: labels.decrease}} />
-          <button type="button" className="cartline-remove" onClick={() => !busy && onRemove?.(line.id)} aria-disabled={busy || undefined}>
+          <QuantityStepper value={line.quantity} onChange={(q) => onQuantity?.(line.id, q)} updating={state === 'updating'} locked={locked} disabled={state === 'removing'} labels={{quantity: labels.quantity, increase: labels.increase, decrease: labels.decrease}} />
+          <button type="button" className="cartline-remove" onClick={() => !busy && !locked && onRemove?.(line.id)} aria-disabled={busy || locked || undefined}>
             {labels.remove}
             <span className="visually-hidden">: {line.title}</span>
           </button>

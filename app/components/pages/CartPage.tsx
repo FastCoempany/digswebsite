@@ -15,6 +15,10 @@ import './pages.css';
 export function CartPage({cart, cards}: {cart: Cart | null; cards: ProductCardData[]}) {
   const fetcher = useFetcher();
   const lines = cart ? cartLineData(cart) : [];
+  // One mutation at a time (the cart is cookie-backed): the busy line shows its state, the others lock.
+  const busyId = fetcher.formData?.get('lineId') as string | null;
+  const intent = fetcher.formData?.get('intent') as string | null;
+  const pending = fetcher.state !== 'idle';
   const labels = {remove: copy.cart.remove, quantity: copy.a11y.quantity, increase: copy.a11y.increase, decrease: copy.a11y.decrease, priceTBA: copy.product.priceTBA, colorway: copy.a11y.colorway, size: copy.a11y.size};
   return (
     <section className="sec" aria-labelledby="cart-head">
@@ -26,7 +30,7 @@ export function CartPage({cart, cards}: {cart: Cart | null; cards: ProductCardDa
           <>
             <ul className="cart-lines">
               {lines.map((l) => (
-                <CartLine key={l.id} line={l} labels={labels} headingLevel="h2" onQuantity={(id, q) => fetcher.submit({intent: 'LinesUpdate', lineId: id, quantity: String(q)}, {method: 'post', action: '/cart'})} onRemove={(id) => fetcher.submit({intent: 'LinesRemove', lineId: id}, {method: 'post', action: '/cart'})} />
+                <CartLine key={l.id} line={l} labels={labels} headingLevel="h2" locked={pending && busyId !== l.id} state={busyId === l.id ? (intent === 'LinesRemove' ? 'removing' : 'updating') : 'default'} error={fetcher.data && (fetcher.data as {error?: string}).error && busyId === l.id ? <Draftable field={copy.cart.lineError} /> : null} onQuantity={(id, q) => fetcher.submit({intent: 'LinesUpdate', lineId: id, quantity: String(q)}, {method: 'post', action: '/cart'})} onRemove={(id) => fetcher.submit({intent: 'LinesRemove', lineId: id}, {method: 'post', action: '/cart'})} />
               ))}
             </ul>
             <CartSummary subtotal={cart?.cost.subtotalAmount ?? null} labels={{subtotal: copy.cart.subtotal, taxNote: copy.cart.taxNote, checkout: copy.cta.checkout, priceTBA: copy.product.priceTBA, checkoutNote: <Draftable field={copy.cart.checkoutNote} />}} checkoutDisabled />

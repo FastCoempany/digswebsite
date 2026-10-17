@@ -84,8 +84,9 @@ export function ProductPage({product, others, color, forceStatus, forceSize = nu
 
   const sizeOptions = sizes.map((s) => {
     const v = digs.variantFor(product, selectedColor, s);
-    // A forced status (stories) treats sizes as available; the live path reads the variant flag.
-    const available = status === 'sold-out' ? false : Boolean(forceStatus) || status === 'coming-soon' || status === 'pre-order' || status === 'new' ? true : Boolean(v?.availableForSale);
+    // A forced status (stories) treats sizes as available, and so does coming-soon (nothing is sold
+    // yet, so no size is "out"); every sellable status, pre-order and new included, reads the variant flag.
+    const available = status === 'sold-out' ? false : Boolean(forceStatus) || status === 'coming-soon' ? true : Boolean(v?.availableForSale);
     return {value: s, available};
   });
 

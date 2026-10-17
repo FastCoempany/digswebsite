@@ -8,15 +8,17 @@ export type QuantityStepperProps = {
   onChange?: (next: number) => void;
   disabled?: boolean;
   updating?: boolean;
+  /** Another control owns the pending request: this one ignores input without looking busy or losing focus. */
+  locked?: boolean;
   labels: {quantity: string; increase: string; decrease: string};
   className?: string;
 };
 
 /** Minus / value / plus. Buttons disable at the bounds; `updating` sets aria-busy and dims. */
-export function QuantityStepper({value, min = 1, max = 99, onChange, disabled, updating, labels, className = ''}: QuantityStepperProps) {
+export function QuantityStepper({value, min = 1, max = 99, onChange, disabled, updating, locked = false, labels, className = ''}: QuantityStepperProps) {
   // Bounds use aria-disabled so a button that has focus never disables under the user.
-  const dec = value <= min || disabled || updating;
-  const inc = value >= max || disabled || updating;
+  const dec = value <= min || disabled || updating || locked;
+  const inc = value >= max || disabled || updating || locked;
   return (
     <div className={`qty ${updating ? 'is-updating' : ''} ${className}`} role="group" aria-label={labels.quantity} aria-busy={updating || undefined}>
       <button type="button" className="qty-btn" aria-label={labels.decrease} aria-disabled={dec || undefined} disabled={disabled} onClick={() => !dec && onChange?.(value - 1)}>

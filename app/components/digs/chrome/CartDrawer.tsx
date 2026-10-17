@@ -24,6 +24,9 @@ export function CartDrawer({cart, cards, open, onClose, slot}: CartDrawerProps) 
   const lines = cart ? cartLineData(cart) : [];
   const busyId = fetcher.formData?.get('lineId') as string | null;
   const intent = fetcher.formData?.get('intent') as string | null;
+  // The cart lives in the session cookie, so mutations must not overlap: while one line's request
+  // is pending every other line ignores input (the fetcher would otherwise race the same snapshot).
+  const pending = fetcher.state !== 'idle';
 
   const update = (lineId: string, quantity: number) => {
     fetcher.submit({intent: 'LinesUpdate', lineId, quantity: String(quantity)}, {method: 'post', action: '/cart'});
@@ -38,7 +41,7 @@ export function CartDrawer({cart, cards, open, onClose, slot}: CartDrawerProps) 
       {lines.length ? (
         <ul className="cart-lines">
           {lines.map((l) => (
-            <CartLine key={l.id} line={l} labels={labels} headingLevel="h2" onQuantity={update} onRemove={remove} state={busyId === l.id ? (intent === 'LinesRemove' ? 'removing' : 'updating') : 'default'} error={fetcher.data && (fetcher.data as {error?: string}).error && busyId === l.id ? <Draftable field={copy.cart.lineError} /> : null} />
+            <CartLine key={l.id} line={l} labels={labels} headingLevel="h2" onQuantity={update} onRemove={remove} locked={pending && busyId !== l.id} state={busyId === l.id ? (intent === 'LinesRemove' ? 'removing' : 'updating') : 'default'} error={fetcher.data && (fetcher.data as {error?: string}).error && busyId === l.id ? <Draftable field={copy.cart.lineError} /> : null} />
           ))}
         </ul>
       ) : (
