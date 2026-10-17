@@ -20,7 +20,7 @@ test.describe('accessibility @a11y', () => {
     expect(r.violations.filter((v) => v.impact === 'serious' || v.impact === 'critical').map((v) => v.id)).toEqual([]);
     await page.keyboard.press('Escape');
     await expect(page.locator('#site-cart')).toBeHidden();
-    await page.getByRole('button', {name: 'Size guide', exact: true}).first().click();
+    await page.locator('.sizes-aside').getByRole('button', {name: 'Size guide', exact: true}).click();
     await expect(page.getByRole('dialog', {name: 'Size guide'})).toBeVisible();
     r = await new AxeBuilder({page}).withTags(['wcag2a', 'wcag2aa', 'wcag21aa', 'wcag22aa']).analyze();
     expect(r.violations.filter((v) => v.impact === 'serious' || v.impact === 'critical').map((v) => v.id)).toEqual([]);

@@ -1,5 +1,6 @@
 import {useEffect, useRef, type ReactNode} from 'react';
 import {IconButton} from './IconButton';
+import {useFocusTrap} from './useFocusTrap';
 import './Drawer.css';
 
 export type DrawerProps = {
@@ -22,6 +23,7 @@ export type DrawerProps = {
 /** Native <dialog> drawer: slides in over 300ms, focus trapped by the browser, Esc closes. */
 export function Drawer({open, onClose, title, label, closeLabel, side = 'right', tone = 'raised', children, footer, className = '', id}: DrawerProps) {
   const ref = useRef<HTMLDialogElement>(null);
+  useFocusTrap(ref, open);
   useEffect(() => {
     const el = ref.current;
     if (!el) return;

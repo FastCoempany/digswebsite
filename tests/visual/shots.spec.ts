@@ -49,7 +49,7 @@ test.describe('deliverable shots', () => {
     const dir = path.join(docs, mode === 'wire' ? 'wireframes' : 'ui');
     await open(page, '/products/thermal-long-sleeve', mode);
     const width = sizeName === 'mobile' ? 390 : 1440;
-    await page.getByRole('button', {name: 'Size guide', exact: true}).first().click();
+    await page.locator('.sizes-aside').getByRole('button', {name: 'Size guide', exact: true}).click();
     await page.waitForTimeout(400);
     await page.screenshot({path: path.join(dir, `size-guide-modal-${width}.png`), animations: 'disabled'});
   });

@@ -5,7 +5,7 @@
       "label": "Back yoke embroidery",
       "view": "back",
       "x": 50,
-      "y": 12
+      "y": 14
     },
     "1": {
       "code": "RIB",
@@ -25,8 +25,8 @@
       "code": "L1",
       "label": "Neck label",
       "view": "back",
-      "x": 50,
-      "y": 3
+      "x": 66,
+      "y": 5
     },
     "4": {
       "code": "HEM",
@@ -70,7 +70,7 @@
       "label": "Box pleat + loop",
       "view": "back",
       "x": 50,
-      "y": 25
+      "y": 40
     }
   },
   "needlecord-shirt": {

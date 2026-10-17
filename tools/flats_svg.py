@@ -99,10 +99,10 @@ PAGE_W, PAGE_H = 792.0, 612.0
 # view where that part is visible.
 ANCHORS = {
     "thermal-long-sleeve": {
-        0: {"view": "back", "x": 50, "y": 12},     # L3: embroidery box, centre back below the neckband
+        0: {"view": "back", "x": 50, "y": 14},     # L3: embroidery box, centre back below the neckband
         1: {"view": "front", "x": 50, "y": 6},     # RIB: neckband at centre front (cuffs are the same rib)
         2: {"view": "back", "x": 32, "y": 20},     # YOKE: on the yoke seam, upper back
-        3: {"view": "back", "x": 50, "y": 3},      # L1: centre back neckband (label sits inside it)
+        3: {"view": "back", "x": 66, "y": 5},      # L1: on the neckband, offset right so the pin clears L3 (44px targets)
         4: {"view": "front", "x": 50, "y": 96},    # HEM: bottom hem, centre front
     },
     "pincord-button-down": {
@@ -110,7 +110,7 @@ ANCHORS = {
         1: {"view": "front", "x": 50, "y": 89},    # L4: placket tag above the hem
         2: {"view": "front", "x": 93, "y": 72},    # CUFF: cut cuff (viewer's right)
         3: {"view": "front", "x": 61, "y": 39},    # POCKET: wearer's left chest pocket (mirrored)
-        4: {"view": "back", "x": 50, "y": 25},     # PLEAT: box pleat + loop below the yoke
+        4: {"view": "back", "x": 50, "y": 40},     # PLEAT: on the box pleat, mid back (clear of the L3 pin)
     },
     "needlecord-shirt": {
         0: {"view": "front", "x": 50, "y": 89},    # L3: placket tag above the hem

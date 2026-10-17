@@ -71,7 +71,7 @@ test.describe('keyboard @keyboard', () => {
 
   test('size guide modal: opens from the keyboard, traps focus, unit toggle works, Esc closes', async ({page, mode}) => {
     await open(page, '/products/thermal-long-sleeve', mode);
-    const trigger = page.getByRole('button', {name: 'Size guide', exact: true}).first();
+    const trigger = page.locator('.sizes-aside').getByRole('button', {name: 'Size guide', exact: true});
     await trigger.focus();
     await page.keyboard.press('Enter');
     const dialog = page.getByRole('dialog', {name: 'Size guide'});

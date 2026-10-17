@@ -1,5 +1,6 @@
 import {useEffect, useId, useRef, type ReactNode} from 'react';
 import {IconButton} from './IconButton';
+import {useFocusTrap} from './useFocusTrap';
 import './Modal.css';
 
 export type ModalProps = {
@@ -20,6 +21,7 @@ export type ModalProps = {
  */
 export function Modal({open, onClose, title, hideTitle, closeLabel, size = 'md', children, className = ''}: ModalProps) {
   const ref = useRef<HTMLDialogElement>(null);
+  useFocusTrap(ref, open);
   const titleId = useId();
   useEffect(() => {
     const el = ref.current;
