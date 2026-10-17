@@ -24,7 +24,7 @@ try {
     const audits = result.lhr.audits;
     const row = {page: name, url: p, performance: Math.round(c.performance.score * 100), accessibility: Math.round(c.accessibility.score * 100), bestPractices: Math.round(c['best-practices'].score * 100), seo: Math.round(c.seo.score * 100), lcp: audits['largest-contentful-paint'].displayValue, cls: audits['cumulative-layout-shift'].displayValue, tbt: audits['total-blocking-time'].displayValue, fcp: audits['first-contentful-paint'].displayValue};
     rows.push(row);
-    fs.writeFileSync(path.join('docs/qa', `lighthouse-${name}.json`), JSON.stringify({fetchTime: result.lhr.fetchTime, ...row, opportunities: Object.values(audits).filter((a) => a.details?.type === 'opportunity' && a.score !== null && a.score < 0.9).map((a) => ({id: a.id, title: a.title, savings: a.displayValue}))}, null, 1));
+    fs.writeFileSync(path.join('docs/qa', `lighthouse-${name}.json`), JSON.stringify({fetchTime: result.lhr.fetchTime, ...row, opportunities: Object.values(audits).filter((a) => a.details?.type === 'opportunity' && a.score !== null && a.score < 0.9).map((a) => ({id: a.id, title: a.title, savings: a.displayValue})), failing: Object.values(audits).filter((a) => a.score !== null && a.score < 0.5 && a.scoreDisplayMode !== 'informative' && a.scoreDisplayMode !== 'notApplicable').map((a) => ({id: a.id, title: a.title, value: a.displayValue ?? ''}))}, null, 1));
     console.log(JSON.stringify(row));
   }
 } finally {
