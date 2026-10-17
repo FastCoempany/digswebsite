@@ -20,7 +20,7 @@ Add `?mode=wire` to any URL for wireframe mode (sticks for the session; `?mode=u
 | Phase | Status | Deliverable |
 |---|---|---|
 | 0 Foundation | done | Hydrogen (React Router 7, Vite 8, Tailwind v4) at the repo root; tokens wired; Alexandria WOFF2; `Wordmark`/`Lockup`/`Brandmark`/`Script`; mock adapter; Storybook; Playwright + axe; CI (`.github/workflows/ci.yml`); token page at `/dev/tokens` |
-| 1 Wireframes | pending | `docs/wireframes/{page}-{390,1440}.png`, Storybook "Pages" |
+| 1 Wireframes | done | `docs/wireframes/{page}-{390,1440}.png` (17 templates + menu, cart drawer, size-guide modal), Storybook "Pages" section (33 stories incl. states) |
 | 2 Core components | pending | `app/components/core/*` + stories |
 | 3 DIGS layer | pending | `app/components/digs/*` + stories, vector flats |
 | 4 UI pages | pending | `docs/ui/{page}-{390,1440}.png` |
@@ -57,6 +57,21 @@ gate deliverables are produced and the run continues.
   `@playwright/test` 1.56.1, so that version is pinned; CI installs its own browser.
 - **Vite 8 / Rolldown** prints a warning from Hydrogen's bundle analyzer plugin; harmless.
 
+## Phase 1 notes
+
+- The wireframes are the real build in `data-mode="wire"` (04-ia-and-pages.md), captured by
+  `npm run shots:wireframes` (Playwright, `tests/visual/shots.spec.ts`). Every page template, the
+  menu, the cart drawer and the size-guide modal, at 390 and 1440.
+- Core components (`app/components/core/`, 26) and the DIGS layer (`app/components/digs/`, 20)
+  were written in this phase because the wireframes are composed from them; their stories and
+  state coverage are phases 2–3.
+- Flats: `tools/flats_svg.py` extracts the cover-page flats (pincord: page 5, its cover is a
+  textured render) as currentColor line art, with hotspot anchors per product; see the script's
+  header for the judgement calls (stitch brushes simplified to dashes, 10% shading dropped).
+- Photography tooling (`tools/photo_sync.py`, `assets/photography/MANIFEST.csv`,
+  `public/photography/`) was prepared in parallel; it is wired in phase 5. Wire mode hides images,
+  so the wireframes are unaffected.
+
 ## Decisions to confirm
 
 | # | Decision taken | Why / default used |
@@ -64,7 +79,16 @@ gate deliverables are produced and the run continues.
 | D1 | `.env` is optional: a fixed dev session secret is used when `SESSION_SECRET` is unset | Codespaces must start with no prompts; the secret only signs the mock cart cookie |
 | D2 | `/robots.txt` disallows everything | Pre-launch; flip when the store goes live |
 | D3 | UI/accessible-name microcopy added to `content/copy/en.json` under `a11y` and `errors` | 08-copy.md: nothing typed straight into a component; these are not brand lines |
+| D4 | Home hero surface is Digs Blue with the wordmark in ice (not blue on ice) | 04 says "blue on ice" for the hero wordmark but also a transparent header with an ice wordmark, and 07 pulled the H-01 backdrop to Digs Blue "so the hero sits flush on a Digs Blue page". Blue surface + ice letters is the only reading that satisfies all three and the contrast rule |
+| D5 | Desktop hero wordmark is capped at 60svh and left-aligned; edge to edge on mobile and at the foot of every page | An edge-to-edge wordmark at 1440 is 875px tall: the CTA would sit below the fold |
+| D6 | "Built like this" leader lines use `--color-text-sale` (the signal red) | 01-brand-system §5.7 asks for the tech packs' red leader lines; no other red exists in the palette |
+| D7 | Utility-page copy (shipping, FAQ, contact, accessibility, policies, account) added to `en.json` as drafts; no terms, windows, prices or legal text invented | Pages need structure now; the `draft` flag renders a small "draft" pill until the founder approves |
+| D8 | Contact page has no email address (shows the Instagram handle and a disabled form) | No address exists in the brief |
+| D9 | Announcement bar reads "Capsule 01. Coming soon. Get on the list." (draft) and is hidden on the home hero | 04 example mentions a ship date, which is not set |
+| D10 | Checkout button is present but disabled, with a note | Nothing is wired to Shopify in this phase (decision 2) |
+| D11 | Size-guide "How to measure" shows the flats with the POM legend, without drawn measurement lines | Redrawing the tech-pack diagrams by hand risks a wrong line; the letters match the pack |
 
 ## Known gaps
 
-- CI has not run on GitHub yet (opened with the draft PR after phase 0).
+- CI runs on GitHub against the draft PR; check its status before merging.
+- Pincord back flat shows the pack's dashed placeholder for the back-yoke embroidery (O5).

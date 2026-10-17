@@ -1,0 +1,84 @@
+.posters {
+  display: flex;
+  gap: var(--space-3);
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  padding-inline: var(--layout-margin);
+  padding-bottom: var(--space-3);
+  scrollbar-width: none;
+}
+.posters::-webkit-scrollbar {
+  display: none;
+}
+.poster {
+  position: relative;
+  flex: 0 0 72vw;
+  aspect-ratio: 4 / 5;
+  scroll-snap-align: start;
+  display: grid;
+  grid-template-rows: 1fr auto;
+  padding: var(--space-5);
+  overflow: hidden;
+  background: var(--color-surface-raised);
+  color: var(--color-text-primary);
+  border: var(--border-hairline) solid var(--color-border-hairline);
+}
+.poster-blue {
+  background: var(--color-surface-brand);
+  color: var(--color-text-on-brand);
+  border-color: transparent;
+}
+.poster-black {
+  background: var(--color-surface-inverse);
+  color: var(--color-text-on-inverse);
+  border-color: transparent;
+}
+.poster-ice {
+  background: var(--color-surface-page);
+}
+.poster-photo {
+  padding: 0;
+  display: block;
+  border: 0;
+}
+.poster-line {
+  position: relative;
+  align-self: start;
+  text-wrap: balance;
+  max-width: 10ch;
+}
+.poster-mark {
+  position: relative;
+  justify-self: start;
+}
+.poster-wordmark {
+  padding: 0;
+  display: block;
+  background: var(--color-surface-brand);
+}
+.poster-wordmark.poster-ice {
+  background: var(--color-surface-page);
+}
+.poster-wordmark.poster-black {
+  background: var(--color-surface-inverse);
+}
+.poster-wordmark .wallpaper {
+  position: absolute;
+  inset: 0;
+}
+@media (min-width: 768px) {
+  .poster {
+    flex-basis: 40vw;
+  }
+}
+@media (min-width: 1024px) {
+  .posters {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    overflow: visible;
+    padding-bottom: 0;
+  }
+  .poster {
+    flex: none;
+  }
+}

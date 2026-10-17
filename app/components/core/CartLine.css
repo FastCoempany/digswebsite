@@ -1,0 +1,59 @@
+.cartline {
+  display: grid;
+  grid-template-columns: 6rem 1fr auto;
+  gap: var(--space-3);
+  padding-block: var(--space-4);
+  border-bottom: var(--border-hairline) solid var(--color-border-hairline);
+  transition: opacity var(--motion-base) var(--motion-ease);
+}
+.cartline.is-updating {
+  opacity: 0.7;
+}
+.cartline.is-removing {
+  opacity: 0.4;
+}
+.cartline-body {
+  display: grid;
+  gap: var(--space-2);
+  align-content: start;
+  min-width: 0;
+}
+.cartline-title {
+  font-size: var(--font-size-body);
+  font-weight: var(--font-weight-regular);
+  line-height: var(--font-leading-ui);
+}
+.cartline-title a:hover {
+  text-decoration: underline;
+}
+.cartline-meta {
+  font-size: var(--font-size-small);
+  color: var(--color-text-secondary);
+}
+.cartline-controls {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  flex-wrap: wrap;
+}
+.cartline-remove {
+  min-height: 2.75rem;
+  font-size: var(--font-size-small);
+  text-decoration: underline;
+  text-underline-offset: 0.18em;
+  color: var(--color-text-secondary);
+}
+.cartline-remove:hover {
+  color: var(--color-text-primary);
+}
+.cartline-remove:disabled {
+  color: var(--color-action-disabled-text);
+  cursor: not-allowed;
+}
+.cartline-error {
+  font-size: var(--font-size-small);
+  color: var(--color-text-sale);
+}
+.cartline-total {
+  text-align: right;
+}

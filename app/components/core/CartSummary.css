@@ -1,0 +1,28 @@
+.cartsum {
+  display: grid;
+  gap: var(--space-3);
+}
+.cartsum-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  font-size: var(--font-size-body);
+  font-weight: var(--font-weight-medium);
+}
+.cartsum-note {
+  font-size: var(--font-size-small);
+  color: var(--color-text-secondary);
+}
+.cartsum-ship {
+  display: grid;
+  gap: var(--space-2);
+}
+.cartsum-bar {
+  height: 4px;
+  background: var(--color-surface-sunken);
+}
+.cartsum-bar span {
+  display: block;
+  height: 100%;
+  background: var(--color-action-primary);
+}

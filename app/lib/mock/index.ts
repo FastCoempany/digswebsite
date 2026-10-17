@@ -46,4 +46,4 @@ export * from './types';
 export {PRODUCTS, productByHandle, digs, metafield, metafieldList} from './products';
 export {CAPSULE, POLICIES, POLICY_HANDLES} from './shop';
 export {EMPTY_CART, hydrateCart} from './cart';
-export {photoFor, photoWidths, PHOTO_COUNT} from './photos';
+export {photoFor, photoWidths, srcSetFor, PHOTO_COUNT} from './photos';

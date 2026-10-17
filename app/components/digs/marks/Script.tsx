@@ -16,7 +16,7 @@ export type ScriptWord = keyof typeof index;
 export type ScriptProps = {
   /** File stem under brand/script/, e.g. "good", "story", "dope-cap", "actually-dope-tilted". */
   word: ScriptWord | string;
-  /** Scale relative to the surrounding font size. 1 = cap height roughly matches the sans. */
+  /** Scale relative to the surrounding font size. 1.2 (default) sits the script's body on the sans x-height. */
   scale?: number;
   /** Reveal the word left to right over 600ms when it enters view (off under reduced motion). */
   drawOn?: boolean;
@@ -31,7 +31,7 @@ const UPM = 1000;
  * A payoff word in The Old Falcons, rendered from the pre-built SVG outline as a CSS mask over
  * currentColor. The font file is never served. One or two script words per line, maximum.
  */
-export function Script({word, scale = 1, drawOn = false, className = '', label}: ScriptProps) {
+export function Script({word, scale = 1.2, drawOn = false, className = '', label}: ScriptProps) {
   const key = String(word);
   const meta = SCRIPT_INDEX[key];
   const url = files[`../../../assets/script/script-${key}.svg`];

@@ -1,6 +1,6 @@
 import type {Decorator, Preview} from '@storybook/react-vite';
 import {useEffect} from 'react';
-import {MemoryRouter} from 'react-router';
+import {RouterProvider, createMemoryRouter} from 'react-router';
 import '../app/styles/app.css';
 
 /** Every story renders in UI or wireframe mode (toolbar), at 390 or 1440 (viewport toolbar). */
@@ -12,11 +12,18 @@ const withMode: Decorator = (Story, context) => {
   return <Story />;
 };
 
-const withRouter: Decorator = (Story) => (
-  <MemoryRouter initialEntries={['/']}>
-    <Story />
-  </MemoryRouter>
-);
+/** A data router, so components using useFetcher / useSearchParams work in stories. */
+const withRouter: Decorator = (Story, context) => {
+  const path = (context.parameters.route as string) || '/';
+  const router = createMemoryRouter(
+    [
+      {path: '*', element: <Story />},
+      {path: '/cart', element: <Story />, action: async () => ({ok: true})},
+    ],
+    {initialEntries: [path]},
+  );
+  return <RouterProvider router={router} />;
+};
 
 const withSurface: Decorator = (Story, context) => {
   const surface = (context.parameters.surface as string) || 'page';

@@ -1,0 +1,149 @@
+.hero {
+  position: relative;
+  display: grid;
+  grid-template-rows: auto auto;
+  background: var(--color-surface-brand);
+  color: var(--color-text-on-brand);
+  overflow: clip;
+  padding-top: var(--layout-header-height);
+}
+.hero-photo {
+  position: relative;
+}
+.hero-photo .media-slot {
+  /* Darker than the ice letters, so the wordmark reads over an empty slot */
+  background: var(--color-blue-800);
+  color: var(--color-text-on-brand);
+}
+[data-mode='wire'] .hero-photo [data-media-slot] {
+  background: repeating-linear-gradient(45deg, var(--color-ink-500) 0 10px, var(--color-ink-600) 10px 20px);
+}
+[data-mode='wire'] .hero-photo [data-media-slot]::after {
+  color: var(--color-text-on-inverse);
+}
+.hero-photo .media-slot-code {
+  background: var(--color-core-ink);
+  color: var(--color-core-ice);
+}
+.hero-photo-desktop {
+  display: none;
+}
+.hero-mark {
+  position: relative;
+  z-index: 1;
+  padding-inline: var(--space-2);
+}
+.hero-scrawl {
+  position: absolute;
+  left: 8%;
+  top: 22%;
+  width: 84%;
+  color: var(--color-core-ink);
+  font-size: clamp(2.2rem, 10vw, 7rem);
+  line-height: 1;
+  pointer-events: none;
+}
+.hero-scrawl .script {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 3.1;
+}
+.hero-copy {
+  position: relative;
+  z-index: 2;
+  display: grid;
+  gap: var(--space-4);
+  justify-items: start;
+  padding: var(--space-5) var(--layout-margin) var(--space-7);
+}
+.hero-title {
+  font-size: inherit;
+  font-weight: inherit;
+  max-width: 22ch;
+}
+.hero-sub {
+  display: block;
+  text-wrap: balance;
+}
+/* Mobile: wordmark on top, photo beneath, overlapping by ~25% of the wordmark height */
+@media (max-width: 1023px) {
+  .hero {
+    grid-template-areas: 'mark' 'photo' 'copy';
+  }
+  .hero-mark {
+    grid-area: mark;
+    margin-bottom: -16vw;
+  }
+  .hero-photo-mobile {
+    grid-area: photo;
+    z-index: 0;
+    margin-inline: var(--space-6) 0;
+    max-width: 78vw;
+    justify-self: end;
+  }
+  .hero-copy {
+    grid-area: copy;
+    margin-top: calc(-1 * var(--space-9));
+  }
+}
+/* Desktop: the 16:9 frame fills the right, the wordmark sits huge at the foot (capped at 70svh so
+   the CTA stays above the fold), the scrawl across it, copy top-left. */
+@media (min-width: 1024px) {
+  .hero {
+    display: block;
+    min-height: 100svh;
+    padding-top: 0;
+  }
+  .hero-photo-mobile {
+    display: none;
+  }
+  .hero-photo-desktop {
+    display: block;
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    width: 62%;
+  }
+  .hero-photo-desktop .media-slot {
+    width: 100%;
+    height: 100%;
+    aspect-ratio: auto !important;
+  }
+  .hero-photo-desktop .media-slot img {
+    object-position: 60% 50%;
+  }
+  .hero-mark {
+    position: absolute;
+    left: calc(var(--layout-rail) + var(--space-2));
+    bottom: var(--space-6);
+    width: min(calc(100% - 2 * var(--layout-rail)), calc(60svh * 854 / 550));
+    padding: 0;
+  }
+  .hero-scrawl {
+    left: 4%;
+    top: 14%;
+    width: 64%;
+    font-size: 7rem;
+  }
+  .hero-copy {
+    position: absolute;
+    left: calc(var(--layout-rail) + var(--layout-margin));
+    top: calc(var(--layout-header-height) + var(--space-6));
+    max-width: 30rem;
+    padding: 0;
+    z-index: 3;
+  }
+}
+/* Wire mode: the brand surface goes grey; the wordmark stays legible */
+[data-mode='wire'] .hero-mark .mark {
+  color: var(--color-text-on-brand);
+}
+[data-mode='wire'] .hero-scrawl {
+  color: var(--color-text-on-brand);
+  opacity: 0.6;
+}
+[data-mode='wire'] .hero-mark .mark {
+  color: var(--color-text-on-brand) !important;
+  filter: none;
+}

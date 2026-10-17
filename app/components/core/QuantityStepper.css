@@ -1,0 +1,32 @@
+.qty {
+  display: inline-grid;
+  grid-template-columns: 2.75rem 2.5rem 2.75rem;
+  align-items: stretch;
+  border: var(--border-hairline) solid var(--color-border-control);
+  border-radius: var(--radius-pill);
+  background: var(--color-surface-raised);
+  min-height: 2.75rem;
+  transition: opacity var(--motion-fast) var(--motion-ease);
+}
+.qty-btn {
+  display: grid;
+  place-items: center;
+  border-radius: var(--radius-pill);
+}
+.qty-btn:hover:not(:disabled) {
+  background: var(--color-surface-sunken);
+}
+.qty-btn:disabled {
+  color: var(--color-action-disabled-text);
+  cursor: not-allowed;
+}
+.qty-value {
+  display: grid;
+  place-items: center;
+  font-size: var(--font-size-small);
+  font-weight: var(--font-weight-medium);
+  font-variant-numeric: tabular-nums;
+}
+.qty.is-updating {
+  opacity: 0.6;
+}

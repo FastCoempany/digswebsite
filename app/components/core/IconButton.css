@@ -1,0 +1,47 @@
+.iconbtn {
+  display: inline-grid;
+  place-items: center;
+  width: 2.75rem;
+  height: 2.75rem;
+  border-radius: var(--radius-pill);
+  border: var(--border-hairline) solid transparent;
+  color: currentColor;
+  background: transparent;
+  transition: background-color var(--motion-fast) var(--motion-ease);
+  -webkit-tap-highlight-color: transparent;
+}
+.iconbtn-sm {
+  width: 2.75rem;
+  height: 2.75rem;
+}
+.iconbtn-lg {
+  width: 3.25rem;
+  height: 3.25rem;
+}
+.iconbtn:hover {
+  background: var(--color-surface-sunken);
+}
+.iconbtn:active {
+  background: var(--color-border-hairline);
+}
+.iconbtn-outline {
+  border-color: var(--color-border-control);
+}
+.iconbtn-filled {
+  background: var(--color-action-secondary);
+  color: var(--color-action-secondary-text);
+}
+.iconbtn-filled:hover {
+  background: var(--color-action-secondary-hover);
+}
+.iconbtn-on-dark {
+  color: var(--color-text-on-inverse);
+}
+.iconbtn-on-dark:hover {
+  background: color-mix(in oklab, var(--color-text-on-inverse) 16%, transparent);
+}
+.iconbtn:disabled {
+  color: var(--color-action-disabled-text);
+  cursor: not-allowed;
+  background: transparent;
+}

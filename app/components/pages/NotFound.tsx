@@ -1,28 +1,26 @@
 import type {Product} from '~/lib/mock/types';
 import {copy} from '~/lib/copy';
+import {cardData} from '~/lib/view';
+import {EmptyState} from '~/components/core/EmptyState';
+import {Button} from '~/components/core/Button';
+import {ProductCard} from '~/components/core/ProductCard';
+import {Script} from '~/components/digs/marks/Script';
+import './pages.css';
 
+/** 404: "This page doesn't exist. The capsule does." + the four products. */
 export function NotFound({status = 404, message, products}: {status?: number; message?: string; products: Product[]}) {
   return (
-    <section className="container-x section" aria-labelledby="nf-head">
-      <p className="type-micro type-caps">{status}</p>
-      <h1 id="nf-head" className="type-display">
-        {status === 404 ? copy.notFound.head : copy.errors.generic}
-      </h1>
-      <p className="type-body-lg">{status === 404 ? copy.notFound.sub : message}</p>
-      <p>
-        <a className="link-inline" href="/collections/all">
-          {copy.notFound.cta}
-        </a>
-      </p>
-      <ul>
-        {products.map((p) => (
-          <li key={p.handle}>
-            <a className="link-inline" href={`/products/${p.handle}`}>
-              {p.title}
-            </a>
-          </li>
-        ))}
-      </ul>
+    <section className="sec" aria-labelledby="nf-head">
+      <div className="inner">
+        <EmptyState variant="404" heading={<span id="nf-head" role="heading" aria-level={1}>{status === 404 ? copy.notFound.head : copy.errors.generic}</span>} body={status === 404 ? <>{copy.notFound.sub} <Script word="dope" /></> : message} action={<Button to="/collections/all" size="lg">{copy.notFound.cta}</Button>} />
+        <ul className="capsule-grid nf-grid">
+          {products.map((p) => (
+            <li key={p.handle}>
+              <ProductCard product={cardData(p)} labels={{priceTBA: copy.product.priceTBA, swatches: copy.a11y.colorway}} />
+            </li>
+          ))}
+        </ul>
+      </div>
     </section>
   );
 }

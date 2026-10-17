@@ -1,0 +1,29 @@
+.announce {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: center;
+  min-height: 2.5rem;
+  padding-left: var(--layout-margin);
+  background: var(--color-surface-brand);
+  color: var(--color-text-on-brand);
+  font-size: var(--font-size-small);
+  font-weight: var(--font-weight-medium);
+}
+.announce-text {
+  padding-block: var(--space-2);
+  text-align: center;
+}
+.announce-close {
+  display: grid;
+  place-items: center;
+  width: 2.75rem;
+  height: 2.5rem;
+  color: inherit;
+}
+.announce-close:hover {
+  background: color-mix(in oklab, var(--color-text-on-brand) 16%, transparent);
+}
+.announce-close:focus-visible {
+  outline-color: var(--color-focus-ring-on-dark);
+  outline-offset: -4px;
+}

@@ -1,0 +1,26 @@
+.price {
+  font-variant-numeric: tabular-nums;
+  font-weight: var(--font-weight-medium);
+  font-size: var(--font-size-small);
+  color: var(--color-text-primary);
+}
+.price-md {
+  font-size: var(--font-size-body);
+}
+.price-lg {
+  font-size: var(--font-size-body-lg);
+}
+.price-tba {
+  color: var(--color-text-secondary);
+}
+.price-compare {
+  color: var(--color-text-muted);
+  font-weight: var(--font-weight-regular);
+}
+.price-on-sale .price-amount {
+  color: var(--color-text-sale);
+}
+.price-from {
+  color: var(--color-text-secondary);
+  font-weight: var(--font-weight-regular);
+}

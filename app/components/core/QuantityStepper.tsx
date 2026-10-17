@@ -1,0 +1,32 @@
+import {Icon} from './icons';
+import './QuantityStepper.css';
+
+export type QuantityStepperProps = {
+  value: number;
+  min?: number;
+  max?: number;
+  onChange?: (next: number) => void;
+  disabled?: boolean;
+  updating?: boolean;
+  labels: {quantity: string; increase: string; decrease: string};
+  className?: string;
+};
+
+/** Minus / value / plus. Buttons disable at the bounds; `updating` sets aria-busy and dims. */
+export function QuantityStepper({value, min = 1, max = 99, onChange, disabled, updating, labels, className = ''}: QuantityStepperProps) {
+  const dec = value <= min || disabled || updating;
+  const inc = value >= max || disabled || updating;
+  return (
+    <div className={`qty ${updating ? 'is-updating' : ''} ${className}`} role="group" aria-label={labels.quantity} aria-busy={updating || undefined}>
+      <button type="button" className="qty-btn" aria-label={labels.decrease} disabled={dec} onClick={() => onChange?.(value - 1)}>
+        <Icon name="minus" size={16} />
+      </button>
+      <output className="qty-value" aria-live="polite">
+        {value}
+      </output>
+      <button type="button" className="qty-btn" aria-label={labels.increase} disabled={inc} onClick={() => onChange?.(value + 1)}>
+        <Icon name="plus" size={16} />
+      </button>
+    </div>
+  );
+}

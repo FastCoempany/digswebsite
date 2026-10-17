@@ -7,11 +7,13 @@
   color: var(--color-text-secondary);
   border: var(--border-hairline) dashed var(--color-border-control);
 }
-[data-mode='wire'] [data-media-slot] > * {
+/* Children (img, placeholder, overlay) step out of the grid flow so the generated ::after label
+   (ratio · shot code) sits centred; images are hidden by the generated wire.css. */
+[data-mode='wire'] [data-media-slot] > img,
+[data-mode='wire'] [data-media-slot] > .media-slot-placeholder {
+  position: absolute;
+  inset: 0;
   visibility: hidden;
-}
-[data-mode='wire'] [data-media-slot]::before {
-  content: '';
 }
 [data-mode='wire'] [data-brand-graphic] {
   color: var(--color-brand-scrawl) !important;

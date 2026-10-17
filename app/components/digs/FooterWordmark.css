@@ -1,0 +1,13 @@
+.footmark {
+  padding: var(--space-6) var(--space-2) 0;
+  background: var(--color-surface-page);
+  line-height: 0;
+}
+.footmark-dark {
+  background: var(--color-surface-inverse);
+}
+.footmark .mark {
+  display: block;
+  width: 100%;
+  margin-bottom: -2.5%;
+}

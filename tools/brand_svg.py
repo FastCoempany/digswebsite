@@ -10,6 +10,7 @@ Reads (never edited):
 Writes (generated, do not edit):
   app/components/digs/marks/paths.generated.ts   inline path data for the Wordmark (small)
   app/assets/marks/brandmark.svg                  the DD mark, fill="currentColor" (CSS mask)
+  app/assets/marks/wordmark.svg                   the wordmark as a mask asset (wallpaper tiles)
   public/favicon.svg                              the DD mark in Digs Blue
   app/assets/marks/lockup-{inline,stacked}-{wordmark,scrawl}.svg  the two layers of each lockup,
                                                    same viewBox, fill="currentColor" (used as CSS masks)
@@ -103,8 +104,15 @@ def main():
     marks = {}
     vb, paths = paths_of(os.path.join(LOGOS, "wordmark", "digs-wordmark-blue.svg"))
     marks["wordmark"] = {"viewBox": vb, "paths": [compact(d) for _, d in paths]}
-    vb, paths = paths_of(os.path.join(LOGOS, "brandmark", "digs-brandmark-blue.svg"))
     os.makedirs(MARKS_SVG_OUT, exist_ok=True)
+    dst = os.path.join(MARKS_SVG_OUT, "wordmark.svg")
+    with open(dst, "w") as f:
+        f.write(f'<svg xmlns="http://www.w3.org/2000/svg" viewBox="{marks["wordmark"]["viewBox"]}" aria-hidden="true">')
+        for d in marks["wordmark"]["paths"]:
+            f.write(f'<path fill="currentColor" d="{d}"/>')
+        f.write("</svg>\n")
+    svgo(dst)
+    vb, paths = paths_of(os.path.join(LOGOS, "brandmark", "digs-brandmark-blue.svg"))
     dst = os.path.join(MARKS_SVG_OUT, "brandmark.svg")
     with open(dst, "w") as f:
         f.write(f'<svg xmlns="http://www.w3.org/2000/svg" viewBox="{vb}" aria-hidden="true">')

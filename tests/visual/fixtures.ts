@@ -35,19 +35,28 @@ export async function open(page: Page, path: string, mode: TestOptions['mode']) 
   await page.goto(url.pathname + url.search, {waitUntil: 'networkidle'});
   await page.evaluate(() => document.fonts.ready);
   await expect(page.locator('html')).toHaveAttribute('data-mode', mode);
+  // Fixed chrome that depends on scroll position would smear across a full-page capture.
+  await page.addStyleTag({content: '.pdp-sticky, .toasts { display: none !important; }'});
   await settle(page);
 }
 
 export async function settle(page: Page) {
   await page.evaluate(async () => {
-    const imgs = Array.from(document.images);
-    await Promise.all(
-      imgs.filter((i) => !i.complete).map((i) => new Promise((r) => { i.addEventListener('load', r, {once: true}); i.addEventListener('error', r, {once: true}); })),
-    );
-    // Trigger lazy images and reveal-on-scroll, then return to the top.
-    window.scrollTo(0, document.body.scrollHeight);
-    await new Promise((r) => setTimeout(r, 150));
-    window.scrollTo(0, 0);
-    await new Promise((r) => setTimeout(r, 100));
+    const sleep = (ms: number) => new Promise((r) => setTimeout(r, ms));
+    // Walk the page so lazy images and reveal-on-scroll fire, then wait (bounded) for images.
+    const h = document.documentElement.scrollHeight;
+    for (let y = 0; y < h; y += Math.max(400, window.innerHeight * 0.8)) {
+      window.scrollTo({top: y, behavior: 'instant'});
+      await sleep(40);
+    }
+    window.scrollTo({top: h, behavior: 'instant'});
+    await sleep(80);
+    const pending = Array.from(document.images).filter((i) => !i.complete);
+    await Promise.race([
+      Promise.all(pending.map((i) => new Promise((r) => { i.addEventListener('load', r, {once: true}); i.addEventListener('error', r, {once: true}); }))),
+      sleep(4000),
+    ]);
+    window.scrollTo({top: 0, behavior: 'instant'});
+    await sleep(250);
   });
 }
