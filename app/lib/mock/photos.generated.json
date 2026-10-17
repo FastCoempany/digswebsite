@@ -1,0 +1,212 @@
+[
+  {
+    "code": "P-TLS-01",
+    "file": "P-TLS-01-off-white.jpg",
+    "colorway": "Off White",
+    "width": 960,
+    "height": 1200,
+    "alt": "Thermal Long Sleeve in Off White, front, on the model",
+    "widths": [
+      480,
+      720,
+      960
+    ],
+    "ratio": "4:5"
+  },
+  {
+    "code": "P-TLS-02",
+    "file": "P-TLS-02-off-white.jpg",
+    "colorway": "Off White",
+    "width": 960,
+    "height": 1200,
+    "alt": "Thermal Long Sleeve in Off White, back, on the model, with the digs embroidery on the back yoke",
+    "widths": [
+      480,
+      720,
+      960
+    ],
+    "ratio": "4:5"
+  },
+  {
+    "code": "P-TLS-01",
+    "file": "P-TLS-01-sand-blue.jpg",
+    "colorway": "Sand Blue",
+    "width": 960,
+    "height": 1200,
+    "alt": "Thermal Long Sleeve in Sand Blue, front, on the model",
+    "widths": [
+      480,
+      720,
+      960
+    ],
+    "ratio": "4:5"
+  },
+  {
+    "code": "P-TLS-02",
+    "file": "P-TLS-02-sand-blue.jpg",
+    "colorway": "Sand Blue",
+    "width": 960,
+    "height": 1200,
+    "alt": "Thermal Long Sleeve in Sand Blue, back, on the model, with the digs embroidery on the back yoke",
+    "widths": [
+      480,
+      720,
+      960
+    ],
+    "ratio": "4:5"
+  },
+  {
+    "code": "P-PBD-01",
+    "file": "P-PBD-01-mustard.jpg",
+    "colorway": "Mustard",
+    "width": 960,
+    "height": 1200,
+    "alt": "Pincord Button-Down in Mustard, front, on the model, with two chest pockets and the woven tag at the foot of the placket",
+    "widths": [
+      480,
+      720,
+      960
+    ],
+    "ratio": "4:5"
+  },
+  {
+    "code": "P-PBD-02",
+    "file": "P-PBD-02-mustard.jpg",
+    "colorway": "Mustard",
+    "width": 960,
+    "height": 1200,
+    "alt": "Pincord Button-Down in Mustard, back, on the model, with the digs embroidery on the back yoke",
+    "widths": [
+      480,
+      720,
+      960
+    ],
+    "ratio": "4:5"
+  },
+  {
+    "code": "P-NCS-01",
+    "file": "P-NCS-01-light-grey.jpg",
+    "colorway": "Light Grey",
+    "width": 960,
+    "height": 1200,
+    "alt": "Needlecord Shirt in Light Grey, front, on the model, with the woven tag at the foot of the placket",
+    "widths": [
+      480,
+      720,
+      960
+    ],
+    "ratio": "4:5"
+  },
+  {
+    "code": "P-NCS-02",
+    "file": "P-NCS-02-light-grey.jpg",
+    "colorway": "Light Grey",
+    "width": 960,
+    "height": 1200,
+    "alt": "Needlecord Shirt in Light Grey, back, on the model",
+    "widths": [
+      480,
+      720,
+      960
+    ],
+    "ratio": "4:5"
+  },
+  {
+    "code": "P-DSP-01",
+    "file": "P-DSP-01-salmon.jpg",
+    "colorway": "Salmon",
+    "width": 960,
+    "height": 1200,
+    "alt": "Drawstring Pant in Salmon, front, full length, on the model, with the woven patch on the left cuff",
+    "widths": [
+      480,
+      720,
+      960
+    ],
+    "ratio": "4:5"
+  },
+  {
+    "code": "P-DSP-02",
+    "file": "P-DSP-02-salmon.jpg",
+    "colorway": "Salmon",
+    "width": 960,
+    "height": 1200,
+    "alt": "Drawstring Pant in Salmon, back, full length, on the model, with the woven patch on the right back pocket",
+    "widths": [
+      480,
+      720,
+      960
+    ],
+    "ratio": "4:5"
+  },
+  {
+    "code": "H-01",
+    "file": "H-01-9x16.jpg",
+    "colorway": null,
+    "width": 720,
+    "height": 1280,
+    "alt": "Model from behind in the Sand Blue Thermal Long Sleeve and Salmon Drawstring Pant against a Digs Blue backdrop",
+    "widths": [
+      480,
+      720
+    ],
+    "ratio": "9:16"
+  },
+  {
+    "code": "H-01",
+    "file": "H-01-16x9.jpg",
+    "colorway": null,
+    "width": 1536,
+    "height": 864,
+    "alt": "Model from behind in the Sand Blue Thermal Long Sleeve and Salmon Drawstring Pant against a Digs Blue backdrop",
+    "widths": [
+      480,
+      720,
+      960,
+      1440
+    ],
+    "ratio": "16:9"
+  },
+  {
+    "code": "E-01",
+    "file": "E-01.jpg",
+    "colorway": null,
+    "width": 960,
+    "height": 1200,
+    "alt": "Model seated on an apple box in the Mustard Pincord Button-Down worn open over the Off White Thermal Long Sleeve, with the Salmon Drawstring Pant, against a Digs Blue backdrop",
+    "widths": [
+      480,
+      720,
+      960
+    ],
+    "ratio": "4:5"
+  },
+  {
+    "code": "E-02",
+    "file": "E-02.jpg",
+    "colorway": null,
+    "width": 960,
+    "height": 1200,
+    "alt": "Model in profile leaning on a concrete wall in the Light Grey Needlecord Shirt and Salmon Drawstring Pant, on a city street under an overcast sky",
+    "widths": [
+      480,
+      720,
+      960
+    ],
+    "ratio": "4:5"
+  },
+  {
+    "code": "E-03",
+    "file": "E-03.jpg",
+    "colorway": null,
+    "width": 960,
+    "height": 1200,
+    "alt": "Model from behind on an elevated train platform in the Sand Blue Thermal Long Sleeve and Salmon Drawstring Pant",
+    "widths": [
+      480,
+      720,
+      960
+    ],
+    "ratio": "4:5"
+  }
+]

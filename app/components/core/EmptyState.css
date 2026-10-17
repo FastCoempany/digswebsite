@@ -1,0 +1,23 @@
+.empty {
+  display: grid;
+  gap: var(--space-3);
+  justify-items: start;
+  padding-block: var(--space-6);
+}
+.empty-heading {
+  font-size: var(--font-size-h2);
+  line-height: var(--font-leading-heading);
+  letter-spacing: var(--font-tracking-display);
+  text-wrap: balance;
+}
+.empty-404 .empty-heading {
+  font-size: var(--font-size-display);
+  line-height: 0.95;
+}
+.empty-body {
+  color: var(--color-text-secondary);
+  max-width: 36rem;
+}
+.empty-action {
+  margin-top: var(--space-2);
+}

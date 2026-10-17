@@ -1,0 +1,37 @@
+/* Wireframe mode rules for app components (token overrides live in design/tokens/build/wire.css,
+   which is generated; this file only adds structural treatments for brand pieces). */
+[data-mode='wire'] [data-media-slot] {
+  display: grid;
+  place-items: center;
+  text-align: center;
+  color: var(--color-text-secondary);
+  border: var(--border-hairline) dashed var(--color-border-control);
+}
+/* Children (img, placeholder, overlay) step out of the grid flow so the generated ::after label
+   (ratio · shot code) sits centred; images are hidden by the generated wire.css. */
+[data-mode='wire'] [data-media-slot] > img,
+[data-mode='wire'] [data-media-slot] > .media-slot-placeholder {
+  position: absolute;
+  inset: 0;
+  visibility: hidden;
+}
+[data-mode='wire'] [data-brand-graphic] {
+  color: var(--color-brand-scrawl) !important;
+  filter: grayscale(1);
+}
+[data-mode='wire'] [data-sticker] {
+  filter: grayscale(1);
+  opacity: 0.8;
+}
+[data-mode='wire'] [data-swatch] {
+  --swatch-color: var(--color-surface-sunken) !important;
+}
+[data-mode='wire'] [data-photo] {
+  filter: grayscale(1) contrast(0.6) brightness(1.2);
+}
+[data-mode='wire'] .wire-label {
+  display: block;
+}
+.wire-label {
+  display: none;
+}

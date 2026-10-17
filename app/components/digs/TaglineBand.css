@@ -1,0 +1,19 @@
+.tagline {
+  display: grid;
+  gap: var(--space-6);
+  justify-items: start;
+  padding: var(--space-9) var(--layout-margin);
+  background: var(--color-surface-inverse);
+  color: var(--color-text-on-inverse);
+}
+.tagline-line {
+  max-width: 14ch;
+  color: var(--color-text-on-inverse);
+}
+@media (min-width: 1024px) {
+  .tagline {
+    padding-inline: calc(var(--layout-margin) + var(--layout-rail));
+    grid-template-columns: 1fr auto;
+    align-items: end;
+  }
+}

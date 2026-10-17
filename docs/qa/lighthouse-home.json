@@ -1,0 +1,37 @@
+{
+ "fetchTime": "2026-10-17T04:00:48.954Z",
+ "page": "home",
+ "url": "/",
+ "performance": 97,
+ "accessibility": 100,
+ "bestPractices": 100,
+ "seo": 66,
+ "lcp": "2.4 s",
+ "cls": "0",
+ "tbt": "0 ms",
+ "fcp": "1.7 s",
+ "opportunities": [
+  {
+   "id": "unused-javascript",
+   "title": "Reduce unused JavaScript",
+   "savings": "Est savings of 24 KiB"
+  }
+ ],
+ "failing": [
+  {
+   "id": "is-crawlable",
+   "title": "Page is blocked from indexing",
+   "value": ""
+  },
+  {
+   "id": "cache-insight",
+   "title": "Use efficient cache lifetimes",
+   "value": "Est savings of 351 KiB"
+  },
+  {
+   "id": "network-dependency-tree-insight",
+   "title": "Network dependency tree",
+   "value": ""
+  }
+ ]
+}

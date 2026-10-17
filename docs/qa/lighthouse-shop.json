@@ -1,0 +1,47 @@
+{
+ "fetchTime": "2026-10-17T04:00:56.750Z",
+ "page": "shop",
+ "url": "/collections/all",
+ "performance": 93,
+ "accessibility": 100,
+ "bestPractices": 100,
+ "seo": 63,
+ "lcp": "2.9 s",
+ "cls": "0",
+ "tbt": "0 ms",
+ "fcp": "2.3 s",
+ "opportunities": [
+  {
+   "id": "unused-javascript",
+   "title": "Reduce unused JavaScript",
+   "savings": "Est savings of 24 KiB"
+  }
+ ],
+ "failing": [
+  {
+   "id": "unused-javascript",
+   "title": "Reduce unused JavaScript",
+   "value": "Est savings of 24 KiB"
+  },
+  {
+   "id": "is-crawlable",
+   "title": "Page is blocked from indexing",
+   "value": ""
+  },
+  {
+   "id": "cache-insight",
+   "title": "Use efficient cache lifetimes",
+   "value": "Est savings of 342 KiB"
+  },
+  {
+   "id": "image-delivery-insight",
+   "title": "Improve image delivery",
+   "value": "Est savings of 45 KiB"
+  },
+  {
+   "id": "network-dependency-tree-insight",
+   "title": "Network dependency tree",
+   "value": ""
+  }
+ ]
+}

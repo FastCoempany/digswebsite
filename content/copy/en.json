@@ -111,7 +111,19 @@
     "blueFrameScript": "story",
     "newsletterHead": "Get first access to every drop.",
     "newsletterSuccess": "You're on the list.",
-    "newsletterError": "That email didn't go through. Try again."
+    "newsletterError": "That email didn't go through. Try again.",
+    "posterLabel": "Posters",
+    "capsuleSub": {
+      "status": "draft",
+      "text": "Four pieces. One drop."
+    },
+    "builtCta": "See the thermal",
+    "posters": [
+      "Actually Dope.",
+      "Dope Is Good",
+      "Wear your ambition.",
+      "Elevate the everyday grind."
+    ]
   },
   "shop": {
     "overline": "CAPSULE 01",
@@ -125,7 +137,13 @@
       "Tops",
       "Bottoms"
     ],
-    "emptyFilter": "Nothing here yet."
+    "emptyFilter": "Nothing here yet.",
+    "emptyAll": {
+      "status": "draft",
+      "text": "Everything is spoken for. Hold your size on any piece and we'll email you."
+    },
+    "seeAll": "See all",
+    "editorialLine": "Wear your ambition."
   },
   "product": {
     "priceTBA": "Price TBA",
@@ -162,13 +180,67 @@
         "text": "Pull-on lyocell twill in salmon, with a drawstring waist and a permanent turn-up cuff."
       }
     },
-    "imageDisclosure": "Images are previews made from the tech pack."
+    "imageDisclosure": "Images are previews made from the tech pack.",
+    "builtHead": "Built like this.",
+    "builtAll": "All details",
+    "builtWhere": "Where",
+    "builtSpec": "Spec",
+    "viewFront": "Front",
+    "viewBack": "Back",
+    "colorCount": {
+      "one": "1 color",
+      "other": "{n} colors"
+    },
+    "moreColorways": {
+      "status": "draft",
+      "text": "More colorways planned: {names}."
+    },
+    "shippingLine": {
+      "status": "draft",
+      "text": "",
+      "note": "Hidden until the founder sets shipping terms (03-represent-mechanics.md)."
+    },
+    "shippingReturnsBody": {
+      "status": "draft",
+      "text": "Shipping and returns terms are being set and will be published here before the first drop."
+    },
+    "fitHead": "Fit",
+    "measurementsHead": "Measurements for size {size}",
+    "measurementsHeadNoSize": "Measurements",
+    "fabricHead": "Fabric",
+    "finishHead": "Finish",
+    "contentHead": "Content",
+    "techPackLine": "From the tech pack: {code}, {revision}.",
+    "sizeNoteLaidFlat": "Half measures are laid flat, as in the tech pack. Measurements in inches after garment wash; cm rounded to 0.5.",
+    "preorderBadge": "Pre-order",
+    "newBadge": "New",
+    "from": "From",
+    "salePrice": "Sale price",
+    "regularPrice": "Regular price"
   },
   "cart": {
     "empty": "Your Digs are empty.",
     "subtotal": "Subtotal",
     "taxNote": "Taxes and shipping calculated at checkout.",
-    "remove": "Remove"
+    "remove": "Remove",
+    "head": "Your Digs",
+    "emptyScript": "dope",
+    "emptyBody": {
+      "status": "draft",
+      "text": "Start with the capsule."
+    },
+    "checkoutNote": {
+      "status": "draft",
+      "text": "Checkout opens when the store goes live."
+    },
+    "lineError": {
+      "status": "draft",
+      "text": "That didn't update. Try again."
+    },
+    "freeShipping": {
+      "status": "draft",
+      "text": "Free shipping slot: hidden until the founder sets the threshold."
+    }
   },
   "taglineBand": [
     "Built for those who chase excellence.",
@@ -212,7 +284,12 @@
     "quiet": {
       "status": "draft",
       "text": "We'd rather the work speak. Impact you can feel before you can see it."
-    }
+    },
+    "standardHead": "The digs standard.",
+    "weAreHead": "We are",
+    "weAreNotHead": "We are not",
+    "quietHead": "Quiet effectiveness",
+    "quietAttribution": "Antaeus Coe, founder"
   },
   "notFound": {
     "head": "This page doesn't exist.",
@@ -242,5 +319,207 @@
     },
     "newsletterHead": "Stay dope.",
     "copyright": "© {year} digs. Dope is good."
+  },
+  "a11y": {
+    "$note": "Accessible names and UI labels. Visible labels include the CTA text (08-copy.md: label in name).",
+    "skipToContent": "Skip to content",
+    "openMenu": "Menu",
+    "closeMenu": "Close menu",
+    "openCart": "Your Digs",
+    "closeCart": "Close your Digs",
+    "close": "Close",
+    "previousImage": "Previous image",
+    "nextImage": "Next image",
+    "imageCounter": "Image {n} of {total}",
+    "zoomImage": "Zoom image",
+    "zoomOut": "Zoom out",
+    "increase": "Increase quantity",
+    "decrease": "Decrease quantity",
+    "quantity": "Quantity",
+    "loading": "Loading",
+    "dismiss": "Dismiss",
+    "email": "Email",
+    "emailPlaceholder": "you@example.com",
+    "required": "Required",
+    "breadcrumb": "Breadcrumb",
+    "colorway": "Colorway",
+    "size": "Size",
+    "selected": "Selected",
+    "unavailable": "Unavailable",
+    "menu": "Menu",
+    "mainNav": "Main",
+    "footerNav": "Footer",
+    "unitToggle": "Units",
+    "inches": "in",
+    "centimetres": "cm",
+    "hotspot": "Detail {code}: {label}",
+    "home": "Home",
+    "laidFlat": "laid flat",
+    "draftFlag": "draft"
+  },
+  "errors": {
+    "generic": "Something went wrong.",
+    "tryAgain": "Try again."
+  },
+  "announcement": {
+    "status": "draft",
+    "text": "Capsule 01. Coming soon. Get on the list.",
+    "enabled": true
+  },
+  "menu": {
+    "smallPrint": [
+      {
+        "label": "Shipping & returns",
+        "to": "/pages/shipping-returns"
+      },
+      {
+        "label": "Contact",
+        "to": "/pages/contact"
+      }
+    ]
+  },
+  "pages": {
+    "$note": "Utility pages. Legal text is not invented: policies come from Shopify once the store exists; shipping/returns terms wait for the founder. Everything here is draft until approved.",
+    "sizeGuide": {
+      "head": "Size guide",
+      "intro": {
+        "status": "draft",
+        "text": "Every measurement comes from the graded spec in each tech pack: inches after garment wash, cm rounded to the nearest half. Half measures (chest, waist, hip, leg opening) are laid flat, not doubled."
+      },
+      "howTo": "How to measure",
+      "howToBody": {
+        "status": "draft",
+        "text": "Lay a garment you like flat and compare it with the table. Chest is measured pit to pit; body length from the high point of the shoulder to the hem; sleeve from the shoulder seam to the cuff edge. For the pant, waist and hip are laid flat; inseam runs from the crotch seam to the cuff fold."
+      },
+      "sampleNote": "All four pieces are cut S–XL. The sample size is M."
+    },
+    "shippingReturns": {
+      "head": "Shipping & returns",
+      "intro": {
+        "status": "draft",
+        "text": "Terms are being set and will be published here before the first drop. Until then, nothing ships and nothing is charged."
+      },
+      "sections": [
+        {
+          "title": "Shipping",
+          "body": {
+            "status": "draft",
+            "text": "US shipping first. Rates, carriers and the free-shipping threshold are to be confirmed by the founder."
+          }
+        },
+        {
+          "title": "Pre-orders",
+          "body": {
+            "status": "draft",
+            "text": "Pieces are made in small runs. A pre-order shows its ship date on the product page before you commit."
+          }
+        },
+        {
+          "title": "Returns",
+          "body": {
+            "status": "draft",
+            "text": "The return window and conditions are to be confirmed by the founder and will be published here."
+          }
+        }
+      ]
+    },
+    "faq": {
+      "head": "FAQ",
+      "items": [
+        {
+          "q": "When does Capsule 01 ship?",
+          "a": {
+            "status": "draft",
+            "text": "Dates are not set. Get on the list on any product page and we'll email you before the drop."
+          }
+        },
+        {
+          "q": "How do the pieces fit?",
+          "a": {
+            "status": "draft",
+            "text": "Relaxed, with a slight drop shoulder on the tops; the pant is slim and tapered with a mid rise. Each product page lists the garment measurements for every size, and the size guide has all four tables."
+          }
+        },
+        {
+          "q": "What sizes do you make?",
+          "a": {
+            "status": "draft",
+            "text": "S, M, L and XL across all four pieces. The pant's M fits a 32–34 in waist."
+          }
+        },
+        {
+          "q": "Where are the clothes made?",
+          "a": {
+            "status": "draft",
+            "text": "Designed in USA. Imported. The factory is confirmed before launch."
+          }
+        },
+        {
+          "q": "How do I care for them?",
+          "a": {
+            "status": "draft",
+            "text": "Each product page carries the care label copy under Care. In short: machine wash cold with like colors. The thermal and the pincord tumble dry low; the needlecord shirt and the drawstring pant line dry."
+          }
+        },
+        {
+          "q": "Are the photos the real product?",
+          "a": {
+            "status": "draft",
+            "text": "Not yet. Images are previews made from the tech pack. They are replaced with photographs of production samples before anything ships."
+          }
+        }
+      ]
+    },
+    "contact": {
+      "head": "Contact",
+      "intro": {
+        "status": "draft",
+        "text": "Questions about a piece, an order or working together. We read everything."
+      },
+      "emailLabel": "Email address to be confirmed",
+      "instagramLine": "Or send a message to {handle}.",
+      "form": {
+        "name": "Name",
+        "email": "Email",
+        "message": "Message",
+        "send": "Send",
+        "note": {
+          "status": "draft",
+          "text": "The form connects when the store goes live."
+        }
+      }
+    },
+    "accessibility": {
+      "head": "Accessibility",
+      "body": [
+        {
+          "status": "draft",
+          "text": "digs is built to WCAG 2.2 AA: visible focus on everything, 44px targets, text that reads at 200% zoom, motion that respects your system setting, and images with written descriptions."
+        },
+        {
+          "status": "draft",
+          "text": "If something on this site doesn't work for you, tell us and we'll fix it. Use the contact page or message @dopeisgood."
+        }
+      ]
+    },
+    "policies": {
+      "head": "Policies",
+      "intro": {
+        "status": "draft",
+        "text": "Store policies (privacy, terms, refunds, shipping) are published from Shopify once the store is connected. Nothing here is final."
+      },
+      "placeholder": {
+        "status": "draft",
+        "text": "This policy will be published here when the store goes live."
+      }
+    },
+    "account": {
+      "head": "Account",
+      "body": {
+        "status": "draft",
+        "text": "Accounts are handled by Shopify. Sign-in opens when the store goes live."
+      },
+      "cta": "Dig in"
+    }
   }
 }

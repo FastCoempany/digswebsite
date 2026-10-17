@@ -1,0 +1,150 @@
+{
+  "thermal-long-sleeve": {
+    "0": {
+      "code": "L3",
+      "label": "Back yoke embroidery",
+      "view": "back",
+      "x": 50,
+      "y": 14
+    },
+    "1": {
+      "code": "RIB",
+      "label": "2x2 rib",
+      "view": "front",
+      "x": 50,
+      "y": 6
+    },
+    "2": {
+      "code": "YOKE",
+      "label": "Back yoke",
+      "view": "back",
+      "x": 32,
+      "y": 20
+    },
+    "3": {
+      "code": "L1",
+      "label": "Neck label",
+      "view": "back",
+      "x": 66,
+      "y": 5
+    },
+    "4": {
+      "code": "HEM",
+      "label": "Hem",
+      "view": "front",
+      "x": 50,
+      "y": 96
+    }
+  },
+  "pincord-button-down": {
+    "0": {
+      "code": "L3",
+      "label": "Back yoke embroidery",
+      "view": "back",
+      "x": 50,
+      "y": 13
+    },
+    "1": {
+      "code": "L4",
+      "label": "Placket tag",
+      "view": "front",
+      "x": 50,
+      "y": 89
+    },
+    "2": {
+      "code": "CUFF",
+      "label": "Cut cuff",
+      "view": "front",
+      "x": 93,
+      "y": 72
+    },
+    "3": {
+      "code": "POCKET",
+      "label": "Chest pockets",
+      "view": "front",
+      "x": 61,
+      "y": 39
+    },
+    "4": {
+      "code": "PLEAT",
+      "label": "Box pleat + loop",
+      "view": "back",
+      "x": 50,
+      "y": 40
+    }
+  },
+  "needlecord-shirt": {
+    "0": {
+      "code": "L3",
+      "label": "Placket tag",
+      "view": "front",
+      "x": 50,
+      "y": 89
+    },
+    "1": {
+      "code": "SLEEVE",
+      "label": "One-piece sleeve",
+      "view": "back",
+      "x": 85,
+      "y": 45
+    },
+    "2": {
+      "code": "CUFF",
+      "label": "Barrel cuff",
+      "view": "front",
+      "x": 92,
+      "y": 82
+    },
+    "3": {
+      "code": "POCKET",
+      "label": "Chest pocket",
+      "view": "front",
+      "x": 61,
+      "y": 38
+    },
+    "4": {
+      "code": "WALE",
+      "label": "21-wale needlecord",
+      "view": "front",
+      "x": 33,
+      "y": 60
+    }
+  },
+  "drawstring-pant": {
+    "0": {
+      "code": "L3",
+      "label": "Back pocket patch",
+      "view": "back",
+      "x": 72,
+      "y": 12.5
+    },
+    "1": {
+      "code": "L3",
+      "label": "Cuff patch",
+      "view": "front",
+      "x": 80,
+      "y": 97
+    },
+    "2": {
+      "code": "T1/T2",
+      "label": "Drawstring + eyelets",
+      "view": "front",
+      "x": 50,
+      "y": 2.5
+    },
+    "3": {
+      "code": "CUFF",
+      "label": "Turn-up cuff",
+      "view": "front",
+      "x": 25,
+      "y": 97
+    },
+    "4": {
+      "code": "FLY",
+      "label": "Faux fly",
+      "view": "front",
+      "x": 53,
+      "y": 12
+    }
+  }
+}

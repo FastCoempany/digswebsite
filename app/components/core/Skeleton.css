@@ -1,0 +1,37 @@
+.skel {
+  display: block;
+  background: var(--color-surface-sunken);
+  position: relative;
+  overflow: hidden;
+}
+.skel::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  transform: translateX(-100%);
+  background: linear-gradient(90deg, transparent, var(--color-surface-raised), transparent);
+  opacity: 0.6;
+  animation: skel-shimmer 1.4s infinite;
+}
+.skel-line {
+  height: 0.9em;
+  margin-block: 0.45em;
+}
+.skel-text,
+.skel-card {
+  display: block;
+}
+.skel-card .skel-line:first-of-type {
+  margin-top: var(--space-3);
+}
+@keyframes skel-shimmer {
+  to {
+    transform: translateX(100%);
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .skel::after {
+    animation: none;
+    display: none;
+  }
+}

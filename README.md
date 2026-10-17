@@ -2,7 +2,18 @@
 
 The DIGS storefront: a custom Shopify site (Hydrogen) for Capsule 01. Four pieces, built from their tech packs.
 
-**Phase now:** brief, design tokens and assets are in; the app gets scaffolded in phase 0 of `docs/brief/09-build-plan.md`. No payments or live store connection yet.
+**Phase now:** wireframes, UI and components (phases 0–6 of `docs/brief/09-build-plan.md`) on the branch `build/v1`. The app runs on a local mock of the Storefront API; no payments or live store connection yet.
+
+```
+npm install
+npm run dev          # http://localhost:3000  (mock data, no Shopify login; add ?mode=wire for wireframes)
+npm run storybook    # http://localhost:6006
+npm run test:visual  # Playwright: visual baselines, axe, keyboard pass, story matrix
+                     # (baselines are made on the CI runner by the visual-baselines workflow;
+                     #  locally add -- --grep-invert @visual)
+```
+
+Or open the branch in a GitHub Codespace: `.devcontainer/` installs everything and starts the site. Review pack: `docs/REVIEW.md`. Build log and decisions to confirm: `docs/build-log.md`.
 
 ## Start here
 

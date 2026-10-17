@@ -1,0 +1,69 @@
+.swatches {
+  border: 0;
+  padding: 0;
+  margin: 0;
+  min-width: 0;
+}
+.swatches-legend {
+  display: flex;
+  gap: var(--space-2);
+  padding: 0;
+  margin-bottom: var(--space-2);
+  font-size: var(--font-size-small);
+}
+.swatches-label {
+  font-weight: var(--font-weight-medium);
+}
+.swatches-name {
+  color: var(--color-text-secondary);
+}
+.swatches-row,
+.swatches-readonly {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+  align-items: center;
+}
+.swatch {
+  --swatch-size: 2rem;
+  position: relative;
+  display: inline-block;
+  width: var(--swatch-size);
+  height: var(--swatch-size);
+  border-radius: 50%;
+  background: var(--swatch-color, var(--color-surface-sunken));
+  /* ink-300 keyline so light cloth reads on ice (01-brand-system.md §3) */
+  box-shadow: inset 0 0 0 1px var(--color-ink-300);
+  cursor: pointer;
+  flex: none;
+  transition: box-shadow var(--motion-fast) var(--motion-ease);
+}
+.swatches-md .swatch {
+  --swatch-size: 2.75rem;
+}
+.swatches-sm .swatch {
+  --swatch-size: 1rem;
+  cursor: default;
+}
+.swatch.is-selected {
+  /* 2px ring with a 2px gap */
+  box-shadow: inset 0 0 0 1px var(--color-ink-300), 0 0 0 2px var(--color-surface-page), 0 0 0 4px var(--color-border-strong);
+}
+.swatches-sm .swatch.is-selected {
+  box-shadow: inset 0 0 0 1px var(--color-ink-300), 0 0 0 1px var(--color-surface-page), 0 0 0 2px var(--color-border-strong);
+}
+.swatch.is-unavailable::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  background: linear-gradient(135deg, transparent calc(50% - 1px), var(--color-border-strong) calc(50% - 1px), var(--color-border-strong) calc(50% + 1px), transparent calc(50% + 1px));
+}
+.swatch:focus-visible {
+  outline: var(--border-strong) solid var(--color-focus-ring);
+  outline-offset: 3px;
+}
+/* The readonly list items keep the same look */
+.swatches-readonly .swatch {
+  list-style: none;
+}

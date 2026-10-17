@@ -1,0 +1,42 @@
+{
+  "thermal-long-sleeve": {
+    "front": {
+      "file": "thermal-long-sleeve-front.svg",
+      "viewBox": "46.14 124.38 338.85 361.29"
+    },
+    "back": {
+      "file": "thermal-long-sleeve-back.svg",
+      "viewBox": "404.99 124.38 341.18 361.29"
+    }
+  },
+  "pincord-button-down": {
+    "front": {
+      "file": "pincord-button-down-front.svg",
+      "viewBox": "35.59 187.28 339.22 212.5"
+    },
+    "back": {
+      "file": "pincord-button-down-back.svg",
+      "viewBox": "417.19 188.98 339.22 217.28"
+    }
+  },
+  "needlecord-shirt": {
+    "front": {
+      "file": "needlecord-shirt-front.svg",
+      "viewBox": "3.95 159.22 383.78 291.68"
+    },
+    "back": {
+      "file": "needlecord-shirt-back.svg",
+      "viewBox": "404.27 161.6 383.78 298.3"
+    }
+  },
+  "drawstring-pant": {
+    "front": {
+      "file": "drawstring-pant-front.svg",
+      "viewBox": "93.61 94.86 223.19 451.23"
+    },
+    "back": {
+      "file": "drawstring-pant-back.svg",
+      "viewBox": "475.21 94.86 223.19 451.23"
+    }
+  }
+}

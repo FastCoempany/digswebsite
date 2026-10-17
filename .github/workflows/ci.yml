@@ -1,0 +1,80 @@
+name: ci
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+concurrency:
+  group: ci-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  checks:
+    name: brand check, typecheck, build, copy audit, fact trace
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: npm ci
+      - name: Brand check (hex, PJ colors, forbidden strings, private font, core→digs imports) on sources
+        run: npm run check:brand
+      - run: npm run typecheck
+      - run: npm run build
+      - run: npm run storybook:build
+      - name: Brand check again, now covering build output
+        run: npm run check:brand
+      - name: Serve the built site
+        run: |
+          (npm run preview:built > preview.log 2>&1 &)
+          for i in $(seq 1 60); do curl -sf -o /dev/null http://localhost:3000/ && break; sleep 2; done
+          curl -sf -o /dev/null http://localhost:3000/ || { cat preview.log; exit 1; }
+      - name: Copy audit and product-fact trace against the served pages
+        run: |
+          python3 tools/copy_audit.py --base http://localhost:3000
+          python3 tools/fact_trace.py --base http://localhost:3000
+
+  tests:
+    name: playwright (${{ matrix.project }})
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    strategy:
+      fail-fast: false
+      matrix:
+        project: [mobile-ui, mobile-wire, desktop-ui, desktop-wire]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - run: npm run build
+      - run: npm run storybook:build
+      - name: Install Playwright Chromium
+        run: npx playwright install --with-deps chromium
+      - name: Serve the built site (Playwright reuses it; no second build)
+        run: |
+          (npm run preview:built > preview.log 2>&1 &)
+          for i in $(seq 1 60); do curl -sf -o /dev/null http://localhost:3000/ && break; sleep 2; done
+          curl -sf -o /dev/null http://localhost:3000/ || { cat preview.log; exit 1; }
+      - name: Visual baselines, axe, keyboard and story matrix
+        env:
+          PW_PREVIEW_CMD: npm run preview:built
+        run: npm run test:visual -- --project ${{ matrix.project }}
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: playwright-report-${{ matrix.project }}
+          path: |
+            playwright-report
+            test-results
+          retention-days: 7

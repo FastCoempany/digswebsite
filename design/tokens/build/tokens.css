@@ -52,6 +52,8 @@
   --color-text-sale: #C8102E;
   --color-text-success: #0B7A4B;
   --color-text-low-stock: #8A4B00;
+  --color-text-sale-on-inverse: #FDE7EA;
+  --color-text-success-on-inverse: #E2F4EC;
   --color-border-hairline: #D7DDE7;
   --color-border-control: #6F7887;
   --color-border-strong: #000000;
@@ -72,7 +74,7 @@
   --font-family-script: none;
   --font-weight-regular: 400;
   --font-weight-medium: 500;
-  --font-size-display-xl: clamp(3.5rem, 2.1rem + 11.5vw, 10.5rem);
+  --font-size-display-xl: clamp(3.5rem, 1.5rem + 11vw, 10.5rem);
   --font-size-display: clamp(2.75rem, 1.9rem + 6.8vw, 6.5rem);
   --font-size-h1: clamp(2.25rem, 1.8rem + 2.6vw, 3.75rem);
   --font-size-h2: clamp(1.75rem, 1.5rem + 1.3vw, 2.5rem);

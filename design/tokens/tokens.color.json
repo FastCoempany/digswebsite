@@ -226,6 +226,14 @@
         "$type": "color",
         "$value": "#8A4B00"
       },
+      "text-sale-on-inverse": {
+        "$type": "color",
+        "$value": "#FDE7EA"
+      },
+      "text-success-on-inverse": {
+        "$type": "color",
+        "$value": "#E2F4EC"
+      },
       "border-hairline": {
         "$type": "color",
         "$value": "#D7DDE7"

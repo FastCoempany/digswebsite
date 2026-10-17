@@ -1,0 +1,70 @@
+.media-slot {
+  position: relative;
+  display: block;
+  width: 100%;
+  margin: 0;
+  overflow: hidden;
+  background: var(--color-surface-sunken);
+  color: var(--color-text-secondary);
+}
+.media-slot img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: opacity var(--motion-base) var(--motion-ease);
+}
+.media-fit-contain img {
+  object-fit: contain;
+}
+.media-slot.is-loading img {
+  opacity: 0;
+}
+.media-slot.is-loaded img {
+  opacity: 1;
+}
+.media-slot.is-loading::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: var(--color-surface-sunken);
+}
+.media-slot-placeholder {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-content: center;
+  gap: var(--space-1);
+  text-align: center;
+  font-size: var(--font-size-micro);
+  font-weight: var(--font-weight-medium);
+  letter-spacing: var(--font-tracking-caps);
+  text-transform: uppercase;
+  background:
+    linear-gradient(to top right, transparent calc(50% - 0.5px), var(--color-border-hairline) 50%, transparent calc(50% + 0.5px)),
+    linear-gradient(to top left, transparent calc(50% - 0.5px), var(--color-border-hairline) 50%, transparent calc(50% + 0.5px));
+}
+.media-slot-ratio {
+  color: var(--color-text-muted);
+}
+.media-slot-code {
+  color: var(--color-text-primary);
+  background: var(--color-surface-raised);
+  padding: 2px var(--space-2);
+}
+.media-slot-overlay {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+.media-slot-overlay > * {
+  pointer-events: auto;
+}
+/* Wire mode: the generated wire.css hides the image and prints data-media-slot; the placeholder
+   text duplicates it, so hide the placeholder there. */
+[data-mode='wire'] .media-slot-placeholder {
+  visibility: hidden;
+}
+[data-mode='wire'] .media-slot {
+  background: var(--color-surface-sunken);
+}

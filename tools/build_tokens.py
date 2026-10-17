@@ -75,6 +75,7 @@ def main():
         "text-primary": "#000000", "text-secondary": ink["700"], "text-muted": ink["600"],
         "text-on-inverse": "#FFFFFF", "text-on-brand": "#FFFFFF", "text-link": "#000000",
         "text-sale": "#000000", "text-success": "#000000", "text-low-stock": "#000000",
+        "text-sale-on-inverse": "#FFFFFF", "text-success-on-inverse": "#FFFFFF",
         "border-hairline": ink["300"], "border-control": ink["500"], "border-strong": "#000000",
         "action-primary": ink["800"], "action-primary-hover": ink["900"], "action-primary-pressed": "#000000",
         "action-primary-text": "#FFFFFF", "action-secondary": "#FFFFFF", "action-secondary-hover": ink["100"],

@@ -1,0 +1,85 @@
+.field {
+  display: grid;
+  gap: var(--space-2);
+  min-width: 0;
+}
+.field-label {
+  font-size: var(--font-size-small);
+  font-weight: var(--font-weight-medium);
+}
+.field-required {
+  color: var(--color-text-secondary);
+  font-weight: var(--font-weight-regular);
+}
+.field-control {
+  position: relative;
+}
+.field-input {
+  width: 100%;
+  min-height: 2.75rem;
+  padding: 0 var(--space-4);
+  border: var(--border-hairline) solid var(--color-border-control);
+  border-radius: var(--radius-control);
+  background: var(--color-surface-raised);
+  color: var(--color-text-primary);
+  font-size: var(--font-size-body);
+  transition: border-color var(--motion-fast) var(--motion-ease), box-shadow var(--motion-fast) var(--motion-ease);
+}
+.field-input::placeholder {
+  color: var(--color-text-muted);
+}
+.field-input:hover {
+  border-color: var(--color-border-strong);
+}
+.field-input:focus-visible {
+  outline: var(--border-strong) solid var(--color-focus-ring);
+  outline-offset: 2px;
+  border-color: var(--color-border-strong);
+}
+.field-input:disabled {
+  background: var(--color-surface-sunken);
+  color: var(--color-action-disabled-text);
+  cursor: not-allowed;
+}
+.has-error .field-input {
+  border-color: var(--color-text-sale);
+  box-shadow: inset 0 0 0 1px var(--color-text-sale);
+}
+.has-success .field-input {
+  border-color: var(--color-text-success);
+  padding-right: var(--space-8);
+}
+.field-icon {
+  position: absolute;
+  right: var(--space-4);
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--color-text-success);
+}
+.field-hint {
+  font-size: var(--font-size-small);
+  color: var(--color-text-secondary);
+}
+.field-error {
+  font-size: var(--font-size-small);
+  color: var(--color-text-sale);
+}
+.field-success {
+  font-size: var(--font-size-small);
+  color: var(--color-text-success);
+}
+[data-surface='dark'] .field-input {
+  background: var(--color-surface-raised);
+}
+[data-surface='dark'] .field-error,
+[data-surface='brand'] .field-error {
+  color: var(--color-text-sale-on-inverse);
+}
+[data-surface='dark'] .field-success,
+[data-surface='brand'] .field-success {
+  color: var(--color-text-success-on-inverse);
+}
+[data-surface='dark'] .field-hint,
+[data-surface='brand'] .field-hint {
+  color: var(--color-text-on-inverse);
+}

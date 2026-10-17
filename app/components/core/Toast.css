@@ -1,0 +1,55 @@
+.toasts {
+  position: fixed;
+  left: 50%;
+  bottom: calc(var(--space-5) + env(safe-area-inset-bottom));
+  z-index: var(--z-toast);
+  display: grid;
+  gap: var(--space-2);
+  width: min(26rem, calc(100vw - 2 * var(--layout-margin)));
+  transform: translateX(-50%);
+  pointer-events: none;
+}
+.toast {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+  gap: var(--space-3);
+  padding: var(--space-3) var(--space-3) var(--space-3) var(--space-4);
+  background: var(--color-surface-inverse);
+  color: var(--color-text-on-inverse);
+  border-radius: var(--radius-pill);
+  font-size: var(--font-size-small);
+  font-weight: var(--font-weight-medium);
+  pointer-events: auto;
+  opacity: 0;
+  transform: translateY(var(--space-4));
+  transition: opacity var(--motion-base) var(--motion-ease), transform var(--motion-base) var(--motion-ease);
+}
+.toast.is-shown {
+  opacity: 1;
+  transform: none;
+}
+.toast.is-exit {
+  opacity: 0;
+  transform: translateY(var(--space-2));
+}
+.toast-dot {
+  width: 0.5rem;
+  height: 0.5rem;
+  border-radius: 50%;
+  background: var(--color-brand-scrawl);
+}
+.toast-close {
+  display: grid;
+  place-items: center;
+  width: 2.25rem;
+  height: 2.25rem;
+  border-radius: 50%;
+  color: inherit;
+}
+.toast-close:hover {
+  background: color-mix(in oklab, var(--color-text-on-inverse) 16%, transparent);
+}
+.toast-close:focus-visible {
+  outline-color: var(--color-focus-ring-on-dark);
+}
