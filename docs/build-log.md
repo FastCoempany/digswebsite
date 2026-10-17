@@ -25,7 +25,7 @@ Add `?mode=wire` to any URL for wireframe mode (sticks for the session; `?mode=u
 | 3 DIGS layer | done | 20 components, 89 stories (`DIGS/*`); vector flats from the tech packs via `tools/flats_svg.py` with hotspot anchors |
 | 4 UI pages | done | `docs/ui/{page}-{390,1440}.png` (placeholder set in commit "Phase 4"; the final set carries the photography) |
 | 5 Photography | done | 15 approved finals in `assets/photography/` + `MANIFEST.csv` + `CREDITS.md`; optimized copies in `public/photography/`; placed by shot code (P-xx-01/02 per colorway, H-01 both crops, E-01..03); O8 recorded |
-| 6 QA | done | axe: 0 serious/critical on every page × 4 projects and across the 318-story matrix; keyboard pass (menu, drawer, gallery, size selector, modal, skip link); Lighthouse mobile 92 / 97 / 92 (home / shop / PDP, `docs/qa/lighthouse.md`); copy audit and fact trace pass (`docs/qa/*.txt`); visual baselines committed (`tests/visual/__screenshots__`, 76 PNGs) |
+| 6 QA | done | axe: 0 serious/critical on every page × 4 projects and across the 318-story matrix; keyboard pass (menu, drawer, gallery, size selector, modal, skip link); Lighthouse mobile 92 / 97 / 92 (home / shop / PDP, `docs/qa/lighthouse.md`); copy audit and fact trace pass (`docs/qa/*.txt`); visual baselines committed (`tests/visual/__screenshots__`, 72 PNGs: 17 pages + the marks strip × 4 projects) |
 
 Founder review gates after phases 1 and 4 are waived for this run (founder, Oct 16 2026); the
 gate deliverables are produced and the run continues.
@@ -92,9 +92,9 @@ gate deliverables are produced and the run continues.
 | Keyboard pass | `npm run test:keyboard` | menu, cart drawer, gallery (arrows, zoom, Esc), size selector, size-guide modal (unit toggle, trap, Esc), skip link |
 | Story matrix | `npm run test:visual -- --grep @stories` | 318 stories × 4 projects render and pass axe (one forced mid-transition story is tagged `no-axe`) |
 | Lighthouse mobile | `node tools/lighthouse.mjs` | home 92–96, shop 95–97, PDP 92 on a quiet machine (`docs/qa/lighthouse.md`). Scores dip under CPU load; the SEO column is 63–66 only because `/robots.txt` disallows crawling pre-launch (D2) |
-| Copy audit | `python3 tools/copy_audit.py` | passes; 34 draft lines listed in `docs/qa/copy-audit.txt` |
-| Product-fact trace | `python3 tools/fact_trace.py` | 262 on-screen facts, all traced to `content/products/` |
-| Visual baselines | `npm run test:visual -- --grep @visual` | 17 pages × 4 projects, full page |
+| Copy audit | `python3 tools/copy_audit.py` | passes; 35 draft lines listed in `docs/qa/copy-audit.txt` |
+| Product-fact trace | `python3 tools/fact_trace.py` | 261 on-screen facts traced to `content/products/`, plus every size-guide row and cell compared to the graded spec in order |
+| Visual baselines | `npm run test:visual -- --grep @visual` | 17 pages × 4 projects, full page; `maxDiffPixelRatio` 0.01 until the GitHub runners prove stable, then tighten (0.002) |
 
 Performance notes: loaders serialize card data rather than whole products; one stylesheet; the
 wordmark is a CSS mask (one cached SVG); photos ship as 480/720/960 WebP; the font is preloaded.

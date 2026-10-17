@@ -1,2 +1,2 @@
-fact trace: 262 on-screen facts checked across 4 product pages
+fact trace: 261 on-screen facts checked across 4 product pages and the size guide
   every fact traces to content/products/
