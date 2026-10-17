@@ -10,6 +10,10 @@
 .posters::-webkit-scrollbar {
   display: none;
 }
+.posters:focus-visible {
+  outline: var(--border-strong) solid var(--color-focus-ring);
+  outline-offset: -2px;
+}
 .poster {
   position: relative;
   flex: 0 0 72vw;

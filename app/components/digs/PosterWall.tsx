@@ -12,7 +12,7 @@ export type PosterTile =
 /** Wheat-pasted posters, one idea and one color each. Horizontal scroll on mobile, grid on desktop. */
 export function PosterWall({tiles, label, className = ''}: {tiles: PosterTile[]; label: string; className?: string}) {
   return (
-    <ul className={`posters ${className}`} aria-label={label}>
+    <ul className={`posters ${className}`} aria-label={label} tabIndex={0}>
       {tiles.map((t, i) => {
         if (t.kind === 'photo') {
           return (

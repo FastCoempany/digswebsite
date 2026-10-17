@@ -28,7 +28,9 @@ jobs:
         run: npm run check:brand
       - name: Install Playwright Chromium
         run: npx playwright install --with-deps chromium
-      - name: Visual, accessibility and keyboard tests
+      - name: Copy audit (static checks)
+        run: python3 tools/copy_audit.py --base http://localhost:1
+      - name: Visual, accessibility, keyboard and story-matrix tests
         run: npm run test:visual
       - uses: actions/upload-artifact@v4
         if: always()

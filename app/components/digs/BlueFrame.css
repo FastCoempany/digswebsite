@@ -20,6 +20,13 @@
   grid-template-columns: 1fr auto;
   padding: var(--space-5);
   pointer-events: none;
+  /* A quiet scrim top and bottom so ice type reads on light frames (city overcast, ice cyc) */
+  background:
+    linear-gradient(to bottom, color-mix(in oklab, var(--color-core-ink) 55%, transparent), transparent 45%),
+    linear-gradient(to top, color-mix(in oklab, var(--color-core-ink) 45%, transparent), transparent 30%);
+}
+[data-mode='wire'] .blueframe-layer {
+  background: none;
 }
 .blueframe-head {
   grid-column: 1 / -1;

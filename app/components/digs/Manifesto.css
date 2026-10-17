@@ -44,8 +44,10 @@
   gap: var(--space-5);
 }
 .manifesto-fullscreen .manifesto-title {
-  font-size: var(--font-size-display);
+  font-size: clamp(2.5rem, 1.6rem + 4vw, 4.75rem);
   line-height: 0.95;
+  letter-spacing: var(--font-tracking-display);
+  overflow-wrap: anywhere;
 }
 @media (min-width: 1024px) {
   .manifesto-fullscreen .manifesto-item {

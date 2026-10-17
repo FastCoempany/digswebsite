@@ -6,6 +6,7 @@ export type Mode = 'ui' | 'wire';
 export type TestOptions = {mode: Mode; sizeName: 'mobile' | 'desktop'};
 
 const here = path.dirname(fileURLToPath(import.meta.url));
+const repoRoot = path.join(here, '..', '..');
 const PORT = Number(process.env.PORT || 3000);
 export const BASE_URL = process.env.BASE_URL || `http://localhost:${PORT}`;
 
@@ -39,12 +40,25 @@ export default defineConfig<TestOptions>({
     {name: 'desktop-ui', use: {...devices['Desktop Chrome'], viewport: {width: 1440, height: 900}, deviceScaleFactor: 1, mode: 'ui', sizeName: 'desktop'}},
     {name: 'desktop-wire', use: {...devices['Desktop Chrome'], viewport: {width: 1440, height: 900}, deviceScaleFactor: 1, mode: 'wire', sizeName: 'desktop'}},
   ],
-  webServer: {
-    command: 'npm run preview',
-    url: BASE_URL,
-    reuseExistingServer: true,
-    timeout: 240_000,
-    stdout: 'ignore',
-    stderr: 'pipe',
-  },
+  webServer: [
+    {
+      command: 'npm run preview',
+      cwd: repoRoot,
+      url: BASE_URL,
+      reuseExistingServer: true,
+      timeout: 240_000,
+      stdout: 'ignore',
+      stderr: 'pipe',
+    },
+    {
+      // Static Storybook for the story matrix (builds it when missing)
+      command: 'node tools/dev/static.mjs storybook-static 6007',
+      cwd: repoRoot,
+      url: 'http://localhost:6007/index.json',
+      reuseExistingServer: true,
+      timeout: 300_000,
+      stdout: 'ignore',
+      stderr: 'pipe',
+    },
+  ],
 });

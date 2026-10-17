@@ -36,6 +36,6 @@ What is settled, who settled it, and what is still open. If a later doc disagree
 | O5 | Pincord open items (cuff cut, pocket closure, wash, back pleat, back embroidery, buttons) | The pack's defaults | Founder |
 | O6 | Pant fly (faux vs working zip) | Faux fly, per the pack | Founder |
 | O7 | Season label | "Capsule 01" on the site (packs say FW25 / FW27 TBC) | Founder |
-| O8 | Round 1 sign-off | 15 finals in `reference/photo-tests/round-1/out/` (the founder OK'd the 1a test and said "run it"; 1b followed). On sign-off they move to `assets/photography/` with `MANIFEST.csv`; until then the UI uses `MediaSlot` placeholders. Round 2 runs after a check of the AI balance (should read 44 credits used) | Founder |
+| O8 | Round 1 sign-off | **Approved by the founder, Oct 16 2026:** the 15 round-1 finals are site photography. They live in `assets/photography/` with a row each in `MANIFEST.csv` (and `CREDITS.md`), are served from `public/photography/` via `tools/photo_sync.py`, and sit in their slots by shot code (P-xx-01/02 for every product and colorway, H-01 in both crops, E-01..03). Slots with no photo yet (side, macros, flats, E-04+) stay labelled `MediaSlot` placeholders. Product galleries carry "Images are previews made from the tech pack." Round 2 runs after a check of the AI balance (should read 44 credits used) | Founder (round 1 approved); round 2 open |
 | O9 | A second model to reflect "primarily men, inclusive of women" | Not in v1 | Founder |
 | O10 | Hangtag artwork | Still TBC in every pack; not shown on the site | Founder |

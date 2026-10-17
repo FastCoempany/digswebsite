@@ -81,8 +81,11 @@ export function ProductGallery({items, labels, rail, caption, loading, activeInd
       <ul className="gallery-track" ref={track} onScroll={onScroll} onKeyDown={onKey} tabIndex={0} aria-live="polite">
         {items.map((item, i) => (
           <li key={`${item.code}-${i}`} className="gallery-item" aria-roledescription="slide" aria-label={labels.counter.replace('{n}', String(i + 1)).replace('{total}', String(total))}>
-            <button type="button" className="gallery-zoom" onClick={() => setZoom(i)} aria-label={`${labels.zoom}: ${item.alt ?? item.code}`}>
-              <MediaSlot ratio={item.ratio} code={item.code} image={item.image} srcSet={item.srcSet} alt={item.alt} sizes="(min-width: 1024px) 30vw, 100vw" priority={i === 0} />
+            <button type="button" className="gallery-zoom" onClick={() => setZoom(i)}>
+              <span className="visually-hidden">
+                {labels.zoom}: {item.alt || item.code}
+              </span>
+              <MediaSlot ratio={item.ratio} code={item.code} image={item.image} srcSet={item.srcSet} alt="" sizes="(min-width: 1024px) 30vw, 100vw" priority={i === 0} />
             </button>
           </li>
         ))}

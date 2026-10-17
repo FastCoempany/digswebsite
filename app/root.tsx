@@ -19,6 +19,15 @@ import {NotFound} from '~/components/pages/NotFound';
 
 export type RootLoader = typeof loader;
 
+/** Default title; routes override it. Error pages (404) get a title through the error branch. */
+export const meta: Route.MetaFunction = ({error}) => {
+  if (error) {
+    const status = isRouteErrorResponse(error) ? error.status : 500;
+    return [{title: `${status === 404 ? copy.notFound.head : copy.errors.generic} · ${copy.brand.name}`}];
+  }
+  return [{title: `${copy.brand.name} · ${copy.brand.ethos}`}];
+};
+
 export const shouldRevalidate: ShouldRevalidateFunction = ({formMethod, currentUrl, nextUrl}) => {
   if (formMethod && formMethod !== 'GET') return true;
   if (currentUrl.toString() === nextUrl.toString()) return true;

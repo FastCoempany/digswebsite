@@ -317,6 +317,7 @@
   display: grid;
   gap: var(--space-5);
   max-width: 44rem;
+  margin-inline: 0;
   font-size: var(--font-size-h3);
   line-height: 1.3;
 }

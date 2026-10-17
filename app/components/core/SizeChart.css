@@ -16,6 +16,10 @@
 .sizechart-scroll {
   overflow-x: auto;
 }
+.sizechart-scroll:focus-visible {
+  outline: var(--border-strong) solid var(--color-focus-ring);
+  outline-offset: 2px;
+}
 .sizechart-table {
   width: 100%;
   border-collapse: collapse;

@@ -40,7 +40,7 @@ export function BuiltLikeThis({flats, hotspots, anchors, state = 'collapsed', ac
 
   return (
     <div className={`blt ${allOpen ? 'is-all-open' : ''} ${className}`}>
-      {wallpaper ? <Wallpaper variant="offset" opacity={0.035} tile="96px" className="blt-wallpaper" /> : null}
+      {wallpaper ? <Wallpaper variant="offset" opacity={0.045} tile="200px" className="blt-wallpaper" /> : null}
       <div className="blt-views">
         {views.map((view) => {
           const flat = flats[view]!;

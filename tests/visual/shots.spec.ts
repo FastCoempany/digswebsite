@@ -25,11 +25,11 @@ test.describe('deliverable shots', () => {
     const dir = path.join(docs, mode === 'wire' ? 'wireframes' : 'ui');
     await open(page, '/collections/all', mode);
     const width = sizeName === 'mobile' ? 390 : 1440;
-    if (sizeName === 'mobile') await page.getByRole('button', {name: 'Menu'}).click();
+    if (sizeName === 'mobile') await page.getByRole('button', {name: 'Menu', exact: true}).click();
     else {
       // Desktop: the menu button is mobile-only; open via the drawer id with the same state the button sets.
       await page.setViewportSize({width: 1023, height: 900});
-      await page.getByRole('button', {name: 'Menu'}).click();
+      await page.getByRole('button', {name: 'Menu', exact: true}).click();
       await page.setViewportSize({width: 1440, height: 900});
     }
     await page.waitForTimeout(400);
@@ -49,7 +49,7 @@ test.describe('deliverable shots', () => {
     const dir = path.join(docs, mode === 'wire' ? 'wireframes' : 'ui');
     await open(page, '/products/thermal-long-sleeve', mode);
     const width = sizeName === 'mobile' ? 390 : 1440;
-    await page.getByRole('button', {name: 'Size guide'}).first().click();
+    await page.getByRole('button', {name: 'Size guide', exact: true}).first().click();
     await page.waitForTimeout(400);
     await page.screenshot({path: path.join(dir, `size-guide-modal-${width}.png`), animations: 'disabled'});
   });

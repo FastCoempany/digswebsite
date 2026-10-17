@@ -1,0 +1,25 @@
+{
+  "name": "digs storefront",
+  "image": "mcr.microsoft.com/devcontainers/typescript-node:22",
+  "features": {
+    "ghcr.io/devcontainers/features/python:1": {"version": "3.12"}
+  },
+  "hostRequirements": {"cpus": 2, "memory": "4gb"},
+  "forwardPorts": [3000, 6006],
+  "portsAttributes": {
+    "3000": {"label": "digs (mock data)", "onAutoForward": "openBrowser"},
+    "6006": {"label": "Storybook", "onAutoForward": "silent"}
+  },
+  "postCreateCommand": "npm ci && cp -n .env.example .env || true",
+  "postStartCommand": "nohup npm run dev -- --host > /tmp/dev.log 2>&1 &",
+  "customizations": {
+    "vscode": {
+      "extensions": ["bradlc.vscode-tailwindcss", "dbaeumer.vscode-eslint", "esbenp.prettier-vscode"],
+      "settings": {"editor.formatOnSave": true}
+    }
+  },
+  "remoteEnv": {
+    "SHOPIFY_CLI_NO_ANALYTICS": "1",
+    "SHOPIFY_FLAG_NO_COLOR": "1"
+  }
+}

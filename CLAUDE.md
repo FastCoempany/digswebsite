@@ -42,7 +42,16 @@ python3 tools/build_tokens.py               # regenerate design/tokens/build/*.c
 python3 tools/script_svg.py --out brand/script "word"
 python3 tools/extract_specs.py              # re-pull graded specs from the tech-pack PDFs
 ```
-App commands (`npm run dev`, `npm run storybook`, `npm run test:visual`) are added in phase 0.
+```
+npm run dev                                 # http://localhost:3000 on the mock adapter (add ?mode=wire)
+npm run storybook                           # http://localhost:6006 (Mode + Viewport toolbars)
+npm run test:visual                         # Playwright: visual baselines, axe, keyboard, story matrix
+npm run check:brand                         # CI brand check: hex in app/, PJ colors, forbidden strings, private font
+npm run shots:wireframes / shots:ui         # regenerate docs/wireframes and docs/ui
+python3 tools/copy_audit.py                 # copy audit against 08-copy.md (needs the preview running)
+node tools/lighthouse.mjs                   # Lighthouse mobile on Home, Shop, PDP (needs the preview running)
+```
+Build status, decisions to confirm and known gaps: `docs/build-log.md`.
 
 ## When unsure
 

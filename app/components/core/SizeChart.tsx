@@ -39,7 +39,7 @@ export function SizeChart({title, sizes, rows, unit, onUnitChange, labels, selec
         {title ? <h3 className="sizechart-title">{title}</h3> : null}
         <SegmentedControl label={labels.units} value={u} onChange={setU} options={[{value: 'in', label: labels.inches}, {value: 'cm', label: labels.centimetres}]} />
       </div>
-      <div className="sizechart-scroll">
+      <div className="sizechart-scroll" tabIndex={0} role="region" aria-label={title ?? labels.measurement}>
         <table className="sizechart-table">
           <thead>
             <tr>

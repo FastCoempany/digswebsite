@@ -1,4 +1,4 @@
-import {useEffect, useRef, type ReactNode} from 'react';
+import {useEffect, useId, useRef, type ReactNode} from 'react';
 import {IconButton} from './IconButton';
 import './Modal.css';
 
@@ -20,6 +20,7 @@ export type ModalProps = {
  */
 export function Modal({open, onClose, title, hideTitle, closeLabel, size = 'md', children, className = ''}: ModalProps) {
   const ref = useRef<HTMLDialogElement>(null);
+  const titleId = useId();
   useEffect(() => {
     const el = ref.current;
     if (!el) return;
@@ -49,10 +50,10 @@ export function Modal({open, onClose, title, hideTitle, closeLabel, size = 'md',
     return () => el.removeEventListener('cancel', onCancel);
   }, [onClose]);
   return (
-    <dialog ref={ref} className={`modal modal-${size} ${className}`} aria-label={hideTitle ? title : undefined} onClick={(e) => e.target === e.currentTarget && onClose()}>
+    <dialog ref={ref} className={`modal modal-${size} ${className}`} aria-labelledby={titleId} onClick={(e) => e.target === e.currentTarget && onClose()}>
       <div className="modal-box">
         <header className="modal-head">
-          <h2 className={`modal-title type-h3 ${hideTitle ? 'visually-hidden' : ''}`}>{title}</h2>
+          <h2 id={titleId} className={`modal-title type-h3 ${hideTitle ? 'visually-hidden' : ''}`}>{title}</h2>
           <IconButton icon="close" label={closeLabel} onClick={onClose} className="modal-close" />
         </header>
         <div className="modal-body">{children}</div>
