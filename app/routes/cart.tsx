@@ -11,22 +11,28 @@ export async function action({request, context}: Route.ActionArgs) {
   const form = await request.formData();
   const intent = String(form.get('intent') ?? '');
   const {digs} = context;
-  const qty = (v: FormDataEntryValue | null, lo: number) => {
+  // A quantity must be a whole number in range; anything else is rejected, never rounded or defaulted.
+  const qty = (v: FormDataEntryValue | null, lo: number): number | null => {
+    if (typeof v !== 'string' || !/^\d+$/.test(v.trim())) return null;
     const n = Number(v);
-    return Number.isInteger(n) && n >= lo && n <= 99 ? n : lo;
+    return n >= lo && n <= 99 ? n : null;
   };
+  const invalid = (v: FormDataEntryValue | null) => data({error: `Invalid quantity ${v === null ? '(missing)' : JSON.stringify(String(v))}`}, {status: 400});
   try {
     switch (intent) {
       case 'LinesAdd': {
         const merchandiseId = String(form.get('merchandiseId') ?? '');
         const quantity = qty(form.get('quantity'), 1);
+        if (quantity === null) return invalid(form.get('quantity'));
         const before = await digs.cart.get();
         const cart = await digs.cart.apply({action: 'LinesAdd', lines: [{merchandiseId, quantity}]});
         if (cart.totalQuantity === before.totalQuantity) return data({cart, error: `Unknown variant ${merchandiseId}`}, {status: 400});
         return data({cart, ok: true});
       }
       case 'LinesUpdate': {
-        const cart = await digs.cart.apply({action: 'LinesUpdate', lines: [{id: String(form.get('lineId')), quantity: qty(form.get('quantity'), 0)}]});
+        const quantity = qty(form.get('quantity'), 0);
+        if (quantity === null) return invalid(form.get('quantity'));
+        const cart = await digs.cart.apply({action: 'LinesUpdate', lines: [{id: String(form.get('lineId')), quantity}]});
         return data({cart, ok: true});
       }
       case 'LinesRemove': {
