@@ -40,7 +40,8 @@
 .iconbtn-on-dark:hover {
   background: color-mix(in oklab, var(--color-text-on-inverse) 16%, transparent);
 }
-.iconbtn:disabled {
+.iconbtn:disabled,
+.iconbtn[aria-disabled='true'] {
   color: var(--color-action-disabled-text);
   cursor: not-allowed;
   background: transparent;

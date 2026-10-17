@@ -16,12 +16,16 @@ export type DrawerProps = {
   tone?: 'raised' | 'page';
   children: ReactNode;
   footer?: ReactNode;
+  /** Rendered inside the dialog (top layer) outside the panel: fixed overlays such as toasts. */
+  slot?: ReactNode;
+  /** Called once the dialog has actually closed (after the closing transition). */
+  onClosed?: () => void;
   className?: string;
   id?: string;
 };
 
 /** Native <dialog> drawer: slides in over 300ms, focus trapped by the browser, Esc closes. */
-export function Drawer({open, onClose, title, label, closeLabel, side = 'right', tone = 'raised', children, footer, className = '', id}: DrawerProps) {
+export function Drawer({open, onClose, title, label, closeLabel, side = 'right', tone = 'raised', children, footer, slot, onClosed, className = '', id}: DrawerProps) {
   const ref = useRef<HTMLDialogElement>(null);
   const titleId = useId();
   useFocusTrap(ref, open);
@@ -38,9 +42,11 @@ export function Drawer({open, onClose, title, label, closeLabel, side = 'right',
       const t = setTimeout(() => {
         el.classList.remove('is-closing');
         el.close();
+        onClosed?.();
       }, reduced ? 0 : 300);
       return () => clearTimeout(t);
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [open]);
   useEffect(() => {
     const el = ref.current;
@@ -62,6 +68,7 @@ export function Drawer({open, onClose, title, label, closeLabel, side = 'right',
         <div className="drawer-body">{children}</div>
         {footer ? <footer className="drawer-foot">{footer}</footer> : null}
       </div>
+      {slot}
     </dialog>
   );
 }

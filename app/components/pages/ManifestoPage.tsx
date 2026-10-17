@@ -49,7 +49,7 @@ export function ManifestoPage() {
           <div className="sec-head">
             <Overline>{copy.brand.name}</Overline>
             <h2 id="standard-head" className="type-display">
-              The DIGS standard.
+              {m.standardHead}
             </h2>
           </div>
           <ol className="mani-standard">
@@ -67,11 +67,11 @@ export function ManifestoPage() {
       <section className="sec" aria-labelledby="pairs-head">
         <div className="inner">
           <h2 id="pairs-head" className="visually-hidden">
-            We are, we are not
+            {m.weAreHead}, {m.weAreNotHead}
           </h2>
           <div className="mani-pairs">
             <div>
-              <h3 className="type-micro type-caps">We are</h3>
+              <h3 className="type-micro type-caps">{m.weAreHead}</h3>
               <ul>
                 {m.weAre.map((w) => (
                   <li key={w}>{w}</li>
@@ -79,7 +79,7 @@ export function ManifestoPage() {
               </ul>
             </div>
             <div className="mani-not">
-              <h3 className="type-micro type-caps">We are not</h3>
+              <h3 className="type-micro type-caps">{m.weAreNotHead}</h3>
               <ul>
                 {m.weAreNot.map((w) => (
                   <li key={w}>
@@ -91,10 +91,10 @@ export function ManifestoPage() {
           </div>
         </div>
       </section>
-      <section className="sec" aria-label="Quiet effectiveness">
+      <section className="sec" aria-label={m.quietHead}>
         <div className="inner">
           <p className="mani-quiet">{text(m.quiet)}</p>
-          <p className="mani-quiet-attr type-small">Antaeus Coe, founder</p>
+          <p className="mani-quiet-attr type-small">{m.quietAttribution}</p>
           <p style={{marginTop: 'var(--space-7)'}}>
             <Button to="/collections/all" size="lg">
               {copy.cta.enterShop}

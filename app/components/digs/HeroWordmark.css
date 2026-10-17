@@ -109,9 +109,6 @@
     height: 100%;
     aspect-ratio: auto !important;
   }
-  .hero-photo-desktop .media-slot img {
-    object-position: 60% 50%;
-  }
   .hero-mark {
     position: absolute;
     left: calc(var(--layout-rail) + var(--space-2));
@@ -137,10 +134,6 @@
 /* Wire mode: the brand surface goes grey; the wordmark stays legible */
 [data-mode='wire'] .hero-mark .mark {
   color: var(--color-text-on-brand);
-}
-[data-mode='wire'] .hero-scrawl {
-  color: var(--color-text-on-brand);
-  opacity: 0.6;
 }
 [data-mode='wire'] .hero-mark .mark {
   color: var(--color-text-on-brand) !important;

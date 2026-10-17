@@ -16,7 +16,7 @@
   width: 100%;
   padding: var(--space-3) var(--layout-margin);
   border-top: var(--border-hairline) solid var(--color-border-strong);
-  color: var(--color-core-digs-blue);
+  color: var(--color-text-link);
   text-align: left;
   text-decoration: none;
   overflow: hidden;
@@ -27,7 +27,7 @@
 }
 .menu-word {
   text-transform: uppercase;
-  font-size: clamp(2.75rem, 16vw, 9rem);
+  font-size: clamp(2.75rem, 14.5vw, 9rem);
   line-height: 0.9;
   letter-spacing: -0.03em;
 }
@@ -100,7 +100,4 @@
     left: calc(var(--layout-margin) + var(--layout-rail));
     width: calc(100% - 2 * (var(--layout-margin) + var(--layout-rail)));
   }
-}
-[data-mode='wire'] .menu-block {
-  color: var(--color-text-primary);
 }

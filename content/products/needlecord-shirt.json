@@ -1,6 +1,6 @@
 {
   "handle": "needlecord-shirt",
-  "styleCode": "AC-LSS-001 (needlecord, Rev 1)",
+  "styleCode": "AC-LSS-001 (needlecord)",
   "name": "Needlecord Shirt",
   "category": "tops",
   "productType": "Long sleeve shirt (woven)",
@@ -98,7 +98,7 @@
     "specs": "content/products/specs/needlecord-shirt.json",
     "customerPOMs": {
       "B": "Chest width (pit to pit)",
-      "A2": "Body length (back, collar seam to hem)",
+      "A2": "Body length (back, shoulder to hem)",
       "D": "Shoulder width",
       "P": "Sleeve length (shoulder to cuff edge)"
     }

@@ -71,6 +71,9 @@
 .trim-blue {
   color: var(--color-core-digs-blue);
 }
+[data-mode='wire'] .trim-blue {
+  color: var(--color-text-primary);
+}
 .trim-ice {
   color: var(--color-core-ice);
   background: transparent;
@@ -279,6 +282,9 @@
 }
 .wallpaper-black {
   background-color: var(--color-core-ink);
+}
+[data-mode='wire'] .wallpaper-blue {
+  background-color: var(--color-brand-scrawl);
 }
 .wallpaper-offset {
   -webkit-mask: var(--wallpaper-mask) 0 0 / var(--wallpaper-tile) auto repeat, var(--wallpaper-mask) calc(var(--wallpaper-tile) / 2) calc(var(--wallpaper-tile) * 0.32) / var(--wallpaper-tile) auto repeat;

@@ -23,9 +23,6 @@
   filter: grayscale(1);
   opacity: 0.8;
 }
-[data-mode='wire'] [data-wallpaper] {
-  opacity: 0.5;
-}
 [data-mode='wire'] [data-swatch] {
   --swatch-color: var(--color-surface-sunken) !important;
 }

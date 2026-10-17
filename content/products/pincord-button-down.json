@@ -117,7 +117,7 @@
     "specs": "content/products/specs/pincord-button-down.json",
     "customerPOMs": {
       "B": "Chest width (pit to pit)",
-      "A": "Body length (back, collar seam to hem)",
+      "A": "Body length (back, shoulder to hem)",
       "D": "Shoulder width",
       "P": "Sleeve length (shoulder to cuff edge)"
     }

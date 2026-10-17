@@ -117,7 +117,13 @@
       "status": "draft",
       "text": "Four pieces. One drop."
     },
-    "builtCta": "See the thermal"
+    "builtCta": "See the thermal",
+    "posters": [
+      "Actually Dope.",
+      "Dope Is Good",
+      "Wear your ambition.",
+      "Elevate the everyday grind."
+    ]
   },
   "shop": {
     "overline": "CAPSULE 01",
@@ -278,7 +284,12 @@
     "quiet": {
       "status": "draft",
       "text": "We'd rather the work speak. Impact you can feel before you can see it."
-    }
+    },
+    "standardHead": "The digs standard.",
+    "weAreHead": "We are",
+    "weAreNotHead": "We are not",
+    "quietHead": "Quiet effectiveness",
+    "quietAttribution": "Antaeus Coe, founder"
   },
   "notFound": {
     "head": "This page doesn't exist.",
@@ -446,7 +457,7 @@
           "q": "How do I care for them?",
           "a": {
             "status": "draft",
-            "text": "Each product page carries the care label copy under Care. In short: cold wash, inside out, and keep the cords away from the tumble dryer."
+            "text": "Each product page carries the care label copy under Care. In short: machine wash cold with like colors. The thermal and the pincord tumble dry low; the needlecord shirt and the drawstring pant line dry."
           }
         },
         {

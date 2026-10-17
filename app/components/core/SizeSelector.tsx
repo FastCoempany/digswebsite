@@ -1,4 +1,5 @@
 import {useId} from 'react';
+import {rovingRadio} from './useRovingRadio';
 import './SizeSelector.css';
 
 export type SizeOption = {value: string; available: boolean};
@@ -36,7 +37,7 @@ export function SizeSelector({label, sizes, value, onChange, error, disabled, ho
         {aside ? <span className="sizes-aside">{aside}</span> : null}
       </div>
       <div className="sizes-row">
-        {sizes.map((s) => {
+        {sizes.map((s, i) => {
           const selected = s.value === value;
           return (
             <button
@@ -47,6 +48,7 @@ export function SizeSelector({label, sizes, value, onChange, error, disabled, ho
               className={`size ${selected ? 'is-selected' : ''} ${!s.available ? 'is-soldout' : ''}`}
               disabled={disabled}
               onClick={() => onChange?.(s.value)}
+              {...rovingRadio(i, sizes.length, sizes.findIndex((x) => x.value === value), (n) => onChange?.(sizes[n].value))}
             >
               <span className="size-value">{s.value}</span>
               {!s.available ? <span className="visually-hidden">, {soldOutLabel}</span> : null}

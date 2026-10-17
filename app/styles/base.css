@@ -279,3 +279,18 @@
   height: 0.75rem;
   background: var(--color-action-primary);
 }
+
+/* Print: no fixed chrome, scrollers unrolled */
+@media print {
+  .hdr, .rails, .pdp-sticky, .toasts, .skip-link, .announce {
+    display: none !important;
+  }
+  .gallery-track, .posters {
+    display: grid !important;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    overflow: visible !important;
+  }
+  .blt:not(.is-all-open) .blt-callout:not(.is-on) .blt-callout-body {
+    display: grid !important;
+  }
+}

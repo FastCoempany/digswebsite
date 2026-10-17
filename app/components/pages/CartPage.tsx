@@ -25,7 +25,7 @@ export function CartPage({cart, cards}: {cart: Cart | null; cards: ProductCardDa
           <>
             <ul className="cart-lines">
               {lines.map((l) => (
-                <CartLine key={l.id} line={l} labels={labels} onQuantity={(id, q) => fetcher.submit({intent: 'LinesUpdate', lineId: id, quantity: String(q)}, {method: 'post', action: '/cart'})} onRemove={(id) => fetcher.submit({intent: 'LinesRemove', lineId: id}, {method: 'post', action: '/cart'})} />
+                <CartLine key={l.id} line={l} labels={labels} headingLevel="h2" onQuantity={(id, q) => fetcher.submit({intent: 'LinesUpdate', lineId: id, quantity: String(q)}, {method: 'post', action: '/cart'})} onRemove={(id) => fetcher.submit({intent: 'LinesRemove', lineId: id}, {method: 'post', action: '/cart'})} />
               ))}
             </ul>
             <CartSummary subtotal={cart?.cost.subtotalAmount ?? null} labels={{subtotal: copy.cart.subtotal, taxNote: copy.cart.taxNote, checkout: copy.cta.checkout, priceTBA: copy.product.priceTBA, checkoutNote: text(copy.cart.checkoutNote)}} checkoutDisabled />

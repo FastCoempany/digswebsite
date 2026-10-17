@@ -22,11 +22,12 @@ export type SizeChartProps = {
   /** Highlight a size column. */
   selectedSize?: string | null;
   note?: string | null;
+  headingLevel?: 'h2' | 'h3' | 'h4';
   className?: string;
 };
 
 /** Graded spec table with an in/cm toggle. Half measures are shown laid flat and labelled so. */
-export function SizeChart({title, sizes, rows, unit, onUnitChange, labels, selectedSize, note, className = ''}: SizeChartProps) {
+export function SizeChart({title, sizes, rows, unit, onUnitChange, labels, selectedSize, note, headingLevel: H = 'h3', className = ''}: SizeChartProps) {
   const [local, setLocal] = useState<SizeChartUnit>(unit ?? 'in');
   const u = unit ?? local;
   const setU = (v: string) => {
@@ -36,7 +37,7 @@ export function SizeChart({title, sizes, rows, unit, onUnitChange, labels, selec
   return (
     <div className={`sizechart ${className}`}>
       <div className="sizechart-head">
-        {title ? <h3 className="sizechart-title">{title}</h3> : null}
+        {title ? <H className="sizechart-title">{title}</H> : null}
         <SegmentedControl label={labels.units} value={u} onChange={setU} options={[{value: 'in', label: labels.inches}, {value: 'cm', label: labels.centimetres}]} />
       </div>
       <div className="sizechart-scroll" tabIndex={0} role="region" aria-label={title ?? labels.measurement}>

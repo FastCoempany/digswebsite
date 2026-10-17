@@ -32,7 +32,7 @@ export function HeroWordmark({overline, sub, cta, mobile, desktop, className = '
         <MediaSlot ratio={mobile.ratio} code={mobile.code} image={mobile.image} srcSet={mobile.srcSet} alt={mobile.alt} priority sizes="100vw" position="50% 20%" />
       </div>
       <div className="hero-photo hero-photo-desktop">
-        <MediaSlot ratio={desktop.ratio} code={desktop.code} image={desktop.image} srcSet={desktop.srcSet} alt={desktop.alt} priority sizes="100vw" position="70% 50%" />
+        <MediaSlot ratio={desktop.ratio} code={desktop.code} image={desktop.image} srcSet={desktop.srcSet} alt={desktop.alt} priority sizes="100vw" position="60% 50%" />
       </div>
       <div className="hero-mark" aria-hidden="true">
         <Wordmark color="ice" edgeToEdge decorative />

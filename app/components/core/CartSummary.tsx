@@ -1,3 +1,4 @@
+import {useId} from 'react';
 import {Button} from './Button';
 import {Price, type Money} from './Price';
 import './CartSummary.css';
@@ -15,6 +16,7 @@ export type CartSummaryProps = {
 
 /** Subtotal, tax note, checkout. Checkout hands off to Shopify later; nothing is wired now. */
 export function CartSummary({subtotal, labels, freeShipping, onCheckout, checkoutHref, checkoutDisabled, className = ''}: CartSummaryProps) {
+  const noteId = useId();
   const pct = freeShipping ? Math.min(100, Math.round((freeShipping.current / freeShipping.threshold) * 100)) : 0;
   return (
     <div className={`cartsum ${className}`}>
@@ -33,11 +35,11 @@ export function CartSummary({subtotal, labels, freeShipping, onCheckout, checkou
         </dd>
       </dl>
       <p className="cartsum-note">{labels.taxNote}</p>
-      <Button variant="primary" size="lg" fullWidth to={checkoutHref} onClick={onCheckout} disabled={checkoutDisabled} aria-describedby={labels.checkoutNote ? 'cartsum-checkout-note' : undefined}>
+      <Button variant="primary" size="lg" fullWidth to={checkoutHref} onClick={onCheckout} disabled={checkoutDisabled} aria-describedby={labels.checkoutNote ? noteId : undefined}>
         {labels.checkout}
       </Button>
       {labels.checkoutNote ? (
-        <p id="cartsum-checkout-note" className="cartsum-note">
+        <p id={noteId} className="cartsum-note">
           {labels.checkoutNote}
         </p>
       ) : null}

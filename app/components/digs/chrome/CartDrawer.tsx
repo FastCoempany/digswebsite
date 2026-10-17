@@ -1,6 +1,6 @@
 import {useFetcher} from 'react-router';
 import type {Cart} from '~/lib/mock/types';
-import {srcSetFor} from '~/lib/mock';
+import {digs, productByHandle, srcSetFor} from '~/lib/mock';
 import {Drawer} from '~/components/core/Drawer';
 import {CartLine, type CartLineData} from '~/components/core/CartLine';
 import {CartSummary} from '~/components/core/CartSummary';
@@ -12,13 +12,15 @@ import {Script} from '~/components/digs/marks/Script';
 import {copy, text} from '~/lib/copy';
 import './chrome.css';
 
-export type CartDrawerProps = {cart: Cart | null; cards: ProductCardData[]; open?: boolean; onClose?: () => void};
+export type CartDrawerProps = {cart: Cart | null; cards: ProductCardData[]; open?: boolean; onClose?: () => void; slot?: React.ReactNode};
 
 export function cartLineData(cart: Cart): CartLineData[] {
   return cart.lines.nodes.map((l) => {
     const colorway = l.merchandise.selectedOptions.find((o) => o.name === 'Color')?.value ?? null;
     const size = l.merchandise.selectedOptions.find((o) => o.name === 'Size')?.value ?? null;
     const img = l.merchandise.image;
+    const product = productByHandle(l.merchandise.product.handle);
+    const front = product ? digs.galleryFor(product, colorway).find((g) => g.kind === 'front') : null;
     return {
       id: l.id,
       title: l.merchandise.product.title,
@@ -28,13 +30,13 @@ export function cartLineData(cart: Cart): CartLineData[] {
       quantity: l.quantity,
       price: l.merchandise.price,
       lineTotal: l.cost.totalAmount,
-      image: {code: `P-${l.merchandise.sku?.split('-')[1] ?? 'XX'}-01`, ratio: '4:5', image: img, srcSet: srcSetFor(img?.url), alt: img?.altText ?? ''},
+      image: {code: front?.code ?? 'P-XX-01', ratio: '4:5', image: img, srcSet: srcSetFor(img?.url), alt: img?.altText ?? ''},
     };
   });
 }
 
 /** "Your Digs": right drawer on desktop, full screen on mobile. Empty state shows the capsule. */
-export function CartDrawer({cart, cards, open, onClose}: CartDrawerProps) {
+export function CartDrawer({cart, cards, open, onClose, slot}: CartDrawerProps) {
   const overlay = useOverlay();
   const isOpen = open ?? overlay.open === 'cart';
   const close = onClose ?? overlay.close;
@@ -52,11 +54,11 @@ export function CartDrawer({cart, cards, open, onClose}: CartDrawerProps) {
   const labels = {remove: copy.cart.remove, quantity: copy.a11y.quantity, increase: copy.a11y.increase, decrease: copy.a11y.decrease, priceTBA: copy.product.priceTBA, colorway: copy.a11y.colorway, size: copy.a11y.size};
 
   return (
-    <Drawer open={isOpen} onClose={close} side="right" label={copy.cart.head} closeLabel={copy.a11y.closeCart} id="site-cart" title={<span className="type-h3">{copy.cart.head}{cart && cart.totalQuantity ? ` (${cart.totalQuantity})` : ''}</span>} footer={lines.length ? <CartSummary subtotal={cart?.cost.subtotalAmount ?? null} labels={{subtotal: copy.cart.subtotal, taxNote: copy.cart.taxNote, checkout: copy.cta.checkout, priceTBA: copy.product.priceTBA, checkoutNote: text(copy.cart.checkoutNote)}} freeShipping={null} checkoutDisabled /> : undefined}>
+    <Drawer open={isOpen} onClose={close} slot={slot} side="right" label={copy.cart.head} closeLabel={copy.a11y.closeCart} id="site-cart" title={<span className="type-h3">{copy.cart.head}{cart && cart.totalQuantity ? ` (${cart.totalQuantity})` : ''}</span>} footer={lines.length ? <CartSummary subtotal={cart?.cost.subtotalAmount ?? null} labels={{subtotal: copy.cart.subtotal, taxNote: copy.cart.taxNote, checkout: copy.cta.checkout, priceTBA: copy.product.priceTBA, checkoutNote: text(copy.cart.checkoutNote)}} freeShipping={null} checkoutDisabled /> : undefined}>
       {lines.length ? (
         <ul className="cart-lines">
           {lines.map((l) => (
-            <CartLine key={l.id} line={l} labels={labels} onQuantity={update} onRemove={remove} state={busyId === l.id ? (intent === 'LinesRemove' ? 'removing' : 'updating') : 'default'} error={fetcher.data && (fetcher.data as {error?: string}).error && busyId === l.id ? text(copy.cart.lineError) : null} />
+            <CartLine key={l.id} line={l} labels={labels} headingLevel="h2" onQuantity={update} onRemove={remove} state={busyId === l.id ? (intent === 'LinesRemove' ? 'removing' : 'updating') : 'default'} error={fetcher.data && (fetcher.data as {error?: string}).error && busyId === l.id ? text(copy.cart.lineError) : null} />
           ))}
         </ul>
       ) : (

@@ -13,8 +13,19 @@
 }
 .newsletter-success {
   display: block;
+  grid-column: 1 / -1;
   font-size: var(--font-size-body);
   color: var(--color-text-success);
+}
+.newsletter-success:empty {
+  display: none;
+}
+.newsletter.is-done {
+  grid-template-columns: 1fr;
+}
+.newsletter-success:focus-visible {
+  outline: var(--border-strong) solid var(--color-focus-ring);
+  outline-offset: 4px;
 }
 [data-surface='dark'] .newsletter-success {
   color: var(--color-text-on-inverse);

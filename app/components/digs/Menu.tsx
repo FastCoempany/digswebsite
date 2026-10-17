@@ -15,6 +15,7 @@ export type MenuProps = {
   labels: {close: string; menu: string};
   /** Force the hover/focus look on an item (stories). */
   activeIndex?: number;
+  onClosed?: () => void;
 };
 
 /**
@@ -22,9 +23,9 @@ export type MenuProps = {
  * the hovered or focused block flips to ice on blue with a scrawl underline. Focus is trapped in
  * the dialog; Esc closes.
  */
-export function Menu({open, onClose, items, smallPrint, labels, activeIndex}: MenuProps) {
+export function Menu({open, onClose, items, smallPrint, labels, activeIndex, onClosed}: MenuProps) {
   return (
-    <Drawer open={open} onClose={onClose} side="full" tone="page" label={labels.menu} closeLabel={labels.close} id="site-menu" className="menu-drawer" title={<Wordmark color="blue" height="28px" />}>
+    <Drawer open={open} onClose={onClose} onClosed={onClosed} side="full" tone="page" label={labels.menu} closeLabel={labels.close} id="site-menu" className="menu-drawer" title={<Wordmark color="blue" height="28px" />}>
       <nav className="menu" aria-label={labels.menu}>
         <ul className="menu-blocks">
           {items.map((item, i) => {

@@ -16,7 +16,8 @@
 .qty-btn:hover:not(:disabled) {
   background: var(--color-surface-sunken);
 }
-.qty-btn:disabled {
+.qty-btn:disabled,
+.qty-btn[aria-disabled='true'] {
   color: var(--color-action-disabled-text);
   cursor: not-allowed;
 }

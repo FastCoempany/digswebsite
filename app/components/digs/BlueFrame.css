@@ -12,6 +12,12 @@
   background: var(--color-blue-800);
   color: var(--color-text-on-brand);
 }
+[data-mode='wire'] .blueframe-media.media-slot {
+  background: repeating-linear-gradient(45deg, var(--color-ink-500) 0 10px, var(--color-ink-600) 10px 20px);
+}
+[data-mode='wire'] .blueframe-media.media-slot::after {
+  color: var(--color-text-on-inverse);
+}
 .blueframe-layer {
   position: absolute;
   inset: 0;
@@ -54,5 +60,10 @@
 @media (min-width: 1024px) {
   .blueframe-adaptive .blueframe-media {
     aspect-ratio: 16 / 9 !important;
+  }
+  /* Portrait frames re-cropped to landscape keep the head: anchor to the top */
+  .blueframe-adaptive .blueframe-media img,
+  .blueframe-landscape .blueframe-media img {
+    object-position: 50% 8%;
   }
 }

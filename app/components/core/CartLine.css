@@ -52,7 +52,8 @@
 .cartline-remove:hover {
   color: var(--color-text-primary);
 }
-.cartline-remove:disabled {
+.cartline-remove:disabled,
+.cartline-remove[aria-disabled='true'] {
   color: var(--color-action-disabled-text);
   cursor: not-allowed;
 }

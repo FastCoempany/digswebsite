@@ -176,7 +176,7 @@ export function SizeGuidePage({products}: {products: Product[]}) {
           const flats = flatsFor(p.handle);
           return (
             <div key={p.handle} id={p.handle} className="util-sections">
-              <SizeChart title={p.title} sizes={chart.sizes} rows={chart.rows} note={chart.note} labels={{units: copy.a11y.unitToggle, inches: copy.a11y.inches, centimetres: copy.a11y.centimetres, measurement: copy.product.measurementsHeadNoSize, laidFlat: copy.a11y.laidFlat}} />
+              <SizeChart title={p.title} headingLevel="h2" sizes={chart.sizes} rows={chart.rows} note={chart.note} labels={{units: copy.a11y.unitToggle, inches: copy.a11y.inches, centimetres: copy.a11y.centimetres, measurement: copy.product.measurementsHeadNoSize, laidFlat: copy.a11y.laidFlat}} />
               <div className="sizeguide-howto">
                 <h3 className="type-h3">{c.howTo}</h3>
                 <div className="sizeguide-howto-flats" aria-hidden="true">

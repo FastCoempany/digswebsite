@@ -27,13 +27,14 @@ export function HomePage({cards, thermal, newsletterStatus}: {cards: ProductCard
   const [status, setStatus] = useState<NewsletterStatus>(newsletterStatus ?? 'idle');
   const hotspots = thermal ? digs.hotspots(thermal) : [];
   const footerLines = [copy.brand.instagram, copy.brand.domain, copy.brand.labelLine];
+  const [p0, p1, p2, p3] = copy.home.posters;
   const posters: PosterTile[] = [
-    {kind: 'blue', line: lineWithScript('Actually Dope.', 'actually-dope-cap', 1)},
+    {kind: 'blue', line: lineWithScript(p0, 'actually-dope-cap', 1)},
     {kind: 'photo', image: slot('E-03', '4:5')},
-    {kind: 'black', line: 'Dope Is Good', wallpaper: true},
-    {kind: 'ice', line: lineWithScript('Wear your ambition.')},
+    {kind: 'black', line: p1, wallpaper: true},
+    {kind: 'ice', line: lineWithScript(p2)},
     {kind: 'wordmark', tone: 'blue'},
-    {kind: 'black', line: 'Elevate the everyday grind.'},
+    {kind: 'black', line: p3},
   ];
   return (
     <>

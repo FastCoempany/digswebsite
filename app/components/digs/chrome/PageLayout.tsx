@@ -1,4 +1,4 @@
-import type {ReactNode} from 'react';
+import {useEffect, useRef, useState, type ReactNode} from 'react';
 import {useLocation} from 'react-router';
 import type {Cart} from '~/lib/mock/types';
 import type {ProductCardData} from '~/components/core/ProductCard';
@@ -41,6 +41,15 @@ export function PageLayout(props: PageLayoutProps) {
 function Frame({cart, cards, children, transparentHeader, taglineIndex}: PageLayoutProps) {
   const {open, setOpen, close, toasts, dismissToast} = useOverlay();
   const location = useLocation();
+  const [cartAfterMenu, setCartAfterMenu] = useState(false);
+  // Overlays close on navigation (a cart line's product link, a menu link); the first render keeps `initialOpen`.
+  const lastKey = useRef(location.key);
+  useEffect(() => {
+    if (lastKey.current === location.key) return;
+    lastKey.current = location.key;
+    close();
+  }, [location.key, close]);
+  const toastRegion = <ToastRegion toasts={toasts} onDismiss={dismissToast} dismissLabel={copy.a11y.dismiss} />;
   const index = taglineIndex ?? Math.abs(hash(location.pathname)) % copy.taglineBand.length;
   const home = transparentHeader ?? location.pathname === '/';
   const announcement = copy.announcement.enabled ? text(copy.announcement) : null;
@@ -64,14 +73,21 @@ function Frame({cart, cards, children, transparentHeader, taglineIndex}: PageLay
         items={[
           {label: copy.nav.shop, to: '/collections/all'},
           {label: copy.nav.manifesto, to: '/pages/manifesto'},
-          {label: copy.nav.cart, to: '/cart', count: cartCount, onClick: () => setOpen('cart')},
+          {label: copy.nav.cart, to: '/cart', count: cartCount, onClick: () => { setCartAfterMenu(true); close(); }},
           {label: copy.nav.instagram, to: copy.brand.instagramUrl, external: true},
         ]}
         smallPrint={copy.menu.smallPrint}
         labels={{close: copy.a11y.closeMenu, menu: copy.a11y.menu}}
+        onClosed={() => {
+          if (cartAfterMenu) {
+            setCartAfterMenu(false);
+            setOpen('cart');
+          }
+        }}
       />
-      <CartDrawer cart={cart} cards={cards} />
-      <ToastRegion toasts={toasts} onDismiss={dismissToast} dismissLabel={copy.a11y.dismiss} />
+      {/* The toast region lives inside the open cart dialog (top layer), otherwise on the page */}
+      <CartDrawer cart={cart} cards={cards} slot={open === 'cart' ? toastRegion : undefined} />
+      {open === 'cart' ? null : toastRegion}
     </div>
   );
 }

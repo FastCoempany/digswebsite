@@ -1,4 +1,5 @@
 import {useId} from 'react';
+import {rovingRadio} from './useRovingRadio';
 import './SwatchGroup.css';
 
 export type SwatchOption = {
@@ -50,7 +51,7 @@ export function SwatchGroup({label, options, value, onChange, size = 'md', showN
         {showName && current ? <span className="swatches-name">{current.label}</span> : null}
       </legend>
       <div className="swatches-row">
-        {options.map((o) => {
+        {options.map((o, i) => {
           const selected = o.value === value;
           const unavailable = o.available === false;
           return (
@@ -64,6 +65,7 @@ export function SwatchGroup({label, options, value, onChange, size = 'md', showN
               data-swatch=""
               title={o.label}
               onClick={() => onChange?.(o.value)}
+              {...rovingRadio(i, options.length, options.findIndex((x) => x.value === value), (n) => onChange?.(options[n].value))}
             >
               <span className="visually-hidden">
                 {o.label}

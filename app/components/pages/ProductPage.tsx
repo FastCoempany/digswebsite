@@ -55,7 +55,6 @@ export function ProductPage({product, others, color, forceStatus, forceSize = nu
   const {setOpen, toast} = useOverlay();
   const buyRef = useRef<HTMLDivElement>(null);
   const [sticky, setSticky] = useState(false);
-  const [galleryKey, setGalleryKey] = useState(selectedColor);
   const adding = forceAdding || fetcher.state !== 'idle';
   const preorderDate = digs.preorderShipDate(product);
   const laterColorways = digs.laterColorways(product);
@@ -80,12 +79,12 @@ export function ProductPage({product, others, color, forceStatus, forceSize = nu
     const next = new URLSearchParams(params);
     next.set('color', name);
     setParams(next, {preventScrollReset: true, replace: true});
-    setGalleryKey(name);
   };
 
   const sizeOptions = sizes.map((s) => {
     const v = digs.variantFor(product, selectedColor, s);
-    const available = status === 'sold-out' ? false : status === 'coming-soon' || status === 'pre-order' || status === 'new' ? true : Boolean(v?.availableForSale);
+    // A forced status (stories) treats sizes as available; the live path reads the variant flag.
+    const available = status === 'sold-out' ? false : Boolean(forceStatus) || status === 'coming-soon' || status === 'pre-order' || status === 'new' ? true : Boolean(v?.availableForSale);
     return {value: s, available};
   });
 
@@ -112,7 +111,7 @@ export function ProductPage({product, others, color, forceStatus, forceSize = nu
 
   const measurementsFor = (s: string | null) =>
     chart && s
-      ? chart.rows.map((r) => ({label: r.label, value: r.sizes[s] ? (unit === 'in' ? `${r.sizes[s].label} in` : `${r.sizes[s].cm} cm`) : '–'}))
+      ? chart.rows.map((r) => ({label: r.laidFlat && !/laid flat/i.test(r.label) ? `${r.label} (${copy.a11y.laidFlat})` : r.label, value: r.sizes[s] ? (unit === 'in' ? `${r.sizes[s].label} in` : `${r.sizes[s].cm} cm`) : '–'}))
       : [];
 
   const accordion = [
@@ -201,7 +200,7 @@ export function ProductPage({product, others, color, forceStatus, forceSize = nu
         <Breadcrumb label={copy.a11y.breadcrumb} items={[{label: copy.nav.shop, to: '/collections/all'}, {label: product.title}]} />
       </div>
 
-      <div className="pdp-gallery bleed" key={galleryKey}>
+      <div className="pdp-gallery bleed" key={selectedColor ?? 'default'}>
         <div className="pdp-gallery-fade">
           <ProductGallery
             items={gallery.map((g) => ({code: g.code, ratio: g.ratio, image: g.image, srcSet: srcSetFor(g.image?.url), alt: g.image?.altText ?? `${product.title}${g.colorway ? `, ${g.colorway}` : ''}`}))}

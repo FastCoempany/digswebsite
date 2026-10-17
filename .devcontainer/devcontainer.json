@@ -10,7 +10,7 @@
     "3000": {"label": "digs (mock data)", "onAutoForward": "openBrowser"},
     "6006": {"label": "Storybook", "onAutoForward": "silent"}
   },
-  "postCreateCommand": "npm ci && cp -n .env.example .env || true",
+  "postCreateCommand": "npm ci && npx playwright install --with-deps chromium && python3 -m pip install --user -r tools/requirements.txt && (cp -n .env.example .env || true)",
   "postStartCommand": "nohup npm run dev -- --host > /tmp/dev.log 2>&1 &",
   "customizations": {
     "vscode": {

@@ -16,7 +16,7 @@ export type BlueFrameProps = {
 /** BOAST billboard: a photograph inside a solid Digs Blue frame, headline top-left, wordmark bottom-left, stacked footer right. */
 export function BlueFrame({image, headline, footer, orientation = 'portrait', headingLevel: H = 'h2', className = ''}: BlueFrameProps) {
   return (
-    <figure className={`blueframe blueframe-${orientation} ${className}`} data-surface="brand" data-rail-tone="dark">
+    <figure className={`blueframe blueframe-${orientation} ${className}`} data-surface="brand">
       <div className="blueframe-well">
         <MediaSlot ratio={image.ratio} code={image.code} image={image.image} srcSet={image.srcSet} alt={image.alt} sizes="(min-width: 1024px) 60vw, 100vw" className="blueframe-media" />
         <figcaption className="blueframe-layer">

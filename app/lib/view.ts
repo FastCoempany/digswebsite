@@ -8,7 +8,7 @@ import type {ProductCardData} from '~/components/core/ProductCard';
 import type {BadgeStatus} from '~/components/core/Badge';
 import {copy, fill} from '~/lib/copy';
 
-export function badgeFor(status: ProductStatus): {status: BadgeStatus; label: string} | null {
+export function badgeFor(status: ProductStatus, quantity?: number | null): {status: BadgeStatus; label: string} | null {
   switch (status) {
     case 'coming-soon':
       return {status: 'coming-soon', label: copy.product.comingSoon};
@@ -17,7 +17,8 @@ export function badgeFor(status: ProductStatus): {status: BadgeStatus; label: st
     case 'sold-out':
       return {status: 'sold-out', label: copy.product.soldOut};
     case 'low-stock':
-      return {status: 'low-stock', label: fill(copy.product.lowStock, {n: 3})};
+      // Only with a real count from the store; never an invented number.
+      return typeof quantity === 'number' ? {status: 'low-stock', label: fill(copy.product.lowStock, {n: quantity})} : null;
     case 'new':
       return {status: 'new', label: copy.product.newBadge};
     default:

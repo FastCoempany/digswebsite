@@ -41,7 +41,7 @@ export function ProductGallery({items, labels, rail, caption, loading, activeInd
   useEffect(() => {
     setIndex(activeIndex);
     track.current?.scrollTo({left: 0, behavior: 'auto'});
-  }, [activeIndex, items]);
+  }, [activeIndex]);
 
   const scrollTo = useCallback((i: number) => {
     const el = track.current;
@@ -92,11 +92,11 @@ export function ProductGallery({items, labels, rail, caption, loading, activeInd
       </ul>
       {!single ? (
         <div className="gallery-controls">
-          <IconButton icon="chevron-left" label={labels.previous} variant="outline" size="sm" onClick={() => scrollTo(index - 1)} disabled={index === 0} />
+          <IconButton icon="chevron-left" label={labels.previous} variant="outline" size="sm" onClick={() => index > 0 && scrollTo(index - 1)} aria-disabled={index === 0 || undefined} />
           <output className="gallery-counter type-micro" aria-live="polite">
             {counter}
           </output>
-          <IconButton icon="chevron-right" label={labels.next} variant="outline" size="sm" onClick={() => scrollTo(index + 1)} disabled={index >= total - 1} />
+          <IconButton icon="chevron-right" label={labels.next} variant="outline" size="sm" onClick={() => index < total - 1 && scrollTo(index + 1)} aria-disabled={index >= total - 1 || undefined} />
         </div>
       ) : null}
       {caption ? <p className="gallery-caption">{caption}</p> : null}

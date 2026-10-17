@@ -11,16 +11,22 @@ export async function action({request, context}: Route.ActionArgs) {
   const form = await request.formData();
   const intent = String(form.get('intent') ?? '');
   const {digs} = context;
+  const qty = (v: FormDataEntryValue | null, lo: number) => {
+    const n = Number(v);
+    return Number.isInteger(n) && n >= lo && n <= 99 ? n : lo;
+  };
   try {
     switch (intent) {
       case 'LinesAdd': {
         const merchandiseId = String(form.get('merchandiseId') ?? '');
-        const quantity = Number(form.get('quantity') ?? 1) || 1;
+        const quantity = qty(form.get('quantity'), 1);
+        const before = await digs.cart.get();
         const cart = await digs.cart.apply({action: 'LinesAdd', lines: [{merchandiseId, quantity}]});
+        if (cart.totalQuantity === before.totalQuantity) return data({cart, error: `Unknown variant ${merchandiseId}`}, {status: 400});
         return data({cart, ok: true});
       }
       case 'LinesUpdate': {
-        const cart = await digs.cart.apply({action: 'LinesUpdate', lines: [{id: String(form.get('lineId')), quantity: Number(form.get('quantity') ?? 1)}]});
+        const cart = await digs.cart.apply({action: 'LinesUpdate', lines: [{id: String(form.get('lineId')), quantity: qty(form.get('quantity'), 0)}]});
         return data({cart, ok: true});
       }
       case 'LinesRemove': {
