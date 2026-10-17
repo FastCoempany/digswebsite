@@ -79,7 +79,7 @@ gate deliverables are produced and the run continues.
 - The story matrix (`npm run test:visual -- --grep @stories`) loads every story from the static
   build at 390 and 1440, in UI and wire mode, and fails on any serious or critical axe violation.
 - Photography: `tools/photo_sync.py` validates `MANIFEST.csv` (names, sizes, ratios against
-  `content/products`), writes progressive JPEGs plus 480/960(/1440) WebP variants and
+  `content/products`), writes progressive JPEGs plus 480/720/960 (+1440 for the 16:9 hero) WebP variants and
   `app/lib/mock/photos.generated.json`; `photos.ts` keys by shot code, colorway and ratio.
 - Slots still empty (labelled placeholders): P-xx-03..07 for every product, E-04+ (poster wall and
   manifesto), and the second manifesto frames. Round 2 fills them (07-photography.md).
@@ -117,8 +117,46 @@ wordmark is a CSS mask (one cached SVG); photos ship as 480/720/960 WebP; the fo
 | D12 | Two semantic color roles added through the sources: `text/sale-on-inverse`, `text/success-on-inverse` (the signal tints) | Field errors/successes on black or blue measured 3.6–3.9:1 with the base signal colors; the tints clear 17:1 (`contrast-report.md`) |
 | D13 | Flats simplify the thermal's stitch brushes to dashes and drop its 10% shading | 300 KB → 15 KB per flat with the same construction lines; see `tools/flats_svg.py` |
 | D14 | Hotspot pins are 40px and two anchors were moved off the garment feature by a few percent (thermal neck label, pincord box pleat) | Overlapping 44px targets failed axe target-size; the callout text names the exact placement |
+| D15 | The tagline band's script word is set in ice, not Digs Blue | A script word is text: "never Digs Blue text on black" (CLAUDE.md). Blue on black stays in graphics only (scrawl, frames, stickers) |
+| D16 | Manifesto heading reads "The digs standard." with a lowercase wordmark | The wordmark is always lowercase `digs`; the heading sits in `en.json` (`manifestoPage.standardHead`) |
+| D17 | Every `draft` line in `en.json` shows the small "draft" pill wherever it renders (home, shop, PDP short lines and shipping note, cart notes, announcement bar, manifesto), not only on utility pages | One rule for review screens: what is final reads clean, what waits for the founder is marked. The pill inherits the surrounding text colour (D7 extended) |
+| D18 | Shirt body-length labels read "Body length (back, shoulder to hem)"; the needlecord style code drops "Rev 1" | The packs measure A / A2 from the high point shoulder level at centre back, not the collar seam; the pack header carries no revision in the style code. Labels only, numbers untouched |
+| D19 | "Low stock" shows only with a real variant count, never from a status alone | No stock numbers exist in this phase; a badge without a count would be an invented fact |
+| D20 | The cart action rejects non-integer quantities and unknown variants with 400 | Mock or not, the action is the shape the live cart will keep |
+| D21 | Overlays close on navigation; opening the cart from the menu closes the menu first, then opens the cart | Two stacked dialogs left focus in the wrong layer; the sequence returns focus correctly |
+| D22 | Core stories use neutral stand-ins (a "brand" label, an "art slot" pill) instead of the wordmark and script words; `tools/check_brand.py` fails any import of `components/digs` from `components/core`, stories included | "core must not import from digs" applied to everything in the folder |
+| D23 | CI runs one `checks` job and four Playwright jobs (one per project) with the built site served once; pushes to `build/**` no longer run CI twice (the pull request run covers them) | Every earlier CI run hit the 30-minute job timeout inside the Playwright step (1,500 tests on one runner) |
+
+## Review round (after phase 6)
+
+A six-dimension skeptical review (brand and wire leaks; copy and content; data and loaders;
+interaction accessibility; tests and tooling; docs) with adversarial verification produced 43
+confirmed findings and 4 refuted ones. All 43 are fixed in the three "Review fixes" commits:
+
+- **Brand**: tagline script in ice (D15); wire mode strips the blue trims, wallpaper and the blue
+  frame's well; blue frame crops landscape photos at the top and no longer tints the rails; menu
+  links use the link colour at 14.5vw; dead hero CSS removed; manifesto pairs stack under 768px;
+  a print stylesheet.
+- **Content**: style code and body-length labels (D18); FAQ care answer matches the care lines;
+  home posters and manifesto headings come from `en.json`; drafts flagged everywhere (D17);
+  `robots.txt` without a sitemap line.
+- **Data**: low-stock badge (D19); cart action validation (D20); cart drawer shot codes from the
+  gallery; PDP forced states (sold out / pre-order) render from real variant availability;
+  gallery effect dependencies; CartSummary ids from `useId`.
+- **Interaction a11y**: one roving-tabindex helper (arrows, Home, End) for swatches, sizes and
+  the unit toggle; focused controls never disable mid-update (stepper, remove, gallery arrows
+  use `aria-disabled`); the newsletter form stays mounted and moves focus to its status line;
+  toasts render inside the open cart dialog (top layer); menu → cart sequencing and overlays
+  closing on navigation (D21); heading levels on cart lines and the size chart.
+- **Tests and tooling**: `fact_trace.py` compares every size-guide row and cell to the graded
+  spec in order; core stories isolated and checked (D22); the size-selector keyboard test is named
+  for what it checks and covers arrow keys; CI restructured (D23); `tools/requirements.txt`; the
+  devcontainer installs Playwright's Chromium and the Python requirements.
 
 ## Known gaps
 
-- CI runs on GitHub against the draft PR; check its status before merging.
+- CI on GitHub: every run before the restructure (D23) was cancelled by the 30-minute timeout, so
+  the visual baselines have not yet been compared on a GitHub runner. Check the first green run of
+  the matrix before merging; if a project shows anti-aliasing diffs, refresh its baselines with
+  `npm run test:visual:update -- --project <name>` on that runner's output.
 - Pincord back flat shows the pack's dashed placeholder for the back-yoke embroidery (O5).
