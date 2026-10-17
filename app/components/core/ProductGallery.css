@@ -4,6 +4,9 @@
   gap: var(--space-3);
 }
 .gallery-track {
+  /* Positioned so the slides' absolutely placed children are clipped by the track's own overflow
+     (otherwise mobile browsers count them as page overflow and zoom out) */
+  position: relative;
   display: flex;
   overflow-x: auto;
   scroll-snap-type: x mandatory;
