@@ -95,11 +95,11 @@ export function HomePage({cards, thermal, newsletterStatus}: {cards: ProductCard
         </section>
       ) : null}
 
-      <section className="sec home-frame bleed" aria-label={copy.home.blueFrameHead}>
+      <section className="sec home-frame" aria-label={copy.home.blueFrameHead}>
         <BlueFrame image={slot('E-02', '4:5')} headline={lineWithScript(copy.home.blueFrameHead, copy.home.blueFrameScript, 1)} footer={footerLines} orientation="portrait" className="blueframe-adaptive" />
       </section>
 
-      <section className="sec home-posters bleed" aria-labelledby="posters-head">
+      <section className="sec home-posters" aria-labelledby="posters-head">
         <div className="sec-head">
           <h2 id="posters-head" className="visually-hidden">
             {copy.home.posterLabel}

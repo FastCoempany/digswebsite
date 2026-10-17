@@ -74,21 +74,24 @@
 .home-built-foot {
   margin-top: var(--space-6);
 }
-.home-frame {
-  padding-inline: 0;
-}
-@media (min-width: 1024px) {
-  .home-frame .blueframe {
-    margin-inline: var(--layout-rail);
-  }
-}
-.home-posters {
+/* Full bleed on mobile; at 1024+ these sit inside the rails like the other sections.
+   Specificity is deliberate so the result does not depend on stylesheet order. */
+.sec.home-frame,
+.sec.home-posters {
   padding-inline: 0;
 }
 .home-posters .sec-head {
   padding-inline: var(--layout-margin);
 }
 @media (min-width: 1024px) {
+  .page-main > .sec.home-frame {
+    padding-left: calc(var(--layout-margin) + var(--layout-rail));
+    padding-right: calc(var(--layout-margin) + var(--layout-rail));
+  }
+  .page-main > .sec.home-posters {
+    padding-left: 0;
+    padding-right: 0;
+  }
   .home-posters .sec-head,
   .home-posters .posters {
     padding-inline: calc(var(--layout-margin) + var(--layout-rail));
@@ -282,10 +285,12 @@
   color: var(--color-text-muted);
 }
 @media (min-width: 1024px) {
-  .pdp {
+  .pdp,
+  .page-main > .pdp {
     grid-template-columns: 3fr 2fr;
     gap: var(--space-8);
-    padding-inline: calc(var(--layout-margin) + var(--layout-rail));
+    padding-left: calc(var(--layout-margin) + var(--layout-rail));
+    padding-right: calc(var(--layout-margin) + var(--layout-rail));
     align-items: start;
   }
   .pdp-crumbs {
