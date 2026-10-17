@@ -62,7 +62,7 @@ function Frame({cart, cards, children, transparentHeader, taglineIndex}: PageLay
       </a>
       {announcement && !home ? <AnnouncementBar dismissLabel={copy.a11y.dismiss}>{announcement}</AnnouncementBar> : null}
       <SiteHeader cartCount={cartCount} transparent={home} />
-      <MarginRails left={copy.rails.left} right={copy.rails.right} />
+      <MarginRails left={copy.rails.left} right={copy.rails.right} refreshKey={location.key} />
       <main id="main" tabIndex={-1} className="page-main">
         {children}
       </main>

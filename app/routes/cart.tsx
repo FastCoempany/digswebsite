@@ -26,7 +26,7 @@ export async function action({request, context}: Route.ActionArgs) {
         if (quantity === null) return invalid(form.get('quantity'));
         const before = await digs.cart.get();
         const cart = await digs.cart.apply({action: 'LinesAdd', lines: [{merchandiseId, quantity}]});
-        if (cart.totalQuantity === before.totalQuantity) return data({cart, error: `Unknown variant ${merchandiseId}`}, {status: 400});
+        if (cart.totalQuantity === before.totalQuantity) return data({cart, error: `Variant unknown or unavailable: ${merchandiseId}`}, {status: 400});
         return data({cart, ok: true});
       }
       case 'LinesUpdate': {

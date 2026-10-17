@@ -76,7 +76,8 @@ export function applyCartAction(stored: StoredCart | null | undefined, input: Ca
   switch (input.action) {
     case 'LinesAdd':
       for (const add of input.lines) {
-        if (!findVariant(add.merchandiseId)) continue;
+        const hit = findVariant(add.merchandiseId);
+        if (!hit || hit.variant.availableForSale === false) continue;
         const existing = cart.lines.find((l) => l.merchandiseId === add.merchandiseId);
         if (existing) existing.quantity += add.quantity;
         else cart.lines.push({merchandiseId: add.merchandiseId, quantity: Math.max(1, add.quantity)});

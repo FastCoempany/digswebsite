@@ -92,7 +92,9 @@ export function ProductPage({product, others, color, forceStatus, forceSize = nu
   const ctaLabel =
     status === 'coming-soon' ? copy.cta.comingSoon : status === 'sold-out' || (chosen && !sizeOptions.find((o) => o.value === chosen.selectedOptions[1]?.value)?.available) ? copy.cta.backInStock : size ? copy.cta.addToCart : copy.cta.selectSize;
 
+  const chosenUnavailable = Boolean(chosen) && !sizeOptions.find((o) => o.value === size)?.available;
   const primary = () => {
+    if (adding) return;
     if (status === 'coming-soon') {
       toast(copy.product.listConfirm);
       return;
@@ -102,7 +104,8 @@ export function ProductPage({product, others, color, forceStatus, forceSize = nu
       return;
     }
     setError(null);
-    if (status === 'sold-out') {
+    // The sold-out product and the sold-out size both take the hold flow; neither reaches the cart.
+    if (status === 'sold-out' || chosenUnavailable) {
       toast(copy.product.holdConfirm);
       return;
     }
